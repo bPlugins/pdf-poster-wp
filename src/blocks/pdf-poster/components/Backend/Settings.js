@@ -72,6 +72,8 @@ const Settings = (props) => {
     setAttributes({ popupOptions: newPopupOptions });
   };
 
+  // No panel renders a locked control any more: each one offers what this build can do
+  // and names the rest in a Premium notice, so there is no upgrade click to route.
   const panelProps = { attributes, setAttributes, updatePopupOptions };
 
 

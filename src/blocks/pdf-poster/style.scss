@@ -431,3 +431,45 @@
      }
    }
  }
+
+/* ------------------------------------------------------------------
+ * Watermark overlay
+ * ------------------------------------------------------------------
+ * One node per page (dFlip) or one over the viewer frame (cross-origin
+ * engines). The background image itself is built in JS -- see
+ * components/Common/watermarkSVG.js. The PDF.js engine styles its own copy
+ * inside the iframe, since wrapper CSS can't reach in there.
+ */
+.pdfp_wrapper {
+
+  .pdfp-wm {
+    position: absolute;
+    inset: 0;
+    /* Never intercept a click, a text selection or a page flip. */
+    pointer-events: none;
+    /* Above the page canvas and text layer, below dFlip's own controls. */
+    z-index: 3;
+  }
+
+  /* dFlip transforms its pages in 3D; the overlay has to ride along with the
+     page it belongs to rather than being flattened onto the book. */
+  .df-page > .pdfp-wm {
+    backface-visibility: hidden;
+  }
+}
+
+/* The watermark frame used for dFlip's 3D FlipBook.
+   Pages there are drawn into a single canvas, so the mark is confined to the book's own
+   rectangle (read from dFlip's layout) instead of covering the whole viewer. */
+.pdfp_wrapper .pdfp-wm-frame {
+  position: absolute;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+
+  > .pdfp-wm {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+}

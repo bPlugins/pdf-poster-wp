@@ -113,22 +113,25 @@ if (!class_exists('PDFPro\Admin\PDFP_SidebarCards')) {
 		}
 
 		/**
-		 * The settings the free build gates. Kept in step with the pro_title() calls
-		 * and locked sections in PDFP_MetaBox, plus the Analytics panel PDFP_PDFPoster
-		 * registers in this same column -- so the card and the boxes above it agree on
-		 * what Pro adds.
+		 * The settings this build gates. Kept in step with the pro_feature_list() ledgers
+		 * in PDFP_MetaBox and PDFP_Settings, the entitlement clamps in
+		 * PDFP_Functions::pdfp_resolve_viewer() / pdfp_watermark_resolve() /
+		 * pdfp_analytics_available(), and the Analytics panel PDFP_PDFPoster registers in
+		 * this same column -- so the card and the boxes above it agree on what Pro adds.
+		 *
+		 * Popup and the text watermark are NOT here: both ship in this build.
 		 */
 		private function locked_features() {
 			// Short labels: the card is ~260px wide and the count in its heading is
 			// derived from this array, so every entry has to earn its row.
 			return array(
-				__('View & download analytics', 'pdf-poster'),
-				__('Scroll & Adobe viewers', 'pdf-poster'),
-				__('Watermark & branding', 'pdf-poster'),
+				__('Analytics history & trends', 'pdf-poster'),
+				__('Adobe & Scroll viewers', 'pdf-poster'),
+				__('Logo watermark & Custom theme', 'pdf-poster'),
 				__('Right-click & copy protection', 'pdf-poster'),
-				__('Popup (lightbox) viewer', 'pdf-poster'),
-				__('Zoom, thumbnails, reader mode', 'pdf-poster'),
-				__('Custom button labels', 'pdf-poster'),
+				__('Reader mode, thumbnails, zoom', 'pdf-poster'),
+				__('Button labels & position', 'pdf-poster'),
+				__('Dropbox & Google Drive import', 'pdf-poster'),
 			);
 		}
 

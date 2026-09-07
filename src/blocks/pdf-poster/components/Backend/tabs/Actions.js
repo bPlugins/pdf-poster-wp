@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { PDFIcon } from "../../../../../icons/PDF";
 
 const Actions = ({ setAttributes, attributes }) => {
-    const { protect, downloadButton, print, fullscreenButtonText, fullscreenButton, adobeEmbedder } = attributes;
+    const { protect, downloadButton, downloadButtonText, print, fullscreenButtonText, fullscreenButton, adobeEmbedder } = attributes;
 
     const normalizedViewer = adobeEmbedder === true ? "adobe" : (adobeEmbedder === false ? "default" : adobeEmbedder);
 
@@ -23,17 +23,29 @@ const Actions = ({ setAttributes, attributes }) => {
                     <ToggleControl className="mt10" label={__("Allow Printing", "pdfp")} id="print" checked={print} onChange={() => setAttributes({ print: !print })} help={__("Allow visitors to print the PDF document.", "pdfp")} />
 
                     {!useImagesFlipbook && (
-                        <ToggleControl className="mt10" label={__("Download Button", "pdfp")} id="downloadButton" checked={downloadButton} onChange={() => setAttributes({ downloadButton: !downloadButton })} help={__("Display a download button at the top of the viewer.", "pdfp")} />
+                        <>
+                            <ToggleControl className="mt10" label={__("Download Button", "pdfp")} id="downloadButton" checked={downloadButton} onChange={() => setAttributes({ downloadButton: !downloadButton })} help={__("Display a download button at the top of the viewer.", "pdfp")} />
+
+                            {downloadButton && (
+                                <TextControl className="mt10" label={__("Download Label", "pdfp")} help={__("Customize the text for the download button.", "pdfp")} value={downloadButtonText} onChange={(downloadButtonText) => setAttributes({ downloadButtonText })} />
+                            )}
+                        </>
                     )}
                 </>
             )}
 
-            {!protect && fullscreenButton && (
-                <TextControl className="mt10" label={__("Fullscreen Label", "pdfp")} help={__("Customize the text for the fullscreen button.", "pdfp")} value={fullscreenButtonText} onChange={(fullscreenButtonText) => setAttributes({ fullscreenButtonText })} />
+            {!protect && (
+                <>
+                    <ToggleControl className="mt10" label={__("Fullscreen Button", "pdfp")} id="fullscreenButton" checked={fullscreenButton} onChange={() => setAttributes({ fullscreenButton: !fullscreenButton })} help={__("Display a fullscreen toggle button at the top of the viewer.", "pdfp")} />
+
+                    {fullscreenButton && (
+                        <TextControl className="mt10" label={__("Fullscreen Label", "pdfp")} help={__("Customize the text for the fullscreen button.", "pdfp")} value={fullscreenButtonText} onChange={(fullscreenButtonText) => setAttributes({ fullscreenButtonText })} />
+                    )}
+                </>
             )}
 
             <Notice status='premium' isIcon={true}>
-                {__('Unlock a custom Download Button label, opening the fullscreen view in a new tab, and moving the action buttons to the bottom of the viewer—available exclusively in Premium.', 'pdfp')}
+                {__('Unlock opening the fullscreen view in a new tab, and moving the action buttons to the bottom of the viewer—available exclusively in Premium.', 'pdfp')}
             </Notice>
         </PanelBody>
     )

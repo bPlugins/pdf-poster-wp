@@ -54,6 +54,11 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             // Capability, not entitlement: tells the JS whether the flipbook engine
             // exists in this build so it can fall back instead of rendering an empty box.
             'hasFlipbookEngine' => Utils::pdfp_has_flipbook_engine(),
+            // Document Insights. The endpoint is public and the flag is a plain bool:
+            // both are safe in cached HTML, which is the point -- nothing here is a
+            // nonce that could expire inside a cached page.
+            'trackUrl' => rest_url('pdfp/v1/track'),
+            'track' => Utils::pdfp_tracking_enabled(),
         ];
 
         if (Utils::pdfp_has_flipbook_engine()) {
@@ -117,7 +122,13 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             'hasFlipbookEngine' => Utils::pdfp_has_flipbook_engine()
         );
 
-        // Premium admin data localization removed
+        // Which mark types each watermark theme can draw, so the metabox offers the
+        // same themes the block sidebar does (see src/admin.js).
+        $fpdfAdmin['watermarkThemeTypes'] = wp_list_pluck(Utils::pdfp_watermark_themes(), 'types');
+
+        // The themes this build may render. src/admin.js hides the rest, because
+        // pdfp_watermark_resolve() would refuse to draw them anyway.
+        $fpdfAdmin['watermarkFreeThemes'] = array_values(Utils::pdfp_watermark_free_themes());
 
         wp_localize_script('pdfp-admin', 'fpdfAdmin', $fpdfAdmin);
     }

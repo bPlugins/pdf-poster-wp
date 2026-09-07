@@ -21,6 +21,70 @@ import "./admin.scss";
     //   });
     // });
 
+    // "Turn on watermarking" in the Watermark tab's intro card. CSF renders a switcher
+    // as a styled div over a hidden input and binds its own click handler, so flipping it
+    // is a click on .csf--switcher -- setting the input's value directly would change the
+    // stored value without repainting the control or re-running the dependency pass.
+    $(document).on("click", ".pdfp-wm-intro__go", function (e) {
+      e.preventDefault();
+      var id = $(this).data("pdfp-enable");
+      var $input = $('input[data-depend-id="' + id + '"]');
+      if ($input.val() !== "1") {
+        $input.closest(".csf--switcher").trigger("click");
+      }
+    });
+
+    /**
+     * Offer only the themes this build can actually draw.
+     *
+     * CSF builds image_select from a static option list and has no per-option
+     * dependency, so the filtering happens here. The map is localised from
+     * pdfp_watermark_themes(), which is also what the resolver reads, so the two cannot
+     * drift apart.
+     *
+     * pdfp_watermark_thumbs() already filters the list to what this build may draw, so
+     * on a stock install every option here is valid. The pass still runs: it is what
+     * moves the selection off a theme carried in from Pro, and what keeps the row honest
+     * if the pdfp_watermark_free_themes filter ever widens it.
+     */
+    function pdfpSyncWatermarkThemes() {
+      var map = (window.fpdfAdmin && fpdfAdmin.watermarkThemeTypes) || null;
+      if (!map) return;
+
+      var free = (window.fpdfAdmin && fpdfAdmin.watermarkFreeThemes) || null;
+
+      // The mark type that will actually RENDER, which on this build is always text --
+      // the resolver clamps it there no matter what meta holds. Read from the DOM only
+      // if a Mark Type row ever exists again.
+      var type = free ? "text" : ($('input[data-depend-id="watermark_type"]:checked').val() || "text");
+      var $first = null;
+      var stillValid = false;
+
+      $('input[data-depend-id="watermark_theme"]').each(function () {
+        var $input = $(this);
+        var $item = $input.closest(".csf--image");
+        var key = $input.val();
+        var types = map[key];
+        var ok = !types || $.inArray(type, types) !== -1;
+        var locked = free && $.inArray(key, free) === -1;
+
+        $item.toggle(!!(ok && !locked));
+
+        if (ok && !locked) {
+          if (!$first) $first = $item;
+          if ($input.is(":checked")) stillValid = true;
+        }
+      });
+
+      // The chosen theme cannot be drawn here; fall back to the first one that can, the
+      // way pickMarkType() does in the block sidebar. Clicking CSF's own wrapper keeps
+      // the checkmark and the dependency pass in step.
+      if (!stillValid && $first) $first.trigger("click");
+    }
+
+    $(document).on("change", 'input[data-depend-id="watermark_type"]', pdfpSyncWatermarkThemes);
+    pdfpSyncWatermarkThemes();
+
     // set cookie
     $(".fpdf_import_notice").on("click", function () {
       setCookie("fpdf_import_notice", "1", 17280000);

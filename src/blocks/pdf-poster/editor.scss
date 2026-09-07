@@ -365,6 +365,51 @@ button[bisactive="true"] svg {
   line-height: 1.3em;
 }
 
+/* "New", not "Pro" -- green, and shown on every build. Same green as the classic
+   editor's .pdfp-new-badge (src/admin.scss) so one setting does not look like two
+   different things depending on which editor it is opened in.
+
+   Absolutely positioned like the Pro chip, which is why a panel header carries one
+   badge or the other and never both: they would land on top of each other. */
+.pdfp-panel-new-badge {
+  position: absolute;
+  right: 0;
+  padding: 2px 8px;
+  background: #08a143;
+  color: #fff;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+}
+
+/* Field-label chip. Inline, next to the label text, not pinned to the panel edge --
+   control labels are laid out by @wordpress/components and an absolute chip would
+   escape them. */
+.pdfp-label-new {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Spacing comes from the badge's own margin, not from a gap on the wrapper: build/admin.css
+   is enqueued on every admin screen (PDFP_EnqueueAssets::adminAssets), and its .pdfp-new-badge
+   rules are all !important, so on the post screen that copy wins. A gap here would sit on top
+   of its margin-left and space the chip twice as far out as the one in the metabox. */
+.pdfp-new-badge {
+  margin-left: 5px;
+  padding: 2px 6px;
+  background: #08a143;
+  color: #fff;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
 /*
  * Analytics readout in the block inspector -- the Pro panel's shape with its numbers
  * withheld. Same tokens as the classic editor's Analytics box in src/admin.scss, so the
@@ -415,18 +460,91 @@ button[bisactive="true"] svg {
   width: 100%;
 }
 
-/*
- * Locked variant: same shape, numbers greyed. No cursor:pointer -- the panel's own
- * "Get Pro" button is the click, so a pointer over inert tiles would promise one that
- * isn't there.
- */
+/* Locked variant: same shape, numbers withheld, whole block a link to pricing. */
 .pdfp-analytics-locked {
+  display: block;
+  cursor: pointer;
+  border: 1px dashed #cfdaea;
+  background: #f8fafc;
+  padding: 10px 11px 2px;
+  margin-bottom: 10px;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    border-color: #146ef5;
+    color: inherit;
+    text-decoration: none;
+  }
+
   .pdfp-analytics-stat {
     border-top-color: #cbd5e1;
   }
 
   .pdfp-analytics-value {
     color: #cbd5e1;
+  }
+
+  .pdfp-analytics-note {
+    margin-bottom: 8px;
+  }
+}
+
+/* The counted withholding. "47 days recorded" is a fact about this site; "upgrade for
+   analytics" is a fact about the price list, and only one of them is worth a line here. */
+.pdfp-analytics-lockline {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #8a4b00;
+
+  em {
+    margin-left: auto;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #7c8ba1;
+  }
+}
+
+.pdfp-analytics-lockglyph {
+  width: 9px;
+  height: 11px;
+  flex: none;
+}
+
+/*
+ * The example shape.
+ *
+ * Blurred and labelled, because a free build is sent no daily figure to draw -- so
+ * there is no numeral here for the blur to be hiding, and a browser that drops
+ * `filter` still exposes nothing.
+ */
+.pdfp-analytics-veil {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 6px 0 2px;
+  filter: blur(3px);
+  opacity: 0.45;
+}
+
+.pdfp-analytics-note {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #475569;
+
+  &.pdfp-analytics-off {
+    padding: 8px 10px;
+    background: #fdf1e0;
+    border-left: 3px solid #ff7a00;
+    color: #9a5b06;
   }
 }
 
@@ -525,5 +643,639 @@ button[bisactive="true"] svg {
       background: #146ef5;
       color: #fff;
     }
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Watermark & Branding panel (block sidebar)
+ * ------------------------------------------------------------------
+ * Spacing is owned here, deliberately. Current WordPress ships NO margin on
+ * .components-base-control, so leaning on control margins leaves every field
+ * flush against the next. Every stack below sets its own `gap`, and any margin
+ * WordPress or a theme might add is zeroed so spacing can't double up.
+ */
+.pdfp-wm-panel {
+  $gap: 18px;
+
+  /* --- one spacing model: flex column + gap, everywhere --- */
+  .pdfp-wm-stack,
+  .pdfp-wm-group__body,
+  .pdfp-wm-field,
+  .pdfp-wm-checks {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .pdfp-wm-stack { gap: $gap; }
+  .pdfp-wm-group__body { gap: $gap; }
+  .pdfp-wm-field { gap: 8px; }
+  .pdfp-wm-checks { gap: 10px; }
+
+  /* gap is the single source of spacing -- neutralise inherited margins */
+  .pdfp-wm-stack > *,
+  .pdfp-wm-group__body > *,
+  .pdfp-wm-field > *,
+  .pdfp-wm-checks > *,
+  .pdfp-wm-two-up > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .components-base-control,
+  .components-base-control__field {
+    margin-bottom: 0;
+  }
+
+  /* Never let a control overflow its group. WP admin's global reset usually makes
+     these border-box, but a theme or an older WP can leave width:100% + padding
+     spilling out of the panel -- so guarantee it here. */
+  input,
+  select,
+  textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  /* WordPress puts the label tight against its control; give it air */
+  .components-base-control__label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: #1e1e1e;
+  }
+
+  /* help text sits under its control, never wedged against the next field */
+  .components-base-control__help {
+    margin: 6px 0 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1.5;
+    color: #757575;
+  }
+
+  /* toggles: label beside the switch, so no uppercase treatment */
+  .components-toggle-control .components-base-control__label,
+  .components-checkbox-control__label {
+    display: inline;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* --- a labelled wrapper for controls WordPress won't label for us --- */
+  .pdfp-wm-field__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: #1e1e1e;
+  }
+
+  .pdfp-wm-help {
+    margin: 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1.5;
+    color: #757575;
+  }
+
+  /* contextual caveat -- only rendered when the chosen viewer is affected */
+  .pdfp-wm-note {
+    margin: 0;
+    padding: 8px 10px;
+    border-left: 3px solid #3858e9;
+    border-radius: 0 2px 2px 0;
+    background: #f0f6fc;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #3c434a;
+
+    /* The "set them yourself" escape hatch sits in the sentence, so it has to sit on
+       the text baseline rather than standing off as a 30px-tall control. */
+    .components-button.is-link {
+      height: auto;
+      font-size: inherit;
+      line-height: inherit;
+      vertical-align: baseline;
+    }
+  }
+
+  /* --- "Locked by this theme" --- */
+  /* Twin of .pdfp-wm-locked in src/admin.scss. Where that one borrows the metabox's
+     hairline card, this one borrows the rail's own .pdfp-wm-note: a blue rule down the
+     left on a pale ground, quiet enough to sit between two controls. */
+  .pdfp-wm-locked {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 2px 0 0;
+    padding: 10px 12px;
+    border: 0;
+    border-left: 3px solid #3858e9;
+    border-radius: 0 2px 2px 0;
+    background: #f0f6fc;
+    box-shadow: none;
+
+    &__badge {
+      flex: none;
+      display: grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      margin-top: 1px;
+      border-radius: 0;
+      background: none;
+      color: #3858e9;
+
+      svg { width: 14px; height: 14px; }
+    }
+
+    &__body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    /* Same voice as .components-base-control__label in this rail. */
+    &__h {
+      margin: 0 0 7px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: #1e1e1e;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      li {
+        padding: 2px 8px;
+        border: 1px solid #dcdcde;
+        border-radius: 99px;
+        background: #fff;
+        font-size: 11px;
+        font-weight: 400;
+        color: #3c434a;
+      }
+    }
+
+    &__sub {
+      margin: 8px 0 0;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #757575;
+
+      b { color: #1e1e1e; font-weight: 600; }
+    }
+
+    /* Reads as the sentence's escape hatch, like the link button in .pdfp-wm-note --
+       not a filled call to action. */
+    &__go {
+      /* Its own row under the text, indented past the lock so it lines up with the
+         sentence it answers -- the button follows .pdfp-wm-locked__body in the markup. */
+      flex: 0 0 100%;
+      margin: 8px 0 0 25px;
+      padding: 0;
+      border: 0;
+      background: none;
+      text-align: left;
+      color: #3858e9;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-weight: 500;
+      text-decoration: underline;
+
+      &:hover { color: #2b45c4; }
+      &:focus-visible { outline: 2px solid #1e1e1e; outline-offset: 2px; }
+    }
+  }
+
+  /* --- the opening card (feature off) --- */
+  /* Twin of .pdfp-wm-intro in src/admin.scss: same deck, stacked for a 300px rail. */
+  .pdfp-wm-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 14px 18px;
+    border: 1px solid #dfe3f2;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #f6f7fc, #fff);
+
+    &__fan {
+      position: relative;
+      width: 100%;
+      height: 138px;
+    }
+
+    &__card {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 84px;
+      height: auto;
+      border: 1px solid #dcdde2;
+      border-radius: 3px;
+      background: #fff;
+      box-shadow: 0 10px 22px -14px rgba(20, 24, 40, .55);
+      /* Pivot at the bottom edge so the cards splay like a hand, not a windmill. */
+      transform-origin: 50% 100%;
+      /* The rail is narrower than the metabox, so the fan is drawn in tighter. */
+      transform: translateX(calc(-50% + (var(--x) * 0.72))) rotate(var(--r)) scale(var(--s));
+      transition: transform .25s ease;
+    }
+
+    &__fan:hover &__card,
+    &__fan:focus-within &__card {
+      transform: translateX(calc(-50% + (var(--x) * 1.1))) rotate(var(--r)) scale(var(--s));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &__card { transition: none; }
+    }
+
+    &__say { min-width: 0; }
+
+    &__count {
+      margin: 0 0 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #50575e;
+
+      b {
+        margin-right: 5px;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -.03em;
+        color: #3858e9;
+        vertical-align: -2px;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -.01em;
+      color: #1e1e1e;
+    }
+
+    &__sub {
+      margin: 6px 0 0;
+      font-size: 11.5px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #50575e;
+    }
+
+    &__chips {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      li {
+        padding: 3px 9px;
+        border: 1px solid #dfe1e6;
+        border-radius: 99px;
+        background: #fff;
+        font-size: 10.5px;
+        font-weight: 500;
+        color: #3c4250;
+      }
+    }
+
+    &__go.components-button {
+      margin-top: 14px;
+      width: 100%;
+      justify-content: center;
+      gap: 6px;
+    }
+  }
+
+  /* --- live preview --- */
+  .pdfp-wm-preview {
+    border: 1px solid #dcdcde;
+    border-radius: 3px;
+    overflow: hidden;
+
+    &__stage {
+      display: grid;
+      place-items: center;
+      padding: 14px;
+      background: #f0f0f1;
+    }
+
+    &__page {
+      position: relative;
+      width: 112px;
+      aspect-ratio: 1 / 1.294;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(10, 14, 30, .18);
+      overflow: hidden;
+      font-size: 5px;
+    }
+
+    /* the mark layer is injected here by applyWatermark() */
+    &__page > .pdfp-wm {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    &__doc {
+      position: relative;
+      z-index: 1;
+      padding: 9%;
+
+      .h, .l, .img { display: block; border-radius: 1px; }
+      .h { height: .85em; width: 58%; margin-bottom: 1.1em; background: #1d2230; opacity: .85; }
+      .l { height: .34em; margin-bottom: .62em; background: #242a38; opacity: .27; }
+      .l.short { width: 62%; }
+      .img { height: 4.4em; margin: 1em 0; background: #242a38; opacity: .11; }
+    }
+
+    &__cap {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0;
+      padding: 6px 9px;
+      border-top: 1px solid #dcdcde;
+      background: #fbfbfc;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #757575;
+
+      strong { color: #1e1e1e; font-weight: 600; }
+    }
+  }
+
+  /* --- collapsible group --- */
+  .pdfp-wm-group {
+    border: 1px solid #dcdcde;
+    border-radius: 3px;
+    background: #fff;
+
+    &__head {
+      display: flex;
+      align-items: center;
+      background: #f6f7f7;
+      border-radius: 2px 2px 0 0;
+    }
+
+    &.is-open &__head { border-bottom: 1px solid #dcdcde; }
+
+    &__toggle {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      padding: 10px 12px;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+
+      &:focus-visible {
+        outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+        outline-offset: -2px;
+      }
+    }
+
+    /* Same voice as the metabox headline (see .pdfp-wm-subhead__title in
+       src/admin.scss): uppercase, widely tracked, brand blue. The layout differs
+       because this one is a disclosure button carrying a value summary and a
+       chevron, so it can't be a label with a trailing rule. */
+    &__title {
+      flex: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #3858e9;
+    }
+
+    /* the group's current value, so a collapsed group is still informative */
+    &__summary {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 10.5px;
+      color: #787c82;
+    }
+
+    &__chev { flex: none; font-size: 10px; color: #787c82; }
+
+    &__switch {
+      flex: none;
+      margin: 0 10px 0 0;
+
+      .components-base-control__field { margin-bottom: 0; }
+      .components-toggle-control__label { display: none; }
+    }
+
+    &__body { padding: 14px 12px; }
+
+    /* plain-language line saying what the group is for, matching the metabox */
+    &__desc {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #50575e;
+    }
+  }
+
+  /* two selects sharing a row -- Strength and Size are one visual decision */
+  .pdfp-wm-two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    min-width: 0;
+
+    > * { min-width: 0; }
+  }
+
+  /* --- theme picker: the same SVGs CSF image_select uses in the metabox --- */
+  .pdfp-wm-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .pdfp-wm-thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid #dcdcde;
+    border-radius: 2px;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+
+    img { display: block; width: 100%; height: auto; }
+
+    em {
+      display: block;
+      padding: 4px 3px;
+      border-top: 1px solid #f0f0f1;
+      background: #f6f7f7;
+      font-style: normal;
+      font-size: 9px;
+      line-height: 1.3;
+      color: #50575e;
+    }
+
+    &:hover { border-color: #949494; }
+
+    &.is-active {
+      border-color: var(--wp-admin-theme-color, #3858e9);
+      box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #3858e9);
+
+      em { color: var(--wp-admin-theme-color, #3858e9); font-weight: 600; }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+      outline-offset: 1px;
+    }
+
+    /* Custom sits on its own full-width row: it is an escape hatch, not a look */
+    &--wide {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 5px 8px;
+
+      img { width: 24px; flex: none; }
+
+      em {
+        padding: 0;
+        border: 0;
+        background: none;
+        font-size: 11.5px;
+        text-align: left;
+      }
+    }
+  }
+
+  /* --- colour: a labelled row, never a bare unexplained circle --- */
+  .pdfp-wm-colour {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__value {
+      font-size: 11.5px;
+      color: #1e1e1e;
+      background: none;
+      padding: 0;
+    }
+
+    .BColorButtonContainer { margin: 0; }
+  }
+
+  .pdfp-wm-media {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    &__thumb {
+      width: 34px;
+      height: 26px;
+      object-fit: contain;
+      border: 1px solid #dcdcde;
+      border-radius: 2px;
+      background: #fff;
+    }
+  }
+
+  /* the placeholder insert menu reads as a helper, not a setting */
+  .pdfp-wm-insert .components-base-control__label {
+    color: #757575;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
+  }
+
+  /* --- viewer support, on demand --- */
+  .pdfp-wm-disclosure {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-size: 11.5px;
+    color: var(--wp-admin-theme-color, #3858e9);
+    text-decoration: underline;
+
+    &:focus-visible {
+      outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+      outline-offset: 2px;
+    }
+  }
+
+  .pdfp-wm-limits {
+    padding: 11px 12px;
+    border: 1px solid #dcdcde;
+    border-radius: 3px;
+    background: #fbfbfc;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    p { margin: 0; font-size: 11.5px; line-height: 1.5; color: #3c434a; }
+    strong { color: #1e1e1e; }
+  }
+}
+
+/* A Pro-only theme in the sidebar gallery. Still clickable -- the click opens the
+   upgrade modal rather than selecting the theme (see themeLocked/pickTheme). */
+.pdfp-wm-thumb.is-pro {
+  position: relative;
+
+  img { opacity: 0.45; }
+  em { opacity: 0.6; }
+
+  .pdfp-wm-thumb__pro {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background: #146ef5;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    pointer-events: none;
   }
 }

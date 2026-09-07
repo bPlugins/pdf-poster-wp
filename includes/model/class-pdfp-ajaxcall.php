@@ -67,8 +67,10 @@ if ( ! class_exists( 'PDFPro\Model\PDFP_AjaxCall' ) ) {
         $this->model = $this->namespace . $this->requestModel;
         $model = new $this->model();
 
-        // Security: Allowlist specific methods for dynamic execution to prevent arbitrary method calls
-        $allowed_methods = ['get', 'getBlock'];
+        // Security: Allowlist specific methods for dynamic execution to prevent arbitrary
+        // method calls. The Analytics reads are all read-only and the model itself
+        // re-checks `edit_posts`.
+        $allowed_methods = ['get', 'getBlock', 'totals', 'today', 'documents', 'summary', 'export'];
 
         if (wp_verify_nonce($nonce, 'wp_ajax') && in_array($this->requestMethod, $allowed_methods) && method_exists($model, $this->requestMethod) && current_user_can('edit_others_pages')) {
             unset($this->params['method']);

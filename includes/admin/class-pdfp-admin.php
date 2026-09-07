@@ -2,6 +2,8 @@
 
 namespace PDFPro\Admin;
 
+use PDFPro\Helper\PDFP_Functions as Utils;
+
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if (!class_exists('PDFPro\Admin\PDFP_AdminLoader')) {
@@ -9,7 +11,19 @@ if (!class_exists('PDFPro\Admin\PDFP_AdminLoader')) {
 		public function __construct() {
 			add_action('admin_enqueue_scripts', [$this, 'adminEnqueueScripts']);
 			add_action('admin_menu', [$this, 'adminMenu'], 15);
-			
+
+			// Above everything that registers a page (CSF is 10, adminMenu is 15): the
+			// Settings entry is created by CSF::createOptions(), which esc_attr()s its
+			// menu_title, so the chip has to be written over $submenu afterwards.
+			add_action('admin_menu', [$this, 'badgeSettingsMenu'], 999);
+		}
+
+		public function badgeSettingsMenu() {
+			Utils::pdfp_badge_submenu(
+				'edit.php?post_type=pdfposter',
+				'fpdf-settings',
+				Utils::pdfp_pro_title(__('Settings', 'pdf-poster'), 'New')
+			);
 		}
 
 		public function adminEnqueueScripts($hook) {
@@ -42,7 +56,7 @@ if (!class_exists('PDFPro\Admin\PDFP_AdminLoader')) {
 			add_submenu_page(
 				'edit.php?post_type=pdfposter',
 				__('Analytics', 'pdf-poster'),
-				__('Analytics', 'pdf-poster') . $this->proBadge(),
+				Utils::pdfp_pro_title(__('Analytics', 'pdf-poster'), 'New'),
 				'edit_others_posts',
 				'pdf-poster-analytics',
 				[$this, 'analyticsPage'],
@@ -58,20 +72,6 @@ if (!class_exists('PDFPro\Admin\PDFP_AdminLoader')) {
 				[$this, 'dashboardPage'],
 				15
 			);
-		}
-
-		/**
-		 * "PRO" chip for the admin menu label.
-		 *
-		 * Styled inline rather than through admin.scss: the menu renders on every screen
-		 * in wp-admin, so the chip stays correct even if the stylesheet's scope is ever
-		 * narrowed. Colour and shape match .pdfp-pro-badge (#146ef5, square).
-		 */
-		private function proBadge() {
-			return ' <span style="display:inline-block;background:#146ef5;color:#fff;'
-				. 'font-size:9px;font-weight:600;line-height:1;padding:2px 5px;margin-left:4px;'
-				. 'text-transform:uppercase;letter-spacing:.04em;vertical-align:middle;'
-				. 'border-radius:0;">' . esc_html__('Pro', 'pdf-poster') . '</span>';
 		}
 
 		public function dashboardPage() { 
@@ -94,8 +94,8 @@ if (!class_exists('PDFPro\Admin\PDFP_AdminLoader')) {
 		 *
 		 * Its own submenu rather than a link into the Demo and Help dashboard, so WordPress
 		 * highlights the right item in the sidebar. Renders from the same bundle -- a
-		 * separate mount id is all that distinguishes it. Counting itself is Pro, so what
-		 * this screen shows is what the feature does and what upgrading turns on.
+		 * separate mount id is all that distinguishes it. Counting is free, so this screen
+		 * shows today's real figures; reading the history back is what upgrading turns on.
 		 */
 		public function analyticsPage() {
 			?>

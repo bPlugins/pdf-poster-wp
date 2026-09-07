@@ -33,6 +33,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 				$this->watermark();
 				$this->social_share();
 				$this->styles();
+				$this->advanced();
 				$this->performance();
 				$this->ads();
 			}
@@ -42,11 +43,11 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		 * Options for the Viewer button set.
 		 *
 		 * FlipBook and Slider are free, but they render through dFlip -- so they are only
-		 * offered when that engine is actually on disk. Adobe needs the premium PDF Embed
-		 * bridge and Scroll is premium-only; both are still listed so they keep selling.
-		 * Wrapping their labels in .pdfp-lock-field .pdfp-pro-option makes the
-		 * PDFP_ProModal click handler open the upgrade modal instead of selecting them,
-		 * leaving the current choice untouched.
+		 * offered when that engine is actually on disk. Adobe and Scroll are Pro and are
+		 * not listed at all: this build ships no upgrade modal to intercept the click, so
+		 * a listed-but-locked option could be selected and then refused by
+		 * PDFP_Functions::pdfp_resolve_viewer(). The General section's ledger names them
+		 * instead.
 		 */
 		private function viewer_options() {
 			$options = array(
@@ -66,7 +67,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 			}
 
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => 'General',
+				'title' => Utils::pdfp_pro_title(__('General', 'pdf-poster'), "New"),
 				'fields' => array(
 					array(
 						'id' => 'viewer',
@@ -85,7 +86,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'flipbook_source_type',
-						'title' => __('Viewer Source', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Viewer Source', 'pdf-poster'),
 						'type' => 'button_set',
 						'default' => 'pdf',
 						'options' => array(
@@ -108,7 +109,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					array(
 						'id' => 'device_preview',
 						'type' => 'button_set',
-						'title' => __('Preview Device', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Preview Device', 'pdf-poster'),
 						'options' => array(
 							'desktop' => __('Desktop', 'pdf-poster'),
 							'tablet' => __('Tablet', 'pdf-poster'),
@@ -200,7 +201,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		public function controls()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => __('Controls', 'pdf-poster'),
+				'title' => Utils::pdfp_pro_title(__('Controls', 'pdf-poster'), "New"),
 				'fields' => array(
 					array(
 						'id' => 'show_filename',
@@ -211,14 +212,14 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'keyboard_nav',
-						'title' => __('Keyboard Navigation', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Keyboard Navigation', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_keyboard_nav', false),
 						'desc' => __('Let visitors use the Left/Right arrow keys to change pages.', 'pdf-poster')
 					),
 					array(
 						'id' => 'rtl_mode',
-						'title' => __('RTL Layout', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('RTL Layout', 'pdf-poster'),
 						'type' => 'button_set',
 						'default' => 'off',
 						'options' => array(
@@ -230,7 +231,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'theme_mode',
-						'title' => __('Viewer Theme', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Viewer Theme', 'pdf-poster'),
 						'type' => 'button_set',
 						'default' => 'light',
 						'options' => array(
@@ -242,7 +243,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'flipbook_sound',
-						'title' => __('Page Flip Sound', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Page Flip Sound', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_flipbook_sound', true),
 						'desc' => __('Play a page-turn sound effect in Flipbook and Slider modes.', 'pdf-poster'),
@@ -250,7 +251,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'annotation_mode',
-						'title' => __('Annotation Mode', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Annotation Mode', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_annotation_mode', true),
 						'desc' => __('Show notes, highlights, comments, and clickable links that are saved inside the PDF.', 'pdf-poster'),
@@ -258,7 +259,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'open_links_in_new_tab',
-						'title' => __('Open PDF links in new tab', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Open PDF links in new tab', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_open_links_in_new_tab', false),
 						'desc' => __('Open links clicked inside the PDF in a new browser tab, keeping your current page open.', 'pdf-poster'),
@@ -301,14 +302,36 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'dependency' => array('flipbook_source_type', '!=', 'images')
 					),
 					array(
+						'id' => 'download_btn_text',
+						'title' => __('Download Label', 'pdf-poster'),
+						'type' => 'text',
+						'desc' => __('Customize the text for the download button.', 'pdf-poster'),
+						'default' => Utils::pdfp_preset('preset_download_btn_text', 'Download File'),
+						// Gated on the source type as well as the toggle: an image-gallery
+						// viewer has no file to download, so Header suppresses the button
+						// and the label would have nothing to name. `true` because
+						// flipbook_source_type lives in the General section.
+						'dependency' => array(
+							array('show_download_btn', '==', '1', true),
+							array('flipbook_source_type', '!=', 'images', true),
+						)
+					),
+					array(
+						'id' => 'view_fullscreen_btn',
+						'title' => __('Fullscreen Button', 'pdf-poster'),
+						'type' => 'switcher',
+						'default' => Utils::pdfp_preset('preset_view_fullscreen_btn', true),
+						'desc' => __('Display a fullscreen toggle button at the top of the viewer.', 'pdf-poster')
+					),
+					array(
 						'id' => 'fullscreen_btn_text',
 						'title' => __('Fullscreen Label', 'pdf-poster'),
 						'type' => 'text',
 						'desc' => __('Customize the text for the fullscreen button.', 'pdf-poster'),
-						'default' => Utils::pdfp_preset('preset_fullscreen_btn_text', 'View Fullscreen')
+						'default' => Utils::pdfp_preset('preset_fullscreen_btn_text', 'View Fullscreen'),
+						'dependency' => array('view_fullscreen_btn', '==', '1', true)
 					),
 					Utils::pro_feature_list(array(
-						__('Customize Download Button Label', 'pdf-poster'),
 						__('Open Fullscreen in New Tab', 'pdf-poster'),
 						__('Custom Actions Position (Top/Bottom)', 'pdf-poster'),
 					)),
@@ -317,17 +340,98 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		}
 
 
+		/**
+		 * Popup (lightbox) trigger. Free.
+		 *
+		 * Every id here is the `popup_*` key generate_pdf_poster_block() maps into the
+		 * block's popupOptions object, so the shortcode and the block draw the same
+		 * trigger from the same values.
+		 */
 		public function popup()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('Popup', 'pdf-poster')),
+				'title' => __('Popup', 'pdf-poster'),
 				'fields' => array(
-					Utils::pro_feature_list(array(
-						__('Enable Modal Popups', 'pdf-poster'),
-						__('Multiple Trigger Types (Button/Image)', 'pdf-poster'),
-						__('Custom Trigger Alignment', 'pdf-poster'),
-						__('PDF Icon Overlay on Images', 'pdf-poster'),
-					)),
+					array(
+						'id' => 'popup',
+						'title' => __('Enable Popup', 'pdf-poster'),
+						'type' => 'switcher',
+						'desc' => __('Open the PDF document in a modal popup.', 'pdf-poster'),
+						'default' => false,
+					),
+					array(
+						'id' => 'popup_trigger_type',
+						'title' => __('Trigger Type', 'pdf-poster'),
+						'type' => 'button_set',
+						'options' => array(
+							'button' => __('Button', 'pdf-poster'),
+							'image' => __('Image', 'pdf-poster'),
+						),
+						'default' => 'button',
+						'desc' => __('Select the trigger type for the popup.', 'pdf-poster'),
+						'dependency' => array('popup', '==', '1')
+					),
+					array(
+						'id' => 'popup_trigger_alignment',
+						'title' => __('Alignment', 'pdf-poster'),
+						'type' => 'button_set',
+						'options' => array(
+							'left' => __('Left', 'pdf-poster'),
+							'center' => __('Center', 'pdf-poster'),
+							'right' => __('Right', 'pdf-poster'),
+						),
+						'default' => 'center',
+						'desc' => __('Select the alignment for the popup trigger.', 'pdf-poster'),
+						'dependency' => array('popup', '==', '1')
+					),
+					array(
+						'id' => 'popup_image',
+						'title' => __('Image', 'pdf-poster'),
+						'type' => 'media',
+						'library' => 'image',
+						'desc' => __('Select an image to use as the popup trigger.', 'pdf-poster'),
+						'dependency' => array('popup_trigger_type|popup', '==|==', 'image|1')
+					),
+					array(
+						'id' => 'popup_btn_text',
+						'title' => __('Button Text', 'pdf-poster'),
+						'type' => 'text',
+						'desc' => __('Customize the text for the popup trigger button.', 'pdf-poster'),
+						'default' => 'Open PDF',
+						'dependency' => array('popup_trigger_type|popup', '==|==', 'button|1')
+					),
+					array(
+						'id' => 'popup_image_height',
+						'title' => __('Image Height', 'pdf-poster'),
+						'type' => 'dimensions',
+						'width' => false,
+						'desc' => __('Set the height for the trigger image.', 'pdf-poster'),
+						'default' => [
+							'height' => 200,
+							'unit' => 'px'
+						],
+						'dependency' => array('popup_trigger_type|popup', '==|==', 'image|1')
+					),
+					array(
+						'id' => 'popup_image_width',
+						'title' => __('Image Width', 'pdf-poster'),
+						'type' => 'dimensions',
+						'height' => false,
+						'desc' => __('Set the width for the trigger image.', 'pdf-poster'),
+						'default' => [
+							'width' => '300',
+							'unit' => 'px'
+						],
+						'dependency' => array('popup_trigger_type|popup', '==|==', 'image|1')
+					),
+					array(
+						'id' => 'popup_image_pdf_icon',
+						'title' => __('Enable PDF Icon', 'pdf-poster'),
+						'type' => 'switcher',
+						'desc' => __('Show a PDF icon over the trigger image.', 'pdf-poster'),
+						'default' => true,
+						'dependency' => array('popup_trigger_type|popup', '==|==', 'image|1')
+					),
 				),
 			));
 		}
@@ -346,15 +450,112 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 			));
 		}
 
-		public function watermark()
-		{
+		/**
+		 * Watermark & Branding.
+		 *
+		 * This build draws the TEXT mark in the three text themes and decides where it
+		 * lands (Apply To, Pages). The logo mark, the Custom theme and everything it owns,
+		 * Who Sees It and the Anti-leak pair are Pro -- and they are NOT rendered here as
+		 * inert rows. The ledger at the foot of the section names them instead, which is
+		 * how every other locked group in this metabox reads (see controls(), actions()
+		 * and performance()).
+		 *
+		 * The clamp is not a UI concern either way: PDFP_Functions::pdfp_watermark_resolve()
+		 * is the single point every render path funnels through, so hand-edited meta or a
+		 * poster imported from Pro degrades to a look this build may draw.
+		 *
+		 * Every row below the Enable switch depends on it, so a poster that is not
+		 * watermarked shows one toggle and the intro card -- and the intro card is the one
+		 * thing that depends on the switch being OFF, so the two swap places.
+		 */
+		public function watermark() {
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('Watermark & Branding', 'pdf-poster')),
+				'title' => Utils::pdfp_pro_title(__('Watermark & Branding', 'pdf-poster'), 'New'),
 				'fields' => array(
-					// Shown rather than listed: the six shipped looks sell this section
-					// better than a row of labels, so the ledger gives way to the card
-					// the Pro build opens the section with.
-					Utils::pdfp_watermark_intro(),
+					array(
+						'id' => 'watermark_enable',
+						'title' => __('Enable Watermark', 'pdf-poster'),
+						'type' => 'switcher',
+						'default' => false,
+						'desc' => __('Stamp a text mark over the document.', 'pdf-poster'),
+					),
+					// The whole section below is gated on the Enable switch, so the panel is
+					// one row until the author opts in. CSF stores an unchecked switcher as
+					// "" rather than "0", so the intro asks for "anything but on".
+					Utils::pdfp_watermark_intro(array('watermark_enable', '!=', '1')),
+					Utils::pdfp_watermark_subhead(
+						__('The mark', 'pdf-poster'),
+						__('Your wording, and the look it is stamped in.', 'pdf-poster'),
+						array('watermark_enable', '==', '1')
+					),
+					// No Mark Type row: text is the only mark this build renders, so a
+					// button set with one usable choice would be a control that cannot be
+					// used. The ledger below says what the other two modes are.
+					array(
+						'id' => 'watermark_theme',
+						'title' => __('Theme', 'pdf-poster'),
+						'type' => 'image_select',
+						// Only the themes this build may draw -- pdfp_watermark_thumbs()
+						// filters them, so the picker is right with JavaScript off too.
+						'options' => Utils::pdfp_watermark_thumbs(),
+						'default' => 'confidential',
+						'desc' => __('Three ready-made looks. Each one sets the angle, repeat, weight and blend for you.', 'pdf-poster'),
+						'dependency' => array('watermark_enable', '==', '1'),
+					),
+					array(
+						'id' => 'watermark_text',
+						'title' => __('Text', 'pdf-poster'),
+						'type' => 'text',
+						'default' => 'CONFIDENTIAL',
+						'desc' => __('Supports placeholders such as {site_name}, {date} and {user_email}.', 'pdf-poster'),
+						'dependency' => array('watermark_enable', '==', '1'),
+					),
+					Utils::pdfp_watermark_subhead(
+						__('Where it shows', 'pdf-poster'),
+						__('Which outputs, and which pages.', 'pdf-poster'),
+						array('watermark_enable', '==', '1')
+					),
+					array(
+						'id' => 'watermark_apply',
+						'title' => __('Apply To', 'pdf-poster'),
+						'type' => 'checkbox',
+						'inline' => true,
+						'options' => array(
+							'screen'   => __('Viewer', 'pdf-poster'),
+							'print'    => __('Printing', 'pdf-poster'),
+							'download' => __('Downloads', 'pdf-poster'),
+						),
+						'default' => array('screen'),
+						'desc' => __('Write the mark into printouts and downloaded copies, not just the viewer.', 'pdf-poster'),
+						'dependency' => array('watermark_enable', '==', '1'),
+					),
+					array(
+						'id' => 'watermark_pages',
+						'title' => __('Pages', 'pdf-poster'),
+						'type' => 'select',
+						'options' => array(
+							'all'          => __('All pages', 'pdf-poster'),
+							'first'        => __('First page only', 'pdf-poster'),
+							'except-first' => __('All except the cover', 'pdf-poster'),
+						),
+						'default' => 'all',
+						'desc' => __('Brand just the cover, or gate everything after it.', 'pdf-poster'),
+						'dependency' => array('watermark_enable', '==', '1'),
+					),
+					// Gated on the Enable switch like the rows it stands in for: while the
+					// feature is off the intro card above is already doing the selling, and
+					// two pitches stacked on one screen is one too many.
+					array_merge(
+						Utils::pro_feature_list(array(
+							__('Logo Watermark (Image, or Text + Image)', 'pdf-poster'),
+							__('Three More Themes (Brand Corner, Logo Wash, Logo + Caption)', 'pdf-poster'),
+							__('Custom Theme — Your Own Colour, Coverage, Strength, Size & Angle', 'pdf-poster'),
+							__('Choose Who Sees It (Everyone / Except Admins / Guests Only)', 'pdf-poster'),
+							__('Per-Visitor Anti-Leak Stamp', 'pdf-poster'),
+							__('Restore The Mark If A Visitor Removes It', 'pdf-poster'),
+						)),
+						array('dependency' => array('watermark_enable', '==', '1'))
+					),
 				)
 			));
 		}
@@ -417,7 +618,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 					),
 					array(
 						'id' => 'social_share_mailto',
-						'title' => __('Enable Email', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Enable Email', 'pdf-poster'),
 						'type' => 'switcher',
 						'desc' => esc_html__('Allow sharing via Email.', 'pdf-poster'),
 						'default' => true,
@@ -471,21 +672,54 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 			));
 		}
 
+		/**
+		 * Per-poster class and CSS. Free.
+		 *
+		 * generate_pdf_poster_block() maps these into the block's `additional` object,
+		 * so the class lands on the viewer wrapper and the CSS is printed alongside the
+		 * block container -- the same route the block sidebar's Additional panel uses.
+		 */
+		public function advanced()
+		{
+			\CSF::createSection($this->metabox_prefix, array(
+				'title' => Utils::pdfp_pro_title(__('Advanced', 'pdf-poster'), "New"),
+				'fields' => array(
+					array(
+						'id' => 'custom_class',
+						'title' => __('CSS Class', 'pdf-poster'),
+						'type' => 'text',
+						'desc' => __('Extra class name added to this viewer, so you can target it from your theme or from the CSS below.', 'pdf-poster'),
+						'default' => '',
+					),
+					array(
+						'id' => 'custom_css',
+						'title' => __('Custom CSS', 'pdf-poster'),
+						'type' => 'code_editor',
+						// CSF_Field_code_editor reads the mode out of ['settings'], not off
+						// the field root -- a top-level 'mode' is silently ignored.
+						'settings' => array('mode' => 'css'),
+						'desc' => __('CSS for this poster only. Loaded wherever this poster is embedded, on top of the site-wide Custom CSS in Settings.', 'pdf-poster'),
+						'default' => '',
+					),
+				),
+			));
+		}
+
 		public function performance()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => __('Performance & Reliability', 'pdf-poster'),
+				'title' => Utils::pdfp_pro_title(__('Performance & Reliability', 'pdf-poster'), "New"),
 				'fields' => array(
 					array(
 						'id' => 'progressive_loading',
-						'title' => __('Fast Loading (Progressive Rendering)', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Fast Loading (Progressive Rendering)', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_progressive_loading', true),
 						'desc' => __('Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests.', 'pdf-poster'),
 					),
 					array(
 						'id' => 'default_browser',
-						'title' => __('Google Doc Viewer', 'pdf-poster') . Utils::pdfp_new_badge(),
+						'title' => __('Google Doc Viewer', 'pdf-poster'),
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_default_browser'),
 						'desc' => __('Enable Google Doc Viewer as a fallback (Recommended for Edge).', 'pdf-poster'),

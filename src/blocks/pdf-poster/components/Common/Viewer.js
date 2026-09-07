@@ -4,14 +4,18 @@ import PDFJSViewer from "./PDFJSViewer";
 import FlipbookViewer from "./FlipbookViewer";
 import Style from "./Style";
 import SocialShare from "./SocialShare";
+import PopupTrigger from "./PopupTrigger";
 import matchProtocol from "../../../../hooks/utils/matchProtocol";
 import toSiteRelativeUrl, { isSiteLocalUrl } from "../../../../hooks/utils/toSiteRelativeUrl";
 import isEdgeBrowser from "../../../../hooks/utils/isEdgeBrowser";
 import { hasFlipbookEngine } from "../../utils";
+import useTracking from "../../../../hooks/useTracking";
+import Watermark from "./Watermark";
+import { encodeWatermarkParam } from "./watermarkSVG";
 // import { isOldiPhoneOrIPad } from "../utils";
 
 const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, isSelected = false, id }) => {
-  const { adobeEmbedder, file, protect, alert: enableAlert, additional, socialShare, align, print, onlyPDF, downloadButton, thumbMenu, hrScroll, isHideRightToolbar, initialPage, zoomLevel, sidebarOpen, defaultBrowser = false, popupOptions, isPremium, actionsPosition, annotationMode, openLinksInNewTab, progressiveLoading = true, keyboardNav = false, rtlMode = "off", themeMode = "light" } = attributes;
+  const { adobeEmbedder, file, protect, alert: enableAlert, additional, socialShare, align, print, onlyPDF, downloadButton, thumbMenu, hrScroll, isHideRightToolbar, initialPage, zoomLevel, sidebarOpen, defaultBrowser = false, popupOptions, actionsPosition, annotationMode, openLinksInNewTab, progressiveLoading = true, keyboardNav = false, rtlMode = "off", themeMode = "light", trackingEnabled = true, watermark } = attributes;
   const { enabled } = (popupOptions || {});
   const { position: socialPosition, enabled: socialEnabled } = (socialShare || {});
 
@@ -51,6 +55,11 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   }, [file]);
 
   const [previewSrc, setPreviewSrc] = useState(null);
+
+  // The default engine is an iframe, so the mark has to be drawn inside it -- the config
+  // travels as one base64url param and custom.js hooks pagerendered. Same pattern as
+  // rtl / theme / keyboardnav.
+  const wmParam = encodeWatermarkParam(watermark);
 
   useEffect(() => {
     let iframeSrc = "";
@@ -92,7 +101,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
         // proParams removed
 
         // Free viewer options passed through to assets/pdfjs-new/web/custom.js.
-        const freeParams = `&annotationMode=${annotationMode !== false ? "1" : "0"}&openLinksInNewTab=${openLinksInNewTab ? "1" : "0"}&progressive=${progressiveLoading !== false ? "1" : "0"}&keyboardnav=${keyboardNav ? "1" : "0"}&rtl=${isRtl ? "1" : "0"}&theme=${themeMode}`;
+        const freeParams = `&annotationMode=${annotationMode !== false ? "1" : "0"}&openLinksInNewTab=${openLinksInNewTab ? "1" : "0"}&progressive=${progressiveLoading !== false ? "1" : "0"}&keyboardnav=${keyboardNav ? "1" : "0"}&rtl=${isRtl ? "1" : "0"}&theme=${themeMode}&track=${!isBackend && trackingEnabled !== false ? "1" : "0"}${wmParam ? `&wm=${wmParam}` : ""}`;
 
         iframeSrc = `${viewerBase}assets/pdfjs-new/web/viewer.html?file=${encodedSource}${zoom}&nobaki=${!protect && downloadButton ? "vera" : "false"}&stdono=${print && !protect ? "vera" : "false"}&open=${showSidePanel}&onlypdf=${onlyPDF ? "vera" : "false"}${freeParams}${proParams}`;
       }
@@ -103,7 +112,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       iframeSrc = gviewSrc;
     }
     setPreviewSrc(iframeSrc);
-  }, [onlyPDF, thumbMenu, initialPage, protect, hrScroll, source, zoomLevel, print, downloadButton, sidebarOpen, isHideRightToolbar, gviewError, annotationMode, openLinksInNewTab, progressiveLoading, keyboardNav, isRtl, themeMode]);
+  }, [onlyPDF, thumbMenu, initialPage, protect, hrScroll, source, zoomLevel, print, downloadButton, sidebarOpen, isHideRightToolbar, gviewError, annotationMode, openLinksInNewTab, progressiveLoading, keyboardNav, isRtl, themeMode, trackingEnabled, isBackend, wmParam]);
 
   const requestedViewer = adobeEmbedder === true ? "adobe" : (adobeEmbedder === false ? "default" : (adobeEmbedder || "default"));
 
@@ -119,6 +128,29 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   const fbImages = Array.isArray(attributes.flipbookImages) ? attributes.flipbookImages.filter(Boolean) : [];
   const useImagesFlipbook = ["flipbook", "slider"].includes(currentViewer) && attributes.flipbookSourceType === "images" && fbImages.length > 0;
   const hasContent = source || useImagesFlipbook;
+
+  // Document Insights. Never in the editor: `isBackend` is already the flag that tells
+  // the block preview and the metabox preview apart from a real visit, so previews are
+  // excluded by construction rather than by a setting. `hasContent` gates the view so a
+  // container still waiting on its file cannot count as read.
+  const track = useTracking({
+    enabled: !isBackend && trackingEnabled !== false,
+    targetRef: ref,
+    ready: !!hasContent,
+  });
+
+  // Which overlay strategy this engine allows -- decided for the user, not asked.
+  // Settled by measuring each engine's real DOM:
+  //   default   -> drawn inside its own iframe (see the &wm= param above)
+  //   slider    -> dFlip builds measurable .df-page elements, so one mark per page
+  //   flipbook  -> dFlip's 3D mode draws every page into a SINGLE canvas and its
+  //                .df-page divs are 0x0, so per-page is impossible: container
+  //   gview     -> cross-origin iframe we can't script into: container
+  const isGview = typeof previewSrc === "string" && previewSrc.includes("google.com/gview");
+  const isWatermarked = !!(watermark?.enabled && (watermark.apply || ["screen"]).includes("screen"));
+  const wmMode = currentViewer === "slider"
+    ? "dflip"
+    : (currentViewer === "flipbook" || isGview) ? "container" : "iframe";
 
   const fullscreenPDF = () => {
     if (["flipbook", "slider"].includes(currentViewer)) {
@@ -138,7 +170,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   };
 
   return (
-    <div ref={ref} dir={isRtl ? "rtl" : undefined} data-pdfp-theme={effectiveTheme} className={`pdfp_wrapper pdfp_viewer_${currentViewer} ${additional?.Class} ${id} align-${align} ${enabled ? "pdfp_popup_enabled" : ""} ${protect ? "pdfp_protected" : ""} ${isRtl ? "pdfp_rtl" : ""}`}>
+    <div ref={ref} dir={isRtl ? "rtl" : undefined} data-pdfp-theme={effectiveTheme} data-pdfp-wm={isWatermarked ? "1" : undefined} className={`pdfp_wrapper pdfp_viewer_${currentViewer} ${additional?.Class} ${id} align-${align} ${enabled ? "pdfp_popup_enabled" : ""} ${protect ? "pdfp_protected" : ""} ${isRtl ? "pdfp_rtl" : ""} ${isWatermarked ? "pdfp_watermarked" : ""}`.trim()}>
       <Style attributes={attributes} id={id} />
       <div className="pdfp_fullscreen_overlay"></div>
       <div className="pdfp_fullscreen_close" onClick={closeFullscreen}>
@@ -146,14 +178,17 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       </div>
       {hasContent && (
         <>
+          <PopupTrigger popupOptions={popupOptions} fullscreenPDF={fullscreenPDF} />
           {socialEnabled && socialPosition === "top" && !enabled && <SocialShare attributes={attributes} />}
-          {!enabled && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={true} showActions={actionsPosition === "top"} isImagesFlipbook={useImagesFlipbook} />}
+          {!enabled && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={true} showActions={actionsPosition === "top"} isImagesFlipbook={useImagesFlipbook} onTrack={track} />}
 
           {["flipbook", "slider"].includes(currentViewer) && <FlipbookViewer key={`${currentViewer}-${enabled ? 'popup' : 'normal'}-${isRtl ? 'rtl' : 'ltr'}-${effectiveTheme}-${useImagesFlipbook ? 'img' + fbImages.length : 'pdf'}`} attributes={attributes} source={source} viewerType={currentViewer} isRtl={isRtl} theme={effectiveTheme} />}
 
+          {isWatermarked && wmMode !== "iframe" && <Watermark watermark={watermark} mode={wmMode} targetRef={ref} theme={effectiveTheme} />}
+
           {currentViewer === "default" && <PDFJSViewer source={previewSrc} attributes={attributes} setAttributes={setAttributes} __={__} wrapper={ref.current} isBackend={isBackend} isSelected={isSelected} onGViewError={() => setGviewError(true)} />}
 
-          {!enabled && actionsPosition === "bottom" && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={false} showActions={true} isImagesFlipbook={useImagesFlipbook} />}
+          {!enabled && actionsPosition === "bottom" && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={false} showActions={true} isImagesFlipbook={useImagesFlipbook} onTrack={track} />}
           {socialEnabled && socialPosition === "bottom" && !enabled && <SocialShare attributes={attributes} />}
         </>
       )}

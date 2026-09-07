@@ -9,7 +9,7 @@ Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-PDF Poster lets you embed PDF files in WordPress using a responsive viewer and block support, including full-screen, download, and print options.
+Embed PDF files in WordPress with a responsive PDF viewer, flipbook, shortcode and Gutenberg block, plus print, download and view analytics.
 
 == Description ==
 **The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users**
@@ -18,183 +18,153 @@ PDF Poster lets you embed PDF files in WordPress using a responsive viewer and b
 
 [**PDF Poster**](https://bplugins.com/products/pdf-poster/) is a flexible plugin that allows you to embed PDF documents directly into WordPress posts, pages, widgets, or templates. Whether you're sharing brochures, eBooks, business files, or portfolios, the plugin provides a responsive and accessible layout that works across all devices.
 
-Embed with the Gutenberg block, the `[pdf_embed]` shortcode, or the classic editor — whichever fits how you already work. The free version ships three viewers (the bundled PDF.js viewer, an interactive FlipBook and a Slider), independent height and width for desktop, tablet and mobile, print, download and full-screen buttons, social sharing, light/dark theming, RTL support and progressive loading for large files. View and download analytics, content protection, watermarking, the Adobe and Continuous Scroll viewers, popups and cloud imports are [Pro](https://bplugins.com/products/pdf-poster/pricing).
+Embed with the Gutenberg block, the `[pdf_embed]` shortcode, or the classic editor — whichever fits how you already work. The free version ships three PDF viewers (the bundled PDF.js viewer, an interactive FlipBook and a Slider), independent height and width for desktop, tablet and mobile, print, download and full-screen buttons, social sharing, light/dark theming, RTL support, a popup (lightbox) viewer, text watermarking, custom CSS and progressive loading for large files. It also counts how many times each PDF is viewed and downloaded each day, in your own database, with no third-party service and no IP address stored. Analytics history and trends, content protection, logo watermarking, Reader Mode, the Adobe and Continuous Scroll viewers and cloud imports are [Pro](https://bplugins.com/products/pdf-poster/pricing).
 
 
-### Features – What You Get Free, and What Pro Adds
+### PDF Poster Free Features — Everything Below Is Included, Free
 
-Every feature below is grouped by the job it does. Under each one, **Free** is what the plugin you are installing right now does, and **Pro** is what [PDF Poster Pro](https://bplugins.com/products/pdf-poster/pricing) adds on top. Nothing in the free list is a trial or a locked toggle.
+No trials, no locked toggles, no watermark on your pages. Everything in this section works in the plugin you install from WordPress.org.
+
+#### Free PDF Viewers — Three Ways to Read a Document
+
+- **Default PDF viewer (PDF.js)** — The bundled Mozilla PDF.js engine: page navigation, zoom, text search and text selection, on desktop and mobile.
+- **FlipBook PDF viewer** — A realistic page-turn book for brochures and magazines, with a page-flip sound you can switch off.
+- **Slider PDF viewer** — One page at a time, swiped or clicked through. Made for menus, price lists and catalogues.
+- **FlipBook from images** — Build the page-turn book from an ordered image gallery instead of a PDF, for scans and design-tool exports.
+
+#### Embed PDF Files Anywhere in WordPress
+
+- **Two Gutenberg PDF blocks** — *PDF Poster* to embed a file directly, and *PDF Poster Selector* to drop in a document you already saved.
+- **PDF shortcode** — `[pdf_embed url="…"]` drops a PDF into any post, page, widget or template, with attributes for size, title, print, download and the full-screen label. For full control, save a PDF Poster document and paste its `[pdf id="123"]` shortcode — it carries every setting you configured.
+- **Classic editor metabox** — A full settings panel on every PDF Poster document, so you never have to open a block to configure a viewer.
+- **Unlimited PDF embeds** — No cap on how many PDFs you embed, or how many pages they have.
+
+#### Responsive PDF Viewer on Every Screen
+
+- **Separate height and width for desktop, tablet and mobile** — Set each breakpoint independently instead of forcing one size on every device.
+- **Device preview switcher** — Flip between desktop, tablet and mobile while you configure, in both the block and the metabox.
+
+#### Reading Experience and Navigation
+
+- **Viewer theme: light, dark or auto** — Themes the viewer toolbar and background. The PDF page content itself is never altered.
+- **RTL layout: off, on or auto** — Flips the viewer and toolbar for Arabic, Hebrew and other right-to-left languages, in every viewer.
+- **Keyboard navigation** — Left and right arrow keys turn pages in all viewers.
+- **Annotation mode** — Shows the notes, highlights, comments and clickable links already saved inside the PDF.
+- **Open PDF links in a new tab** — Links clicked inside the document open in a new tab, so your page stays put.
+- **Filename display** — Show the document name above the viewer.
+
+#### Print, Download, Full Screen and Social Sharing
+
+- **Print** — Let visitors print straight from the viewer, or turn printing off entirely.
+- **Download button** — One-click download above the viewer, or no download at all.
+- **Full-screen button** — Show or hide the full-screen toggle on any embed.
+- **Social sharing** — Facebook, X (Twitter), LinkedIn, Pinterest and email buttons, placed above or below the viewer, each one individually switchable.
+
+#### PDF Watermarking — Text Marks Are Free
+
+- **Text watermark on every page** — Stamp your own wording across the document.
+- **Three ready-made themes** — Confidential, Draft Stamp and Sample Wash, each with its own angle, tiling and weight, so a usable mark is one click away.
+- **Dynamic placeholders** — Drop `{site_name}`, `{post_title}`, `{file_name}`, `{page}`, `{pages}`, `{date}`, `{year}`, `{user_name}`, `{user_email}` or `{user_ip}` into the text and it resolves per page and per visitor.
+- **Choose which pages** — All pages, the first page only, or everything except the cover.
+- **Live preview while you edit** — The editor draws the mark with the same builder the front end uses, so what you see is what publishes.
+
+#### Popup (Lightbox) PDF Viewer — Free
+
+- **Open PDFs in a modal** — Keep the page clean and load the document only when a reader asks for it.
+- **Button or image trigger** — Trigger from a styled button or from any image, with your own alignment, image dimensions and an optional PDF icon overlay.
+
+#### PDF Analytics — See Today's Views and Downloads, Free
+
+- **Today's views and downloads** — How many times each document was opened and downloaded today, with no third-party analytics service. The figures appear on the PDF Posters list, beside each document in both editors, and on the Analytics screen.
+- **Accurate behind a page cache** — Counting happens in the visitor's browser, so figures stay right on sites running WP Rocket, LiteSpeed or Cloudflare instead of recording one view per cached copy.
+- **Every embed counted** — Not only saved PDF Posters: a block placed straight onto a page and `[pdf_embed url="…"]` each get their own figures.
+- **Privacy-first by default** — No IP address stored, no cookie set, nothing sent to a third party. The rows live in your own database.
+- **Site-wide controls** — Turn counting on or off, keep your own visits out of the numbers, and optionally respect the browser's Do Not Track header.
+
+A view is recorded once the viewer has genuinely been on screen — not on every page load — and once per visitor per 30 minutes.
+
+#### Styling and Custom CSS
+
+- **Button and title styling** — Background colour, text colour, font size and padding for the action buttons, plus the title font size, with no CSS needed.
+- **Site-wide custom CSS** — One stylesheet for every embed, in Settings.
+- **Per-document CSS and CSS class** — Style a single poster or a single block without touching your theme.
+
+#### Site-Wide Defaults
+
+- **Presets in Settings** — Set the defaults every new PDF Poster starts from, so you configure once instead of on every document. (Changing a preset affects documents you create afterwards.)
+
+#### Performance and Reliability
+
+- **Fast loading (progressive rendering)** — Streams large PDFs so the first page appears while the rest is still downloading.
+- **Google Doc Viewer fallback** — An optional second rendering path for browsers that mishandle inline PDFs (recommended for Edge).
+
+#### In Your WordPress Dashboard
+
+- **PDF Poster dashboard** — One place for your documents, demos, help and changelog.
+- **PDF chatbot assistant** — Ask setup questions without leaving WordPress.
 
 
-**1. Viewers — how the document actually reads**
+### PDF Poster Pro Features — What Upgrading Adds
 
-- **Free — Default Viewer**: The bundled Mozilla PDF.js engine. Page navigation, zoom, text search and text selection, on desktop and mobile.
+Everything above stays exactly as it is. [PDF Poster Pro](https://bplugins.com/products/pdf-poster/pricing) adds the following on top.
 
-- **Free — FlipBook Viewer**: A realistic page-turn book, with a page-flip sound you can switch off.
+#### Two More PDF Viewers
 
-- **Free — Slider Viewer**: One page at a time, swiped or clicked through — made for brochures, menus and catalogues.
+- **Adobe PDF viewer** — Rendering by the Adobe PDF Embed API, with Adobe's own embed and view modes, including its lightbox.
+- **Continuous Scroll viewer** — Every page in one uninterrupted scroll, built for long reports.
 
-- **Free — FlipBook from Images**: Build the page-flip book from an ordered set of images instead of a PDF, for scans and design-tool exports.
+#### Advanced Reading Controls
 
-- **Pro — Adobe PDF Viewer**: Rendering by the Adobe PDF Embed API, with Adobe's own embed and view modes.
+- **Reader Mode** — The document and nothing else: no toolbar, no frame, no distractions.
+- **Thumbnail sidebar** — Show the page thumbnails panel, and choose whether it opens by default.
+- **Initial page and default zoom** — Open on page 12 at 125% if that is where the reader should start.
+- **Horizontal scrollbar** — Make horizontal scrolling the default for wide documents.
+- **Hide the right toolbar** — Trim the viewer chrome further.
 
-- **Pro — Continuous Scroll Viewer**: Every page in one uninterrupted scroll, built for long reports.
+#### Button Labels and Placement
 
-- **Pro — Reader Mode**: The document and nothing else. No toolbar, no frame, no distractions.
+- **Rename the download button** — Your label, your language.
+- **Rename the full-screen button** — Same, for the full-screen toggle.
+- **Open full screen in a new tab** — Send the full-screen view to its own tab.
+- **Move the action bar** — Put print, download and full screen above or below the viewer.
 
+#### Logo Watermarking and Anti-Leak
 
-**2. Where you can embed it**
-
-- **Free — Two Gutenberg Blocks**: *PDF Poster* to embed a file directly, and *PDF Poster Selector* to drop in a document you have already saved.
-
-- **Free — Shortcode**: `[pdf_embed]` in any post, page, widget or template — every viewer option is available as an attribute. Saved documents also get a copy-and-paste `[pdf id="123"]` shortcode.
-
-- **Free — Classic Editor Metabox**: A full settings panel on every PDF Poster document, so you never have to open a block to configure a viewer.
-
-- **Free — Unlimited Documents**: No cap on how many PDFs you embed.
-
-- **Pro — Quick Embedder for the Classic Editor**: An embed tool and shortcode generator built into the classic editor.
-
-- **Pro — Presets**: Save a viewer configuration once and reuse it from the Classic Shortcode Generator.
-
-
-**3. Responsive sizing**
-
-- **Free — Separate Height & Width for Desktop, Tablet and Mobile**: Set each breakpoint independently instead of forcing one size on every screen.
-
-- **Free — Device Preview Switcher**: Flip between desktop, tablet and mobile while you configure, in both the block and the metabox.
-
-
-**4. Reading experience and navigation**
-
-- **Free — Viewer Theme (Light / Dark / Auto)**: Themes the viewer toolbar and background. The PDF page content itself is never altered.
-
-- **Free — RTL Layout (Off / On / Auto)**: Flips the viewer and toolbar for Arabic, Hebrew and other right-to-left languages, in every viewer.
-
-- **Free — Keyboard Navigation**: Left and right arrow keys change pages in all viewers.
-
-- **Free — Annotation Mode**: Shows the notes, highlights, comments and clickable links already saved inside the PDF.
-
-- **Free — Open PDF Links in a New Tab**: Links clicked inside the document open in a new tab, so your page stays put.
-
-- **Free — Filename Display**: Show the document name above the viewer.
-
-- **Pro — Thumbnail Sidebar**: Show the page thumbnails panel, and choose whether it opens by default.
-
-- **Pro — Initial Page and Default Zoom**: Open on page 12 at 125% if that is where the reader should start.
-
-- **Pro — Horizontal Scrollbar**: Make horizontal scrolling the default for wide documents.
-
-
-**5. Buttons, actions and sharing**
-
-- **Free — Print**: Let visitors print straight from the viewer, or turn printing off entirely.
-
-- **Free — Download Button**: One-click download above the viewer, or no download at all.
-
-- **Free — Full-Screen Button with Your Own Label**: Rename it for your language or your wording.
-
-- **Free — Social Sharing**: Facebook, X (Twitter), LinkedIn, Pinterest and email buttons, placed above or below the viewer, each one individually switchable.
-
-- **Pro — Rename the Download Button**: Your label, your language.
-
-- **Pro — Full-Screen Control**: Show or hide the button, and optionally open the full-screen view in a new tab.
-
-- **Pro — Move the Action Bar**: Put Print, Download and Full-Screen above or below the viewer.
-
-
-**6. Watermark & Branding**
-
-- **Pro — Text, Logo, or Both**: Stamp your wording, your logo, or a logo with a caption over every page.
-
-- **Pro — Six Ready-Made Themes**: Confidential, Draft Stamp, Sample Wash, Brand Corner, Logo Wash and Logo + Caption — each one carries its own angle, tiling and weight. A Custom theme is there when you want to set the angle yourself.
-
-- **Pro — Coverage, Strength, Size and Angle**: From a single corner mark to a dense tile that cannot be cropped out of a screenshot, at five opacity steps and four sizes including fit-to-page.
-
-- **Pro — Dynamic Placeholders**: Drop `{site_name}`, `{post_title}`, `{file_name}`, `{page}`, `{pages}`, `{date}`, `{year}`, `{user_name}`, `{user_email}` or `{user_ip}` into the text and it resolves per page and per visitor.
-
-- **Pro — Choose Who Sees It**: Everyone, everyone except administrators (so you can proof the clean original), or logged-out visitors only.
-
-- **Pro — Choose Which Pages**: All pages, the first page only, or everything except the cover.
-
-- **Pro — Anti-Leak Options**: A per-visitor stamp that identifies whoever opened a leaked screenshot, plus tamper restore that puts the mark back if a visitor deletes it with browser dev tools.
-
-- **Pro — Live Preview**: The block sidebar draws the mark with the same builder the front end uses, so what you see is what publishes.
+- **Logo, or logo with text** — Stamp your logo over every page, on its own or beside your wording.
+- **Three more themes** — Brand Corner, Logo Wash and Logo + Caption, each with its own angle, tiling and weight.
+- **Custom theme** — Set coverage, position, strength, size and angle yourself: from a single corner mark to a dense tile that cannot be cropped out of a screenshot.
+- **Choose who sees it** — Everyone, everyone except administrators (so you can proof the clean original), or logged-out visitors only.
+- **Anti-leak options** — A per-visitor stamp that identifies whoever opened a leaked screenshot, plus tamper restore that puts the mark back if a visitor deletes it with browser dev tools.
 
 Watermarking is a deterrent, not DRM — an on-screen mark can be removed with browser dev tools, and no browser can prevent a screenshot.
 
+#### PDF Content Protection
 
-**7. Analytics — new in Pro**
+- **Disable right-click and copying** — Block the context menu and copy shortcuts on your documents.
+- **Disable text selection** — Stop text being dragged out of the viewer.
+- **Suppress blocked-action alerts** — Enforce protection quietly, without warning pop-ups.
 
-- **Pro — View & Download Counter**: See how often every document is opened and how often it is downloaded, without adding a third-party analytics service. The figures stay in your own site.
+#### Full PDF Analytics History
 
-- **Pro — Analytics Screen**: A 7, 30 or 90 day view of views and downloads over time, with the change against the previous period, your download rate, the busiest day, and your best-performing documents ranked.
+Every day is recorded on every version, in your own database. The free plugin shows you today; Pro reads the rest back — so there is nothing to import when you upgrade, and the history your site has already built is there waiting.
 
-- **Pro — Per-Document Reports**: Open any single document's own trend and totals straight from the editor — a link you can bookmark or share with your team.
+- **All-time totals and history** — Total views and downloads for any document, over any period.
+- **7, 30 and 90 day reports** — Views and downloads over time as a chart, with the change against the previous period.
+- **Download rate, busiest day and top documents** — What people actually read, ranked.
+- **Per-document reports** — Open any single document's own trend and totals straight from the editor, as a link you can bookmark or share.
+- **Sortable Views and Downloads columns** — On the PDF Posters list, so your most-read documents sort to the top.
+- **CSV export** — Take any range into a spreadsheet.
 
-- **Pro — On Every Document**: Views, downloads and a 14-day trend, in the block editor sidebar and beside the Save button in the classic editor.
+#### Import, Reuse and Support
 
-- **Pro — Sortable Columns**: Views and Downloads columns on the PDF Posters list, so your most-read documents sort straight to the top.
-
-- **Pro — Accurate Behind a Page Cache**: Figures stay right on sites running WP Rocket, LiteSpeed or Cloudflare, instead of recording one view per cached copy.
-
-- **Pro — Every Embed Counted**: Not only saved PDF Posters. A block placed directly on a page and `[pdf_embed url="..."]` each get their own figures, and the report links through to the page they sit on.
-
-- **Pro — CSV Export**: Take any range into a spreadsheet.
-
-- **Pro — Site-Wide Controls**: Turn counting on or off, keep your own visits out of the numbers, and optionally respect the browser's Do Not Track setting.
-
-A view is recorded once the viewer has genuinely been on screen — not on every page load — and once per visitor per 30 minutes. No IP address is stored, no cookie is set, and nothing is sent to a third party.
-
-
-**8. Document protection**
-
-- **Pro — Disable Right-Click and Copying**: Block the context menu and copy shortcuts on your documents.
-
-- **Pro — Disable Text Selection**: Stop text being dragged out of the viewer.
-
-- **Pro — Suppress Blocked-Action Alerts**: Enforce protection quietly, without warning pop-ups.
-
-
-**9. Popup viewer**
-
-- **Pro — Open PDFs in a Modal**: Keep the page clean and load the document only when a reader asks for it.
-
-- **Pro — Button or Image Trigger**: Trigger from a styled button or from any image, with your own alignment, image dimensions and an optional PDF icon overlay.
-
-
-**10. Styling**
-
-- **Free — Button and Title Styling**: Background colour, text colour, font size and padding for the action buttons, plus the title font size — no CSS needed.
-
-- **Pro — Custom CSS and Custom Classes**: Global CSS plus a per-embed class, for full design control.
-
-
-**11. Performance and reliability**
-
-- **Free — Fast Loading (Progressive Rendering)**: Streams large PDFs so the first page appears while the rest is still downloading.
-
-- **Free — Google Doc Viewer Fallback**: An optional second rendering path for browsers that mishandle inline PDFs (recommended for Edge).
-
-- **Pro — Always Load the Latest Version**: Replace the file and every embed updates — no re-linking.
-
-
-**12. In the WordPress dashboard**
-
-- **Free — PDF Poster Dashboard**: One place for your documents, demos, help and changelog.
-
-- **Free — PDF Chatbot Assistant**: Ask setup questions without leaving WordPress.
-
-- **Free — Quick Embedder Defaults**: Set the default height, width, filename display and download button once, and every new document starts there.
-
-- **Pro — Google Drive Picker and Dropbox Import**: Pull a PDF straight from cloud storage instead of uploading it twice.
-
-- **Pro — Priority One-on-One Support**: Straight to the developers.
-
+- **Google Drive picker and Dropbox import** — Pull a PDF straight from cloud storage instead of uploading it twice.
+- **Preset library for blocks** — Save a block's whole configuration and reuse it across your site.
+- **Always load the latest version** — Replace the file and every embed updates, with no re-linking.
+- **Priority one-on-one support** — Straight to the developers.
 
 **Coming soon in Pro**: in-viewer Ads, already sketched in the interface and shipping in a later release.
 
-[**Try the PDF Poster PRO**](https://bplugins.com/products/pdf-poster/pricing) – Unlock all premium features now!
+[**Try PDF Poster Pro**](https://bplugins.com/products/pdf-poster/pricing) — unlock every premium feature today.
 
 
 ### How to Use PDF Poster – Step-by-Step Guide
@@ -362,16 +332,18 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 == Changelog ==
 
 = 2.6.0 - 06 Sep 2026 =
-* **New:** Document Insights — see how often every PDF is actually viewed and downloaded, without adding a third-party analytics service. The figures stay in your own site.
-* **New:** Analytics screen — a new Analytics item under PDF Poster with a 7, 30 or 90 day view: views and downloads over time, change against the previous period, download rate, busiest day, your best-performing documents ranked, and CSV export.
+* **New:** Document Insights — see how many times every PDF was viewed and downloaded today, free, without adding a third-party analytics service. The figures stay in your own site.
+* **New:** Analytics screen — a new Analytics item under PDF Poster showing today's figures, and with Pro a 7, 30 or 90 day view: views and downloads over time, change against the previous period, download rate, busiest day, your best-performing documents ranked, and CSV export.
 * **New:** Per-document reports — open any single document's own trend and totals from the editor, as a link you can bookmark or share with your team.
-* **New:** Analytics panel on every document — views, downloads and a 14-day trend, in the block editor sidebar and beside the Save button in the classic editor.
-* **New:** Sortable Views and Downloads columns on the PDF Posters list, so your most-read documents sort straight to the top.
+* **New:** Analytics panel on every document — today's views and downloads in the block editor sidebar and beside the Save button in the classic editor, with all-time totals and a 14-day trend in Pro.
+* **New:** Views and Downloads columns on the PDF Posters list — today's figures for everyone, all-time and sortable in Pro.
 * **New:** Settings > Analytics — turn counting on or off site-wide, keep your own visits out of the numbers, and optionally respect the browser's Do Not Track setting.
 * New: Counting keeps working behind a page cache, so sites on WP Rocket, LiteSpeed or Cloudflare get real figures instead of one view per cached copy.
 * New: Every embed is counted, not only saved PDF Posters. A block placed directly on a page and `[pdf_embed url="..."]` each get their own figures, and the report links through to the page they sit on.
 * New: A view is recorded once the viewer has genuinely been on screen — not on every page load — and once per visitor per 30 minutes. Downloads and prints are counted however the reader triggers them.
-* New: Private by default. No IP address is stored, no cookie is set, and this release keeps daily totals only.
+* New: Private by default. No IP address is stored, no cookie is set, and this release keeps daily totals only — in your own database, never sent anywhere.
+* New: Nothing to import if you upgrade later — every day is recorded from the start, so Pro reads back the history your site has already built.
+* New: Popup (lightbox) viewer, a text watermark with three ready-made themes, per-block Class and CSS, a site-wide Custom CSS box, the Preset defaults screen and the Fullscreen Button toggle are all free in this release.
 * Update: The shortcode columns on the PDF Posters list now show the shortcode itself in a click-to-copy chip, instead of a button whose label hid the value it copied.
 * Update: Links out of a report open in a new tab, so your date range and filters stay where you left them.
 * Fix: Content protection no longer shows a developer-tools warning while a page is open in Elementor, Divi, Bricks, Beaver Builder, Oxygen or Breakdance. Editing behaves normally again, including Ctrl+S to save and right-click.

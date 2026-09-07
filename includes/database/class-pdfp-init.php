@@ -14,6 +14,7 @@ if ( ! class_exists( 'PDFPro\Database\PDFP_Init' ) ) {
     {
         return [
             PDFP_Presets::class,
+            PDFP_Analytics::class,
         ];
     }
 

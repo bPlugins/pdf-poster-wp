@@ -54,8 +54,10 @@ if ( ! class_exists( 'PDFPro\Rest\PDFP_AjaxCall' ) ) {
 
             $model = new $class_name();
 
-            // Security: Allowlist specific methods for dynamic execution to prevent arbitrary method calls
-            $allowed_methods = ['get', 'getBlock'];
+            // Security: Allowlist specific methods for dynamic execution to prevent arbitrary
+            // method calls. The Analytics reads are all read-only and the model itself
+            // re-checks `edit_posts`.
+            $allowed_methods = ['get', 'getBlock', 'totals', 'today', 'documents', 'summary', 'export'];
 
             if (in_array($requestMethod, $allowed_methods) && method_exists($model, $requestMethod)) {
                 return $model->{$requestMethod}($data);

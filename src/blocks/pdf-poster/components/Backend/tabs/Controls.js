@@ -2,13 +2,14 @@ import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
 import { Notice } from "../../../../../../../bpl-tools/Components";
 import { __ } from "@wordpress/i18n";
 import { PDFIcon } from "../../../../../icons/PDF";
+import { PanelNewBadge } from "../../../../../Components/NewBadge";
 
 const Controls = ({ attributes, setAttributes }) => {
     const { showName, annotationMode, openLinksInNewTab, keyboardNav, rtlMode = "off", themeMode = "light", adobeEmbedder, flipbookSound } = attributes;
     const normalizedViewer = adobeEmbedder === true ? "adobe" : (adobeEmbedder === false ? "default" : (adobeEmbedder || "default"));
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Controls", "pdfp")}</div>} initialOpen={false}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Controls", "pdfp")} <PanelNewBadge /></div>} initialOpen={false}>
 
             <ToggleControl className="mt10" label={__("Keyboard Navigation", "pdfp")} id="keyboardNav" checked={!!keyboardNav} onChange={() => setAttributes({ keyboardNav: !keyboardNav })} help={__("Let visitors use the Left/Right arrow keys to change pages.", "pdfp")} />
 

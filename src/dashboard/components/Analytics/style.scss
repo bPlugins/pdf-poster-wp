@@ -1,16 +1,22 @@
 /*
  * PDF Poster › Analytics.
  *
- * Drawn with the dashboard's own tokens -- --bpl-dashboard-primary-color (#146ef5),
- * --bpl-dashboard-secondary-color (#ff7a00), title #070127, content #1b2e4b -- plus the
- * slate ramp already used in src/admin.scss.
+ * Everything is drawn with the dashboard's own tokens -- --bpl-dashboard-primary-color
+ * (#146ef5), --bpl-dashboard-secondary-color (#ff7a00), title #070127, content #1b2e4b,
+ * the #f6f8fa ground -- plus the slate ramp already used in src/admin.scss.
  *
  * Square corners throughout. Every radius in .bPlDashboard resolves to zero and
  * .bPlButton enforces it with !important, so nothing here is rounded either.
  */
 
+$slate-50: #f8fafc;
+$slate-100: #f1f5f9;
 $slate-200: #e2e8f0;
+$slate-300: #cbd5e1;
 $slate-600: #475569;
+
+$views: #146ef5;
+$downloads: #cc6200; // brand #ff7a00 one step darker: 2.61:1 -> 3.95:1 on white
 
 .pdfpAnalytics {
     display: flex;
@@ -45,40 +51,660 @@ $slate-600: #475569;
     color: $slate-600;
 }
 
-/* ---------------------------------------------------------- free-build state */
-.pdfpAnalyticsUpgrade {
+.pdfpAnalyticsCrumbs {
+    margin: 6px 0 0;
+    font-size: 12.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pdfpCrumbSep {
+    color: $slate-300;
+}
+
+.pdfpAnalyticsControls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Segmented control: borders collapse into one another, no radius. */
+.pdfpChips {
+    display: flex;
+}
+
+.pdfpChip {
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: 1px solid $slate-300;
+    background: #fff;
+    color: $slate-600;
+    cursor: pointer;
+    margin-left: -1px;
+    border-radius: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:hover {
+        background: $slate-50;
+        color: var(--bpl-dashboard-title-color, #070127);
+    }
+
+    &.on {
+        background: var(--bpl-dashboard-primary-color, #146ef5);
+        border-color: var(--bpl-dashboard-primary-color, #146ef5);
+        color: #fff;
+        position: relative;
+        z-index: 1;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--bpl-dashboard-primary-color, #146ef5);
+        outline-offset: 2px;
+    }
+}
+
+.pdfpGhostBtn {
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: 1px solid var(--bpl-dashboard-primary-color, #146ef5);
+    background: #fff;
+    color: var(--bpl-dashboard-primary-color, #146ef5);
+    cursor: pointer;
+    border-radius: 0;
+
+    &:hover:not(:disabled) {
+        background: var(--bpl-dashboard-primary-color, #146ef5);
+        color: #fff;
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: default;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--bpl-dashboard-primary-color, #146ef5);
+        outline-offset: 2px;
+    }
+}
+
+.pdfpNotice {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-left: 3px solid $slate-300;
+    background: #fff;
+    color: $slate-600;
+
+    &.warn {
+        border-left-color: var(--bpl-dashboard-secondary-color, #ff7a00);
+        background: #fdf1e0;
+        color: #9a5b06;
+
+        a {
+            color: #9a5b06;
+            text-decoration: underline;
+        }
+    }
+}
+
+/* ------------------------------------------------------------------ tiles */
+.pdfpTiles {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 620px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1000px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.pdfpTile {
+    background: #fff;
+    border: 1px solid $slate-200;
+    border-top: 3px solid $slate-300;
+    padding: 16px 18px 14px;
     display: flex;
     flex-direction: column;
+    gap: 3px;
+
+    &.views {
+        border-top-color: $views;
+    }
+
+    &.downloads {
+        border-top-color: $downloads;
+    }
+}
+
+.pdfpTileLabel {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: $slate-600;
+}
+
+.pdfpTileValue {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--bpl-dashboard-title-color, #070127);
+    font-variant-numeric: tabular-nums;
+
+    &.small {
+        font-size: 18px;
+        font-weight: 700;
+        padding: 8px 0 4px;
+    }
+}
+
+.pdfpTileFoot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.pdfpTileNote {
+    font-size: 11.5px;
+    color: $slate-600;
+}
+
+.pdfpPill {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 7px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+
+    &.up {
+        background: #e6f4ee;
+        color: #1e7d54;
+    }
+
+    &.down {
+        background: #fdf1e0;
+        color: #9a5b06;
+    }
+
+    &.flat {
+        background: $slate-100;
+        color: $slate-600;
+        border: 1px solid $slate-200;
+    }
+}
+
+/* ------------------------------------------------------------------ panels */
+.pdfpPanel {
+    padding: 0 !important; // .bPlDashboardCard ships 24px; the head owns its own padding
+}
+
+.pdfpPanelHead {
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    border-left: 3px solid var(--bpl-dashboard-primary-color, #146ef5);
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 18px;
+    border-bottom: 1px solid $slate-200;
+}
+
+.pdfpPanelTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--bpl-dashboard-title-color, #070127);
+}
+
+.pdfpPanelMeta {
+    font-size: 11.5px;
+    color: $slate-600;
+}
+
+.pdfpLegend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11.5px;
+        color: $slate-600;
+    }
+
+    i {
+        width: 10px;
+        height: 10px;
+        display: block;
+    }
+}
+
+.pdfpEmpty {
+    margin: 0;
+    padding: 28px 18px;
+    font-size: 13px;
+    color: $slate-600;
+    max-width: 70ch;
+}
+
+/* ------------------------------------------------------------------- chart */
+.pdfpChartWrap {
+    position: relative;
+    padding: 14px 18px 6px;
+}
+
+.pdfpChart {
+    display: block;
+    width: 100%;
+    height: auto;
+    touch-action: none;
+}
+
+.pdfpChartAxis {
+    font-size: 10.5px;
+    fill: $slate-600;
+    font-variant-numeric: tabular-nums;
+}
+
+.pdfpChartEnd {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--bpl-dashboard-content-color, #1b2e4b);
+    font-variant-numeric: tabular-nums;
+}
+
+.pdfpChartTip {
+    position: absolute;
+    top: 18px;
+    transform: translateX(12px);
+    pointer-events: none;
+    background: #fff;
+    border: 1px solid $slate-300;
+    box-shadow: 0 6px 20px -6px rgba(7, 1, 39, 0.3);
+    padding: 9px 11px;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    z-index: 2;
+
+    &.flip {
+        transform: translateX(-100%) translateX(-12px);
+    }
+
+    .d {
+        font-size: 10.5px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $slate-600;
+        margin-bottom: 2px;
+    }
+
+    .r {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--bpl-dashboard-title-color, #070127);
+
+        em {
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: $slate-600;
+        }
+
+        i {
+            width: 9px;
+            height: 9px;
+            display: block;
+        }
+
+        b {
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+}
+
+/* ------------------------------------------------------------------- table */
+.pdfpTableScroll {
+    overflow-x: auto;
+}
+
+.pdfpTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 560px;
+
+    thead th {
+        text-align: left;
+        padding: 10px 18px;
+        background: $slate-50;
+        border-bottom: 1px solid $slate-300;
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: $slate-600;
+        white-space: nowrap;
+    }
+
+    tbody td {
+        padding: 12px 18px;
+        border-bottom: 1px solid $slate-200;
+        color: var(--bpl-dashboard-content-color, #1b2e4b);
+        vertical-align: middle;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    tbody td:first-child a {
+        font-weight: 600;
+    }
+}
+
+/*
+ * A url-keyed embed has no poster to name, so the page it sits on takes the primary link
+ * and the file identity becomes metadata. Uses the same uppercase micro-label as the
+ * table headers and stat tiles rather than a filled chip, which read as foreign next to
+ * the rest of the page.
+ */
+.pdfpDocCell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.pdfpDocPlain {
+    font-weight: 600;
+    color: var(--bpl-dashboard-title-color, #070127);
+}
+
+.pdfpDocMeta {
+    font-size: 11.5px;
+    color: $slate-600;
+}
+
+.pdfpMetaLabel {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.pdfpMuted {
+    color: $slate-600;
+}
+
+.pdfpNum {
+    font-variant-numeric: tabular-nums;
+}
+
+.pdfpMetric {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-variant-numeric: tabular-nums;
+}
+
+.pdfpBar {
+    height: 6px;
+    flex: 1;
+    max-width: 84px;
+    background: $slate-100;
+    overflow: hidden;
+
+    i {
+        display: block;
+        height: 100%;
+    }
+}
+
+/* ----------------------------------------------------- how counting works */
+/*
+ * The old footnote was three facts run together as one grey paragraph, which is the
+ * shape you give text you hope nobody reads. They are three separate answers, so they
+ * get three cells -- the same 1px-gap grid the stat tiles use, so the strip belongs to
+ * this screen rather than arriving as prose at the end of it.
+ *
+ * Deliberately quiet: hairlines instead of a card, 12px body, no shadow. It is
+ * reference material under a report, and the report keeps the emphasis.
+ */
+.pdfpLedger {
+    border: 1px solid $slate-200;
+    background: #fff;
+}
+
+.pdfpLedgerRule {
+    margin: 0;
+    padding: 9px 14px;
+    border-bottom: 1px solid $slate-200;
+    background: $slate-50;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: $slate-600;
+}
+
+.pdfpLedgerGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
+    /* The 1px gap IS the rule between cells -- the ground shows through it, so the
+       hairlines cannot fall out of step with the wrapping. */
+    gap: 1px;
+    background: $slate-200;
+}
+
+.pdfpLedgerCell {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 13px 14px 14px;
+    background: #fff;
+}
+
+.pdfpLedgerLabel {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--bpl-dashboard-title-color, #070127);
+
+    svg {
+        width: 14px;
+        height: 14px;
+        flex: none;
+        color: var(--bpl-dashboard-primary-color, #146ef5);
+    }
+}
+
+.pdfpLedgerBody {
+    font-size: 12px;
+    line-height: 1.55;
+    color: $slate-600;
+}
+
+/* ---------------------------------------------------------- free-build state */
+/*
+ * The locked history panel.
+ *
+ * Blur is spent ONLY on the plotted shape. The panel title, the legend, the date axis
+ * and the counted days stay sharp, because those are the things the free build genuinely
+ * knows -- and because a screen where everything is mush reads as an advertisement,
+ * where a screen with one frosted band reads as a door.
+ */
+.pdfpStage {
+    position: relative;
+}
+
+.pdfpStageVeil {
+    // Nothing under the glass is reachable, and nothing there is worth selecting.
+    pointer-events: none;
+    user-select: none;
+}
+
+/* The example shape, and nothing that could be mistaken for a measurement. */
+.pdfpSilhouetteInk {
+    filter: blur(5px);
+    opacity: 0.55;
+}
+
+.pdfpChartGrid {
+    stroke: $slate-200;
+    stroke-width: 1;
+}
+
+/*
+ * Where the y axis labels sit on the licensed chart. A block, never a blurred numeral:
+ * a browser that drops `filter`, or a reader who turns it off, then degrades this panel
+ * to "value withheld" rather than to "here is a made-up number".
+ */
+.pdfpSkelMark {
+    fill: $slate-200;
+}
+
+/* Scoped to the legend it sits in, because `.pdfpLegend span` would otherwise win on
+   specificity and repaint this as another series label. */
+.pdfpLegend .pdfpExampleTag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #8a4b00;
+    background: #fdf1e0;
+    border: 1px solid #eccfa4;
+    padding: 2px 7px;
+}
+
+/*
+ * Frosted, not opaque. Recognising the layout underneath as the report a licence would
+ * give is the whole argument, so the sheet is thin enough to read through.
+ *
+ * Deliberately NO backdrop-filter. This sheet spans the whole panel, so a blur here
+ * would also soften the panel title, the legend and the date axis -- the very things
+ * that are meant to stay sharp, because they are what the free build genuinely knows.
+ * The only blur in this panel is the one on the plotted shape, where the withheld
+ * measurements would be.
+ */
+.pdfpGlass {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: linear-gradient(
+        180deg,
+        rgba(246, 248, 250, 0.08),
+        rgba(246, 248, 250, 0.45) 40%,
+        rgba(246, 248, 250, 0.62)
+    );
+}
+
+.pdfpLockCard {
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border: 1px solid $slate-300;
+    border-top: 3px solid var(--bpl-dashboard-primary-color, #146ef5);
+    box-shadow: 0 18px 40px -22px rgba(7, 1, 39, 0.45);
+    padding: 20px 22px 18px;
 
     h3 {
         font-family: 'Lato', sans-serif;
         font-size: 19px;
         font-weight: 900;
-        margin: 0;
+        line-height: 1.3;
+        margin: 0 0 8px;
         color: var(--bpl-dashboard-title-color, #070127);
     }
+}
 
-    p {
+.pdfpLockEyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 9px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #8a4b00;
+}
+
+.pdfpLockGlyph {
+    width: 9px;
+    height: 11px;
+    flex: none;
+}
+
+.pdfpLockBody {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--bpl-dashboard-content-color, #1b2e4b);
+}
+
+/* Chips, not a bulleted wall: the card's argument is the counted number above them, and
+   a six-line list competes with it for the same glance. */
+.pdfpLockFeats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 14px 0 15px;
+    padding: 0;
+    list-style: none;
+
+    li {
         margin: 0;
-        font-size: 14px;
+        font-size: 11.5px;
         color: var(--bpl-dashboard-content-color, #1b2e4b);
-        max-width: 74ch;
+        background: $slate-50;
+        border: 1px solid $slate-200;
+        padding: 4px 9px;
     }
+}
 
-    .bPlDashboardButtons {
-        margin-top: 6px;
-    }
+.pdfpLockCta {
+    margin: 0;
 
     .bPlButton {
         display: inline-flex;
         align-items: center;
         // Roomier than the 10px/20px the header uses: the brand gradient runs blue to
         // orange and passes through a muddy midpoint, which is all you see on a narrow
-        // button. Given the width of the header CTA, it reads as intended.
-        padding: 12px 30px;
-        font-size: 15px;
+        // button. Given the width of this CTA, it reads as intended.
+        padding: 12px 26px;
+        font-size: 14.5px;
         font-weight: 500;
         color: #fff;
         text-decoration: none;
@@ -91,38 +717,157 @@ $slate-600: #475569;
     }
 }
 
-.pdfpUpgradeList {
-    margin: 2px 0 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
+.pdfpLockMicro {
+    margin: 12px 0 0;
+    font-size: 11px;
+    line-height: 1.55;
+    color: $slate-600;
+}
 
-    li {
-        position: relative;
-        padding-left: 22px;
-        font-size: 14px;
-        color: var(--bpl-dashboard-content-color, #1b2e4b);
+/*
+ * A locked chip was just clicked. The card is already on screen by the time this runs
+ * -- scrollIntoView put it there -- so this only says WHICH thing answered the question,
+ * which is why it is one pass and not a loop.
+ */
+.pdfpStage.isPulsing .pdfpLockCard {
+    animation: pdfpLockPulse 1s ease;
+}
+
+@keyframes pdfpLockPulse {
+    0%,
+    100% {
+        box-shadow: 0 18px 40px -22px rgba(7, 1, 39, 0.45);
     }
 
-    /* A tick drawn in CSS rather than an inline SVG per row -- five identical marks. */
-    li::before {
-        content: '';
-        position: absolute;
-        left: 4px;
-        top: 6px;
-        width: 5px;
-        height: 9px;
-        border-right: 2px solid var(--bpl-dashboard-primary-color, #146ef5);
-        border-bottom: 2px solid var(--bpl-dashboard-primary-color, #146ef5);
-        transform: rotate(45deg);
+    35% {
+        box-shadow: 0 0 0 4px rgba(20, 110, 245, 0.26), 0 18px 40px -22px rgba(7, 1, 39, 0.45);
     }
 }
 
-.pdfpUpgradeNote {
-    font-size: 13px !important;
-    color: $slate-600 !important;
-    border-left: 3px solid $slate-200;
-    padding-left: 12px;
+@media (prefers-reduced-motion: reduce) {
+    .pdfpStage.isPulsing .pdfpLockCard {
+        animation: none;
+        outline: 2px solid var(--bpl-dashboard-primary-color, #146ef5);
+        outline-offset: 2px;
+    }
+}
+
+/*
+ * The Pro controls, drawn in the Pro position, locked.
+ *
+ * Hidden controls teach nothing; dashed ones teach the shape of the paid screen before
+ * anybody pays, and let one screenshot serve both the plugin gallery and the pricing
+ * page. Same box as .pdfpChip / .pdfpGhostBtn so the row stays one set of controls.
+ */
+.pdfpChip.locked,
+.pdfpGhostBtn.locked {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-style: dashed;
+    border-color: $slate-300;
+    background: #fbfcfd;
+    color: $slate-600;
+
+    &:hover {
+        background: $slate-50;
+        color: var(--bpl-dashboard-title-color, #070127);
+    }
+}
+
+.pdfpChipLock {
+    width: 9px;
+    height: 11px;
+    flex: none;
+}
+
+.pdfpAnalyticsLink {
+    font-size: 13px;
+    align-self: center;
+}
+
+/*
+ * The "counting started" line under the chart.
+ *
+ * Only renders when the selected range reaches back further than the data goes, which
+ * is mostly the first days after an upgrade -- exactly when a reader is most likely to
+ * misread the empty leading days as a collapse. So it is welded to the chart's bottom
+ * edge as a tinted, full-bleed annotation with the date in ink: it is a note ABOUT this
+ * chart, where a loose grey paragraph underneath read as leftover text.
+ */
+.pdfpChartNote {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 0;
+    padding: 10px 18px 11px;
+    border-top: 1px solid $slate-200;
+    background: $slate-50;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: $slate-600;
+
+    svg {
+        width: 13px;
+        height: 13px;
+        flex: none;
+        margin-top: 2px;
+        color: $slate-600;
+    }
+
+    b {
+        font-weight: 600;
+        color: var(--bpl-dashboard-title-color, #070127);
+    }
+}
+
+/* ------------------------------------------------------------- document picker */
+/* Squared off and sized like .pdfpChip / .pdfpGhostBtn so the controls row reads as
+   one set of controls rather than a native select dropped in beside them. */
+.pdfpDocPicker {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pdfpSelect {
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 7px 30px 7px 12px;
+    max-width: 300px;
+    border: 1px solid var(--bpl-dashboard-border-color, #dfe3ec);
+    border-radius: 0;
+    background-color: #fff;
+    color: var(--bpl-dashboard-title-color, #070127);
+    cursor: pointer;
+    box-shadow: none;
+
+    &:focus {
+        border-color: var(--bpl-dashboard-primary-color, #146ef5);
+        box-shadow: 0 0 0 1px var(--bpl-dashboard-primary-color, #146ef5);
+        outline: none;
+    }
+}
+
+/* Reads as the link it replaced; it is a button so resetting keeps the chosen range. */
+.pdfpCrumbBtn {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--bpl-dashboard-primary-color, #146ef5);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* One home for "Counting since …". It used to sit inside a tile foot, where it wrapped
+   to two lines and repeated a phrase already on both neighbouring tiles. */
+.pdfpSinceLine {
+    display: block;
+    margin: 12px 0 0;
 }

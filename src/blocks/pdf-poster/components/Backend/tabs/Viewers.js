@@ -4,6 +4,7 @@ import { Notice, InlineMediaUpload } from "../../../../../../../bpl-tools/Compon
 import { __ } from "@wordpress/i18n";
 import { PDFIcon } from "../../../../../icons/PDF";
 import { hasFlipbookEngine } from "../../../utils";
+import { PanelNewBadge } from "../../../../../Components/NewBadge";
 
 // Adobe needs the premium PDF Embed bridge and Scroll is premium-only. Both stay listed
 // so they keep selling, but picking one opens the upgrade modal instead of storing a
@@ -25,13 +26,16 @@ const Viewers = ({ setAttributes, attributes }) => {
 
     if (flipbookAvailable) {
         viewerOptions.push(
-            { label: __("FlipBook", "pdfp"), value: "flipbook" },
-            { label: __("Slider", "pdfp"), value: "slider" },
+            // "(New)" in the text, not a chip: these are <option> elements in a native
+            // select, which renders no markup. The metabox marks the same two entries
+            // with pdfp_new_badge(), where markup is possible.
+            { label: __("FlipBook (New)", "pdfp"), value: "flipbook" },
+            { label: __("Slider (New)", "pdfp"), value: "slider" },
         );
     } 
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Viewers", "pdfp")}</div>} initialOpen={true}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Viewers", "pdfp")} <PanelNewBadge /></div>} initialOpen={true}>
 
             <SelectControl
                 className="mt10"

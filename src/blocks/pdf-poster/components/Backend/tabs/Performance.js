@@ -2,6 +2,7 @@ import { PanelBody, ToggleControl } from "@wordpress/components";
 import { Notice } from "../../../../../../../bpl-tools/Components";
 import { __ } from "@wordpress/i18n";
 import { PDFIcon } from "../../../../../icons/PDF";
+import { PanelNewBadge } from "../../../../../Components/NewBadge";
 
 /**
  * Mirrors the "Performance & Reliability" section of the CSF metabox
@@ -12,7 +13,7 @@ const Performance = ({ attributes, setAttributes }) => {
     const { protect, progressiveLoading, defaultBrowser } = attributes;
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Performance & Reliability", "pdfp")}</div>} initialOpen={false}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Performance & Reliability", "pdfp")} <PanelNewBadge /></div>} initialOpen={false}>
 
             <ToggleControl className="mt10" label={__("Fast Loading (Progressive Rendering)", "pdfp")} id="progressiveLoading" checked={progressiveLoading !== false} onChange={() => setAttributes({ progressiveLoading: progressiveLoading === false })} help={__("Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests.", "pdfp")} />
 

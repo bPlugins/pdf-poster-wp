@@ -24,6 +24,8 @@ function pdfp_uninstall_plugin() {
 	// -----------------------------------------------------------------
 	$tables = [
 		$wpdb->prefix . 'pdfposter_presets',
+		// Document Insights daily rollups.
+		$wpdb->prefix . 'pdfposter_stats',
 	];
 
 	foreach ( $tables as $table ) {
@@ -38,6 +40,11 @@ function pdfp_uninstall_plugin() {
 	$options = [
 		'fpdf_option',
 		'pdfposter_presets_database_version',
+		'pdfposter_stats_database_version',
+		// The daily visitor-hash salt. Rotated every day and never stored alongside a
+		// count, but it is still an option this plugin created.
+		'pdfp_track_salt',
+		'pdfp_track_salt_day',
 	];
 
 	foreach ( $options as $option ) {
@@ -51,6 +58,9 @@ function pdfp_uninstall_plugin() {
 		'isGutenberg',
 		'_pdfp_pdf_source',
 		'_pdfp_settings',
+		// The all-time mirrors written alongside each stats upsert.
+		'_pdfp_views',
+		'_pdfp_downloads',
 	];
 
 	foreach ( $meta_keys as $meta_key ) {

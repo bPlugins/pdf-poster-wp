@@ -3,7 +3,6 @@ import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n"; 
 
 import Viewer from "../Common/Viewer";
-import PresetModal from "./PresetModal"; 
 import Settings from "./Settings";
 import Uploader from "./Uploader";
 
@@ -20,12 +19,6 @@ function Edit(props) {
     // setAttributes({ adobeOptions: { ...adobeOptions, updated: true } });
   }, []);
 
-  useEffect(() => {
-    /*! <fs_premium_only> */
-    setAttributes({ isPremium: pdfp?.pipe });
-    /*! </fs_premium_only> */
-  }, [pdfp])
-
   const id = `block-${clientId}`;
 
   if (!file) {
@@ -38,9 +31,8 @@ function Edit(props) {
       <style>{additional?.CSS}</style>
       <Settings setModalOpen={setModalOpen} {...props} setPreset={setPreset} />
       <Viewer attributes={attributes} RichText={RichText} __={__} setAttributes={setAttributes} isBackend={true} isSelected={isSelected} id={id} />
-      {/*! <fs_premium_only> */}
-        {pdfp?.pipe && <>{modalOpen && <PresetModal preset={preset} setPreset={setPreset} setModalOpen={setModalOpen} {...props} id={id} />}</>}
-      {/*! </fs_premium_only> */}
+      {/* Saved block presets are Pro, so the modal is never mounted here. Kept in
+          place so the Pro build's PresetModal has a slot to land in. */}
     </div>
   );
 }

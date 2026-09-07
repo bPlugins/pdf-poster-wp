@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import isiOSDevice from "../../../../hooks/utils/isiOSDevice";
 
-export default function Header({ attributes, source, RichText, setAttributes, __, wrapper, previewSrc, showActions = true, showTitle = true, isImagesFlipbook = false }) {
+export default function Header({ attributes, source, RichText, setAttributes, __, wrapper, previewSrc, showActions = true, showTitle = true, isImagesFlipbook = false, onTrack }) {
   const { downloadButton, protect, downloadButtonText, fullscreenButton, fullscreenButtonText, showName, titleFontSize, title, adobeEmbedder, newWindow, actionsPosition } = attributes;
 
   useEffect(() => { }, []);
@@ -10,6 +10,8 @@ export default function Header({ attributes, source, RichText, setAttributes, __
   
 
   const manageDownload = (e) => {
+    onTrack?.("fullscreen");
+
     // Premium "open in new tab": let the anchor navigate.
     if (e.currentTarget.target !== "_self") {
       return;
@@ -56,7 +58,17 @@ export default function Header({ attributes, source, RichText, setAttributes, __
                   whatever file was picked earlier, so offering it would download the
                   wrong document. dFlip hides its own download control the same way. */}
               {downloadButton && !protect && !isImagesFlipbook && (
-                <a className="pdfp_download pdfp_download_btn button" download target="blank" href={source} rel="noreferrer">
+                <a
+                  className="pdfp_download pdfp_download_btn button"
+                  download
+                  target="blank"
+                  href={source}
+                  rel="noreferrer"
+                  // Reported, not intercepted: the anchor keeps its native behaviour and
+                  // the event is flushed immediately, because a download can unload the
+                  // page before the queue's normal pagehide flush would fire.
+                  onClick={() => onTrack?.("download")}
+                >
                   {(() => {
                     let label = "Download File"; 
                     label = downloadButtonText; 

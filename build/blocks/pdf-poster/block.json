@@ -213,6 +213,7 @@
       "default": {
         "enabled": false,
         "triggerType": "button",
+        "triggerAlignment": "center",
         "image": "",
         "imagePdfIcon": true,
         "imageHeight": "200px",
@@ -263,6 +264,18 @@
         "mailto": true,
         "position": "top"
       }
+    },
+    "posterId": {
+      "type": "number",
+      "default": 0
+    },
+    "trackingEnabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "trackDepth": {
+      "type": "boolean",
+      "default": false
     },
     "watermark": {
       "type": "object",

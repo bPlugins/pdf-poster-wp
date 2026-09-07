@@ -53,6 +53,11 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
 
     foreach ($blocks as $block) {
       if (isset($block['blockName']) && $block['blockName'] === 'pdfp/pdfposter') {
+        // Document Insights needs to know which saved poster this is, and a block stored
+        // in post_content has no idea -- it only knows its file. Stamping the id here is
+        // what lets the counts land on `p:<id>`, which is the key the PDF Posters
+        // columns and the editor's Analytics box both read.
+        $block['attrs']['posterId'] = (int) $id;
         return $block;
       }
     }
@@ -139,6 +144,11 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
       $title = ucwords(pathinfo($title, PATHINFO_FILENAME));
     }
 
+    // Settings > Quick Embedder > Fullscreen Button. This was hard-coded true, so the
+    // switcher on that screen could never do anything -- it is free now, so it has to
+    // actually reach the shortcode. An absent option keeps the old behaviour.
+    $fullscreen = Utils::pdfp_preset('view_fullscreen_btn', '1');
+
     return [
       "blockName" => "pdfp/pdfposter",
       "attrs" => [
@@ -153,7 +163,7 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
         'downloadButton' => $download_btn === 'true',
         'downloadButtonText' => esc_html($download_btn_text),
         'fullscreenButtonText' => esc_html($fullscreen_btn_text),
-        'fullscreenButton' => true
+        'fullscreenButton' => in_array($fullscreen, ['1', 1, true], true)
       ]
     ];
   }
