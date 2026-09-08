@@ -302,21 +302,6 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'dependency' => array('flipbook_source_type', '!=', 'images')
 					),
 					array(
-						'id' => 'download_btn_text',
-						'title' => __('Download Label', 'pdf-poster'),
-						'type' => 'text',
-						'desc' => __('Customize the text for the download button.', 'pdf-poster'),
-						'default' => Utils::pdfp_preset('preset_download_btn_text', 'Download File'),
-						// Gated on the source type as well as the toggle: an image-gallery
-						// viewer has no file to download, so Header suppresses the button
-						// and the label would have nothing to name. `true` because
-						// flipbook_source_type lives in the General section.
-						'dependency' => array(
-							array('show_download_btn', '==', '1', true),
-							array('flipbook_source_type', '!=', 'images', true),
-						)
-					),
-					array(
 						'id' => 'view_fullscreen_btn',
 						'title' => __('Fullscreen Button', 'pdf-poster'),
 						'type' => 'switcher',
@@ -332,6 +317,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'dependency' => array('view_fullscreen_btn', '==', '1', true)
 					),
 					Utils::pro_feature_list(array(
+						__('Customize Download Button Label', 'pdf-poster'),
 						__('Open Fullscreen in New Tab', 'pdf-poster'),
 						__('Custom Actions Position (Top/Bottom)', 'pdf-poster'),
 					)),

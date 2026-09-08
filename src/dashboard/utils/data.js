@@ -155,7 +155,7 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
-            version: '2.6.0 - 06 Sep 2026',
+            version: '2.6.0 - 09 Sep 2026',
             type: 'new',
             list: [
                 '<strong>New:</strong> Document Insights — see how many times every PDF was viewed and downloaded today, free, without adding a third-party analytics service. The figures stay in your own site.',

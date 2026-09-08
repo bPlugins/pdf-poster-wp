@@ -665,7 +665,7 @@
   padding: 20px;
   background: #f8faff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border-radius: 0;
   max-width: 700px;
 
   .shortcode-container {
@@ -673,7 +673,7 @@
     align-items: center;
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 0;
     padding: 10px 15px;
     gap: 15px;
     margin-bottom: 12px;
@@ -702,7 +702,7 @@
       color: #ffffff;
       border: none;
       padding: 8px 16px;
-      border-radius: 6px;
+      border-radius: 0;
       cursor: pointer;
       font-weight: 500;
       font-size: 13px;

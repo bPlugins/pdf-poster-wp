@@ -115,6 +115,7 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 				Utils::pro_feature_list(array(
 					__('Enable Printing', 'pdf-poster'),
 					__('Default Browser Viewer Support', 'pdf-poster'),
+					__('Custom Fullscreen Label', 'pdf-poster'),
 					__('Open Fullscreen in New Tab', 'pdf-poster'),
 					__('Advanced Content Protection (Disable Right-Click)', 'pdf-poster'),
 					__('Suppress Blocked Warning Alerts', 'pdf-poster'),
@@ -233,9 +234,9 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 	 * default into meta the first time a poster is saved, so existing posters keep
 	 * whatever they already have.
 	 *
-	 * Every field here is free, so there is no locked row: a preset is only worth
-	 * offering when the metabox field it defaults exists, and the ledger at the foot
-	 * names the defaults Pro adds along with the settings behind them.
+	 * No locked rows: a preset is only worth offering when the setting it defaults is
+	 * one this build can act on, and the ledger at the foot names the rest -- including
+	 * the two button-label defaults, which follow the labels themselves into Pro.
 	 */
 	public function preset() {
 		\CSF::createSection($this->option_prefix, array(
@@ -289,27 +290,11 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 					'desc' => __('Display a download button at the top of the viewer.', 'pdf-poster')
 				),
 				array(
-					'id' => 'preset_download_btn_text',
-					'title' => __('Download Label', 'pdf-poster'),
-					'type' => 'text',
-					'default' => 'Download File',
-					'desc' => __('Custom text for the download button.', 'pdf-poster'),
-					'dependency' => array('preset_show_download_btn', '==', '1')
-				),
-				array(
 					'id' => 'preset_view_fullscreen_btn',
 					'title' => __('Fullscreen Button', 'pdf-poster'),
 					'type' => 'switcher',
 					'default' => true,
 					'desc' => __('Display a fullscreen toggle button at the top of the viewer.', 'pdf-poster')
-				),
-				array(
-					'id' => 'preset_fullscreen_btn_text',
-					'title' => __('Fullscreen Label', 'pdf-poster'),
-					'type' => 'text',
-					'default' => 'View Fullscreen',
-					'desc' => __('Custom text for the fullscreen button.', 'pdf-poster'),
-					'dependency' => array('preset_view_fullscreen_btn', '==', '1')
 				),
 				array(
 					'id' => 'preset_open_links_in_new_tab',
@@ -354,9 +339,11 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 					'desc' => __('Enable Google Doc Viewer as a fallback (Recommended for Edge).', 'pdf-poster')
 				),
 				// The defaults Pro adds here, because it adds the settings they default.
-				// Listed rather than shown as locked rows: a preset with no metabox field
-				// behind it is a switch wired to nothing.
+				// Listed rather than shown as locked rows: a preset with no field behind
+				// it is a switch wired to nothing.
 				Utils::pro_feature_list(array(
+					__('Download Button Label Default', 'pdf-poster'),
+					__('Fullscreen Button Label Default', 'pdf-poster'),
 					__('Reader Mode Default', 'pdf-poster'),
 					__('Thumbnails & Auto-Open Sidebar Defaults', 'pdf-poster'),
 					__('Content Protection Defaults (Right-Click, Warning Alerts)', 'pdf-poster'),
