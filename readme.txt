@@ -331,7 +331,7 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 == Changelog ==
 
-= 2.6.0 - 09 Sep 2026 =
+= 2.6.0 - 10 Sep 2026 =
 * **New:** Document Insights — see how many times every PDF was viewed and downloaded today, free, without adding a third-party analytics service. The figures stay in your own site.
 * **New:** Analytics screen — a new Analytics item under PDF Poster showing today's figures, and with Pro a 7, 30 or 90 day view: views and downloads over time, change against the previous period, download rate, busiest day, your best-performing documents ranked, and CSV export.
 * **New:** Per-document reports — open any single document's own trend and totals from the editor, as a link you can bookmark or share with your team.

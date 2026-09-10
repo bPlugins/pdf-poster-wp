@@ -1,13 +1,7 @@
 const slug = 'pdf-poster';
 
-/**
- * Plugin URL, localised as `pdfpDashboard.dir` in PDFP_Admin::adminEnqueueScripts().
- * Falls back to an empty string so the module stays importable outside the dashboard
- * bundle (tests, storybook, the block editor).
- */
 const pluginUrl = (typeof window !== 'undefined' && window.pdfpDashboard?.dir) || '';
 
-/** Overview artwork shipped with the plugin, so the Welcome page never waits on a remote host. */
 const overviewImage = `${pluginUrl}assets/images/pdf-poster-overview.png`;
 
 export const gutenbergTabIcon = (
@@ -155,7 +149,7 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
-            version: '2.6.0 - 09 Sep 2026',
+            version: '2.6.0 - 10 Sep 2026',
             type: 'new',
             list: [
                 '<strong>New:</strong> Document Insights — see how many times every PDF was viewed and downloaded today, free, without adding a third-party analytics service. The figures stay in your own site.',
@@ -255,7 +249,7 @@ export const welcomeInfo = (adminUrl) => ({
             ]
         },
         {
-            version: '2.5.1 - 26 April 2026', 
+            version: '2.5.1 - 26 April 2026',
             type: 'fixed',
             list: [
                 'Fixed: PDFs hosted on external domains or CDNs were not loading at all',
