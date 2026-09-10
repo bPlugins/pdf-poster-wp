@@ -170,10 +170,14 @@ export const welcomeInfo = (adminUrl) => ({
                 '<strong>New:</strong> Private by default. No IP address is stored, no cookie is set, and this release keeps daily totals only — in your own database, never sent anywhere.',
                 '<strong>New:</strong> Nothing to import if you upgrade later — every day is recorded from the start, so Pro reads back the history your site has already built.',
                 '<strong>New:</strong> Popup (lightbox) viewer, a text watermark with three ready-made themes, per-block Class and CSS, a site-wide Custom CSS box and the Preset defaults screen are all free in this release.',
+                '<strong>New:</strong> WPBakery Page Builder — *PDF Poster* and *PDF Embed (by URL)* are now native builder elements, and both draw live in the frontend editor instead of sitting on “Loading Viewer…”. Any builder that previews over AJAX now loads the viewer first time, with no refresh.',
                 '<strong>Update:</strong> The shortcode columns on the PDF Posters list now show the shortcode itself in a click-to-copy chip, instead of a button whose label hid the value it copied.',
                 '<strong>Update:</strong> Links out of a report open in a new tab, so your date range and filters stay where you left them.',
                 '<strong>Fix:</strong> Content protection no longer shows a developer-tools warning while a page is open in Elementor, Divi, Bricks, Beaver Builder, Oxygen or Breakdance. Editing behaves normally again, including Ctrl+S to save and right-click.',
-                '<strong>Fix:</strong> The plugin dashboard requested a stylesheet that is never generated, producing a 404 on every load.'
+                '<strong>Fix:</strong> The plugin dashboard requested a stylesheet that is never generated, producing a 404 on every load.',
+                '<strong>Fix:</strong> “Missing PDF file.” after a site move — saved links are repaired against the current media library, so posters survive a domain, HTTPS or staging change. Filenames holding a percent sign or an encoded space load too.',
+                '<strong>Fix:</strong> Retry reloads the document rather than the whole page, and a file that really is gone now names the address that failed.',
+                '<strong>Fix:</strong> PDF Poster no longer takes over blocks belonging to other plugins that tag their markup the same way.'
             ]
         },
         {

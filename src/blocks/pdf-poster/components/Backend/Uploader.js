@@ -18,7 +18,9 @@ const Uploader = ({ setAttributes }) => {
     // createVideo();
     setIsValid(true);
     setSource("");
-    setAttributes({ file: source });
+    // A hand-typed URL has no attachment behind it, so clear any id inherited from a
+    // previously picked file rather than leaving it to override the new URL.
+    setAttributes({ file: source, fileId: 0 });
   };
 
   const validURL = (str) => {
@@ -69,7 +71,7 @@ const Uploader = ({ setAttributes }) => {
         <MediaUploadCheck>
           <MediaUpload
             allowedTypes={["application/pdf"]}
-            onSelect={(file) => setAttributes({ file: file.url })}
+            onSelect={(file) => setAttributes({ file: file.url, fileId: file.id || 0 })}
             render={({ open }) => (
               <Button isPrimary onClick={open}>
                 {__("Upload", "pdfp")}

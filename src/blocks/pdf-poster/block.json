@@ -42,6 +42,10 @@
       "type": "string",
       "default": ""
     },
+		"fileId": {
+			"type": "number",
+			"default": 0
+		},
     "title": {
       "type": "string",
       "default": ""

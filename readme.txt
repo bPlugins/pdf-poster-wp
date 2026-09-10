@@ -344,10 +344,14 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 * New: Private by default. No IP address is stored, no cookie is set, and this release keeps daily totals only — in your own database, never sent anywhere.
 * New: Nothing to import if you upgrade later — every day is recorded from the start, so Pro reads back the history your site has already built.
 * New: Popup (lightbox) viewer, a text watermark with three ready-made themes, per-block Class and CSS, a site-wide Custom CSS box, the Preset defaults screen and the Fullscreen Button toggle are all free in this release.
+* New: WPBakery Page Builder — *PDF Poster* and *PDF Embed (by URL)* are now native builder elements, and both draw live in the frontend editor instead of sitting on “Loading Viewer…”. Any builder that previews over AJAX now loads the viewer first time, with no refresh.
 * Update: The shortcode columns on the PDF Posters list now show the shortcode itself in a click-to-copy chip, instead of a button whose label hid the value it copied.
 * Update: Links out of a report open in a new tab, so your date range and filters stay where you left them.
 * Fix: Content protection no longer shows a developer-tools warning while a page is open in Elementor, Divi, Bricks, Beaver Builder, Oxygen or Breakdance. Editing behaves normally again, including Ctrl+S to save and right-click.
 * Fix: The plugin dashboard requested a stylesheet that is never generated, producing a 404 on every load.
+* Fix: “Missing PDF file.” after a site move — saved links are repaired against the current media library, so posters survive a domain, HTTPS or staging change. Filenames holding a percent sign or an encoded space load too.
+* Fix: Retry reloads the document rather than the whole page, and a file that really is gone now names the address that failed.
+* Fix: PDF Poster no longer takes over blocks belonging to other plugins that tag their markup the same way.
 
 = 2.5.6 - 31 Aug 2026 =
 * New: Watermark & Branding — stamp a text or logo mark over any viewer, with six ready-made themes that set the angle, repeat, weight and blend for you.

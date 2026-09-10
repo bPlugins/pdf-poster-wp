@@ -128,6 +128,22 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
 
                     containerRef.current.dataset.dflipInitialized = 'true';
                     flipbookRef.current = window.jQuery(containerRef.current).flipBook(dflipSource, options);
+
+                    // Publish the instance on the container element. The watermark layer
+                    // needs dFlip's own book geometry (viewer.leftSheetWidth/Height/Top)
+                    // to sit the mark on the pages instead of the whole viewer -- in 3D
+                    // mode the pages are drawn into a canvas, so there is no page box in
+                    // the DOM to attach to. Slider needs the same handle for a different
+                    // reason: viewer.pages is the only sound source of a page's number
+                    // there, so Pages ("First page only") depends on it too.
+                    try {
+                        const inst = flipbookRef.current;
+                        containerRef.current.__pdfpFlipbook = (inst && (inst[0] || inst)) || null;
+                    } catch (e) {
+                        // Geometry is optional: without it the watermark layer covers the
+                        // whole viewer instead of just the book.
+                        console.warn('PDF Poster: could not publish flipbook geometry', e);
+                    }
                 }
             } catch (error) {
                 console.error('Error loading dFlip:', error);

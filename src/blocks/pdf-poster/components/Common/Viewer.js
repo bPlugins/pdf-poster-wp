@@ -65,14 +65,22 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
     let iframeSrc = "";
     const showSidePanel = window.innerWidth >= 768 ? sidebarOpen : false;
 
-    const getSafeEncodedUrl = (url) => {
-      try {
-        // Decode first to avoid double encoding, then encode
-        return encodeURIComponent(decodeURIComponent(url));
-      } catch (e) {
-        return encodeURIComponent(url);
-      }
-    };
+    /*
+      Encode a URL for use as the value of the viewer's `?file=` parameter.
+
+      Exactly one encoding pass, and no decoding first. `toSiteRelativeUrl` returns
+      `URL.pathname`, which the URL parser has ALREADY percent-encoded, so decoding
+      before re-encoding is not a "avoid double encoding" guard -- it silently rewrites
+      any filename whose real name contains a percent escape. A file actually named
+      `report%20v2.pdf` arrives here as `report%2520v2.pdf`, the round trip hands PDF.js
+      `report%20v2.pdf`, the server decodes that to `report v2.pdf`, and the request
+      404s -- which PDF.js reports as "Missing PDF file."
+
+      encodeURIComponent alone is correct: it escapes the `%`, `?`, `&` and `#` that
+      would otherwise break out of the query parameter, and PDF.js's single
+      decodeURIComponent on the other side gives back the exact path we started with.
+    */
+    const getSafeEncodedUrl = (url) => encodeURIComponent(url ?? "");
     
 
 

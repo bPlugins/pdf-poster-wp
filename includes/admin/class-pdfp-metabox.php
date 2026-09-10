@@ -506,13 +506,17 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'title' => __('Apply To', 'pdf-poster'),
 						'type' => 'checkbox',
 						'inline' => true,
+						// Printing and Downloads are stored and carried through the resolver
+						// already, but nothing writes the mark into either output yet -- that
+						// lands in the next release. Labelled here the same way the block
+						// sidebar labels them, so the two editors do not disagree.
 						'options' => array(
 							'screen'   => __('Viewer', 'pdf-poster'),
-							'print'    => __('Printing', 'pdf-poster'),
-							'download' => __('Downloads', 'pdf-poster'),
+							'print'    => __('Printing · next release', 'pdf-poster'),
+							'download' => __('Downloads · next release', 'pdf-poster'),
 						),
 						'default' => array('screen'),
-						'desc' => __('Write the mark into printouts and downloaded copies, not just the viewer.', 'pdf-poster'),
+						'desc' => __('The viewer is marked today. Writing the mark into printouts and downloaded copies arrives in the next release.', 'pdf-poster'),
 						'dependency' => array('watermark_enable', '==', '1'),
 					),
 					array(

@@ -3,6 +3,7 @@
 namespace PDFPro\Base;
 
 use PDFPro\Helper\PDFP_Functions as Utils;
+use PDFPro\Base\PDFP_EnqueueAssets as Assets;
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -32,10 +33,10 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
       return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: Invalid PDF Poster ID.</p>' : '';
     }
 
-    // Enqueue blocks assets
-    wp_enqueue_script('pdfp-public');
-    wp_enqueue_style('pdfp-public');
-    wp_enqueue_script('pdfp-pdfposter-view-script');
+    // One call, because the handles have to be asked for the same way everywhere: a
+    // page builder rendering this shortcode over admin-ajax never ran
+    // `wp_enqueue_scripts`, so the helper (re)registers before enqueuing.
+    Assets::enqueue_viewer_assets();
 
     return render_block($this->resolve_block($id, $post));
   }
@@ -83,10 +84,10 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
       return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: Invalid PDF Poster ID.</p>' : '';
     }
 
-    // Enqueue blocks assets
-    wp_enqueue_script('pdfp-public');
-    wp_enqueue_style('pdfp-public');
-    wp_enqueue_script('pdfp-pdfposter-view-script');
+    // One call, because the handles have to be asked for the same way everywhere: a
+    // page builder rendering this shortcode over admin-ajax never ran
+    // `wp_enqueue_scripts`, so the helper (re)registers before enqueuing.
+    Assets::enqueue_viewer_assets();
 
     $block = $this->resolve_block($id, $post);
     $block['attrs']['onlyPDF'] = true;
@@ -104,10 +105,10 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
 
     $block = $this->pdf_embed_to_block($attrs);
 
-    // Enqueue blocks assets
-    wp_enqueue_script('pdfp-public');
-    wp_enqueue_style('pdfp-public');
-    wp_enqueue_script('pdfp-pdfposter-view-script');
+    // One call, because the handles have to be asked for the same way everywhere: a
+    // page builder rendering this shortcode over admin-ajax never ran
+    // `wp_enqueue_scripts`, so the helper (re)registers before enqueuing.
+    Assets::enqueue_viewer_assets();
 
     return render_block($block);
   }

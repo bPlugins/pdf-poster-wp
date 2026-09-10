@@ -222,13 +222,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var AVG_ADVANCE = 0.62;
     var IMAGE_RATIO = 0.32;
     var THEMES = {
-      confidential: { types: ["text"], markType: "text", coverage: "normal", angle: "diagonal", strength: "subtle", size: "medium", color: "#808080", weight: 700, tracking: 2, upper: true, position: "center" },
-      draft: { types: ["text"], markType: "text", coverage: "off", angle: "diagonal", strength: "strong", size: "large", color: "#AF4A3D", weight: 700, tracking: 3, upper: true, position: "center", outline: true },
-      wash: { types: ["text"], markType: "text", coverage: "dense", angle: "diagonal", strength: "faint", size: "small", color: "#808080", weight: 700, tracking: 1, upper: true, position: "center" },
+      confidential: { types: ["text"], markType: "text", coverage: "normal", angle: "diagonal", strength: "subtle", size: "medium", color: "#808080", weight: 700, tracking: 2, position: "center" },
+      draft: { types: ["text"], markType: "text", coverage: "off", angle: "diagonal", strength: "strong", size: "large", color: "#AF4A3D", weight: 700, tracking: 3, position: "center", outline: true },
+      wash: { types: ["text"], markType: "text", coverage: "dense", angle: "diagonal", strength: "faint", size: "small", color: "#808080", weight: 700, tracking: 1, position: "center" },
       "brand-corner": { types: ["image"], markType: "image", coverage: "off", angle: "flat", strength: "solid", size: "small", imageStyle: "original", position: "bottom right" },
       "logo-wash": { types: ["image"], markType: "image", coverage: "normal", angle: "diagonal", strength: "faint", size: "medium", imageStyle: "grayscale", position: "center" },
-      "logo-caption": { types: ["both"], markType: "both", coverage: "off", angle: "diagonal", strength: "subtle", size: "large", imageStyle: "original", color: "#808080", weight: 600, tracking: 2, upper: true, position: "center" },
-      custom: { types: ["text", "image", "both"], coverage: "normal", angle: "diagonal", strength: "subtle", size: "medium", color: "#808080", imageStyle: "grayscale", weight: 700, tracking: 2, upper: true, position: "center" }
+      "logo-caption": { types: ["both"], markType: "both", coverage: "off", angle: "diagonal", strength: "subtle", size: "large", imageStyle: "original", color: "#808080", weight: 600, tracking: 2, position: "center" },
+      custom: { types: ["text", "image", "both"], coverage: "normal", angle: "diagonal", strength: "subtle", size: "medium", color: "#808080", imageStyle: "grayscale", weight: 700, tracking: 2, position: "center" }
     };
     var FILTERS = {
       original: null,
@@ -438,7 +438,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (hasText) {
         var ty = r.markType === "both" ? th / 2 + (m.markH / 2 - fs * 0.6) : th / 2;
-        var val = r.upper === false ? text : String(text).toUpperCase();
+        // Drawn verbatim: the mark is the text the user typed, in the case they typed it.
+        var val = String(text);
         var stroke = r.outline || r.opacity > 0.35
           ? ' stroke="#ffffff" stroke-width="' + Math.max(1, fs * 0.03).toFixed(2) + '" paint-order="stroke"'
           : "";

@@ -48,7 +48,17 @@ $pdfp_block_class_name = 'wp-block-pdfp-pdf-poster ' . $pdfp_class_name . ' alig
 $pdfp_popup_options = $pdfp_attributes['popupOptions'] ?? [];
 $pdfp_is_popup_enabled = isset($pdfp_popup_options['enabled']) ? $pdfp_popup_options['enabled'] : false;
 
-$pdfp_file = $pdfp_attributes['file'] ?? '';
+// Resolve before anything reads it. A block stores an absolute URL captured when the
+// file was picked; after a domain change, an HTTPS switch or a clone to staging that URL
+// 404s and PDF.js reports it as "Missing PDF file." with no clue why. The resolver
+// rebuilds it from the attachment id when the editor recorded one, and otherwise rebases
+// a stale uploads URL onto this install -- keeping it only if the file is really there.
+$pdfp_attributes['file'] = \PDFPro\Helper\PDFP_Functions::pdfp_resolve_file_url(
+    $pdfp_attributes['file'] ?? '',
+    $pdfp_attributes['fileId'] ?? 0
+);
+
+$pdfp_file = $pdfp_attributes['file'];
 $pdfp_is_dropbox = strpos($pdfp_file, 'dropbox.com') !== false;
 
 // Document Insights: STAMP ONLY. Nothing is counted here on purpose -- this file runs

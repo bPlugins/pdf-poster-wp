@@ -134,7 +134,7 @@ const Settings = (props) => {
           ]}
         />
         <ToolbarGroup>
-          <ToolbarButton icon={'edit'} label="Reset" onClick={() => setAttributes({ file: '' })} />
+          <ToolbarButton icon={'edit'} label="Reset" onClick={() => setAttributes({ file: '', fileId: 0 })} />
         </ToolbarGroup>
       </BlockControls>
     </>

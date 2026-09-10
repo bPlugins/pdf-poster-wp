@@ -378,6 +378,16 @@
        margin: 0;
      }
 
+     // The failing URL, shown to editors under the message. Long, unbreakable and
+     // secondary to the sentence above it, so it wraps anywhere and reads quieter.
+     .pdfp_error_detail {
+       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+       font-size: 12px;
+       color: #6c757d;
+       word-break: break-all;
+       margin: -8px 0 0;
+     }
+
      .pdfp_retry_btn {
        background: #007bff;
        color: #fff;

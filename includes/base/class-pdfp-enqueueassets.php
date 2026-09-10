@@ -32,19 +32,35 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             wp_add_inline_script('dflip-script', 'window.dFlipLocation = "' . PDFPRO_PLUGIN_DIR . 'assets/dflip/";', 'before');
             wp_register_style('dflip-style', PDFPRO_PLUGIN_DIR . 'assets/dflip/css/dflip.min.css', array(), PDFPRO_VER);
         }
+
+        self::register_public_assets();
     }
 
     /**
-     * Enqueue public assets
+     * Register (never enqueue) the viewer handles.
+     *
+     * This has to happen on `init`, not on `wp_enqueue_scripts`. Page builders render a
+     * single element through admin-ajax, where `wp_enqueue_scripts` never fires --
+     * WPBakery's Vc_Frontend_Editor::renderShortcodes() calls enqueueRequired(true),
+     * which skips that action outright. Registering there meant every enqueue call the
+     * shortcode makes during such a render was a silent no-op: the markup arrived, the
+     * viewer script and the `pdfp` global never did, and the block sat on its
+     * "Loading Viewer..." placeholder forever.
+     *
+     * `init` runs for every request type -- front end, admin, admin-ajax, REST -- so one
+     * registration point covers all of them. Registering is cheap and prints nothing;
+     * only the enqueue calls decide what ships.
      */
-    public function publicAssets() {
-        wp_enqueue_style('pdfp-public',  PDFPRO_PLUGIN_DIR . 'build/public.css', array(), PDFPRO_VER);
+    public static function register_public_assets() {
+        if (wp_script_is('pdfp-public', 'registered')) {
+            return;
+        }
+
+        wp_register_style('pdfp-public',  PDFPRO_PLUGIN_DIR . 'build/public.css', array(), PDFPRO_VER);
         wp_register_script('pdfp-public', PDFPRO_PLUGIN_DIR . 'build/public.js', array('jquery'), PDFPRO_VER, true);
         wp_register_script('pdfp-pdfposter-view-script', PDFPRO_PLUGIN_DIR . 'build/blocks/pdf-poster/view.js', array('react', 'react-dom', 'jquery'), PDFPRO_VER, true);
 
         // Premium assets removed
-
-        $option = get_option('fpdf_option', []);
 
         $localize_data = [
             'dir' => PDFPRO_PLUGIN_DIR,
@@ -54,6 +70,10 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             // Capability, not entitlement: tells the JS whether the flipbook engine
             // exists in this build so it can fall back instead of rendering an empty box.
             'hasFlipbookEngine' => Utils::pdfp_has_flipbook_engine(),
+            // Whether the visitor may edit posts. Only used to decide how much detail a
+            // load failure is allowed to show -- a visitor gets "this document could not
+            // be loaded", an editor gets the URL that 404'd.
+            'canEdit' => current_user_can('edit_posts'),
             // Document Insights. The endpoint is public and the flag is a plain bool:
             // both are safe in cached HTML, which is the point -- nothing here is a
             // nonce that could expire inside a cached page.
@@ -68,18 +88,42 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
         // Premium data localization removed
 
         wp_localize_script('pdfp-public', 'pdfp', $localize_data);
-
         wp_localize_script('pdfp-pdfposter-view-script', 'pdfp', $localize_data);
-        
-        
+    }
+
+    /**
+     * Enqueue everything the front-end viewer needs.
+     *
+     * The single entry point for shortcodes, blocks and builder integrations, so no
+     * caller has to know the handle names or the registration order.
+     */
+    public static function enqueue_viewer_assets() {
+        // A builder rendering through admin-ajax skipped `wp_enqueue_scripts`, and an
+        // integration can run before `init` in an unusual boot order. Registration is
+        // idempotent, so ask for it rather than assume it happened.
+        self::register_public_assets();
+
+        wp_enqueue_style('pdfp-public');
+        wp_enqueue_script('pdfp-public');
+        wp_enqueue_script('pdfp-pdfposter-view-script');
+    }
+
+    /**
+     * Enqueue public assets
+     */
+    public function publicAssets() {
+        self::register_public_assets();
+
+        // The stylesheet is unconditional: it also covers markup printed by themes and
+        // builders that never reach a shortcode callback.
+        wp_enqueue_style('pdfp-public');
+
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $is_elementor_preview = isset($_GET['elementor-preview']) || (isset($_REQUEST['action']) && $_REQUEST['action'] === 'elementor_ajax') || did_action('elementor/frontend/after_enqueue_scripts') || did_action('elementor/preview/enqueue_scripts');
 
         if ($is_elementor_preview) {
             // Premium elementor script removed
-            wp_enqueue_script('pdfp-public');
-            wp_enqueue_script('pdfp-pdfposter-view-script');
-            wp_enqueue_style('pdfp-public');
+            self::enqueue_viewer_assets();
         }
     }
 

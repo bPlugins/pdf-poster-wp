@@ -42,6 +42,97 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
         }
 
         /**
+         * Resolve a stored PDF reference to a URL this site can actually serve.
+         *
+         * Posters store an absolute URL and nothing else, which is why "some files"
+         * 404 while others load: the moment a site changes domain, switches to HTTPS,
+         * moves to or out of a subdirectory, or is cloned to staging, every URL saved
+         * before the move points at a host that no longer serves that file. PDF.js
+         * turns that 404 into "Missing PDF file." with no hint of the cause.
+         *
+         * Two repairs, cheapest first:
+         *
+         *  1. An attachment id, when the editor recorded one, is authoritative --
+         *     wp_get_attachment_url() rebuilds the URL from wherever the media lives
+         *     today, so the embed survives any move.
+         *  2. Otherwise, rebase a stale uploads URL onto the current uploads baseurl
+         *     and keep it only if the file is really on disk. That covers every poster
+         *     saved before ids were stored, and one file_exists() is the whole cost.
+         *
+         * Anything we cannot prove is ours -- a CDN, Dropbox, Google Drive, a URL
+         * outside the uploads tree -- is returned untouched.
+         *
+         * @param string $url           URL as stored.
+         * @param int    $attachment_id Attachment id, when one was recorded.
+         * @return string
+         */
+        public static function pdfp_resolve_file_url($url, $attachment_id = 0) {
+            $attachment_id = (int) $attachment_id;
+
+            if ($attachment_id > 0 && 'attachment' === get_post_type($attachment_id)) {
+                $resolved = wp_get_attachment_url($attachment_id);
+                if (is_string($resolved) && '' !== $resolved) {
+                    return $resolved;
+                }
+            }
+
+            if (!is_string($url) || '' === $url) {
+                return $url;
+            }
+
+            return self::pdfp_rebase_uploads_url($url);
+        }
+
+        /**
+         * Point a stale uploads URL at this install's uploads directory.
+         *
+         * Only the path *below* the uploads root is trusted from the stored URL; the
+         * scheme, host and uploads root all come from wp_get_upload_dir(). The rebased
+         * URL is returned only when the file is present on disk, so a genuinely deleted
+         * file still surfaces as the 404 it is instead of being papered over.
+         */
+        private static function pdfp_rebase_uploads_url($url) {
+            $uploads = wp_get_upload_dir();
+
+            if (!empty($uploads['error']) || empty($uploads['baseurl']) || empty($uploads['basedir'])) {
+                return $url;
+            }
+
+            $path = wp_parse_url($url, PHP_URL_PATH);
+            if (!is_string($path) || '' === $path) {
+                return $url;
+            }
+
+            // Everything after the last "/uploads/" segment. Matching on the segment
+            // rather than on the current baseurl is what lets a URL from a differently
+            // laid-out install (subdirectory, renamed content dir, multisite path) be
+            // recognised at all.
+            $marker = '/uploads/';
+            $at = strrpos($path, $marker);
+            if (false === $at) {
+                return $url;
+            }
+
+            $relative = ltrim(substr($path, $at + strlen($marker)), '/');
+            if ('' === $relative || false !== strpos($relative, '..')) {
+                return $url;
+            }
+
+            $rebased = trailingslashit($uploads['baseurl']) . $relative;
+            if ($rebased === $url) {
+                return $url;
+            }
+
+            // rawurldecode: the stored URL is encoded, the filesystem is not.
+            $candidate = trailingslashit($uploads['basedir']) . rawurldecode($relative);
+            if (!file_exists($candidate)) {
+                return $url;
+            }
+
+            return $rebased;
+        }
+
+        /**
          * scrambel data removed (premium only)
          */
         public static function scramble__premium_only($do = 'encode', $data = '') {
@@ -106,7 +197,10 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             $attrs = [
                 'uniqueId' => wp_unique_id('pdf-poster'),
                 'posterId' => (int) $id,
-                'file' => $meta('source', ''),
+                // Resolved rather than echoed: the metabox stores whatever absolute URL
+                // the media modal handed it, which stops being reachable the moment the
+                // site moves. See pdfp_resolve_file_url().
+                'file' => self::pdfp_resolve_file_url($meta('source', ''), (int) $meta('source_id', 0, false)),
                 'title' => get_the_title($id),
                 'height' => $responsive_height,
                 'width' => $responsive_width,
@@ -1264,6 +1358,48 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
         }
 
         /**
+         * Who is actually making this request?
+         *
+         * Not the same question as is_user_logged_in(), and the difference is why
+         * "Exclude Logged-in Editors" silently did nothing.
+         *
+         * The beacon posts to a public REST route carrying cookies but NO nonce -- on
+         * purpose, because a nonce baked into cached HTML expires and takes counting
+         * down with it. But core's rest_cookie_check_errors() treats a nonce-less
+         * request as anonymous and calls wp_set_current_user(0) during
+         * authentication, before any route callback runs. So by the time the track
+         * endpoint asks, an administrator's request looks exactly like a stranger's:
+         * is_user_logged_in() is false, current_user_can() is false, and every editor
+         * on the site was being counted as an audience.
+         *
+         * Reading the logged-in cookie directly answers the question core threw away.
+         * It is a READ, never a login -- nothing is written to the session, no
+         * capability is granted, and the answer is only ever used to SUPPRESS a
+         * count. Whether the request is authorised does not enter into it: the route
+         * grants nothing, so there is nothing here for a forged request to gain.
+         *
+         * @return int User id, or 0 for a genuine visitor.
+         */
+        public static function pdfp_current_visitor_id()
+        {
+            $user_id = get_current_user_id();
+            if ($user_id > 0) {
+                return $user_id;
+            }
+
+            if (!function_exists('wp_validate_auth_cookie')) {
+                return 0;
+            }
+
+            // '' means "read it out of $_COOKIE"; the scheme picks LOGGED_IN_COOKIE,
+            // which is the one present on a plain front-end request over either
+            // protocol. Expiry and session token are validated for us.
+            $user_id = (int) wp_validate_auth_cookie('', 'logged_in');
+
+            return $user_id > 0 ? $user_id : 0;
+        }
+
+        /**
          * Should this particular request be counted?
          *
          * Called by the endpoint, not by render, so it can see the real visitor rather
@@ -1285,9 +1421,16 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             }
 
             // Staff previewing their own site are not an audience. Default on.
+            //
+            // Resolved through pdfp_current_visitor_id() rather than current_user_can(),
+            // because this runs inside a nonce-less REST request where core has already
+            // reset the current user to 0 -- see that method.
             $exclude_editors = self::pdfp_preset('pdfp_tracking_exclude_editors', '1') === '1';
-            if ($exclude_editors && is_user_logged_in() && current_user_can('edit_posts')) {
-                return false;
+            if ($exclude_editors) {
+                $pdfp_user_id = self::pdfp_current_visitor_id();
+                if ($pdfp_user_id > 0 && user_can($pdfp_user_id, 'edit_posts')) {
+                    return false;
+                }
             }
 
             if (self::pdfp_preset('pdfp_tracking_respect_dnt', '0') === '1') {
@@ -1394,14 +1537,14 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                     'types' => array('text'),
                     'markType' => 'text',  'coverage' => 'normal', 'angle' => 'diagonal',
                     'strength' => 'subtle', 'size' => 'medium', 'color' => '#808080',
-                    'weight' => 700, 'tracking' => 2, 'upper' => true, 'position' => 'center',
+                    'weight' => 700, 'tracking' => 2, 'position' => 'center',
                 ),
                 'draft' => array(
                     'label' => __('Draft Stamp', 'pdf-poster'),
                     'types' => array('text'),
                     'markType' => 'text',  'coverage' => 'off', 'angle' => 'diagonal',
                     'strength' => 'strong', 'size' => 'large', 'color' => '#AF4A3D',
-                    'weight' => 700, 'tracking' => 3, 'upper' => true, 'position' => 'center',
+                    'weight' => 700, 'tracking' => 3, 'position' => 'center',
                     'outline' => true,
                 ),
                 'wash' => array(
@@ -1409,7 +1552,7 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                     'types' => array('text'),
                     'markType' => 'text',  'coverage' => 'dense', 'angle' => 'diagonal',
                     'strength' => 'faint', 'size' => 'small', 'color' => '#808080',
-                    'weight' => 700, 'tracking' => 1, 'upper' => true, 'position' => 'center',
+                    'weight' => 700, 'tracking' => 1, 'position' => 'center',
                 ),
                 'brand-corner' => array(
                     'label' => __('Brand Corner', 'pdf-poster'),
@@ -1430,15 +1573,14 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                     'types' => array('both'),
                     'markType' => 'both',  'coverage' => 'off', 'angle' => 'diagonal',
                     'strength' => 'subtle', 'size' => 'large', 'imageStyle' => 'original',
-                    'color' => '#808080', 'weight' => 600, 'tracking' => 2, 'upper' => true,
-                    'position' => 'center',
+                    'color' => '#808080', 'weight' => 600, 'tracking' => 2, 'position' => 'center',
                 ),
                 'custom' => array(
                     'label' => __('Custom', 'pdf-poster'),
                     'types' => array('text', 'image', 'both'),
                     'coverage' => 'normal', 'angle' => 'diagonal', 'strength' => 'subtle',
                     'size' => 'medium', 'color' => '#808080', 'imageStyle' => 'grayscale',
-                    'weight' => 700, 'tracking' => 2, 'upper' => true, 'position' => 'center',
+                    'weight' => 700, 'tracking' => 2, 'position' => 'center',
                 ),
             );
 

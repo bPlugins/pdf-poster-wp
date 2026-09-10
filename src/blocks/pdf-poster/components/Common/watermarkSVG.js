@@ -35,7 +35,11 @@ export const DENSITY = { sparse: 1.9, normal: 1.4, dense: 1.08 };
 
 export const ANGLE = { diagonal: -45, steep: -65, flat: 0, upright: -90 };
 
-/** Mean advance per character for Helvetica Bold uppercase, in em. Empirical. */
+/**
+ * Mean advance per character for Helvetica Bold, in em. Empirical, measured on
+ * uppercase -- the widest case -- so a lowercase mark is sized a shade conservatively
+ * rather than running past the page edge.
+ */
 const AVG_ADVANCE = 0.62;
 
 /** Height of the image mark relative to its width, when we can't measure the asset. */
@@ -142,17 +146,17 @@ export const THEMES = {
   confidential: {
     types: ["text"], markType: "text", coverage: "normal", angle: "diagonal",
     strength: "subtle", size: "medium", color: "#808080",
-    weight: 700, tracking: 2, upper: true, position: "center",
+    weight: 700, tracking: 2, position: "center",
   },
   draft: {
     types: ["text"], markType: "text", coverage: "off", angle: "diagonal",
     strength: "strong", size: "large", color: "#AF4A3D",
-    weight: 700, tracking: 3, upper: true, position: "center", outline: true,
+    weight: 700, tracking: 3, position: "center", outline: true,
   },
   wash: {
     types: ["text"], markType: "text", coverage: "dense", angle: "diagonal",
     strength: "faint", size: "small", color: "#808080",
-    weight: 700, tracking: 1, upper: true, position: "center",
+    weight: 700, tracking: 1, position: "center",
   },
   "brand-corner": {
     types: ["image"], markType: "image", coverage: "off", angle: "flat",
@@ -165,12 +169,12 @@ export const THEMES = {
   "logo-caption": {
     types: ["both"], markType: "both", coverage: "off", angle: "diagonal",
     strength: "subtle", size: "large", imageStyle: "original", color: "#808080",
-    weight: 600, tracking: 2, upper: true, position: "center",
+    weight: 600, tracking: 2, position: "center",
   },
   custom: {
     types: ["text", "image", "both"], coverage: "normal", angle: "diagonal",
     strength: "subtle", size: "medium", color: "#808080", imageStyle: "grayscale",
-    weight: 700, tracking: 2, upper: true, position: "center",
+    weight: 700, tracking: 2, position: "center",
   },
 };
 
@@ -444,7 +448,8 @@ export const buildWatermarkSVG = (cfg, pageW, pageH, opts = {}) => {
 
   if (hasText) {
     const ty = r.markType === "both" ? th / 2 + (m.markH / 2 - fontSize * 0.6) : th / 2;
-    const value = r.upper === false ? text : String(text).toUpperCase();
+    // Drawn verbatim: the mark is the text the user typed, in the case they typed it.
+    const value = String(text);
     // A contrast stroke is only worth its cost where the mark is dense enough to need it.
     const stroke =
       r.outline || r.opacity > 0.35
