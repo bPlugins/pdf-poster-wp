@@ -146,10 +146,10 @@ const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }
             </div>
           ) : (
             <div style={{ padding: "20px", border: "1px solid #ddd" }}>
-              <h2>{__("Adobe Client Key Required to use Adobe Embedder", "pdfp")}</h2>
+              <h2>{__("Adobe Client Key Required to use Adobe Embedder", "pdf-poster")}</h2>
 
               <a className="button button-primary" target="_blank" rel="noreferrer" href={`${pdfp?.siteUrl}/wp-admin/edit.php?post_type=pdfposter&page=fpdf-settings#tab=cloud-api`}>
-                {__("Generate Client key", "pdfp")}
+                {__("Generate Client key", "pdf-poster")}
               </a>
             </div>
           )}
@@ -158,12 +158,12 @@ const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }
         <>
           <div className={`pdfp_wrapper ${isSelected && "pdfp_editor_wrapper"} ${additional.Class}`} style={{ width }}>
             {socialEnabled && socialPosition === "top" && <SocialShare attributes={attributes} />}
-            {showName && !isPreset && <RichText tagName="p" value={title} allowedFormats={[]} style={{ fontSize: titleFontSize, margin: "20px" }} onChange={(title) => setAttributes({ title })} placeholder={__("Title", "pdfp")} />}
+            {showName && !isPreset && <RichText tagName="p" value={title} allowedFormats={[]} style={{ fontSize: titleFontSize, margin: "20px" }} onChange={(title) => setAttributes({ title })} placeholder={__("Title", "pdf-poster")} />}
 
             {file.includes("dropbox.com") ? (
               <div style={{ border: "2px solid #ddd" }}>
                 <p>{file}</p>
-                <p>{__("Preview is not available for dropbox", "pdfp")}</p>
+                <p>{__("Preview is not available for dropbox", "pdf-poster")}</p>
               </div>
             ) : (
               <Fragment>

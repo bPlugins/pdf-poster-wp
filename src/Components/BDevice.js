@@ -35,7 +35,7 @@ const BDevice = ({ onChange, device = "desktop", iconSize = 14, style, className
           {/* {device != 'desktop' && ( */}
           <button
             className={className}
-            title={__("Desktop", "bsection")}
+            title={__("Desktop", "pdf-poster")}
             onClick={() => {
               onChange("desktop");
               setShow(false);
@@ -47,7 +47,7 @@ const BDevice = ({ onChange, device = "desktop", iconSize = 14, style, className
           {/* {device != 'tablet' && ( */}
           <button
             className={className}
-            title={__("Tablet", "bsection")}
+            title={__("Tablet", "pdf-poster")}
             onClick={() => {
               onChange("tablet");
               setShow(false);
@@ -59,7 +59,7 @@ const BDevice = ({ onChange, device = "desktop", iconSize = 14, style, className
           {/* {device != 'mobile' && ( */}
           <button
             className={className}
-            title={__("Mobile", "bsection")}
+            title={__("Mobile", "pdf-poster")}
             onClick={() => {
               onChange("mobile");
               setShow(false);

@@ -21,10 +21,10 @@ const HeightWidth = ({ attributes, setAttributes, device }) => {
     }, []);
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Height & Width", "pdfp")}</div>} initialOpen={false}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Height & Width", "pdf-poster")}</div>} initialOpen={false}>
 
             <UnitControl
-                label={<Label className="gap5">{__("Height", "pdfp")}  <Device /></Label>}
+                label={<Label className="gap5">{__("Height", "pdf-poster")}  <Device /></Label>}
                 labelPosition="top"
                 className="mb10 mt10"
                 onChange={(value) => setAttributes({ height: { ...height, [device]: value } })}
@@ -35,12 +35,12 @@ const HeightWidth = ({ attributes, setAttributes, device }) => {
                     { value: "vh", label: "vh", default: 100 },
                 ]}
                 isResetValueOnUnitChange={true}
-                help={device === 'tablet' ? __("Set the height of the viewer for tablet.", "pdfp") : device === 'mobile' ? __("Set the height of the viewer for mobile.", "pdfp") : __("Set the height of the viewer for desktop.", "pdfp")}
+                help={device === 'tablet' ? __("Set the height of the viewer for tablet.", "pdf-poster") : device === 'mobile' ? __("Set the height of the viewer for mobile.", "pdf-poster") : __("Set the height of the viewer for desktop.", "pdf-poster")}
             />
 
             <UnitControl
                 className="mt10"
-                label={<Label className="gap5">{__("Width", "pdfp")}  <Device /></Label>}
+                label={<Label className="gap5">{__("Width", "pdf-poster")}  <Device /></Label>}
                 labelPosition="top"
                 onChange={(value) => setAttributes({ width: { ...width, [device]: value } })}
                 value={width[device] || width}
@@ -50,7 +50,7 @@ const HeightWidth = ({ attributes, setAttributes, device }) => {
                     { value: "vw", label: "vw", default: 100 },
                 ]}
                 isResetValueOnUnitChange={true}
-                help={device === 'tablet' ? __("Set the width of the viewer for tablet.", "pdfp") : device === 'mobile' ? __("Set the width of the viewer for mobile.", "pdfp") : __("Set the width of the viewer for desktop.", "pdfp")}
+                help={device === 'tablet' ? __("Set the width of the viewer for tablet.", "pdf-poster") : device === 'mobile' ? __("Set the width of the viewer for mobile.", "pdf-poster") : __("Set the width of the viewer for desktop.", "pdf-poster")}
             />
         </PanelBody>
     );

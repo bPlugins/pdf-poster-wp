@@ -71,7 +71,11 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
 
             if ($attachment_id > 0 && 'attachment' === get_post_type($attachment_id)) {
                 $resolved = wp_get_attachment_url($attachment_id);
-                if (is_string($resolved) && '' !== $resolved) {
+
+                // Attachment ids are not stable across an import or a clone, so the id is
+                // trusted only while it still names a PDF. Otherwise fall through to the
+                // stored URL.
+                if (is_string($resolved) && '' !== $resolved && self::pdfp_is_pdf_attachment($attachment_id, $resolved)) {
                     return $resolved;
                 }
             }
@@ -81,6 +85,22 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             }
 
             return self::pdfp_rebase_uploads_url($url);
+        }
+
+        /**
+         * Does this attachment id still name a PDF? The extension is accepted too, because
+         * an imported PDF can be recorded as application/octet-stream.
+         */
+        private static function pdfp_is_pdf_attachment($attachment_id, $url) {
+            $mime = get_post_mime_type($attachment_id);
+
+            if (is_string($mime) && in_array(strtolower($mime), array('application/pdf', 'application/x-pdf'), true)) {
+                return true;
+            }
+
+            $path = wp_parse_url($url, PHP_URL_PATH);
+
+            return is_string($path) && 'pdf' === strtolower((string) pathinfo($path, PATHINFO_EXTENSION));
         }
 
         /**
@@ -118,18 +138,52 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                 return $url;
             }
 
+            // A name whose JSON \uXXXX escapes lost their backslashes, or null when there
+            // is nothing to repair.
+            $repaired = self::pdfp_unmangle_json_escapes($relative);
+
             $rebased = trailingslashit($uploads['baseurl']) . $relative;
-            if ($rebased === $url) {
+            if (null === $repaired && $rebased === $url) {
                 return $url;
             }
 
             // rawurldecode: the stored URL is encoded, the filesystem is not.
-            $candidate = trailingslashit($uploads['basedir']) . rawurldecode($relative);
-            if (!file_exists($candidate)) {
-                return $url;
+            $basedir = trailingslashit($uploads['basedir']);
+
+            if (file_exists($basedir . rawurldecode($relative))) {
+                return $rebased;
             }
 
-            return $rebased;
+            if (null !== $repaired && file_exists($basedir . rawurldecode($repaired))) {
+                return trailingslashit($uploads['baseurl']) . $repaired;
+            }
+
+            return $url;
+        }
+
+        /**
+         * Undo a stripslashes() that ate the backslashes off JSON unicode escapes,
+         * turning "\u0420" into "u0420" and a non-ASCII filename into gibberish that 404s.
+         *
+         * Runs are decoded whole so a surrogate pair recombines into one character. The
+         * caller only accepts the result when that file is really on disk.
+         */
+        private static function pdfp_unmangle_json_escapes($relative) {
+            if (!preg_match('/u[0-9a-fA-F]{4}/', $relative)) {
+                return null;
+            }
+
+            $decoded = preg_replace_callback(
+                '/(?:u[0-9a-fA-F]{4})+/',
+                static function ($matches) {
+                    $json = json_decode('"' . preg_replace('/u([0-9a-fA-F]{4})/', '\\\\u$1', $matches[0]) . '"');
+
+                    return is_string($json) ? $json : $matches[0];
+                },
+                $relative
+            );
+
+            return (is_string($decoded) && $decoded !== $relative) ? $decoded : null;
         }
 
         /**

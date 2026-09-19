@@ -21,7 +21,7 @@ const Viewers = ({ setAttributes, attributes }) => {
     const selectedViewer = isFlipbookEngine ? requestedViewer : "default";
 
     const viewerOptions = [
-        { label: __("Default", "pdfp"), value: "default" }, 
+        { label: __("Default", "pdf-poster"), value: "default" }, 
     ];
 
     if (flipbookAvailable) {
@@ -29,18 +29,18 @@ const Viewers = ({ setAttributes, attributes }) => {
             // "(New)" in the text, not a chip: these are <option> elements in a native
             // select, which renders no markup. The metabox marks the same two entries
             // with pdfp_new_badge(), where markup is possible.
-            { label: __("FlipBook (New)", "pdfp"), value: "flipbook" },
-            { label: __("Slider (New)", "pdfp"), value: "slider" },
+            { label: __("FlipBook (New)", "pdf-poster"), value: "flipbook" },
+            { label: __("Slider (New)", "pdf-poster"), value: "slider" },
         );
     } 
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Viewers", "pdfp")} <PanelNewBadge /></div>} initialOpen={true}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Viewers", "pdf-poster")} <PanelNewBadge /></div>} initialOpen={true}>
 
             <SelectControl
                 className="mt10"
-                label={__("Viewer", "pdfp")}
-                help={__("Select the PDF viewer engine.", "pdfp")}
+                label={__("Viewer", "pdf-poster")}
+                help={__("Select the PDF viewer engine.", "pdf-poster")}
                 value={selectedViewer}
                 options={viewerOptions}
                 onChange={(v) => {
@@ -50,14 +50,14 @@ const Viewers = ({ setAttributes, attributes }) => {
 
             {/* Source fields sit beside the engine picker, mirroring the metabox General
                 section order: Viewer -> PDF Source -> Flipbook Source -> Flipbook Pages. */}
-            <InlineMediaUpload className="mt10" label={__("Upload PDF", "pdfp")} types={["application/pdf"]} onChange={(file) => setAttributes({ file })} value={file} placeholder={__("Upload PDF", "pdfp")} />
+            <InlineMediaUpload className="mt10" label={__("Upload PDF", "pdf-poster")} types={["application/pdf"]} onChange={(file) => setAttributes({ file })} value={file} placeholder={__("Upload PDF", "pdf-poster")} />
 
             {isFlipbookEngine && (
                 <>
-                    <SelectControl className="mt10" label={__("Flipbook Source", "pdfp")} value={flipbookSourceType} options={[
-                        { label: __("PDF File", "pdfp"), value: "pdf" },
-                        { label: __("Image Gallery", "pdfp"), value: "images" },
-                    ]} onChange={(flipbookSourceType) => setAttributes({ flipbookSourceType })} help={__("Build the flipbook from a PDF file or from an ordered set of images.", "pdfp")} />
+                    <SelectControl className="mt10" label={__("Flipbook Source", "pdf-poster")} value={flipbookSourceType} options={[
+                        { label: __("PDF File", "pdf-poster"), value: "pdf" },
+                        { label: __("Image Gallery", "pdf-poster"), value: "images" },
+                    ]} onChange={(flipbookSourceType) => setAttributes({ flipbookSourceType })} help={__("Build the flipbook from a PDF file or from an ordered set of images.", "pdf-poster")} />
 
                     {flipbookSourceType === "images" && (
                         <PanelRow>
@@ -70,7 +70,7 @@ const Viewers = ({ setAttributes, attributes }) => {
                                         onSelect={(imgs) => setAttributes({ flipbookImages: (imgs || []).map((img) => img.url).filter(Boolean) })}
                                         render={({ open }) => (
                                             <Button variant="secondary" onClick={open}>
-                                                {flipbookImages.length ? `${__("Edit Images", "pdfp")} (${flipbookImages.length})` : __("Select Images", "pdfp")}
+                                                {flipbookImages.length ? `${__("Edit Images", "pdf-poster")} (${flipbookImages.length})` : __("Select Images", "pdf-poster")}
                                             </Button>
                                         )}
                                     />
@@ -83,7 +83,7 @@ const Viewers = ({ setAttributes, attributes }) => {
                                             ))}
                                         </div>
                                         <Button variant="link" isDestructive onClick={() => setAttributes({ flipbookImages: [] })}>
-                                            {__("Clear images", "pdfp")}
+                                            {__("Clear images", "pdf-poster")}
                                         </Button>
                                     </>
                                 )}
@@ -94,7 +94,7 @@ const Viewers = ({ setAttributes, attributes }) => {
             )}
 
             <Notice status='premium' isIcon={true}>
-                {__('The Adobe Viewer and Continuous Scroll engines above are Premium. Premium also adds PDF import straight from Google Drive and Dropbox.', 'pdfp')}
+                {__('The Adobe Viewer and Continuous Scroll engines above are Premium. Premium also adds PDF import straight from Google Drive and Dropbox.', "pdf-poster")}
             </Notice>
         </PanelBody>
     )

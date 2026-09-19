@@ -44,7 +44,7 @@ const PresetModal = (props) => {
     <div>
       <Modal
         shouldCloseOnClickOutside={false}
-        title={__("Preset", "pdfp")}
+        title={__("Preset", "pdf-poster")}
         onRequestClose={() => {
           setModalOpen(false);
           setPreset(null);
@@ -67,7 +67,7 @@ const PresetModal = (props) => {
             <div>
               {isSaving && <div className="pdfp_loader"></div>}
               <Button disabled={isSaving} variant="primary" onClick={handleCreatePreset}>
-                {preset?.id ? __("Update", "pdfp") : __("Create", "pdfp")}
+                {preset?.id ? __("Update", "pdf-poster") : __("Create", "pdf-poster")}
               </Button>
             </div>
           </div>

@@ -14,7 +14,7 @@ const ComingSoonCard = ({ title, description }) => {
             <h4 className="pdfp-cs-title">{title}</h4>
             <p className="pdfp-cs-description">{description}</p>
             <div className="pdfp-cs-footer">
-                <div className="pdfp-cs-badge">{__("Coming Soon", "pdfp")}</div>
+                <div className="pdfp-cs-badge">{__("Coming Soon", "pdf-poster")}</div>
             </div>
             <style>{`
                 .pdfp-coming-soon-card {

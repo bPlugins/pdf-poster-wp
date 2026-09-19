@@ -34,10 +34,42 @@ const extractFileParam = (url) => {
  */
 const describeMissingFile = (url, __, canDiagnose) => {
   if (!canDiagnose) {
-    return __("This document is currently unavailable.", "pdfp");
+    return __("This document is currently unavailable.", "pdf-poster");
   }
 
-  return `${__("The PDF file could not be found (404).", "pdfp")} ${__("The saved link may point at a file that was moved, renamed or deleted -- re-select the file on this poster to repair it.", "pdfp")}\n${url}`;
+  return `${__("The PDF file could not be found (404).", "pdf-poster")} ${__("The saved link may point at a file that was moved, renamed or deleted -- re-select the file on this poster to repair it.", "pdf-poster")}\n${url}`;
+};
+
+const describeWrongType = (contentType, __) => {
+  const type = String(contentType || "").split(";")[0].trim().toLowerCase();
+
+  if (type.startsWith("image/")) {
+    return __("This address points at an image, not a PDF. The saved media item may have been replaced -- re-select the file on this poster.", "pdf-poster");
+  }
+  if (type === "text/html") {
+    return __("The server returned a web page instead of the PDF. The file is usually blocked by a login requirement, a hotlink protection rule or a security plugin.", "pdf-poster");
+  }
+  return null;
+};
+
+const describeBadResponse = (url, __, canDiagnose, probe) => {
+  if (!canDiagnose) {
+    return __("This document is currently unavailable.", "pdf-poster");
+  }
+
+  const wrongType = probe && probe.contentType ? describeWrongType(probe.contentType, __) : null;
+  if (wrongType) {
+    return `${wrongType}\n${url}`;
+  }
+
+  const detail = probe && probe.status
+    // translators: %d is an HTTP status code, e.g. 403. Substituted with replace() rather
+    // than through the i18n package: this component is bundled into view.js, which is
+    // enqueued without wp-i18n, so that import would read window.wp.i18n off undefined.
+    ? __("The server answered with HTTP %d.", "pdf-poster").replace("%d", probe.status)
+    : __("The server did not return the file as expected.", "pdf-poster");
+
+  return `${__("The PDF could not be loaded.", "pdf-poster")} ${detail} ${__("A 403 usually means a security plugin, hotlink protection or the server's permissions are blocking the file; a 5xx means the server itself failed.", "pdf-poster")}\n${url}`;
 };
 
 function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile, className, isBackend = false, isSelected = false, onGViewError }) {
@@ -45,47 +77,38 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
   const { position } = (socialShare || {});
   const [isLoaded, setIsLoaded] = useState(false);
   const [pdfError, setPdfError] = useState(null);
-  // Bumped by Retry. It is the iframe's React key, so incrementing it tears the frame
-  // down and builds a fresh one -- which is what "retry" has to mean here. Reloading
-  // the whole page (the old behaviour) re-requested the same URL from the same server
-  // and could never change the outcome, while throwing away unsaved editor work.
   const [attempt, setAttempt] = useState(0);
 
-  // `isLoaded` is read by the Google-Viewer timeout but must NOT re-run the effect:
-  // the effect clears pdfError on entry, so re-running it the moment the iframe fires
-  // onLoad could wipe an error that PDF.js is about to report (a 404 still loads
-  // viewer.html successfully -- `documenterror` follows afterwards). A ref gives the
-  // timeout the current value without making it a dependency.
   const isLoadedRef = useRef(false);
   isLoadedRef.current = isLoaded;
+  const probeRef = useRef(null);
 
-  // Who gets the failing URL and the repair hint rather than a bare apology.
   const canDiagnose = isBackend || (typeof pdfp !== "undefined" && !!pdfp?.canEdit);
 
   useEffect(() => {
     // Reset error when source changes
     setPdfError(null);
     setIsLoaded(false);
+    // Cleared with it, so a failed or cross-origin pre-check cannot describe this load
+    // using what the previous one found.
+    probeRef.current = null;
 
     if (!source) return;
 
     // HTTP HEAD check to pre-validate the URL
     const validatePdfUrl = async (url) => {
-      // Don't check GView URLs as they are already a proxy
       if (url.includes("google.com/gview")) return;
 
       const fileToValidate = extractFileParam(url);
 
       try {
-        // Mostly advisory: proxies answer HEAD with 405, or 403 on an unexpected
-        // Cache-Control -- neither means the PDF is unreachable, so those keep loading.
-        //
-        // 404 is the exception, and it is worth catching here rather than waiting for
-        // PDF.js. By the time PDF.js reports it, all the user is told is "Missing PDF
-        // file." -- true, but useless: the usual cause is a URL saved before the site
-        // changed domain or the media was replaced, and nobody can guess that from
-        // those three words. We know the URL, so we say it.
         const response = await fetch(fileToValidate, { method: "HEAD" });
+
+        probeRef.current = {
+          status: response.status,
+          contentType: response.headers.get("Content-Type"),
+        };
+
         if (response.status === 404) {
           setPdfError(describeMissingFile(fileToValidate, __, canDiagnose));
           return;
@@ -94,9 +117,16 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
           console.warn(`PDF pre-check returned HTTP ${response.status}. Continuing load attempt.`);
           return;
         }
+
+        const wrongType = describeWrongType(response.headers.get("Content-Type"), __);
+        if (wrongType) {
+          setPdfError(canDiagnose ? `${wrongType}\n${fileToValidate}` : __("This document is currently unavailable.", "pdf-poster"));
+          return;
+        }
+
         const contentLength = response.headers.get("Content-Length");
         if (contentLength && parseInt(contentLength, 10) === 0) {
-          setPdfError(__("The PDF file is empty or corrupted (0 bytes).", "pdfp"));
+          setPdfError(__("The PDF file is empty or corrupted (0 bytes).", "pdf-poster"));
         }
       } catch (error) {
         // If fetch fails due to CORS, we just let PDF.js try anyway
@@ -129,7 +159,15 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
         return;
       }
 
-      setPdfError(raw || __("An error occurred while loading the PDF.", "pdfp"));
+      // Same treatment for the other PDF.js string that names nothing: it covers a 403,
+      // a 5xx and a broken byte-range response alike, and the pre-check usually knows
+      // which one it was.
+      if (/unexpected server response/i.test(raw)) {
+        setPdfError(describeBadResponse(extractFileParam(source), __, canDiagnose, probeRef.current));
+        return;
+      }
+
+      setPdfError(raw || __("An error occurred while loading the PDF.", "pdf-poster"));
     };
 
     window.addEventListener("message", handleMessage);
@@ -164,7 +202,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
           <p key={i} className={i === 0 ? undefined : "pdfp_error_detail"}>{line}</p>
         ))}
         <button onClick={() => setAttempt((n) => n + 1)} className="pdfp_retry_btn">
-          {__("Retry", "pdfp")}
+          {__("Retry", "pdf-poster")}
         </button>
       </div>
     </div>
@@ -174,22 +212,11 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     <>
       {source.includes("dropbox.com") ? (
         <div className="dropbox-embed-sdfsdfsdf" style={{ border: "2px solid #ddd" }}>
-          {/* Working from render.php */}
-          <p>{__("Preview is not available for dropbox", "pdfp")}</p>
+          <p>{__("Preview is not available for dropbox", "pdf-poster")}</p>
         </div>
       ) : (
         <Fragment>
           <div className={`iframe_wrapper ${className} ${hrScroll ? "pdfp_horizontal_scroll" : ""}`}>
-            {/*
-              Click-shield for the block editor. An iframe swallows every mouse event,
-              so without a cover the block can't be clicked to select or dragged in the
-              list -- but leaving the cover up unconditionally meant the PDF could never
-              be scrolled, clicked or paged through in the editor at all.
-
-              Selected = interactive, deselected = shielded: the same bargain core's
-              embed blocks strike. The front end never had a shield (isBackend is false
-              there) and its markup is unchanged.
-            */}
             {isBackend && !isSelected && <div className="pdfp-embed-overlay"></div>}
             {!(isBackend && isSelected) && <div className="pdfp_frame_overlay"></div>}
             {pdfError ? (

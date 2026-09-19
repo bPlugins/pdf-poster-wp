@@ -53,7 +53,13 @@ if (!class_exists('PDFPro\Base\PDFP_RegisterBlock')) {
       wp_localize_script('pdfp-pdfposter-editor-script', 'pdfp', $pdfp_data);
       wp_localize_script('meta-box-document-embedder-editor-script', 'pdfp', $pdfp_data);
 
-      wp_set_script_translations('pdfp-editor', 'pdf-poster', PDFPRO_PATH . 'languages');
+      // Handles are the ones register_block_type() derives from each block.json
+      // `name` -- 'pdfp-editor' was never registered (see the commented-out
+      // wp_register_script above), so the old call here translated nothing.
+      // Passing the plugin's own languages dir keeps bundled .json working; WP
+      // falls back to WP_LANG_DIR/plugins for translate.wordpress.org files.
+      wp_set_script_translations('pdfp-pdfposter-editor-script', 'pdf-poster', PDFPRO_PATH . 'languages');
+      wp_set_script_translations('meta-box-document-embedder-editor-script', 'pdf-poster', PDFPRO_PATH . 'languages');
     }
   }
 

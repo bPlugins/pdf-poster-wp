@@ -13,7 +13,7 @@
     "file:./index.js"
   ],
   "render": "file:./render.php",
-  "textdomain": "pdfp",
+  "textdomain": "pdf-poster",
   "attributes": {
     "data": {
       "type": "object",

@@ -149,6 +149,13 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
+            version: '2.6.1 - 19 Sep 2026',
+            type: 'fixed',
+            list: [
+                '<strong>Fix:</strong> Posters could fail to load after a site was moved, imported or cloned — showing a 404, an image instead of the document, or “Unexpected server response.” — most often when the PDF filename was not written in English; the saved address is now repaired against the media library.'
+            ]
+        },
+        {
             version: '2.6.0 - 10 Sep 2026',
             type: 'new',
             list: [

@@ -44,16 +44,16 @@ const Uploader = ({ setAttributes }) => {
   return (
     <Fragment>
       {/* {!pdfp?.pipe && isOpen && (
-        <Modal title={__("Active the license key", "pdfp")} onRequestClose={() => setOpen(false)} className="license_activation_form" ref={modalRef}>
+        <Modal title={__("Active the license key", "pdf-poster")} onRequestClose={() => setOpen(false)} className="license_activation_form" ref={modalRef}>
           <p>
             {__(
-              "PDF Poster PRO license key is not activated yet. Please active the license key to available all the pro features. ", "pdfp"
+              "PDF Poster PRO license key is not activated yet. Please active the license key to available all the pro features. ", "pdf-poster"
             )}
             {" "}
             
           </p>
           <a href="https://pdfposter.com/docs/license-activation/" target="_blank" className="button button-primary">
-            {__("Learn More", "pdfp")}
+            {__("Learn More", "pdf-poster")}
           </a>
        
         </Modal>
@@ -65,8 +65,8 @@ const Uploader = ({ setAttributes }) => {
             <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
           </svg>
         }
-        instructions={__("Upload a PDF or paste/write PDF URL.", "pdfp")}
-        label={__("Upload a PDF ", "pdfp")}
+        instructions={__("Upload a PDF or paste/write PDF URL.", "pdf-poster")}
+        label={__("Upload a PDF ", "pdf-poster")}
       >
         <MediaUploadCheck>
           <MediaUpload
@@ -74,7 +74,7 @@ const Uploader = ({ setAttributes }) => {
             onSelect={(file) => setAttributes({ file: file.url, fileId: file.id || 0 })}
             render={({ open }) => (
               <Button isPrimary onClick={open}>
-                {__("Upload", "pdfp")}
+                {__("Upload", "pdf-poster")}
               </Button>
             )}
           />
@@ -83,16 +83,16 @@ const Uploader = ({ setAttributes }) => {
           <h3 style={{ fontSize: "15px" }}> Or </h3>
           <input
             type="url"
-            aria-label={__("URL", "pdfp")}
-            placeholder={__("Paste or type a PDF URL", "pdfp")}
+            aria-label={__("URL", "pdf-poster")}
+            placeholder={__("Paste or type a PDF URL", "pdf-poster")}
             onChange={(src) => setSource(src.target.value)}
             value={source}
           />
-          <Button label={__("Apply", "pdfp")} type="submit" onClick={handleApply} variant="primary">
-            {__("Apply", "pdfp")}
+          <Button label={__("Apply", "pdf-poster")} type="submit" onClick={handleApply} variant="primary">
+            {__("Apply", "pdf-poster")}
           </Button>
         </div>
-        {!isValid && <p style={{ color: "#bd1818", width: "100%", margin: 0 }}>{__("URL is not valid", "pdfp")}</p>}
+        {!isValid && <p style={{ color: "#bd1818", width: "100%", margin: 0 }}>{__("URL is not valid", "pdf-poster")}</p>}
       </Placeholder>
     </Fragment>
   );

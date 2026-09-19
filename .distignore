@@ -12,6 +12,7 @@ node_modules/
 package.json
 package-lock.json
 webpack.config.js
+bin/
 
 # PHP package manager
 composer.phar
@@ -37,3 +38,6 @@ pdf-poster.zip
 Thumbs.db
 .vscode/
 .idea/
+
+# Brand / video assets (not plugin code)
+brand/

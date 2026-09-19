@@ -6,7 +6,7 @@ const BControlPro = ({ label, className, onChange, isPremium = false, Component,
       label
     ) : (
       <>
-        <span className="bplOpacity75">{label}</span> <span className="labelPro">{__("Pro", "text-domain")}</span>
+        <span className="bplOpacity75">{label}</span> <span className="labelPro">{__("Pro", "pdf-poster")}</span>
       </>
     );
   };

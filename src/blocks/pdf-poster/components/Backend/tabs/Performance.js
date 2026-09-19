@@ -13,17 +13,17 @@ const Performance = ({ attributes, setAttributes }) => {
     const { protect, progressiveLoading, defaultBrowser } = attributes;
 
     return (
-        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Performance & Reliability", "pdfp")} <PanelNewBadge /></div>} initialOpen={false}>
+        <PanelBody className="bPlPanelBody" title={<div className="pdfp-panel-icon">{PDFIcon} {__("Performance & Reliability", "pdf-poster")} <PanelNewBadge /></div>} initialOpen={false}>
 
-            <ToggleControl className="mt10" label={__("Fast Loading (Progressive Rendering)", "pdfp")} id="progressiveLoading" checked={progressiveLoading !== false} onChange={() => setAttributes({ progressiveLoading: progressiveLoading === false })} help={__("Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests.", "pdfp")} />
+            <ToggleControl className="mt10" label={__("Fast Loading (Progressive Rendering)", "pdf-poster")} id="progressiveLoading" checked={progressiveLoading !== false} onChange={() => setAttributes({ progressiveLoading: progressiveLoading === false })} help={__("Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests.", "pdf-poster")} />
 
             {/* Guard carried over from the Viewers panel: hidden while content protection is on. */}
             {!protect && (
-                <ToggleControl className="mt10" label={__("Google Doc Viewer", "pdfp")} id="defaultBrowser" checked={defaultBrowser} onChange={() => setAttributes({ defaultBrowser: !defaultBrowser })} help={__("Enable Google Doc Viewer as a fallback (Recommended for Edge).", "pdfp")} />
+                <ToggleControl className="mt10" label={__("Google Doc Viewer", "pdf-poster")} id="defaultBrowser" checked={defaultBrowser} onChange={() => setAttributes({ defaultBrowser: !defaultBrowser })} help={__("Enable Google Doc Viewer as a fallback (Recommended for Edge).", "pdf-poster")} />
             )}
 
             <Notice status='premium' isIcon={true}>
-                {__('Automatically load the latest version of a re-uploaded PDF, so visitors never see a cached copy—available exclusively in Premium.', 'pdfp')}
+                {__('Automatically load the latest version of a re-uploaded PDF, so visitors never see a cached copy—available exclusively in Premium.', "pdf-poster")}
             </Notice>
         </PanelBody>
     )

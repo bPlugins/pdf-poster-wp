@@ -10,7 +10,7 @@ const ComingSoonCard = ({ title, description, pricingUrl = PRICING_URL }) => {
             </div>
             <p>{description}</p>
             <a className="button button-primary button-small" href={pricingUrl} target="_blank" rel="noopener noreferrer">
-                {__('Upgrade to Pro', 'pdfp')}
+                {__('Upgrade to Pro', "pdf-poster")}
             </a>
         </div>
     );

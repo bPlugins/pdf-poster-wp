@@ -50,7 +50,7 @@ export default function Header({ attributes, source, RichText, setAttributes, __
     <>
       {normalizedViewer !== "adobe" && (
         <div className={`pdfp_header pdfp_header_${actionsPosition}`}>
-          {showName && showTitle && <RichText tagName="p" value={title} allowedFormats={[]} style={{ fontSize: titleFontSize, margin: "20px" }} onChange={(title) => setAttributes({ title })} placeholder={__("Title", "pdfp")} />}
+          {showName && showTitle && <RichText tagName="p" value={title} allowedFormats={[]} style={{ fontSize: titleFontSize, margin: "20px" }} onChange={(title) => setAttributes({ title })} placeholder={__("Title", "pdf-poster")} />}
           {((downloadButton && !isImagesFlipbook) || fullscreenButton) && !protect && showActions && (
             <div className="cta_wrapper">
 

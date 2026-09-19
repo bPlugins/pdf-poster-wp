@@ -105,10 +105,10 @@ const Settings = (props) => {
 
       </InspectorControls>
       {confirmModalOpen && (
-        <Modal title={__("Do you want to delete?", "pdfp")} onRequestClose={() => setConfirmModalOpen(false)}>
+        <Modal title={__("Do you want to delete?", "pdf-poster")} onRequestClose={() => setConfirmModalOpen(false)}>
           <div className="confirmPresetDelete">
             {loading && <span className="pdfp_loader"></span>}
-            {/* <Button variant="primary" onClick={() => setConfirmModalOpen(false)}>{__('No', 'pdfp')}</Button> */}
+            {/* <Button variant="primary" onClick={() => setConfirmModalOpen(false)}>{__('No', "pdf-poster")}</Button> */}
             <Button
               disabled={loading}
               variant="primary"
@@ -117,7 +117,7 @@ const Settings = (props) => {
                 handleDeletePreset(confirmModalOpen);
               }}
             >
-              {__("Yes", "pdfp")}
+              {__("Yes", "pdf-poster")}
             </Button>
           </div>
         </Modal>
@@ -128,9 +128,9 @@ const Settings = (props) => {
           onChange={(val) => setAttributes({ alignment: val })}
           describedBy={__("Alert Alignment")}
           alignmentControls={[
-            { title: __("Alert in left", "pdfp"), align: "left", icon: "align-left" },
-            { title: __("Alert in center", "pdfp"), align: "center", icon: "align-center" },
-            { title: __("Alert in right", "pdfp"), align: "right", icon: "align-right" },
+            { title: __("Alert in left", "pdf-poster"), align: "left", icon: "align-left" },
+            { title: __("Alert in center", "pdf-poster"), align: "center", icon: "align-center" },
+            { title: __("Alert in right", "pdf-poster"), align: "right", icon: "align-right" },
           ]}
         />
         <ToolbarGroup>

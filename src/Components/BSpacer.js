@@ -75,7 +75,7 @@ const BSpacer = (props) => {
         <div className={className} style={{ width, maxWidth: "100%", display: "flex" }}>
           {top && (
             <NumberControl
-              label={label.top || __("Top", "bsection")}
+              label={label.top || __("Top", "pdf-poster")}
               isShiftStepEnabled={isShiftStepEnabled}
               isDragEnabled={isDragEnabled}
               onChange={(v) => {
@@ -85,9 +85,9 @@ const BSpacer = (props) => {
               value={value.top}
             />
           )}
-          {right && <NumberControl label={label.right || __("Right", "bsection")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("right", parseInt(v))} shiftStep={shiftStep} value={value.right} />}
-          {bottom && <NumberControl label={label.bottom || __("Bottom", "bsection")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("bottom", parseInt(v))} shiftStep={shiftStep} value={value.bottom} />}
-          {left && <NumberControl label={label.left || __("Left", "bsection")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("left", parseInt(v))} shiftStep={shiftStep} value={value.left} />}
+          {right && <NumberControl label={label.right || __("Right", "pdf-poster")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("right", parseInt(v))} shiftStep={shiftStep} value={value.right} />}
+          {bottom && <NumberControl label={label.bottom || __("Bottom", "pdf-poster")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("bottom", parseInt(v))} shiftStep={shiftStep} value={value.bottom} />}
+          {left && <NumberControl label={label.left || __("Left", "pdf-poster")} isShiftStepEnabled={isShiftStepEnabled} isDragEnabled={isDragEnabled} onChange={(v) => onChangeHandler("left", parseInt(v))} shiftStep={shiftStep} value={value.left} />}
         </div>
       </PanelRow>
     </Fragment>

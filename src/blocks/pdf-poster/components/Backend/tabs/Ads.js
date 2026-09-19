@@ -8,12 +8,12 @@ import ComingSoonCard from "../ComingSoonCard";
 const Ads = () => {
     return (
         <PanelBody className="bPlPanelBody" title={<>
-            <div className="pdfp-panel-icon">{PDFIcon} {__("Ads", "pdfp")}</div>
+            <div className="pdfp-panel-icon">{PDFIcon} {__("Ads", "pdf-poster")}</div>
             <span className="pdfp-panel-pro-badge">Upcoming</span>
         </>} initialOpen={false}>
             <ComingSoonCard 
-                title={__("Ads Feature is Coming Soon", "pdfp")} 
-                description={__("Get ready to monetize your PDF content with targeted advertisements. This feature will be available soon in PDF Poster Pro.", "pdfp")} 
+                title={__("Ads Feature is Coming Soon", "pdf-poster")} 
+                description={__("Get ready to monetize your PDF content with targeted advertisements. This feature will be available soon in PDF Poster Pro.", "pdf-poster")} 
             />
         </PanelBody>
     )

@@ -45,10 +45,10 @@ const PresetOptions = (props) => {
 
   return (
     <>
-      <PanelBody className="bPlPanelBody" title={__("Settings", "pdfp")} initialOpen={false}>
+      <PanelBody className="bPlPanelBody" title={__("Settings", "pdf-poster")} initialOpen={false}>
         <PanelRow>
           <label htmlFor="adobeEmbedder" className="label">
-            {__("use adobe PDF embedder", "pdfp")}
+            {__("use adobe PDF embedder", "pdf-poster")}
           </label>
           <FormToggle id="adobeEmbedder" checked={normalizedViewer === "adobe"} onChange={() => setAttributes({ adobeEmbedder: normalizedViewer === "adobe" ? "default" : "adobe" })} />
         </PanelRow>
@@ -57,7 +57,7 @@ const PresetOptions = (props) => {
           <>
             <PanelRow>
               <label htmlFor="embedMode" className="label">
-                {__("Embed Mode", "pdfp")}
+                {__("Embed Mode", "pdf-poster")}
               </label>
               <SelectControl
                 options={[
@@ -73,14 +73,14 @@ const PresetOptions = (props) => {
 
             {adobeOptions?.embedMode === "LIGHT_BOX" && (
               <PanelRow>
-                <TextControl label={__("Button Text", "pdfp")} value={popupBtnText} onChange={(popupBtnText) => setAttributes({ popupBtnText })} />
+                <TextControl label={__("Button Text", "pdf-poster")} value={popupBtnText} onChange={(popupBtnText) => setAttributes({ popupBtnText })} />
               </PanelRow>
             )}
 
             {["SIZED_CONTAINER", "IN_LINE", "LIGHT_BOX", "FULL_WINDOW"].includes(adobeOptions?.embedMode) && (
               <PanelRow>
                 <label htmlFor="showPrintPDF" className="label">
-                  {__("Show Print Button", "pdfp")}
+                  {__("Show Print Button", "pdf-poster")}
                 </label>
                 <FormToggle id="showPrintPDF" checked={adobeOptions?.showPrintPDF} onChange={() => setAttributes({ adobeOptions: { ...adobeOptions, showPrintPDF: !adobeOptions?.showPrintPDF } })} />
               </PanelRow>
@@ -88,7 +88,7 @@ const PresetOptions = (props) => {
             {["SIZED_CONTAINER", "IN_LINE", "LIGHT_BOX", "FULL_WINDOW"].includes(adobeOptions?.embedMode) && (
               <PanelRow>
                 <label htmlFor="showDownloadPDF" className="label">
-                  {__("Show Download Button", "pdfp")}
+                  {__("Show Download Button", "pdf-poster")}
                 </label>
                 <FormToggle id="showDownloadPDF" checked={adobeOptions?.showDownloadPDF} onChange={() => setAttributes({ adobeOptions: { ...adobeOptions, showDownloadPDF: !adobeOptions?.showDownloadPDF } })} />
               </PanelRow>
@@ -96,7 +96,7 @@ const PresetOptions = (props) => {
             {["SIZED_CONTAINER"].includes(adobeOptions.embedMode) && (
               <PanelRow>
                 <label htmlFor="showFullScreen" className="label">
-                  {__("Show Fullscreen Button", "pdfp")}
+                  {__("Show Fullscreen Button", "pdf-poster")}
                 </label>
                 <FormToggle id="showFullScreen" checked={adobeOptions?.showFullScreen} onChange={() => setAttributes({ adobeOptions: { ...adobeOptions, showFullScreen: !adobeOptions?.showFullScreen } })} />
               </PanelRow>
@@ -105,13 +105,13 @@ const PresetOptions = (props) => {
               <>
                 <PanelRow>
                   <label htmlFor="showAnnotationTools" className="label">
-                    {__("Show Annotation Tools", "pdfp")}
+                    {__("Show Annotation Tools", "pdf-poster")}
                   </label>
                   <FormToggle id="showAnnotationTools" checked={adobeOptions?.showAnnotationTools} onChange={() => setAttributes({ adobeOptions: { ...adobeOptions, showAnnotationTools: !adobeOptions?.showAnnotationTools } })} />
                 </PanelRow>
                 {/* <PanelRow>
           <label htmlFor="defaultViewMode" className="label">
-            {__("View Mode", "pdfp")}
+            {__("View Mode", "pdf-poster")}
           </label>
           <SelectControl
             options={[
@@ -133,14 +133,14 @@ const PresetOptions = (props) => {
           <>
             <PanelRow>
               <label htmlFor="protect" className="label">
-                {__("Protect my content", "pdfp")}
+                {__("Protect my content", "pdf-poster")}
               </label>
               <FormToggle id="protect" checked={protect} onChange={() => setAttributes({ protect: !protect })} />
             </PanelRow>
             {protect && (
               <PanelRow>
                 <label htmlFor="alert" className="label">
-                  {__("Enable Alert", "pdfp")}
+                  {__("Enable Alert", "pdf-poster")}
                 </label>
                 <FormToggle id="alert" checked={alert} onChange={() => setAttributes({ alert: !alert })} />
               </PanelRow>
@@ -148,20 +148,20 @@ const PresetOptions = (props) => {
             {!protect && (
               <PanelRow>
                 <label htmlFor="print" className="label">
-                  {__("Allow print", "pdfp")}
+                  {__("Allow print", "pdf-poster")}
                 </label>
                 <FormToggle id="print" checked={print} onChange={() => setAttributes({ print: !print })} />
               </PanelRow>
             )}
             <PanelRow>
               <label htmlFor="showName" className="label">
-                {__("Show title on top", "pdfp")}
+                {__("Show title on top", "pdf-poster")}
               </label>
               <FormToggle id="showName" checked={showName} onChange={() => setAttributes({ showName: !showName })} />
             </PanelRow>
             <PanelRow>
               <label htmlFor="onlyPDF" className="label">
-                {__("Raw PDF", "pdfp")}
+                {__("Raw PDF", "pdf-poster")}
               </label>
               <FormToggle id="onlyPDF" checked={onlyPDF} onChange={() => setAttributes({ onlyPDF: !onlyPDF })} />
             </PanelRow>
@@ -170,7 +170,7 @@ const PresetOptions = (props) => {
               <>
                 <PanelRow>
                   <label htmlFor="defaultBrowser" className="label">
-                    {__("Use browser pdf viewer", "pdfp")}
+                    {__("Use browser pdf viewer", "pdf-poster")}
                   </label>
                   <FormToggle id="defaultBrowser" checked={defaultBrowser} onChange={() => setAttributes({ defaultBrowser: !defaultBrowser })} />
                 </PanelRow>
@@ -178,7 +178,7 @@ const PresetOptions = (props) => {
                   <>
                     <PanelRow>
                       <label htmlFor="downloadButton" className="label">
-                        {__("Show download button", "pdfp")}
+                        {__("Show download button", "pdf-poster")}
                       </label>
                       <FormToggle id="downloadButton" checked={downloadButton} onChange={() => setAttributes({ downloadButton: !downloadButton })} />
                     </PanelRow>
@@ -191,7 +191,7 @@ const PresetOptions = (props) => {
               <>
                 <PanelRow>
                   <label htmlFor="fullscreenButton" className="label">
-                    {__("Show fullscreen button", "pdfp")}
+                    {__("Show fullscreen button", "pdf-poster")}
                   </label>
                   <FormToggle id="fullscreenButton" checked={fullscreenButton} onChange={() => setAttributes({ fullscreenButton: !fullscreenButton })} />
                 </PanelRow>
@@ -200,7 +200,7 @@ const PresetOptions = (props) => {
                     <TextControl label="" value={fullscreenButtonText} onChange={(fullscreenButtonText) => setAttributes({ fullscreenButtonText })} />
                     <PanelRow>
                       <label htmlFor="newWindow" className="label">
-                        {__("Open in new window", "pdfp")}
+                        {__("Open in new window", "pdf-poster")}
                       </label>
                       <FormToggle id="newWindow" checked={newWindow} onChange={() => setAttributes({ newWindow: !newWindow })} />
                     </PanelRow>
@@ -211,45 +211,45 @@ const PresetOptions = (props) => {
 
             <PanelRow>
               <label htmlFor="thumbMenu" className="label">
-                {__("Enable thumbnails toggle menu", "pdfp")}
+                {__("Enable thumbnails toggle menu", "pdf-poster")}
               </label>
               <FormToggle id="thumbMenu" checked={thumbMenu} onChange={() => setAttributes({ thumbMenu: !thumbMenu })} />
             </PanelRow>
             {thumbMenu && (
               <PanelRow>
                 <label htmlFor="sidebarOpen" className="label">
-                  {__("Show Thumb by Default", "pdfp")}
+                  {__("Show Thumb by Default", "pdf-poster")}
                 </label>
                 <FormToggle id="sidebarOpen" checked={sidebarOpen} onChange={() => setAttributes({ sidebarOpen: !sidebarOpen })} />
               </PanelRow>
             )}
             <PanelRow>
               <label htmlFor="lastVersion" className="label">
-                {__("Load the last version of the PDF", "pdfp")}
+                {__("Load the last version of the PDF", "pdf-poster")}
               </label>
               <FormToggle id="lastVersion" checked={lastVersion} onChange={() => setAttributes({ lastVersion: !lastVersion })} />
             </PanelRow>
             <PanelRow>
               <label htmlFor="hrScroll" className="label">
-                {__("Horizontal Scrollbar", "pdfp")}
+                {__("Horizontal Scrollbar", "pdf-poster")}
               </label>
               <FormToggle id="hrScroll" checked={hrScroll} onChange={() => setAttributes({ hrScroll: !hrScroll })} />
             </PanelRow>
             <PanelRow>
-              <label className="label">{__("Initail page", "pdfp")}</label>
+              <label className="label">{__("Initail page", "pdf-poster")}</label>
               <NumberControl isShiftStepEnabled={true} onChange={(initialPage) => setAttributes({ initialPage })} shiftStep={1} value={initialPage} />
             </PanelRow>
             <PanelRow>
-              <label className="label">{__("Zoom Level (%)", "pdfp")}</label>
-              <NumberControl help={__("leave empty to set auto", "pdfp")} isShiftStepEnabled={true} onChange={(zoomLevel) => setAttributes({ zoomLevel })} shiftStep={1} value={zoomLevel} />
+              <label className="label">{__("Zoom Level (%)", "pdf-poster")}</label>
+              <NumberControl help={__("leave empty to set auto", "pdf-poster")} isShiftStepEnabled={true} onChange={(zoomLevel) => setAttributes({ zoomLevel })} shiftStep={1} value={zoomLevel} />
             </PanelRow>
           </>
         )}
       </PanelBody>
-      <PanelBody className="bPlPanelBody" title={__("Style", "pdfp")} initialOpen={false}>
+      <PanelBody className="bPlPanelBody" title={__("Style", "pdf-poster")} initialOpen={false}>
         <PanelRow>
           <label htmlFor="Height" className="label">
-            {__("Height", "pdfp")}
+            {__("Height", "pdf-poster")}
           </label>
           <UnitControl
             onChange={(height) => setAttributes({ height })}
@@ -264,7 +264,7 @@ const PresetOptions = (props) => {
         </PanelRow>
         <PanelRow>
           <label htmlFor="width" className="label">
-            {__("Width", "pdfp")}
+            {__("Width", "pdf-poster")}
           </label>
           <UnitControl
             onChange={(width) => setAttributes({ width })}
@@ -279,7 +279,7 @@ const PresetOptions = (props) => {
         </PanelRow>
         <PanelRow>
           <label htmlFor="titleFontSize" className="label">
-            {__("Title Font Size", "pdfp")}
+            {__("Title Font Size", "pdf-poster")}
           </label>
           <UnitControl
             onChange={(titleFontSize) => setAttributes({ titleFontSize })}
@@ -294,16 +294,16 @@ const PresetOptions = (props) => {
         </PanelRow>
       </PanelBody>
       {adobeOptions?.embedMode === "LIGHT_BOX" && normalizedViewer === "adobe" && (
-        <PanelBody className="bPlPanelBody" title={__("Adobe Lightbox Button Style", "pdfp")}>
+        <PanelBody className="bPlPanelBody" title={__("Adobe Lightbox Button Style", "pdf-poster")}>
           <PanelRow>
-            <label>{__("Background", "bpm")}</label>
+            <label>{__("Background", "pdf-poster")}</label>
             <BColor value={popupBtnStyle?.background} onChange={(background) => setAttributes({ popupBtnStyle: { ...popupBtnStyle, background } })} />
           </PanelRow>
           <PanelRow>
-            <label>{__("Text Color", "bpm")}</label>
+            <label>{__("Text Color", "pdf-poster")}</label>
             <BColor value={popupBtnStyle?.color} onChange={(color) => setAttributes({ popupBtnStyle: { ...popupBtnStyle, color } })} />
           </PanelRow>
-          <BSpacer title={__("Padding", "pdfp")} value={popupBtnStyle?.padding || {}} onChange={(padding) => setAttributes({ popupBtnStyle: { ...popupBtnStyle, padding } })} />
+          <BSpacer title={__("Padding", "pdf-poster")} value={popupBtnStyle?.padding || {}} onChange={(padding) => setAttributes({ popupBtnStyle: { ...popupBtnStyle, padding } })} />
         </PanelBody>
       )}
     </>
