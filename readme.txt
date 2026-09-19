@@ -1,4 +1,4 @@
-=== PDF Poster – let visitors read PDFs without leaving the page ===
+=== PDF Poster – Let visitors read PDF's without leaving the page ===
 Contributors: bplugins, abuhayat, taninrahman, farazi1, freemius
 Tags: embed pdf, pdf, pdf embedder, pdf plugin, pdf viewer
 Donate link: https://www.buymeacoffee.com/abuhayat/

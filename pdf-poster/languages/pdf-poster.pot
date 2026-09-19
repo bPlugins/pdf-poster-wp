@@ -1,0 +1,2169 @@
+# Copyright (C) 2026 bPlugins
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PDF Poster – Display PDF Files with Custom Viewer 2.6.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdf-poster\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-19T05:20:58+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: pdf-poster\n"
+
+#. Plugin Name of the plugin
+#: pdf-poster.php
+msgid "PDF Poster – Display PDF Files with Custom Viewer"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: pdf-poster.php
+msgid "https://bplugins.com/products/pdf-poster/"
+msgstr ""
+
+#. Description of the plugin
+#: pdf-poster.php
+msgid "You can easily embed and display PDF files in your WordPress website using this plugin."
+msgstr ""
+
+#. Author of the plugin
+#: pdf-poster.php
+msgid "bPlugins"
+msgstr ""
+
+#. Author URI of the plugin
+#: pdf-poster.php
+msgid "https://profiles.wordpress.org/abuhayat"
+msgstr ""
+
+#: includes/admin/class-pdfp-admin.php:25
+#: includes/admin/class-pdfp-settings.php:22
+#: build/blocks/pdf-poster/index.js
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-pdfp-admin.php:58
+#: includes/admin/class-pdfp-admin.php:59
+#: includes/admin/class-pdfp-settings.php:152
+#: includes/base/class-pdfp-pdfposter.php:221
+#: build/blocks/pdf-poster/index.js
+msgid "Analytics"
+msgstr ""
+
+#: includes/admin/class-pdfp-admin.php:68
+#: includes/admin/class-pdfp-admin.php:69
+msgid "Demo and Help"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:23
+msgid "Configure Your PDF"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:54
+#: build/blocks/pdf-poster/index.js
+msgid "Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:58
+msgid "FlipBook"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:59
+#: build/blocks/pdf-poster/index.js
+msgid "Slider"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:70
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:75
+#: includes/admin/class-pdfp-metabox.php:514
+#: build/blocks/pdf-poster/index.js
+msgid "Viewer"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:76
+#: build/blocks/pdf-poster/index.js
+msgid "Select the PDF viewer engine."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:83
+msgid "PDF Source"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:84
+msgid "Select or upload your PDF file."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:89
+msgid "Viewer Source"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:93
+#: includes/integrations/class-pdfp-wpbakery.php:120
+#: build/blocks/pdf-poster/index.js
+msgid "PDF File"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:94
+#: build/blocks/pdf-poster/index.js
+msgid "Image Gallery"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:96
+msgid "Build the flipbook, slider or scroll view from a PDF file or from an ordered set of images."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:101
+msgid "Pages (Images)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:103
+msgid "Select images in the order they should appear as pages."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:112
+msgid "Preview Device"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:114
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Desktop"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:115
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Tablet"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:116
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Mobile"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:122
+msgid "Height (Desktop)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:125
+#: build/blocks/pdf-poster/index.js
+msgid "Set the height of the viewer for desktop."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:134
+msgid "Height (Tablet)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:137
+#: build/blocks/pdf-poster/index.js
+msgid "Set the height of the viewer for tablet."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:146
+msgid "Height (Mobile)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:149
+#: build/blocks/pdf-poster/index.js
+msgid "Set the height of the viewer for mobile."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:158
+msgid "Width (Desktop)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:161
+#: build/blocks/pdf-poster/index.js
+msgid "Set the width of the viewer for desktop."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:170
+msgid "Width (Tablet)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:173
+#: build/blocks/pdf-poster/index.js
+msgid "Set the width of the viewer for tablet."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:182
+msgid "Width (Mobile)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:185
+#: build/blocks/pdf-poster/index.js
+msgid "Set the width of the viewer for mobile."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:193
+msgid "Industry-Leading Adobe Viewer"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:194
+msgid "Continuous Scroll Viewer for Long Reports"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:195
+msgid "Effortless Cloud Sync (Dropbox & Google Drive)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:204
+#: build/blocks/pdf-poster/index.js
+msgid "Controls"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:208
+#: includes/admin/class-pdfp-settings.php:90
+#: includes/admin/class-pdfp-settings.php:280
+#: build/blocks/pdf-poster/index.js
+msgid "Display Filename"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:211
+#: includes/admin/class-pdfp-settings.php:92
+#: includes/admin/class-pdfp-settings.php:283
+#: build/blocks/pdf-poster/index.js
+msgid "Show the filename at the top of the viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:215
+#: includes/admin/class-pdfp-settings.php:315
+#: build/blocks/pdf-poster/index.js
+msgid "Keyboard Navigation"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:218
+#: build/blocks/pdf-poster/index.js
+msgid "Let visitors use the Left/Right arrow keys to change pages."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:222
+#: build/blocks/pdf-poster/index.js
+msgid "RTL Layout"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:226
+#: build/blocks/pdf-poster/index.js
+msgid "Off"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:227
+#: build/blocks/pdf-poster/index.js
+msgid "On"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:228
+#: includes/admin/class-pdfp-metabox.php:240
+msgid "Auto"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:230
+msgid "Flip the viewer layout for right-to-left languages (Arabic, Hebrew, etc.). \"Auto\" follows the site language."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:234
+#: build/blocks/pdf-poster/index.js
+msgid "Viewer Theme"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:238
+#: build/blocks/pdf-poster/index.js
+msgid "Light"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:239
+#: build/blocks/pdf-poster/index.js
+msgid "Dark"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:242
+msgid "Controls the viewer toolbar/background theme. \"Auto\" follows the visitor's system. This never changes the PDF page content itself."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:246
+#: includes/admin/class-pdfp-settings.php:322
+#: build/blocks/pdf-poster/index.js
+msgid "Page Flip Sound"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:249
+#: build/blocks/pdf-poster/index.js
+msgid "Play a page-turn sound effect in Flipbook and Slider modes."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:254
+#: includes/admin/class-pdfp-settings.php:308
+#: build/blocks/pdf-poster/index.js
+msgid "Annotation Mode"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:257
+#: includes/admin/class-pdfp-settings.php:311
+#: build/blocks/pdf-poster/index.js
+msgid "Show notes, highlights, comments, and clickable links that are saved inside the PDF."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:262
+#: includes/admin/class-pdfp-settings.php:301
+#: build/blocks/pdf-poster/index.js
+msgid "Open PDF links in new tab"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:265
+#: includes/admin/class-pdfp-settings.php:304
+#: build/blocks/pdf-poster/index.js
+msgid "Open links clicked inside the PDF in a new browser tab, keeping your current page open."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:272
+msgid "Distraction-Free 'Reader Mode'"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:273
+msgid "Toggle Thumbnails Navigation"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:274
+msgid "Auto-Open Sidebar by Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:275
+msgid "Horizontal Scrollbar Support"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:276
+msgid "Custom Initial Page & Zoom Level"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:277
+msgid "Hide the Right-Side Toolbar"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:278
+msgid "Adobe Embed Modes & View Modes"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:287
+#: build/blocks/pdf-poster/index.js
+msgid "Actions"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:291
+#: build/blocks/pdf-poster/index.js
+msgid "Allow Printing"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:294
+#: includes/admin/class-pdfp-settings.php:276
+#: build/blocks/pdf-poster/index.js
+msgid "Allow visitors to print the PDF document."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:298
+#: includes/admin/class-pdfp-settings.php:96
+#: includes/admin/class-pdfp-settings.php:287
+#: build/blocks/pdf-poster/index.js
+msgid "Download Button"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:301
+#: includes/admin/class-pdfp-settings.php:98
+#: includes/admin/class-pdfp-settings.php:290
+#: build/blocks/pdf-poster/index.js
+msgid "Display a download button at the top of the viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:306
+#: includes/admin/class-pdfp-settings.php:110
+#: includes/admin/class-pdfp-settings.php:294
+#: build/blocks/pdf-poster/index.js
+msgid "Fullscreen Button"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:309
+#: includes/admin/class-pdfp-settings.php:113
+#: includes/admin/class-pdfp-settings.php:297
+#: build/blocks/pdf-poster/index.js
+msgid "Display a fullscreen toggle button at the top of the viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:313
+#: build/blocks/pdf-poster/index.js
+msgid "Fullscreen Label"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:315
+#: build/blocks/pdf-poster/index.js
+msgid "Customize the text for the fullscreen button."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:320
+msgid "Customize Download Button Label"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:321
+#: includes/admin/class-pdfp-settings.php:119
+msgid "Open Fullscreen in New Tab"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:322
+msgid "Custom Actions Position (Top/Bottom)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:339
+#: build/blocks/pdf-poster/index.js
+msgid "Popup"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:343
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Popup"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:345
+#: build/blocks/pdf-poster/index.js
+msgid "Open the PDF document in a modal popup."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:350
+#: build/blocks/pdf-poster/index.js
+msgid "Trigger Type"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:353
+#: build/blocks/pdf-poster/index.js
+msgid "Button"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:354
+#: includes/admin/class-pdfp-metabox.php:375
+#: build/blocks/pdf-poster/index.js
+msgid "Image"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:357
+#: build/blocks/pdf-poster/index.js
+msgid "Select the trigger type for the popup."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:362
+#: build/blocks/pdf-poster/index.js
+msgid "Alignment"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:365
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Left"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:366
+#: build/blocks/pdf-poster/index.js
+msgid "Center"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:367
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Right"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:370
+#: build/blocks/pdf-poster/index.js
+msgid "Select the alignment for the popup trigger."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:378
+#: build/blocks/pdf-poster/index.js
+msgid "Select an image to use as the popup trigger."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:383
+#: build/blocks/pdf-poster/index.js
+msgid "Button Text"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:385
+#: build/blocks/pdf-poster/index.js
+msgid "Customize the text for the popup trigger button."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:391
+#: build/blocks/pdf-poster/index.js
+msgid "Image Height"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:394
+#: build/blocks/pdf-poster/index.js
+msgid "Set the height for the trigger image."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:403
+#: build/blocks/pdf-poster/index.js
+msgid "Image Width"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:406
+#: build/blocks/pdf-poster/index.js
+msgid "Set the width for the trigger image."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:415
+#: build/blocks/pdf-poster/index.js
+msgid "Enable PDF Icon"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:417
+#: build/blocks/pdf-poster/index.js
+msgid "Show a PDF icon over the trigger image."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:428
+#: build/blocks/pdf-poster/index.js
+msgid "Protect Content"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:431
+msgid "Disable Right-Click Interactions"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:432
+msgid "Disable Text Selection"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:433
+#: includes/admin/class-pdfp-settings.php:121
+msgid "Suppress Blocked Warning Alerts"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:459
+#: build/blocks/pdf-poster/index.js
+msgid "Watermark & Branding"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:463
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Watermark"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:466
+msgid "Stamp a text mark over the document."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:473
+#: build/blocks/pdf-poster/index.js
+msgid "The mark"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:474
+#: build/blocks/pdf-poster/index.js
+msgid "Your wording, and the look it is stamped in."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:482
+#: build/blocks/pdf-poster/index.js
+msgid "Theme"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:488
+msgid "Three ready-made looks. Each one sets the angle, repeat, weight and blend for you."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:493
+#: build/blocks/pdf-poster/index.js
+msgid "Text"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:496
+msgid "Supports placeholders such as {site_name}, {date} and {user_email}."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:500
+#: build/blocks/pdf-poster/index.js
+msgid "Where it shows"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:501
+#: build/blocks/pdf-poster/index.js
+msgid "Which outputs, and which pages."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:506
+msgid "Apply To"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:515
+#: build/blocks/pdf-poster/index.js
+msgid "Printing · next release"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:516
+#: build/blocks/pdf-poster/index.js
+msgid "Downloads · next release"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:519
+msgid "The viewer is marked today. Writing the mark into printouts and downloaded copies arrives in the next release."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:524
+#: build/blocks/pdf-poster/index.js
+msgid "Pages"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:527
+#: build/blocks/pdf-poster/index.js
+msgid "All pages"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:528
+#: build/blocks/pdf-poster/index.js
+msgid "First page only"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:529
+#: build/blocks/pdf-poster/index.js
+msgid "All except the cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:532
+msgid "Brand just the cover, or gate everything after it."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:540
+msgid "Logo Watermark (Image, or Text + Image)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:541
+msgid "Three More Themes (Brand Corner, Logo Wash, Logo + Caption)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:542
+msgid "Custom Theme — Your Own Colour, Coverage, Strength, Size & Angle"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:543
+msgid "Choose Who Sees It (Everyone / Except Admins / Guests Only)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:544
+msgid "Per-Visitor Anti-Leak Stamp"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:545
+msgid "Restore The Mark If A Visitor Removes It"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:556
+#: build/blocks/pdf-poster/index.js
+msgid "Social Share"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:560
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Sharing"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:562
+#: build/blocks/pdf-poster/index.js
+msgid "Enable social sharing buttons for the PDF."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:567
+#: build/blocks/pdf-poster/index.js
+msgid "Share Position"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:569
+#: build/blocks/pdf-poster/index.js
+msgid "Select where the sharing buttons should appear."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:572
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Top"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:573
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Bottom"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:579
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Facebook"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:581
+#: build/blocks/pdf-poster/index.js
+msgid "Allow sharing on Facebook."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:587
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Twitter"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:589
+#: build/blocks/pdf-poster/index.js
+msgid "Allow sharing on Twitter."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:595
+#: build/blocks/pdf-poster/index.js
+msgid "Enable LinkedIn"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:597
+#: build/blocks/pdf-poster/index.js
+msgid "Allow sharing on LinkedIn."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:603
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Pinterest"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:605
+#: build/blocks/pdf-poster/index.js
+msgid "Allow sharing on Pinterest."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:611
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Email"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:613
+#: build/blocks/pdf-poster/index.js
+msgid "Allow sharing via Email."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:624
+msgid "Styles"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:628
+#: build/blocks/pdf-poster/index.js
+msgid "Button Background"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:630
+#: build/blocks/pdf-poster/index.js
+msgid "Choose a background color for the buttons."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:635
+#: build/blocks/pdf-poster/index.js
+msgid "Button Color"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:637
+#: build/blocks/pdf-poster/index.js
+msgid "Choose a text color for the buttons."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:642
+msgid "Font Size"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:644
+msgid "Set the font size for the buttons."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:650
+#: build/blocks/pdf-poster/index.js
+msgid "Padding"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:652
+#: build/blocks/pdf-poster/index.js
+msgid "Set the internal spacing for the buttons."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:675
+msgid "Advanced"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:679
+msgid "CSS Class"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:681
+msgid "Extra class name added to this viewer, so you can target it from your theme or from the CSS below."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:686
+#: includes/admin/class-pdfp-settings.php:208
+#: includes/admin/class-pdfp-settings.php:213
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:691
+msgid "CSS for this poster only. Loaded wherever this poster is embedded, on top of the site-wide Custom CSS in Settings."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:701
+#: build/blocks/pdf-poster/index.js
+msgid "Performance & Reliability"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:705
+#: includes/admin/class-pdfp-settings.php:329
+#: build/blocks/pdf-poster/index.js
+msgid "Fast Loading (Progressive Rendering)"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:708
+#: includes/admin/class-pdfp-settings.php:332
+#: build/blocks/pdf-poster/index.js
+msgid "Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:712
+#: includes/admin/class-pdfp-settings.php:336
+#: build/blocks/pdf-poster/index.js
+msgid "Google Doc Viewer"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:715
+#: includes/admin/class-pdfp-settings.php:339
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Google Doc Viewer as a fallback (Recommended for Edge)."
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:718
+msgid "Load Latest Document Version"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:727
+#: build/blocks/pdf-poster/index.js
+msgid "Ads"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:21
+msgid "PDF Poster Settings"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:43
+msgid "Quick Embedder"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:53
+msgid "Documentation & Help"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:54
+msgid "Need help configuring the Quick Embedder? Check out our full documentation for expert tips and advanced settings."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:58
+msgid "View Documentation"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:68
+#: includes/admin/class-pdfp-settings.php:251
+msgid "Viewer Height"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:75
+msgid "Set the height of the PDF viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:79
+#: includes/admin/class-pdfp-settings.php:262
+msgid "Viewer Width"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:86
+msgid "Set the width of the PDF viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:102
+msgid "Download Label"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:105
+msgid "Custom text for the download button."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:116
+#: includes/admin/class-pdfp-settings.php:273
+msgid "Enable Printing"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:117
+msgid "Default Browser Viewer Support"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:118
+msgid "Custom Fullscreen Label"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:120
+msgid "Advanced Content Protection (Disable Right-Click)"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:122
+msgid "Enable Thumbnails Navigation"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:130
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:135
+msgid "Gutenberg Integration"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:136
+msgid "Enable the PDF Poster block and shortcode generator in the Gutenberg editor."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:157
+msgid "Count Views & Downloads"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:159
+msgid "Record how often each PDF is opened and downloaded. Counting happens in the visitor's browser, so it keeps working behind a page cache. Today's figures appear on the PDF Posters list and beside each document."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:164
+msgid "Exclude Logged-in Editors"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:166
+msgid "Do not count visits by users who can edit posts, so your own previews stay out of the numbers."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:172
+msgid "Respect \"Do Not Track\""
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:174
+msgid "Skip counting for visitors whose browser sends a Do Not Track header."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:180
+msgid "What counts as a view"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:181
+msgid "A view is recorded once the viewer has actually rendered and been on screen for a second -- not on every page load. Repeat views by the same visitor are counted once per 30 minutes, and no IP address is ever stored."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:190
+msgid "Today, and everything before it"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:191
+msgid "This plugin shows you today's views and downloads. Earlier days are still recorded, in your own database and nowhere else, so upgrading to Pro reads back the history this site has already built -- totals, trends, your best-performing documents and a report you can export. There is nothing to import and no data leaves your server."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:214
+msgid "Add your custom CSS here to override the viewer styles. It is loaded on every page of your site, after the plugin stylesheet."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:243
+#: build/blocks/pdf-poster/index.js
+msgid "Preset"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:246
+msgid "These are the defaults for newly created PDF Posters. Existing posters are not changed."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:254
+msgid "Set the default height for preset viewers."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:265
+msgid "Set the default width for preset viewers."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:318
+msgid "Let visitors page through the document with the arrow keys."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:325
+msgid "Play the page-turn sound in the FlipBook and Slider viewers."
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:345
+msgid "Download Button Label Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:346
+msgid "Fullscreen Button Label Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:347
+msgid "Reader Mode Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:348
+msgid "Thumbnails & Auto-Open Sidebar Defaults"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:349
+msgid "Content Protection Defaults (Right-Click, Warning Alerts)"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:350
+msgid "Horizontal Scrollbar Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:351
+msgid "Open Fullscreen in New Tab Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:352
+msgid "Load Latest Document Version Default"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:360
+msgid "Cloud Integration"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:363
+msgid "Direct Dropbox Connectivity"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:364
+msgid "Google Drive Cloud Picker"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:365
+msgid "Premium Adobe PDF Embed API"
+msgstr ""
+
+#: includes/admin/class-pdfp-settings.php:366
+msgid "Seamless External Hosting"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:45
+msgid "Page Builder Support"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:56
+msgid "PDF Poster Pro"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:104
+msgid "Gutenberg"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:104
+msgid "Block editor (Gutenberg)"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:105
+msgid "Elementor"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:106
+msgid "Divi"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:106
+msgid "Divi Builder"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:107
+msgid "Bricks"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:107
+msgid "Bricks Builder"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:108
+msgid "WPBakery"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:108
+msgid "WPBakery Page Builder"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:109
+msgid "Beaver"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:109
+msgid "Beaver Builder"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:110
+msgid "Oxygen"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:110
+msgid "Oxygen Builder"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:111
+msgid "Breakdance"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:128
+msgid "Analytics history & trends"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:129
+msgid "Adobe & Scroll viewers"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:130
+msgid "Logo watermark & Custom theme"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:131
+msgid "Right-click & copy protection"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:132
+msgid "Reader mode, thumbnails, zoom"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:133
+msgid "Button labels & position"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:134
+msgid "Dropbox & Google Drive import"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:144
+msgid "Compatibility"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:149
+msgid "Every builder, one shortcode."
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:152
+msgid "Paste the shortcode above into any of these — nothing else to install."
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:171
+#: includes/helper/class-pdfp-functions.php:562
+msgid "Pro version"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:172
+#: includes/helper/class-pdfp-functions.php:563
+msgid "Locked"
+msgstr ""
+
+#. translators: %d: number of settings available only in the Pro version.
+#: includes/admin/class-pdfp-sidebarcards.php:180
+#, php-format
+msgid "%d settings the free build keeps shut."
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:199
+#: includes/helper/class-pdfp-functions.php:583
+msgid "See Pro pricing"
+msgstr ""
+
+#: includes/admin/class-pdfp-sidebarcards.php:202
+#: includes/helper/class-pdfp-functions.php:585
+msgid "14-day refund policy"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:80
+#: includes/base/class-pdfp-pdfposter.php:81
+#: includes/integrations/class-pdfp-wpbakery.php:94
+#: includes/integrations/class-pdfp-wpbakery.php:102
+#: build/blocks/selector/index.js
+msgid "PDF Poster"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:82
+msgid "Add New PDF"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:83
+msgid "Add New"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:84
+msgid "Edit"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:85
+msgid "New PDF"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:86
+msgid "View PDF"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:87
+msgid "Search PDF"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:88
+msgid "All PDF Posters"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:89
+msgid "Sorry, we couldn't find the PDF file you are looking for."
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:131
+msgid "ShortCode"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:132
+msgid "ShortCode For Raw PDF View"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:139
+#: includes/helper/class-pdfp-functions.php:1136
+#: build/blocks/pdf-poster/index.js
+msgid "Views today"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:140
+#: includes/helper/class-pdfp-functions.php:1137
+#: build/blocks/pdf-poster/index.js
+msgid "Downloads today"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:141
+msgid "Date"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:172
+#: includes/helper/class-pdfp-functions.php:1151
+msgid "Counting is switched off"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:195
+msgid "Not counted yet"
+msgstr ""
+
+#. translators: %s: number of days of history already recorded
+#: includes/base/class-pdfp-pdfposter.php:278
+#, php-format
+msgid "Unlock my %s day"
+msgid_plural "Unlock my %s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/base/class-pdfp-pdfposter.php:281
+msgid "See the full report with Pro"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:294
+msgid "Turn it on in Settings"
+msgstr ""
+
+#. translators: %s: link to the plugin settings screen
+#: includes/base/class-pdfp-pdfposter.php:300
+#, php-format
+msgid "Counting is switched off for this site. %s"
+msgstr ""
+
+#. translators: %s: the shortcode, e.g. [pdf id='12']
+#: includes/base/class-pdfp-pdfposter.php:351
+#, php-format
+msgid "Copy shortcode %s"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:354
+msgid "Copy to clipboard"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:370
+msgid "Player updated "
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:460
+msgid "New Feature ! Quick Embed"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:480
+msgid "Copy and paste this shortcode into your posts, pages and widget"
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:500
+msgid "Now you can embed pdf without listing ! just use the Embed shortCode below, and start saving your time."
+msgstr ""
+
+#: includes/base/class-pdfp-pdfposter.php:502
+msgid "ShortCode Global Settings"
+msgstr ""
+
+#: includes/base/class-pdfp-shortcodes.php:133
+msgid "Download File"
+msgstr ""
+
+#: includes/base/class-pdfp-shortcodes.php:135
+msgid "View Fullscreen"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:527
+msgid "The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users."
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:527
+msgid "Upgrade to PRO"
+msgstr ""
+
+#. translators: %d: number of settings in this section available only in the Pro version.
+#: includes/helper/class-pdfp-functions.php:569
+#, php-format
+msgid "%d setting the free build keeps shut."
+msgid_plural "%d settings the free build keeps shut."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/helper/class-pdfp-functions.php:605
+msgid "Copy"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:608
+msgid "Copy and paste this shortcode into any page or post. Replace <code>your_file_url</code> with your actual PDF link."
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:617
+msgid "This feature is coming soon. Stay tuned for updates!"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:819
+msgid "Counting is switched off in Settings > Analytics."
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:825
+msgid "Counting is on. Nothing recorded for this document yet."
+msgstr ""
+
+#. translators: %s: the date counting began, e.g. "12 September 2026"
+#: includes/helper/class-pdfp-functions.php:830
+#, php-format
+msgid "Counting since %s. Resets at midnight, site time."
+msgstr ""
+
+#. translators: %s: number of days of history already recorded
+#: includes/helper/class-pdfp-functions.php:921
+#: build/blocks/pdf-poster/index.js
+#, php-format,js-format
+msgid "%s day recorded"
+msgid_plural "%s days recorded"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/helper/class-pdfp-functions.php:924
+#: build/blocks/pdf-poster/index.js
+msgid "Recording now"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:925
+#: build/blocks/pdf-poster/index.js
+msgid "example"
+msgstr ""
+
+#. translators: %s: number of days of history already recorded
+#: includes/helper/class-pdfp-functions.php:939
+#: build/blocks/pdf-poster/index.js
+#, php-format,js-format
+msgid "Your last %s day is recorded in your own database. Pro reads it back as totals, a 14-day trend, your best-performing documents and a report you can export."
+msgid_plural "Your last %s days are recorded in your own database. Pro reads them back as totals, a 14-day trend, your best-performing documents and a report you can export."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/helper/class-pdfp-functions.php:947
+msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, trends and a report."
+msgstr ""
+
+#. translators: %d: number of days
+#: includes/helper/class-pdfp-functions.php:1067
+#, php-format
+msgid "No views in the last %d days"
+msgstr ""
+
+#. translators: %d: number of days
+#: includes/helper/class-pdfp-functions.php:1069
+#, php-format
+msgid "View trend over the last %d days"
+msgstr ""
+
+#. translators: %d: number of days
+#: includes/helper/class-pdfp-functions.php:1087
+#, php-format
+msgid "Last %d days"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1092
+#: build/blocks/pdf-poster/index.js
+msgid "no views yet"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1094
+#: build/blocks/pdf-poster/index.js
+msgid "no baseline"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1185
+#: build/blocks/pdf-poster/index.js
+msgid "Views"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1190
+#: build/blocks/pdf-poster/index.js
+msgid "Downloads"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1590
+#: includes/helper/class-pdfp-functions.php:1698
+#: build/blocks/pdf-poster/index.js
+msgid "Confidential"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1597
+#: includes/helper/class-pdfp-functions.php:1699
+#: build/blocks/pdf-poster/index.js
+msgid "Draft Stamp"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1605
+#: includes/helper/class-pdfp-functions.php:1700
+#: build/blocks/pdf-poster/index.js
+msgid "Sample Wash"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1612
+#: includes/helper/class-pdfp-functions.php:1701
+#: build/blocks/pdf-poster/index.js
+msgid "Brand Corner"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1619
+#: includes/helper/class-pdfp-functions.php:1702
+#: build/blocks/pdf-poster/index.js
+msgid "Logo Wash"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1626
+#: includes/helper/class-pdfp-functions.php:1703
+#: build/blocks/pdf-poster/index.js
+msgid "Logo + Caption"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1633
+#: build/blocks/pdf-poster/index.js
+msgid "Custom"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1723
+#: build/blocks/pdf-poster/index.js
+msgid "Text, a logo, or both"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1724
+#: build/blocks/pdf-poster/index.js
+msgid "Tiled or one corner mark"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1725
+#: build/blocks/pdf-poster/index.js
+msgid "Pick the pages"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1726
+#: build/blocks/pdf-poster/index.js
+msgid "Pick who sees it"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1736
+#: build/blocks/pdf-poster/index.js
+msgid "Turn on watermarking"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1744
+#: build/blocks/pdf-poster/index.js
+msgid "looks, ready to go"
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1745
+#: build/blocks/pdf-poster/index.js
+msgid "Stamp every page — the file is never touched."
+msgstr ""
+
+#: includes/helper/class-pdfp-functions.php:1747
+msgid "The mark is drawn over the document as it is displayed, so the PDF on your server stays exactly as you uploaded it. Pick one of these and you are done, or take the Custom theme and set the colour, angle, size and tiling yourself."
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:90
+msgid "Content"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:98
+msgid "Display a saved PDF Poster."
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:106
+msgid "Pick one of your saved PDF Posters. Create them under PDF Posters."
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:112
+msgid "PDF Embed (by URL)"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:116
+msgid "Display a PDF straight from a file URL."
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:122
+msgid "Choose a PDF from the media library, or leave empty and paste a URL below."
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:126
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Title"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:132
+#: build/blocks/pdf-poster/index.js
+msgid "Width"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:138
+#: build/blocks/pdf-poster/index.js
+msgid "Height"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:144
+#: build/blocks/pdf-poster/index.js
+msgid "Show download button"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:146
+#: includes/integrations/class-pdfp-wpbakery.php:152
+#: build/blocks/pdf-poster/index.js
+msgid "Yes"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:150
+msgid "Allow printing"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:173
+msgid "— Select a PDF Poster —"
+msgstr ""
+
+#: includes/integrations/class-pdfp-wpbakery.php:188
+#: includes/model/class-pdfp-analytics.php:570
+msgid "(no title)"
+msgstr ""
+
+#. translators: 1: poster title, 2: poster ID
+#: includes/integrations/class-pdfp-wpbakery.php:191
+#, php-format
+msgid "%1$s (#%2$d)"
+msgstr ""
+
+#. translators: %d: post id of an untitled document
+#: includes/model/class-pdfp-analytics.php:181
+#, php-format
+msgid "(no title) · %d"
+msgstr ""
+
+#. translators: 1: page title, 2: short file identifier
+#: includes/model/class-pdfp-analytics.php:212
+#, php-format
+msgid "%1$s · %2$s"
+msgstr ""
+
+#. translators: %s: short identifier for an ad-hoc embedded file
+#: includes/model/class-pdfp-analytics.php:218
+#: includes/model/class-pdfp-analytics.php:284
+#: includes/model/class-pdfp-analytics.php:608
+#: includes/model/class-pdfp-analytics.php:670
+#, php-format
+msgid "Embedded file · %s"
+msgstr ""
+
+#: pdf-poster.php:93
+msgid "Add PDF"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Loading Viewer..."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Update"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Create"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "use adobe PDF embedder"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Embed Mode"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Print Button"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Download Button"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Fullscreen Button"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Annotation Tools"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Protect my content"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Enable Alert"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Allow print"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show title on top"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Raw PDF"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Use browser pdf viewer"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show fullscreen button"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Open in new window"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Enable thumbnails toggle menu"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Thumb by Default"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Load the last version of the PDF"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Horizontal Scrollbar"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Initail page"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Zoom Level (%)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "leave empty to set auto"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Style"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Title Font Size"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Adobe Lightbox Button Style"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Background"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Text Color"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Adobe Client Key Required to use Adobe Embedder"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Generate Client key"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Preview is not available for dropbox"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Do you want to delete?"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Alert in left"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Alert in center"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Alert in right"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Unlock a custom Download Button label, opening the fullscreen view in a new tab, and moving the action buttons to the bottom of the viewer—available exclusively in Premium."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Additional"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Class"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Extra class name added to the viewer wrapper."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "CSS"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Custom CSS for this block only. Loads on the front end as well as here in the editor."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Ads Feature is Coming Soon"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Get ready to monetize your PDF content with targeted advertisements. This feature will be available soon in PDF Poster Pro."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Choose a PDF first — views and downloads appear here once the document has been embedded and read."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Loading…"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Could not load the numbers just now. Reload the editor to try again."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Last 14 days"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, a 14-day trend, your best-performing documents and a report you can export."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show Analytics"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "All Analytics"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Counting is switched off for this site, so these numbers are not updating."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Nothing recorded yet. Visit a page where this document is embedded and the numbers appear within a few seconds."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Your own visits are not counted while you are logged in as an editor."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Your own visits are counted too, because Settings › Analytics is not excluding editors."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Auto (follow site language)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Flip the viewer layout for right-to-left languages (Arabic, Hebrew, etc.)."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Auto (follow system)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Controls the viewer toolbar/background theme. This never changes the PDF page content itself."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Unlock Reader Mode, thumbnail navigation with an auto-open sidebar, horizontal scrolling, a custom initial page and zoom level, a hidden right-side toolbar, and Adobe embed modes—available exclusively in Premium."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Height & Width"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Automatically load the latest version of a re-uploaded PDF, so visitors never see a cached copy—available exclusively in Premium."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Content Protection"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Keep your work safe by disabling right-clicks, text selection, and copying. This feature is available in the Premium version."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Social Media Platforms"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "FlipBook (New)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Slider (New)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Viewers"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Upload PDF"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Flipbook Source"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Build the flipbook from a PDF file or from an ordered set of images."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Edit Images"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Select Images"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Clear images"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "The Adobe Viewer and Continuous Scroll engines above are Premium. Premium also adds PDF import straight from Google Drive and Dropbox."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Single mark"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Sparse"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Normal"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Dense"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Faint"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Subtle"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Medium"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Strong"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Solid"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Preview"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "The mark is drawn over the document as it is displayed, so your PDF is never altered. Pick one of these and you are done."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "target"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "targets"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "nowhere"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "On-screen marks can be removed with browser dev tools."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Insert a placeholder"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Choose…"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Apply to"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "The Adobe viewer runs in a cross-origin frame, so printing and downloads cannot be marked there."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "This viewer shows the document in a cross-origin frame, so the page on screen cannot be read and every page carries the mark."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Viewer support & limits"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Default viewer"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "marks each page; supports every option."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "marks each page individually."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "3D FlipBook"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "marks the sheets on screen, so Pages applies."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "cross-origin, so one mark over the frame; no printing or downloads."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "An on-screen mark can always be removed with browser dev tools. Marking printouts and downloads arrives in a later release."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Unlock a logo watermark (your logo on its own, or beside your wording), the Brand Corner, Logo Wash and Logo + Caption themes, a Custom theme where you set the colour, coverage, position, strength, size and angle yourself, audience rules for who sees the mark, and per-visitor anti-leak stamping with tamper restore—available exclusively in Premium."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Upload a PDF or paste/write PDF URL."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Upload a PDF "
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Upload"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "URL"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Paste or type a PDF URL"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Apply"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "URL is not valid"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "This document is currently unavailable."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The PDF file could not be found (404)."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The saved link may point at a file that was moved, renamed or deleted -- re-select the file on this poster to repair it."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "This address points at an image, not a PDF. The saved media item may have been replaced -- re-select the file on this poster."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The server returned a web page instead of the PDF. The file is usually blocked by a login requirement, a hotlink protection rule or a security plugin."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+#, js-format
+msgid "The server answered with HTTP %d."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The server did not return the file as expected."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The PDF could not be loaded."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "A 403 usually means a security plugin, hotlink protection or the server's permissions are blocking the file; a 5xx means the server itself failed."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "The PDF file is empty or corrupted (0 bytes)."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "An error occurred while loading the PDF."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Retry"
+msgstr ""
+
+#: build/blocks/selector/index.js
+msgid "PDF Poster Selector"
+msgstr ""
+
+#: build/blocks/selector/index.js
+msgid "PDF Viewer"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Pro"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Coming Soon"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "New"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgctxt "block title"
+msgid "PDF Poster"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgctxt "block description"
+msgid "Embed PDF in your posts and pages"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgctxt "block keyword"
+msgid "PDF poster"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgctxt "block keyword"
+msgid "Document poster"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgctxt "block keyword"
+msgid "PDF Embedder"
+msgstr ""
+
+#: build/blocks/selector/index.js
+msgctxt "block title"
+msgid "PDF Poster Selector"
+msgstr ""
+
+#: build/blocks/selector/index.js
+msgctxt "block keyword"
+msgid "PDF poster Selector"
+msgstr ""
