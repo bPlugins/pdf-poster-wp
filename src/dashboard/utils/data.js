@@ -149,6 +149,13 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
+            version: '2.6.2 - 13 Oct 2026',
+            type: 'fixed',
+            list: [
+                '<strong>Fix:</strong> When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.'
+            ]
+        },
+        {
             version: '2.6.1 - 19 Sep 2026',
             type: 'fixed',
             list: [

@@ -34,6 +34,8 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
 
   const [source, setSource] = useState("");
   const [gviewError, setGviewError] = useState(false);
+  // Set by the popup trigger on hover, focus or tap: starts the PDF.js viewer early.
+  const [preload, setPreload] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
@@ -161,6 +163,8 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
     : (currentViewer === "flipbook" || isGview) ? "container" : "iframe";
 
   const fullscreenPDF = () => {
+    setPreload(true);
+
     if (["flipbook", "slider"].includes(currentViewer)) {
       ref.current?.classList.add("pdfp_fullscreen_opened");
       return;
@@ -186,7 +190,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       </div>
       {hasContent && (
         <>
-          <PopupTrigger popupOptions={popupOptions} fullscreenPDF={fullscreenPDF} />
+          <PopupTrigger popupOptions={popupOptions} fullscreenPDF={fullscreenPDF} onPreload={() => setPreload(true)} />
           {socialEnabled && socialPosition === "top" && !enabled && <SocialShare attributes={attributes} />}
           {!enabled && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={true} showActions={actionsPosition === "top"} isImagesFlipbook={useImagesFlipbook} onTrack={track} />}
 
@@ -194,7 +198,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
 
           {isWatermarked && wmMode !== "iframe" && <Watermark watermark={watermark} mode={wmMode} targetRef={ref} theme={effectiveTheme} />}
 
-          {currentViewer === "default" && <PDFJSViewer source={previewSrc} attributes={attributes} setAttributes={setAttributes} __={__} wrapper={ref.current} isBackend={isBackend} isSelected={isSelected} onGViewError={() => setGviewError(true)} />}
+          {currentViewer === "default" && <PDFJSViewer source={previewSrc} attributes={attributes} setAttributes={setAttributes} __={__} wrapper={ref.current} isBackend={isBackend} isSelected={isSelected} onGViewError={() => setGviewError(true)} forceLoad={preload} />}
 
           {!enabled && actionsPosition === "bottom" && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={false} showActions={true} isImagesFlipbook={useImagesFlipbook} onTrack={track} />}
           {socialEnabled && socialPosition === "bottom" && !enabled && <SocialShare attributes={attributes} />}

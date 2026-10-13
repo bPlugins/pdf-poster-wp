@@ -648,25 +648,35 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
   });
 
-  // Listen for PDF.js errors
+  // Listen for PDF.js errors. Bound as soon as the viewer has initialised -- which is
+  // before it opens the file -- because a file that fails fast (a .pptx, an HTML error
+  // page) used to raise its error inside the old 500ms poll and the parent never heard
+  // of it, leaving an empty "0 of 0" viewer instead of a message.
+  const bindErrorRelay = (app) => {
+    app.eventBus._on("documenterror", (e) => {
+      window.parent.postMessage({
+        type: "PDFP_ERROR",
+        message: e.message || "An error occurred while loading the PDF."
+      }, "*");
+    });
+
+    // Listen for other silent failures if possible
+    app.eventBus._on("pagerendererror", (e) => {
+      console.error("PDF.js render error:", e);
+    });
+  };
+
   const errorInterval = setInterval(() => {
-    if (window.PDFViewerApplication && window.PDFViewerApplication.eventBus) {
-      clearInterval(errorInterval);
+    const app = window.PDFViewerApplication;
+    if (!app) return;
+    clearInterval(errorInterval);
 
-      // Listen for document load errors
-      window.PDFViewerApplication.eventBus._on("documenterror", (e) => {
-        window.parent.postMessage({
-          type: "PDFP_ERROR",
-          message: e.message || "An error occurred while loading the PDF."
-        }, "*");
-      });
-
-      // Listen for other silent failures if possible
-      window.PDFViewerApplication.eventBus._on("pagerendererror", (e) => {
-        console.error("PDF.js render error:", e);
-      });
+    if (app.initializedPromise) {
+      app.initializedPromise.then(() => bindErrorRelay(app));
+    } else if (app.eventBus) {
+      bindErrorRelay(app);
     }
-  }, 500);
+  }, 10);
 
   // window.localStorage.setItem('pdfjs.history', JSON.stringify(pdfjsHistory));
 });

@@ -72,18 +72,63 @@ const describeBadResponse = (url, __, canDiagnose, probe) => {
   return `${__("The PDF could not be loaded.", "pdf-poster")} ${detail} ${__("A 403 usually means a security plugin, hotlink protection or the server's permissions are blocking the file; a 5xx means the server itself failed.", "pdf-poster")}\n${url}`;
 };
 
-function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile, className, isBackend = false, isSelected = false, onGViewError }) {
+// How far ahead of the viewport an inline poster starts loading, so a reader scrolling
+// down meets a document that is already on its way rather than an empty frame.
+const LOAD_AHEAD = "300px";
+
+function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile, className, isBackend = false, isSelected = false, onGViewError, forceLoad = false }) {
   const { hrScroll, title, socialShare } = attributes;
   const { position } = (socialShare || {});
   const [isLoaded, setIsLoaded] = useState(false);
   const [pdfError, setPdfError] = useState(null);
   const [attempt, setAttempt] = useState(0);
 
+  /*
+    The viewer is only pointed at its PDF once the poster can actually be seen.
+
+    Loading every poster up front is what made a page of popup buttons misbehave: each
+    hidden poster ran a full PDF.js instance at 0x0, competing for the same connection,
+    and a document laid out at zero width could come back blank when its popup opened.
+    The editor keeps loading at once -- the author is looking straight at it.
+  */
+  const [isActive, setIsActive] = useState(isBackend);
+  const wrapperRef = useRef(null);
+  const iframeRef = useRef(null);
+
   const isLoadedRef = useRef(false);
   isLoadedRef.current = isLoaded;
   const probeRef = useRef(null);
 
   const canDiagnose = isBackend || (typeof pdfp !== "undefined" && !!pdfp?.canEdit);
+
+  // A popup trigger hovered, focused or tapped asks for the document before the click,
+  // so the popup usually opens on a viewer that has already started.
+  useEffect(() => {
+    if (forceLoad) setIsActive(true);
+  }, [forceLoad]);
+
+  useEffect(() => {
+    if (isActive) return;
+
+    const target = wrapperRef.current;
+    if (!target || typeof IntersectionObserver === "undefined") {
+      setIsActive(true);
+      return;
+    }
+
+    // A popup's wrapper is display:none until it opens, so it never intersects before
+    // then -- the same observer covers inline posters, popups (fullscreen or the CSS
+    // fallback), tabs and accordions without knowing which one it is in.
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setIsActive(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: LOAD_AHEAD });
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [isActive]);
 
   useEffect(() => {
     // Reset error when source changes
@@ -93,7 +138,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     // using what the previous one found.
     probeRef.current = null;
 
-    if (!source) return;
+    if (!source || !isActive) return;
 
     // HTTP HEAD check to pre-validate the URL
     const validatePdfUrl = async (url) => {
@@ -151,6 +196,11 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     const handleMessage = (event) => {
       if (!event.data || event.data.type !== "PDFP_ERROR") return;
 
+      // Every viewer on the page posts to the same window, so only our own frame's
+      // error is ours to show -- otherwise one broken file put its error on every
+      // poster, and Retry "fixed" the healthy one by simply not hearing it again.
+      if (!iframeRef.current || event.source !== iframeRef.current.contentWindow) return;
+
       // PDF.js only ever raises its missing-file string for a hard 404, so rewrite that
       // one case into the actionable message instead of passing three useless words on.
       const raw = event.data.message || "";
@@ -170,13 +220,16 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
       setPdfError(raw || __("An error occurred while loading the PDF.", "pdf-poster"));
     };
 
-    window.addEventListener("message", handleMessage);
+    // The viewer posts to its parent, which is the editor canvas iframe rather than the
+    // top window when the block is rendered there.
+    const messageTarget = wrapperRef.current?.ownerDocument?.defaultView || window;
+    messageTarget.addEventListener("message", handleMessage);
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
-      window.removeEventListener("message", handleMessage);
+      messageTarget.removeEventListener("message", handleMessage);
     };
-  }, [source, onGViewError, __, attempt, canDiagnose]);
+  }, [source, onGViewError, __, attempt, canDiagnose, isActive]);
 
   // In the block editor the canvas is an iframe, so the fullscreen state lives on the
   // button's own document -- the top-level `document` has no fullscreen element to exit.
@@ -186,6 +239,8 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
   };
 
   const handleLoad = () => {
+    // A frame with no src yet fires load for about:blank -- that is not the viewer.
+    if (!isActive) return;
     setIsLoaded(true);
   };
 
@@ -216,13 +271,15 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
         </div>
       ) : (
         <Fragment>
-          <div className={`iframe_wrapper ${className} ${hrScroll ? "pdfp_horizontal_scroll" : ""}`}>
+          <div ref={wrapperRef} className={`iframe_wrapper ${className} ${hrScroll ? "pdfp_horizontal_scroll" : ""}`}>
             {isBackend && !isSelected && <div className="pdfp-embed-overlay"></div>}
             {!(isBackend && isSelected) && <div className="pdfp_frame_overlay"></div>}
             {pdfError ? (
               renderError(pdfError)
             ) : (
-              <iframe key={attempt} className="pdfp_iframe" src={source} title={title} onLoad={handleLoad}></iframe>
+              // Rendered without a src until active, so the frame already holds its size
+              // under every height rule and the page does not shift when it loads.
+              <iframe key={attempt} ref={iframeRef} className="pdfp_iframe" src={isActive ? source : undefined} title={title} onLoad={handleLoad}></iframe>
             )}
             <span className="close" onClick={exitFullScreen}>
               &times;

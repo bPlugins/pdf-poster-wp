@@ -4,7 +4,7 @@ Tags: embed pdf, pdf, pdf embedder, pdf plugin, pdf viewer
 Donate link: https://www.buymeacoffee.com/abuhayat/
 Requires at least: 5.0.3
 Tested up to: 7.1
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,9 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 
 == Changelog ==
+
+= 2.6.2 - 13 Oct 2026 =
+* Fix: When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.
 
 = 2.6.1 - 19 Sep 2026 =
 * Fix: Posters could fail to load after a site was moved, imported or cloned — showing a 404, an image instead of the document, or “Unexpected server response.” — most often when the PDF filename was not written in English; the saved address is now repaired against the media library.
