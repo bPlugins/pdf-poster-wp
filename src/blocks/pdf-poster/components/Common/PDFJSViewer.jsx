@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 // import isEdgeBrowser from "../../../hooks/utils/isEdgeBrowser";
 const exampleFile = "http://localhost/freemius/wp-content/uploads/2022/02/temp.pdf";
 import "./../../style.scss";
+import isLazyLoadEnabled from "../../../../hooks/utils/lazyLoad";
 
 /**
  * The URL the viewer will really request.
@@ -74,9 +75,10 @@ const describeBadResponse = (url, __, canDiagnose, probe) => {
 
 // How far ahead of the viewport an inline poster starts loading, so a reader scrolling
 // down meets a document that is already on its way rather than an empty frame.
-const LOAD_AHEAD = "300px";
+// Shared with FlipbookViewer so every engine starts at the same distance.
+export const LOAD_AHEAD = "300px";
 
-function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile, className, isBackend = false, isSelected = false, onGViewError, forceLoad = false }) {
+function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile, className, isBackend = false, isSelected = false, onGViewError, forceLoad = false, deferUntilOpen = false }) {
   const { hrScroll, title, socialShare } = attributes;
   const { position } = (socialShare || {});
   const [isLoaded, setIsLoaded] = useState(false);
@@ -90,10 +92,20 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     hidden poster ran a full PDF.js instance at 0x0, competing for the same connection,
     and a document laid out at zero width could come back blank when its popup opened.
     The editor keeps loading at once -- the author is looking straight at it.
+
+    With Lazy Loading switched off, an inline viewer loads with the page as it did
+    before 2.6.2. A popup still waits to be opened: loading it hidden is what drew it
+    blank, so that is not something the setting should bring back.
   */
-  const [isActive, setIsActive] = useState(isBackend);
+  const [isActive, setIsActive] = useState(() => isBackend || (!isLazyLoadEnabled() && !deferUntilOpen));
   const wrapperRef = useRef(null);
   const iframeRef = useRef(null);
+
+  // Whether the reader has something to look at yet. Until then a loading overlay covers
+  // the frame: an idle frame is empty, and a live one shows a bare toolbar over blank
+  // pages until PDF.js has fetched and drawn page one.
+  const [isReady, setIsReady] = useState(false);
+  const readyFallbackRef = useRef(null);
 
   const isLoadedRef = useRef(false);
   isLoadedRef.current = isLoaded;
@@ -134,6 +146,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     // Reset error when source changes
     setPdfError(null);
     setIsLoaded(false);
+    setIsReady(false);
     // Cleared with it, so a failed or cross-origin pre-check cannot describe this load
     // using what the previous one found.
     probeRef.current = null;
@@ -194,12 +207,17 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
 
     // Listen for messages from custom.js inside the iframe
     const handleMessage = (event) => {
-      if (!event.data || event.data.type !== "PDFP_ERROR") return;
+      if (!event.data || !["PDFP_ERROR", "PDFP_LOADED"].includes(event.data.type)) return;
 
       // Every viewer on the page posts to the same window, so only our own frame's
-      // error is ours to show -- otherwise one broken file put its error on every
-      // poster, and Retry "fixed" the healthy one by simply not hearing it again.
+      // messages are ours -- otherwise one broken file put its error on every poster,
+      // and Retry "fixed" the healthy one by simply not hearing it again.
       if (!iframeRef.current || event.source !== iframeRef.current.contentWindow) return;
+
+      if (event.data.type === "PDFP_LOADED") {
+        setIsReady(true);
+        return;
+      }
 
       // PDF.js only ever raises its missing-file string for a hard 404, so rewrite that
       // one case into the actionable message instead of passing three useless words on.
@@ -227,6 +245,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
+      clearTimeout(readyFallbackRef.current);
       messageTarget.removeEventListener("message", handleMessage);
     };
   }, [source, onGViewError, __, attempt, canDiagnose, isActive]);
@@ -242,7 +261,27 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     // A frame with no src yet fires load for about:blank -- that is not the viewer.
     if (!isActive) return;
     setIsLoaded(true);
+
+    // Google's viewer is cross-origin and never reports its first page, so its own load
+    // is the best signal there is. Ours reports PDFP_LOADED; the fallback only makes
+    // sure a viewer that cannot (an old cached custom.js) is never hidden for good --
+    // past that point PDF.js's own progress bar is showing anyway.
+    clearTimeout(readyFallbackRef.current);
+    if (source.includes("google.com/gview")) {
+      setIsReady(true);
+    } else {
+      readyFallbackRef.current = setTimeout(() => setIsReady(true), 20000);
+    }
   };
+
+  const renderLoading = () => (
+    <div className="pdfp_loading_overlay" role="status" aria-live="polite">
+      <span className="pdfp_spinner" aria-hidden="true"></span>
+      {/* On the front end __() is a pass-through (view.js has no wp-i18n), so the
+          translated copy comes from PHP; the editor's __() translates for itself. */}
+      <p>{(typeof pdfp !== "undefined" && pdfp?.i18n?.loadingPdf) || __("Loading PDF...", "pdf-poster")}</p>
+    </div>
+  );
 
   const renderError = (message) => (
     <div className="pdfp_error_container">
@@ -281,6 +320,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
               // under every height rule and the page does not shift when it loads.
               <iframe key={attempt} ref={iframeRef} className="pdfp_iframe" src={isActive ? source : undefined} title={title} onLoad={handleLoad}></iframe>
             )}
+            {!pdfError && !isReady && renderLoading()}
             <span className="close" onClick={exitFullScreen}>
               &times;
             </span>

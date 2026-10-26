@@ -664,6 +664,16 @@ document.addEventListener("DOMContentLoaded", function () {
     app.eventBus._on("pagerendererror", (e) => {
       console.error("PDF.js render error:", e);
     });
+
+    // The parent shows a loading overlay until the reader has something to look at:
+    // the first rendered page, not viewer.html's load event, which fires long before
+    // the PDF has even been fetched.
+    let announced = false;
+    app.eventBus._on("pagerendered", () => {
+      if (announced) return;
+      announced = true;
+      window.parent.postMessage({ type: "PDFP_LOADED" }, "*");
+    });
   };
 
   const errorInterval = setInterval(() => {

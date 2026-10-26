@@ -152,7 +152,10 @@ export const welcomeInfo = (adminUrl) => ({
             version: '2.6.2 - 13 Oct 2026',
             type: 'fixed',
             list: [
-                '<strong>Fix:</strong> When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.'
+                '<strong>Fix:</strong> When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.',
+                '<strong>New:</strong> Adding a Word, Excel, PowerPoint or other non-PDF document now shows a clear “PDF Poster supports PDF files only” message instead of a broken viewer.',
+                '<strong>Update:</strong> A loading spinner now shows while a document opens — on the page and inside popups — instead of an empty frame or a blank toolbar.',
+                '<strong>New:</strong> Settings > Performance > Lazy Loading — on by default; switch it off to load every viewer on the page as soon as it opens.'
             ]
         },
         {

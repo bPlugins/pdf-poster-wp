@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import toSiteRelativeUrl from "../../../../hooks/utils/toSiteRelativeUrl";
+import { LOAD_AHEAD } from "./PDFJSViewer";
+import isLazyLoadEnabled from "../../../../hooks/utils/lazyLoad";
 
 const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = false, theme = "light" }) => {
     const containerRef = useRef(null);
@@ -162,6 +164,11 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
             }
         };
 
+        // Starts the book LOAD_AHEAD before it scrolls into view, like the PDF.js viewer,
+        // instead of once it is already on screen. A popup's container is display:none
+        // until it opens, so it still waits for the popup. With Lazy Loading switched
+        // off the book keeps its pre-2.6.2 trigger -- 10% of it on screen.
+        const observerOptions = isLazyLoadEnabled() ? { rootMargin: LOAD_AHEAD } : { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -169,7 +176,7 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
                     window.dispatchEvent(new Event('resize'));
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
         if (containerRef.current) {
             observer.observe(containerRef.current);

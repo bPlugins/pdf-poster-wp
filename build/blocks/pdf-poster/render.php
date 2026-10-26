@@ -117,8 +117,9 @@ if ($pdfp_is_dropbox) {
             $pdfp_p_width = is_string($pdfp_width) ? $pdfp_width : ($pdfp_width['desktop'] ?? '100%');
             ?>
             <div class="pdfp_loading_placeholder"
-                style="height: <?php echo esc_attr($pdfp_p_height); ?>; width: <?php echo esc_attr($pdfp_p_width); ?>; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd;">
-                <p><?php esc_html_e('Loading Viewer...', 'pdf-poster'); ?></p>
+                style="height: <?php echo esc_attr($pdfp_p_height); ?>; width: <?php echo esc_attr($pdfp_p_width); ?>; display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd;">
+                <span class="pdfp_spinner" aria-hidden="true"></span>
+                <p style="margin: 0;"><?php esc_html_e('Loading Viewer...', 'pdf-poster'); ?></p>
             </div>
         <?php } ?>
     </div>

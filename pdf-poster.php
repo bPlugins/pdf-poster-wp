@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name:         PDF Poster – Display PDF Files with Custom Viewer
+ * Plugin Name:         PDF Poster – Display PDF Files with Custom Viewer 
  * Plugin URI:          https://bplugins.com/products/pdf-poster/
  * Description:         You can easily embed and display PDF files in your WordPress website using this plugin.
  * Version:             2.6.2

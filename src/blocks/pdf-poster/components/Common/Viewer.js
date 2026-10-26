@@ -12,6 +12,7 @@ import { hasFlipbookEngine } from "../../utils";
 import useTracking from "../../../../hooks/useTracking";
 import Watermark from "./Watermark";
 import { encodeWatermarkParam } from "./watermarkSVG";
+import { isUnsupportedFile, describeUnsupportedFile } from "../../../../hooks/utils/unsupportedFile";
 // import { isOldiPhoneOrIPad } from "../utils";
 
 const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, isSelected = false, id }) => {
@@ -36,7 +37,9 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   const [gviewError, setGviewError] = useState(false);
   // Set by the popup trigger on hover, focus or tap: starts the PDF.js viewer early.
   const [preload, setPreload] = useState(false);
+  const [fileError, setFileError] = useState(null);
   const ref = useRef();
+  const canDiagnose = isBackend || (typeof pdfp !== "undefined" && !!pdfp?.canEdit);
 
   useEffect(() => {
     // Order matters: a site URL loses its scheme along with its host, so there is
@@ -45,6 +48,14 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
     const normalize = (url) => matchProtocol(toSiteRelativeUrl(url));
 
     const verifyProtectedContent = async () => {
+      // PDF Poster shows PDFs only: say so, rather than hand PDF.js a Word file.
+      setFileError(null);
+      if (isUnsupportedFile(file)) {
+        setSource("");
+        setFileError({ reason: "not_pdf" });
+        return;
+      }
+
       let isProtected = false;
       // Protection logic removed
 
@@ -188,6 +199,19 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       <div className="pdfp_fullscreen_close" onClick={closeFullscreen}>
         &times;
       </div>
+      {!hasContent && fileError && (
+        <div className="pdfp_error_container" style={{ height: typeof attributes.height === "object" ? attributes.height?.desktop : attributes.height }}>
+          <div className="pdfp_error_box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            {/* No Retry: retrying cannot turn a Word file into a PDF. */}
+            <p>{describeUnsupportedFile(__, canDiagnose)}</p>
+          </div>
+        </div>
+      )}
       {hasContent && (
         <>
           <PopupTrigger popupOptions={popupOptions} fullscreenPDF={fullscreenPDF} onPreload={() => setPreload(true)} />
@@ -198,7 +222,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
 
           {isWatermarked && wmMode !== "iframe" && <Watermark watermark={watermark} mode={wmMode} targetRef={ref} theme={effectiveTheme} />}
 
-          {currentViewer === "default" && <PDFJSViewer source={previewSrc} attributes={attributes} setAttributes={setAttributes} __={__} wrapper={ref.current} isBackend={isBackend} isSelected={isSelected} onGViewError={() => setGviewError(true)} forceLoad={preload} />}
+          {currentViewer === "default" && <PDFJSViewer source={previewSrc} attributes={attributes} setAttributes={setAttributes} __={__} wrapper={ref.current} isBackend={isBackend} isSelected={isSelected} onGViewError={() => setGviewError(true)} forceLoad={preload} deferUntilOpen={!!enabled} />}
 
           {!enabled && actionsPosition === "bottom" && <Header attributes={attributes} source={source} previewSrc={previewSrc} RichText={RichText} setAttributes={setAttributes} __={__} wrapper={ref.current} showTitle={false} showActions={true} isImagesFlipbook={useImagesFlipbook} onTrack={track} />}
           {socialEnabled && socialPosition === "bottom" && !enabled && <SocialShare attributes={attributes} />}

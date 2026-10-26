@@ -31,6 +31,7 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 
 			$this->shortcode();
 			$this->gutenberg_integration();
+			$this->performance();
 			$this->analytics();
 			$this->custom_css();
 			$this->preset();
@@ -136,6 +137,29 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 					'desc' => __('Enable the PDF Poster block and shortcode generator in the Gutenberg editor.', 'pdf-poster'),
 					'default' => get_option('pdfp_gutenberg_enable', false)
 				)
+			)
+		));
+	}
+
+	/**
+	 * Performance -- how viewers load, site-wide.
+	 *
+	 * One switch on purpose: how far ahead a viewer starts and whether a popup preloads
+	 * on hover are tuned in code, not choices a site owner should have to reason about.
+	 * Read through Utils::pdfp_lazy_loading_enabled(), so a site that saved its settings
+	 * before this field existed gets the default rather than "off".
+	 */
+	public function performance() {
+		\CSF::createSection($this->option_prefix, array(
+			'title' => __('Performance', 'pdf-poster'),
+			'fields' => array(
+				array(
+					'id' => 'pdfp_lazy_loading',
+					'type' => 'switcher',
+					'title' => __('Lazy Loading', 'pdf-poster'),
+					'default' => true,
+					'desc' => __('Load each viewer only when it is about to scroll into view or its popup is opened. Pages with many PDFs open faster and use less data. When off, viewers on the page load as soon as it opens; popups still load when opened.', 'pdf-poster'),
+				),
 			)
 		));
 	}

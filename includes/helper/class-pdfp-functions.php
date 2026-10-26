@@ -1401,6 +1401,19 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             return self::pdfp_preset('pdfp_tracking_exclude_editors', '1') === '1';
         }
 
+        /**
+         * Settings > Performance > Lazy Loading. Missing means on: the key only exists
+         * once the settings screen has been saved after this field was added.
+         */
+        public static function pdfp_lazy_loading_enabled()
+        {
+            $settings = get_option('fpdf_option');
+            if (!is_array($settings) || !array_key_exists('pdfp_lazy_loading', $settings)) {
+                return true;
+            }
+            return (string) $settings['pdfp_lazy_loading'] === '1';
+        }
+
         /** Is counting switched on for this site at all? Default on. */
         public static function pdfp_tracking_enabled()
         {

@@ -79,6 +79,14 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             // nonce that could expire inside a cached page.
             'trackUrl' => rest_url('pdfp/v1/track'),
             'track' => Utils::pdfp_tracking_enabled(),
+            // Settings > Performance. Read by every viewer engine to decide whether to
+            // wait until it is near the screen.
+            'lazyLoad' => Utils::pdfp_lazy_loading_enabled(),
+            // The front-end bundle loads without wp-i18n, so its __() cannot translate.
+            // Strings it shows to every visitor are translated here instead.
+            'i18n' => [
+                'loadingPdf' => __('Loading PDF...', 'pdf-poster'),
+            ],
         ];
 
         if (Utils::pdfp_has_flipbook_engine()) {
