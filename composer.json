@@ -19,6 +19,9 @@
     }
   },
   "extra": {
+    "installer-types": [
+      "library"
+    ],
     "installer-paths": {
       "vendor/freemius/": [
         "freemius/wordpress-sdk"

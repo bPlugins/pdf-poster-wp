@@ -111,6 +111,13 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
   isLoadedRef.current = isLoaded;
   const probeRef = useRef(null);
 
+  // Read through a ref, not listed as an effect dependency: callers pass an inline arrow,
+  // and a new identity every render re-ran the load effect -- resetting the overlay after
+  // the viewer had already sent its one PDFP_LOADED, so selecting the block in the editor
+  // left "Loading PDF..." up for good.
+  const onGViewErrorRef = useRef(onGViewError);
+  onGViewErrorRef.current = onGViewError;
+
   const canDiagnose = isBackend || (typeof pdfp !== "undefined" && !!pdfp?.canEdit);
 
   // A popup trigger hovered, focused or tapped asks for the document before the click,
@@ -198,9 +205,9 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
     if (source.includes("google.com/gview")) {
       // Set a 10 second timeout for GView
       timeoutId = setTimeout(() => {
-        if (!isLoadedRef.current && typeof onGViewError === "function") {
+        if (!isLoadedRef.current && typeof onGViewErrorRef.current === "function") {
           console.warn("Google Docs Viewer took too long to load. Falling back to PDF.js.");
-          onGViewError();
+          onGViewErrorRef.current();
         }
       }, 10000);
     }
@@ -248,7 +255,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
       clearTimeout(readyFallbackRef.current);
       messageTarget.removeEventListener("message", handleMessage);
     };
-  }, [source, onGViewError, __, attempt, canDiagnose, isActive]);
+  }, [source, __, attempt, canDiagnose, isActive]);
 
   // In the block editor the canvas is an iframe, so the fullscreen state lives on the
   // button's own document -- the top-level `document` has no fullscreen element to exit.
