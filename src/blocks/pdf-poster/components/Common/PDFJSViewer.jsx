@@ -4,6 +4,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 const exampleFile = "http://localhost/freemius/wp-content/uploads/2022/02/temp.pdf";
 import "./../../style.scss";
 import isLazyLoadEnabled from "../../../../hooks/utils/lazyLoad";
+import { isGoogleViewerUrl, GOOGLE_VIEWER_SANDBOX } from "../../../../hooks/utils/safeFileUrl";
 
 /**
  * The URL the viewer will really request.
@@ -325,7 +326,7 @@ function PDFJSViewer({ __, attributes, source = pdfp?.placeholder || exampleFile
             ) : (
               // Rendered without a src until active, so the frame already holds its size
               // under every height rule and the page does not shift when it loads.
-              <iframe key={attempt} ref={iframeRef} className="pdfp_iframe" src={isActive ? source : undefined} title={title} onLoad={handleLoad}></iframe>
+              <iframe key={attempt} ref={iframeRef} className="pdfp_iframe" src={isActive ? source : undefined} sandbox={isGoogleViewerUrl(source) ? GOOGLE_VIEWER_SANDBOX : undefined} title={title} onLoad={handleLoad}></iframe>
             )}
             {!pdfError && !isReady && renderLoading()}
             <span className="close" onClick={exitFullScreen}>

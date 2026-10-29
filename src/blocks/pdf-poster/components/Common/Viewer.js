@@ -13,6 +13,7 @@ import useTracking from "../../../../hooks/useTracking";
 import Watermark from "./Watermark";
 import { encodeWatermarkParam } from "./watermarkSVG";
 import { isUnsupportedFile, describeUnsupportedFile } from "../../../../hooks/utils/unsupportedFile";
+import safeFileUrl, { isGoogleViewerUrl } from "../../../../hooks/utils/safeFileUrl";
 // import { isOldiPhoneOrIPad } from "../utils";
 
 const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, isSelected = false, id }) => {
@@ -60,7 +61,8 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       // Protection logic removed
 
       if (!isProtected) {
-        setSource(normalize(file));
+        // Only http(s) reaches the iframe, the download link and the fullscreen link.
+        setSource(normalize(safeFileUrl(file)));
       }
     };
 
@@ -126,7 +128,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
 
         iframeSrc = `${viewerBase}assets/pdfjs-new/web/viewer.html?file=${encodedSource}${zoom}&nobaki=${!protect && downloadButton ? "vera" : "false"}&stdono=${print && !protect ? "vera" : "false"}&open=${showSidePanel}&onlypdf=${onlyPDF ? "vera" : "false"}${freeParams}${proParams}`;
       }
-    } else if (source.includes(".google.com")) {
+    } else if (isGoogleViewerUrl(source)) {
       iframeSrc = source;
     } else if (source) {
       // Fallback for other origin files - use Google Docs Viewer

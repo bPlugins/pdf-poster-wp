@@ -151,7 +151,7 @@ if ( ! class_exists( 'PDFPro\Admin\PDFP_Settings' ) ) {
 	 */
 	public function performance() {
 		\CSF::createSection($this->option_prefix, array(
-			'title' => __('Performance', 'pdf-poster'),
+			'title' => Utils::pdfp_pro_title(__('Performance', 'pdf-poster'), 'New'),
 			'fields' => array(
 				array(
 					'id' => 'pdfp_lazy_loading',

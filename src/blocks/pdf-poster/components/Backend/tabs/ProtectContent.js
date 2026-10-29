@@ -12,7 +12,7 @@ const ProtectContent = () => {
         </>} initialOpen={false}>
             <PremiumPanel 
                 title={__('Content Protection', "pdf-poster")} 
-                description={__('Keep your work safe by disabling right-clicks, text selection, and copying. This feature is available in the Premium version.', "pdf-poster")} 
+                description={__('Keep your work safe by disabling right-clicks, text selection, and copying, and use Secure Delivery to hide the file URL behind a one-time, encrypted link. This feature is available in the Premium version.', "pdf-poster")} 
                 pricingUrl={PRICING_URL} 
             />
         </PanelBody>

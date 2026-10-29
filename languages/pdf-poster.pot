@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-27T05:04:20+00:00\n"
+"POT-Creation-Date: 2026-10-29T03:44:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-poster\n"
@@ -81,7 +81,7 @@ msgid "General"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:75
-#: includes/admin/class-pdfp-metabox.php:514
+#: includes/admin/class-pdfp-metabox.php:515
 #: build/blocks/pdf-poster/index.js
 msgid "Viewer"
 msgstr ""
@@ -543,309 +543,313 @@ msgstr ""
 msgid "Suppress Blocked Warning Alerts"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:459
+#: includes/admin/class-pdfp-metabox.php:434
+msgid "Secure Delivery: hide the file URL behind a one-time, encrypted link"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:460
 #: build/blocks/pdf-poster/index.js
 msgid "Watermark & Branding"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:463
+#: includes/admin/class-pdfp-metabox.php:464
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Watermark"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:466
+#: includes/admin/class-pdfp-metabox.php:467
 msgid "Stamp a text mark over the document."
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:473
-#: build/blocks/pdf-poster/index.js
-msgid "The mark"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:474
 #: build/blocks/pdf-poster/index.js
+msgid "The mark"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:475
+#: build/blocks/pdf-poster/index.js
 msgid "Your wording, and the look it is stamped in."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:482
+#: includes/admin/class-pdfp-metabox.php:483
 #: build/blocks/pdf-poster/index.js
 msgid "Theme"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:488
+#: includes/admin/class-pdfp-metabox.php:489
 msgid "Three ready-made looks. Each one sets the angle, repeat, weight and blend for you."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:493
+#: includes/admin/class-pdfp-metabox.php:494
 #: build/blocks/pdf-poster/index.js
 msgid "Text"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:496
+#: includes/admin/class-pdfp-metabox.php:497
 msgid "Supports placeholders such as {site_name}, {date} and {user_email}."
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:500
-#: build/blocks/pdf-poster/index.js
-msgid "Where it shows"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:501
 #: build/blocks/pdf-poster/index.js
+msgid "Where it shows"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:502
+#: build/blocks/pdf-poster/index.js
 msgid "Which outputs, and which pages."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:506
+#: includes/admin/class-pdfp-metabox.php:507
 msgid "Apply To"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:515
-#: build/blocks/pdf-poster/index.js
-msgid "Printing · next release"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:516
 #: build/blocks/pdf-poster/index.js
+msgid "Printing · next release"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:517
+#: build/blocks/pdf-poster/index.js
 msgid "Downloads · next release"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:519
+#: includes/admin/class-pdfp-metabox.php:520
 msgid "The viewer is marked today. Writing the mark into printouts and downloaded copies arrives in the next release."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:524
+#: includes/admin/class-pdfp-metabox.php:525
 #: build/blocks/pdf-poster/index.js
 msgid "Pages"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:527
+#: includes/admin/class-pdfp-metabox.php:528
 #: build/blocks/pdf-poster/index.js
 msgid "All pages"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:528
+#: includes/admin/class-pdfp-metabox.php:529
 #: build/blocks/pdf-poster/index.js
 msgid "First page only"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:529
+#: includes/admin/class-pdfp-metabox.php:530
 #: build/blocks/pdf-poster/index.js
 msgid "All except the cover"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:532
+#: includes/admin/class-pdfp-metabox.php:533
 msgid "Brand just the cover, or gate everything after it."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:540
+#: includes/admin/class-pdfp-metabox.php:541
 msgid "Logo Watermark (Image, or Text + Image)"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:541
+#: includes/admin/class-pdfp-metabox.php:542
 msgid "Three More Themes (Brand Corner, Logo Wash, Logo + Caption)"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:542
+#: includes/admin/class-pdfp-metabox.php:543
 msgid "Custom Theme — Your Own Colour, Coverage, Strength, Size & Angle"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:543
+#: includes/admin/class-pdfp-metabox.php:544
 msgid "Choose Who Sees It (Everyone / Except Admins / Guests Only)"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:544
+#: includes/admin/class-pdfp-metabox.php:545
 msgid "Per-Visitor Anti-Leak Stamp"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:545
+#: includes/admin/class-pdfp-metabox.php:546
 msgid "Restore The Mark If A Visitor Removes It"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:556
+#: includes/admin/class-pdfp-metabox.php:557
 #: build/blocks/pdf-poster/index.js
 msgid "Social Share"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:560
+#: includes/admin/class-pdfp-metabox.php:561
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Sharing"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:562
+#: includes/admin/class-pdfp-metabox.php:563
 #: build/blocks/pdf-poster/index.js
 msgid "Enable social sharing buttons for the PDF."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:567
+#: includes/admin/class-pdfp-metabox.php:568
 #: build/blocks/pdf-poster/index.js
 msgid "Share Position"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:569
+#: includes/admin/class-pdfp-metabox.php:570
 #: build/blocks/pdf-poster/index.js
 msgid "Select where the sharing buttons should appear."
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:572
-#: build/blocks/pdf-poster/index.js
-#: build/blocks/selector/index.js
-msgid "Top"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:573
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
+msgid "Top"
+msgstr ""
+
+#: includes/admin/class-pdfp-metabox.php:574
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
 msgid "Bottom"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:579
+#: includes/admin/class-pdfp-metabox.php:580
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Facebook"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:581
+#: includes/admin/class-pdfp-metabox.php:582
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Facebook."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:587
+#: includes/admin/class-pdfp-metabox.php:588
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Twitter"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:589
+#: includes/admin/class-pdfp-metabox.php:590
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Twitter."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:595
+#: includes/admin/class-pdfp-metabox.php:596
 #: build/blocks/pdf-poster/index.js
 msgid "Enable LinkedIn"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:597
+#: includes/admin/class-pdfp-metabox.php:598
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on LinkedIn."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:603
+#: includes/admin/class-pdfp-metabox.php:604
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Pinterest"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:605
+#: includes/admin/class-pdfp-metabox.php:606
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Pinterest."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:611
+#: includes/admin/class-pdfp-metabox.php:612
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Email"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:613
+#: includes/admin/class-pdfp-metabox.php:614
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing via Email."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:624
+#: includes/admin/class-pdfp-metabox.php:625
 msgid "Styles"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:628
+#: includes/admin/class-pdfp-metabox.php:629
 #: build/blocks/pdf-poster/index.js
 msgid "Button Background"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:630
+#: includes/admin/class-pdfp-metabox.php:631
 #: build/blocks/pdf-poster/index.js
 msgid "Choose a background color for the buttons."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:635
+#: includes/admin/class-pdfp-metabox.php:636
 #: build/blocks/pdf-poster/index.js
 msgid "Button Color"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:637
+#: includes/admin/class-pdfp-metabox.php:638
 #: build/blocks/pdf-poster/index.js
 msgid "Choose a text color for the buttons."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:642
+#: includes/admin/class-pdfp-metabox.php:643
 msgid "Font Size"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:644
+#: includes/admin/class-pdfp-metabox.php:645
 msgid "Set the font size for the buttons."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:650
+#: includes/admin/class-pdfp-metabox.php:651
 #: build/blocks/pdf-poster/index.js
 msgid "Padding"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:652
+#: includes/admin/class-pdfp-metabox.php:653
 #: build/blocks/pdf-poster/index.js
 msgid "Set the internal spacing for the buttons."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:675
+#: includes/admin/class-pdfp-metabox.php:676
 msgid "Advanced"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:679
+#: includes/admin/class-pdfp-metabox.php:680
 msgid "CSS Class"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:681
+#: includes/admin/class-pdfp-metabox.php:682
 msgid "Extra class name added to this viewer, so you can target it from your theme or from the CSS below."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:686
+#: includes/admin/class-pdfp-metabox.php:687
 #: includes/admin/class-pdfp-settings.php:232
 #: includes/admin/class-pdfp-settings.php:237
 msgid "Custom CSS"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:691
+#: includes/admin/class-pdfp-metabox.php:692
 msgid "CSS for this poster only. Loaded wherever this poster is embedded, on top of the site-wide Custom CSS in Settings."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:701
+#: includes/admin/class-pdfp-metabox.php:702
 #: build/blocks/pdf-poster/index.js
 msgid "Performance & Reliability"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:705
+#: includes/admin/class-pdfp-metabox.php:706
 #: includes/admin/class-pdfp-settings.php:353
 #: build/blocks/pdf-poster/index.js
 msgid "Fast Loading (Progressive Rendering)"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:708
+#: includes/admin/class-pdfp-metabox.php:709
 #: includes/admin/class-pdfp-settings.php:356
 #: build/blocks/pdf-poster/index.js
 msgid "Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:712
+#: includes/admin/class-pdfp-metabox.php:713
 #: includes/admin/class-pdfp-settings.php:360
 #: build/blocks/pdf-poster/index.js
 msgid "Google Doc Viewer"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:715
+#: includes/admin/class-pdfp-metabox.php:716
 #: includes/admin/class-pdfp-settings.php:363
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Google Doc Viewer as a fallback (Recommended for Edge)."
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:718
+#: includes/admin/class-pdfp-metabox.php:719
 msgid "Load Latest Document Version"
 msgstr ""
 
-#: includes/admin/class-pdfp-metabox.php:727
+#: includes/admin/class-pdfp-metabox.php:728
 #: build/blocks/pdf-poster/index.js
 msgid "Ads"
 msgstr ""
@@ -1167,12 +1171,12 @@ msgid "Paste the shortcode above into any of these — nothing else to install."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:171
-#: includes/helper/class-pdfp-functions.php:562
+#: includes/helper/class-pdfp-functions.php:581
 msgid "Pro version"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:172
-#: includes/helper/class-pdfp-functions.php:563
+#: includes/helper/class-pdfp-functions.php:582
 msgid "Locked"
 msgstr ""
 
@@ -1183,12 +1187,12 @@ msgid "%d settings the free build keeps shut."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:199
-#: includes/helper/class-pdfp-functions.php:583
+#: includes/helper/class-pdfp-functions.php:602
 msgid "See Pro pricing"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:202
-#: includes/helper/class-pdfp-functions.php:585
+#: includes/helper/class-pdfp-functions.php:604
 msgid "14-day refund policy"
 msgstr ""
 
@@ -1247,13 +1251,13 @@ msgid "ShortCode For Raw PDF View"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:139
-#: includes/helper/class-pdfp-functions.php:1136
+#: includes/helper/class-pdfp-functions.php:1155
 #: build/blocks/pdf-poster/index.js
 msgid "Views today"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:140
-#: includes/helper/class-pdfp-functions.php:1137
+#: includes/helper/class-pdfp-functions.php:1156
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads today"
 msgstr ""
@@ -1263,7 +1267,7 @@ msgid "Date"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:172
-#: includes/helper/class-pdfp-functions.php:1151
+#: includes/helper/class-pdfp-functions.php:1170
 msgid "Counting is switched off"
 msgstr ""
 
@@ -1331,50 +1335,50 @@ msgstr ""
 msgid "View Fullscreen"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:527
+#: includes/helper/class-pdfp-functions.php:546
 msgid "The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:527
+#: includes/helper/class-pdfp-functions.php:546
 msgid "Upgrade to PRO"
 msgstr ""
 
 #. translators: %d: number of settings in this section available only in the Pro version.
-#: includes/helper/class-pdfp-functions.php:569
+#: includes/helper/class-pdfp-functions.php:588
 #, php-format
 msgid "%d setting the free build keeps shut."
 msgid_plural "%d settings the free build keeps shut."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:605
+#: includes/helper/class-pdfp-functions.php:624
 msgid "Copy"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:608
+#: includes/helper/class-pdfp-functions.php:627
 msgid "Copy and paste this shortcode into any page or post. Replace <code>your_file_url</code> with your actual PDF link."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:617
+#: includes/helper/class-pdfp-functions.php:636
 msgid "This feature is coming soon. Stay tuned for updates!"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:819
+#: includes/helper/class-pdfp-functions.php:838
 msgid "Counting is switched off in Settings > Analytics."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:825
+#: includes/helper/class-pdfp-functions.php:844
 msgid "Counting is on. Nothing recorded for this document yet."
 msgstr ""
 
 #. translators: %s: the date counting began, e.g. "12 September 2026"
-#: includes/helper/class-pdfp-functions.php:830
+#: includes/helper/class-pdfp-functions.php:849
 #, php-format
 msgid "Counting since %s. Resets at midnight, site time."
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:921
+#: includes/helper/class-pdfp-functions.php:940
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "%s day recorded"
@@ -1382,18 +1386,18 @@ msgid_plural "%s days recorded"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:924
+#: includes/helper/class-pdfp-functions.php:943
 #: build/blocks/pdf-poster/index.js
 msgid "Recording now"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:925
+#: includes/helper/class-pdfp-functions.php:944
 #: build/blocks/pdf-poster/index.js
 msgid "example"
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:939
+#: includes/helper/class-pdfp-functions.php:958
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "Your last %s day is recorded in your own database. Pro reads it back as totals, a 14-day trend, your best-performing documents and a report you can export."
@@ -1401,125 +1405,125 @@ msgid_plural "Your last %s days are recorded in your own database. Pro reads the
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:947
+#: includes/helper/class-pdfp-functions.php:966
 msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, trends and a report."
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1067
+#: includes/helper/class-pdfp-functions.php:1086
 #, php-format
 msgid "No views in the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1069
+#: includes/helper/class-pdfp-functions.php:1088
 #, php-format
 msgid "View trend over the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1087
+#: includes/helper/class-pdfp-functions.php:1106
 #, php-format
 msgid "Last %d days"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1092
+#: includes/helper/class-pdfp-functions.php:1111
 #: build/blocks/pdf-poster/index.js
 msgid "no views yet"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1094
+#: includes/helper/class-pdfp-functions.php:1113
 #: build/blocks/pdf-poster/index.js
 msgid "no baseline"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1185
+#: includes/helper/class-pdfp-functions.php:1204
 #: build/blocks/pdf-poster/index.js
 msgid "Views"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1190
+#: includes/helper/class-pdfp-functions.php:1209
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1603
-#: includes/helper/class-pdfp-functions.php:1711
+#: includes/helper/class-pdfp-functions.php:1622
+#: includes/helper/class-pdfp-functions.php:1730
 #: build/blocks/pdf-poster/index.js
 msgid "Confidential"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1610
-#: includes/helper/class-pdfp-functions.php:1712
+#: includes/helper/class-pdfp-functions.php:1629
+#: includes/helper/class-pdfp-functions.php:1731
 #: build/blocks/pdf-poster/index.js
 msgid "Draft Stamp"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1618
-#: includes/helper/class-pdfp-functions.php:1713
+#: includes/helper/class-pdfp-functions.php:1637
+#: includes/helper/class-pdfp-functions.php:1732
 #: build/blocks/pdf-poster/index.js
 msgid "Sample Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1625
-#: includes/helper/class-pdfp-functions.php:1714
+#: includes/helper/class-pdfp-functions.php:1644
+#: includes/helper/class-pdfp-functions.php:1733
 #: build/blocks/pdf-poster/index.js
 msgid "Brand Corner"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1632
-#: includes/helper/class-pdfp-functions.php:1715
+#: includes/helper/class-pdfp-functions.php:1651
+#: includes/helper/class-pdfp-functions.php:1734
 #: build/blocks/pdf-poster/index.js
 msgid "Logo Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1639
-#: includes/helper/class-pdfp-functions.php:1716
+#: includes/helper/class-pdfp-functions.php:1658
+#: includes/helper/class-pdfp-functions.php:1735
 #: build/blocks/pdf-poster/index.js
 msgid "Logo + Caption"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1646
+#: includes/helper/class-pdfp-functions.php:1665
 #: build/blocks/pdf-poster/index.js
 msgid "Custom"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1736
+#: includes/helper/class-pdfp-functions.php:1755
 #: build/blocks/pdf-poster/index.js
 msgid "Text, a logo, or both"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1737
+#: includes/helper/class-pdfp-functions.php:1756
 #: build/blocks/pdf-poster/index.js
 msgid "Tiled or one corner mark"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1738
+#: includes/helper/class-pdfp-functions.php:1757
 #: build/blocks/pdf-poster/index.js
 msgid "Pick the pages"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1739
+#: includes/helper/class-pdfp-functions.php:1758
 #: build/blocks/pdf-poster/index.js
 msgid "Pick who sees it"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1749
+#: includes/helper/class-pdfp-functions.php:1768
 #: build/blocks/pdf-poster/index.js
 msgid "Turn on watermarking"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1757
+#: includes/helper/class-pdfp-functions.php:1776
 #: build/blocks/pdf-poster/index.js
 msgid "looks, ready to go"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1758
+#: includes/helper/class-pdfp-functions.php:1777
 #: build/blocks/pdf-poster/index.js
 msgid "Stamp every page — the file is never touched."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1760
+#: includes/helper/class-pdfp-functions.php:1779
 msgid "The mark is drawn over the document as it is displayed, so the PDF on your server stays exactly as you uploaded it. Pick one of these and you are done, or take the Custom theme and set the colour, angle, size and tiling yourself."
 msgstr ""
 
@@ -1876,7 +1880,7 @@ msgid "Content Protection"
 msgstr ""
 
 #: build/blocks/pdf-poster/index.js
-msgid "Keep your work safe by disabling right-clicks, text selection, and copying. This feature is available in the Premium version."
+msgid "Keep your work safe by disabling right-clicks, text selection, and copying, and use Secure Delivery to hide the file URL behind a one-time, encrypted link. This feature is available in the Premium version."
 msgstr ""
 
 #: build/blocks/pdf-poster/index.js

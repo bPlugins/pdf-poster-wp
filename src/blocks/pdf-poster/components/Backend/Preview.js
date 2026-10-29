@@ -2,11 +2,12 @@ import { Fragment, useMemo, useEffect, useRef, useState } from "react";
 import { RichText } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import SocialShare from "../Common/SocialShare";
+import safeFileUrl, { isGoogleViewerUrl, GOOGLE_VIEWER_SANDBOX } from "../../../../hooks/utils/safeFileUrl";
 
 const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }) => {
   const exampleFile = "http://localhost/freemius/wp-content/uploads/2022/02/temp.pdf";
   const {
-    file = pdfp?.placeholder || exampleFile,
+    file: rawFile = pdfp?.placeholder || exampleFile,
     title,
     titleFontSize,
     height,
@@ -34,6 +35,9 @@ const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }
   } = attributes;
 
   const { enabled: socialEnabled, position: socialPosition } = socialShare || {};
+
+  // Author input: only http(s) may reach the iframe src or the download href.
+  const file = safeFileUrl(rawFile);
 
   const adobeRef = useRef();
   const [previewSrc, setPreviewSrc] = useState(null);
@@ -88,7 +92,7 @@ const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }
       }
       source = `${pdfp?.dir}assets/pdfjs-new/web/viewer.html?file=${file}${zoom}&raw=${onlyPDF ? "1" : ""}&nobaki=${!protect && downloadButton ? "vera" : "false"}&stdono=${print && !protect ? "vera" : "false"}&open=false&onlypdf=${onlyPDF ? "vera" : "false"}&hrscroll=${hrScroll ? "vera" : "false"
         }&side=${thumbMenu}#page=${initialPage}`;
-    } else if (file.includes(".google.com")) {
+    } else if (isGoogleViewerUrl(file)) {
       source = file;
     }
     setPreviewSrc(source);
@@ -183,7 +187,7 @@ const Preview = ({ attributes, setAttributes, isSelected, isPreset = false, id }
 
                 <div className="iframe_wrapper">
                   <div className="pdfp_frame_overlay"></div>
-                  <iframe className="pdfp_iframe" height={height.desktop || height} style={{ height: height.desktop || height }} src={previewSrc}></iframe>
+                  <iframe className="pdfp_iframe" height={height.desktop || height} style={{ height: height.desktop || height }} src={previewSrc} sandbox={isGoogleViewerUrl(previewSrc) ? GOOGLE_VIEWER_SANDBOX : undefined}></iframe>
                 </div>
               </Fragment>
             )}

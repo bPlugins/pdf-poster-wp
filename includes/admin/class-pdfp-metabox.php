@@ -55,8 +55,8 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 			); 
 
 			if (Utils::pdfp_has_flipbook_engine()) {
-				$options['flipbook'] = __('FlipBook', 'pdf-poster') . Utils::pdfp_new_badge();
-				$options['slider'] = __('Slider', 'pdf-poster') . Utils::pdfp_new_badge();
+				$options['flipbook'] = __('FlipBook', 'pdf-poster');
+				$options['slider'] = __('Slider', 'pdf-poster');
 			} 
 			return $options;
 		}
@@ -67,7 +67,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 			}
 
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('General', 'pdf-poster'), "New"),
+				'title' => __('General', 'pdf-poster'),
 				'fields' => array(
 					array(
 						'id' => 'viewer',
@@ -201,7 +201,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		public function controls()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('Controls', 'pdf-poster'), "New"),
+				'title' => __('Controls', 'pdf-poster'),
 				'fields' => array(
 					array(
 						'id' => 'show_filename',
@@ -431,6 +431,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						__('Disable Right-Click Interactions', 'pdf-poster'),
 						__('Disable Text Selection', 'pdf-poster'),
 						__('Suppress Blocked Warning Alerts', 'pdf-poster'),
+						__('Secure Delivery: hide the file URL behind a one-time, encrypted link', 'pdf-poster'),
 					)),
 				)
 			));
@@ -672,7 +673,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		public function advanced()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('Advanced', 'pdf-poster'), "New"),
+				'title' => __('Advanced', 'pdf-poster'),
 				'fields' => array(
 					array(
 						'id' => 'custom_class',
@@ -698,7 +699,7 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 		public function performance()
 		{
 			\CSF::createSection($this->metabox_prefix, array(
-				'title' => Utils::pdfp_pro_title(__('Performance & Reliability', 'pdf-poster'), "New"),
+				'title' => __('Performance & Reliability', 'pdf-poster'),
 				'fields' => array(
 					array(
 						'id' => 'progressive_loading',

@@ -331,7 +331,8 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 == Changelog ==
 
-= 2.6.2 - 13 Oct 2026 =
+= 2.6.2 - 29 Oct 2026 =
+* Security: Fixed a stored cross-site scripting (XSS) issue in the PDF Poster block. A user with Contributor access could set the document URL to a javascript: link that ran when the poster was viewed. Document URLs must now be http(s), Google Docs/Drive embeds are matched by exact host, and they load in a sandboxed frame. Thanks to mroccon and Patchstack for the responsible disclosure.
 * Fix: When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.
 * New: Adding a Word, Excel, PowerPoint or other non-PDF document now shows a clear “PDF Poster supports PDF files only” message instead of a broken viewer.
 * Update: A loading spinner now shows while a document opens — on the page and inside popups — instead of an empty frame or a blank toolbar.

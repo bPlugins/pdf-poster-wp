@@ -60,7 +60,10 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
          *     saved before ids were stored, and one file_exists() is the whole cost.
          *
          * Anything we cannot prove is ours -- a CDN, Dropbox, Google Drive, a URL
-         * outside the uploads tree -- is returned untouched.
+         * outside the uploads tree -- keeps its address, but only over http(s). The
+         * stored value is author input (a Contributor can write any block attribute),
+         * and the viewer turns it into an iframe src, so a javascript: or data: URL
+         * comes back empty instead of executing for whoever views the poster.
          *
          * @param string $url           URL as stored.
          * @param int    $attachment_id Attachment id, when one was recorded.
@@ -81,10 +84,26 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             }
 
             if (!is_string($url) || '' === $url) {
-                return $url;
+                return '';
             }
 
-            return self::pdfp_rebase_uploads_url($url);
+            return self::pdfp_safe_file_url(self::pdfp_rebase_uploads_url($url));
+        }
+
+        /**
+         * Allow-list the scheme of a document URL: http, https or site-relative.
+         * esc_url_raw() also strips the whitespace and control characters a browser
+         * would ignore, so "java\tscript:" cannot slip past as a different scheme.
+         *
+         * @param string $url URL to check.
+         * @return string The cleaned URL, or '' when the scheme is not allowed.
+         */
+        public static function pdfp_safe_file_url($url) {
+            if (!is_string($url) || '' === trim($url)) {
+                return '';
+            }
+
+            return esc_url_raw($url, array('http', 'https'));
         }
 
         /**

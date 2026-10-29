@@ -149,9 +149,10 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
-            version: '2.6.2 - 13 Oct 2026',
+            version: '2.6.2 - 29 Oct 2026',
             type: 'fixed',
             list: [
+                '<strong>Security:</strong> Fixed a stored cross-site scripting (XSS) issue in the PDF Poster block. A user with Contributor access could set the document URL to a javascript: link that ran when the poster was viewed. Document URLs must now be http(s), Google Docs/Drive embeds are matched by exact host, and they load in a sandboxed frame. Thanks to mroccon and Patchstack for the responsible disclosure.',
                 '<strong>Fix:</strong> When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.',
                 '<strong>New:</strong> Adding a Word, Excel, PowerPoint or other non-PDF document now shows a clear “PDF Poster supports PDF files only” message instead of a broken viewer.',
                 '<strong>Update:</strong> A loading spinner now shows while a document opens — on the page and inside popups — instead of an empty frame or a blank toolbar.',
