@@ -251,7 +251,7 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             $height = $meta('height', ['height' => 1122, 'unit' => 'px']);
             $width = $meta('width', ['width' => 100, 'unit' => '%']);
             $height_tablet = $meta('height_tablet', ['height' => 700, 'unit' => 'px']);
-            $height_mobile = $meta('height_mobile', ['height' => 400, 'unit' => 'px']);
+            $height_mobile = $meta('height_mobile', ['height' => 500, 'unit' => 'px']);
             $width_tablet = $meta('width_tablet', ['width' => 100, 'unit' => '%']);
             $width_mobile = $meta('width_mobile', ['width' => 100, 'unit' => '%']);
 

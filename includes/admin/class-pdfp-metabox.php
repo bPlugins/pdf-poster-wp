@@ -147,8 +147,10 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'type' => 'dimensions',
 						'width' => false,
 						'desc' => __('Set the height of the viewer for mobile.', 'pdf-poster'),
+						// 500, not 400: on a 390px phone an A4/Letter page renders 456px tall
+						// under a 32px toolbar, so 400 cut every portrait page off.
 						'default' => [
-							'height' => 400,
+							'height' => 500,
 							'unit' => 'px'
 						],
 						'dependency' => array('device_preview', '==', 'mobile')
@@ -299,7 +301,9 @@ if (!class_exists('PDFPro\Admin\PDFP_MetaBox')) {
 						'type' => 'switcher',
 						'default' => Utils::pdfp_preset('preset_show_download_btn', true),
 						'desc' => __('Display a download button at the top of the viewer.', 'pdf-poster'),
-						'dependency' => array('flipbook_source_type', '!=', 'images')
+						// Global (4th arg): Viewer Source lives in General, not in this section,
+						// and without the flag CSF never finds it and hides the switch for good.
+						'dependency' => array('flipbook_source_type', '!=', 'images', true)
 					),
 					array(
 						'id' => 'view_fullscreen_btn',

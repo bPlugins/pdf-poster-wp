@@ -27,6 +27,29 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
     // top-level `document` only ever reports the <iframe> as its fullscreen element.
     const ownerDoc = () => containerRef.current?.ownerDocument || document;
 
+    // Height per screen, on the same breakpoints Style.js gives the default viewer
+    // (tablet <= 1024px, mobile <= 640px). dFlip takes one height when it is built, so
+    // this used to pass the desktop value everywhere and phones got an 840px box.
+    // Measured on the viewer's own window: in the editor that is the canvas iframe, so
+    // the device preview picks the matching height too.
+    const deviceFor = (win) => {
+        if (!win || typeof win.matchMedia !== "function") return "desktop";
+        if (win.matchMedia("(max-width: 640px)").matches) return "mobile";
+        if (win.matchMedia("(max-width: 1024px)").matches) return "tablet";
+        return "desktop";
+    };
+    const [device, setDevice] = useState(() => deviceFor(typeof window !== "undefined" ? window : null));
+    useEffect(() => {
+        const win = ownerDoc().defaultView;
+        if (!win || typeof win.matchMedia !== "function") return;
+        const update = () => setDevice(deviceFor(win));
+        update();
+        const queries = ["(max-width: 640px)", "(max-width: 1024px)"].map((q) => win.matchMedia(q));
+        queries.forEach((mq) => mq.addEventListener?.("change", update));
+        return () => queries.forEach((mq) => mq.removeEventListener?.("change", update));
+    }, []);
+    const heightFor = (h) => (h && typeof h === "object" ? h[device] || h.desktop : h);
+
     // dFlip fullscreens its own container, so the browser paints nothing outside it --
     // including the .close control that sits in .iframe_wrapper. Put a close button
     // inside the fullscreen container instead, for both ways in: the plugin's
@@ -125,7 +148,7 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
                     if (isPopup || isNowFullscreen) {
                         options.height = '100%';
                     } else if (attrHeight) {
-                        options.height = typeof attrHeight === 'object' ? attrHeight.desktop : attrHeight;
+                        options.height = heightFor(attrHeight);
                     }
 
                     containerRef.current.dataset.dflipInitialized = 'true';
@@ -204,9 +227,9 @@ const FlipbookViewer = ({ attributes, source, viewerType = "flipbook", isRtl = f
                 } catch(e) {}
             }
         };
-    }, [containerRef, attributes, pdfUrl, isPopup, viewerType]);
+    }, [containerRef, attributes, pdfUrl, isPopup, viewerType, device]);
 
-    const displayHeight = typeof attrHeight === 'object' ? attrHeight.desktop : attrHeight;
+    const displayHeight = heightFor(attrHeight);
     const computedHeight = (isPopup || isFullscreen) ? '100%' : (displayHeight || 'auto');
 
     const exitFullScreen = () => {

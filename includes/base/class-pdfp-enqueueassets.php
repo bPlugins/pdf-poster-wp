@@ -79,6 +79,9 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_EnqueueAssets' ) ) {
             // nonce that could expire inside a cached page.
             'trackUrl' => rest_url('pdfp/v1/track'),
             'track' => Utils::pdfp_tracking_enabled(),
+            // Where a watermark with {user_name}, {user_email} or {user_ip} asks who is
+            // reading. A plain URL, safe in cached HTML; the answer is never cached.
+            'visitorUrl' => add_query_arg('action', \PDFPro\Rest\PDFP_Visitor::ACTION, admin_url('admin-ajax.php')),
             // Settings > Performance. Read by every viewer engine to decide whether to
             // wait until it is near the screen.
             'lazyLoad' => Utils::pdfp_lazy_loading_enabled(),

@@ -163,6 +163,15 @@ if ( ! class_exists( 'PDFPro\Integrations\PDFP_WPBakery' ) ) {
                 return true;
             }
 
+            // The frontend editor renders each element by posting `vc_load_shortcode` to the
+            // page URL with vc_inline=true. That request is neither admin nor page_editable
+            // mode, and an unmapped element there makes WPBakery throw "Element must be
+            // mapped in system" (a 500), so the element never appears. The list only holds
+            // titles of published posters, so mapping it there exposes nothing.
+            if ( function_exists( 'vc_is_inline' ) && vc_is_inline() ) {
+                return true;
+            }
+
             return function_exists( 'vc_is_page_editable' ) && vc_is_page_editable();
         }
 

@@ -142,27 +142,40 @@
        font-size: 35px;
        overflow: hidden;
        padding-bottom: 4px;
+       z-index: 2147483647;
      }
 
+     // FlipBook and Slider open here instead of in real fullscreen. The overlay needs
+     // its own z-index (just under the panel), or a theme's positioned header and footer
+     // paint straight over it; and the panel clips and fills its box, or dFlip's slider
+     // runs past its edges onto the page behind.
      .pdfp_fullscreen_overlay {
        width: 100%;
        height: 100%;
        position: fixed;
        top: 0;
        left: 0;
-       background: #2229
+       z-index: 2147483646;
+       background: rgba(17, 17, 24, 0.88);
      }
 
      .iframe_wrapper {
        width: 900px;
        height: 90vh;
-       z-index: 99999999999;
+       z-index: 2147483647;
        display: block;
        top: 50%;
        left: 50%;
        position: fixed;
        transform: translate(-50%, -50%);
        max-width: 95%;
+       overflow: hidden;
+       background: #fff;
+       border-radius: 6px;
+     }
+
+     &[data-pdfp-theme="dark"] .iframe_wrapper {
+       background: #2a2a2e;
      }
    }
 

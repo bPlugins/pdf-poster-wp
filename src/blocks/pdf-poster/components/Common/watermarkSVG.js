@@ -373,20 +373,29 @@ export const resolveWatermark = (cfg = {}, opts = {}) => {
 
 /**
  * Substitute the tokens that depend on the page being drawn. Static tokens are already
- * resolved server-side; visitor tokens arrive from the REST route (see `dynamic`).
+ * resolved server-side; visitor tokens arrive from the visitor endpoint (see `dynamic`
+ * and src/hooks/utils/visitor.js).
+ *
+ * Once the visitor is known (`ctx.visitor`), its tokens are always replaced -- with an
+ * empty string for a guest -- so a reader never sees a raw "{user_name}" on the page.
  */
 export const resolveWatermarkText = (text, ctx = {}) => {
   let out = String(text == null ? "" : text);
   const map = {
     "{page}": ctx.page != null ? ctx.page : "",
     "{pages}": ctx.pages != null ? ctx.pages : "",
-    "{user_name}": ctx.userName || "",
-    "{user_email}": ctx.userEmail || "",
-    "{user_ip}": ctx.userIp || "",
   };
   Object.keys(map).forEach((k) => {
     if (map[k] !== "") out = out.split(k).join(map[k]);
   });
+  if (ctx.visitor) {
+    const v = ctx.visitor;
+    out = out.split("{user_name}").join(v.userName || "")
+      .split("{user_email}").join(v.userEmail || "")
+      .split("{user_ip}").join(v.userIp || "");
+    // A guest leaves gaps where the tokens were ("Licensed to  · "): tidy them.
+    out = out.replace(/\s{2,}/g, " ").replace(/^[\s·|,\-–—]+|[\s·|,\-–—]+$/g, "");
+  }
   return out;
 };
 

@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { applyWatermark, watermarkInScope } from "./watermarkSVG";
+import fetchVisitor from "../../../../hooks/utils/visitor";
 
 /**
  * Watermark overlay for the engines the plugin renders in-page.
@@ -26,6 +27,17 @@ import { applyWatermark, watermarkInScope } from "./watermarkSVG";
 const Watermark = ({ watermark, mode = "container", targetRef, theme = "light", pageCount = 0 }) => {
   const enabled = !!(watermark && watermark.enabled && (watermark.apply || ["screen"]).includes("screen"));
 
+  // {user_name}, {user_email}, {user_ip}: the server leaves them out of the HTML (it may
+  // be cached), so ask who is reading. undefined = still asking, null = no endpoint here.
+  const needsVisitor = enabled && !!watermark.dynamic;
+  const [visitor, setVisitor] = useState(undefined);
+  useEffect(() => {
+    if (!needsVisitor) return;
+    let live = true;
+    fetchVisitor().then((v) => live && setVisitor(v));
+    return () => { live = false; };
+  }, [needsVisitor]);
+
   useEffect(() => {
     const host = targetRef?.current;
     if (!host) return;
@@ -35,7 +47,10 @@ const Watermark = ({ watermark, mode = "container", targetRef, theme = "light", 
       return;
     }
 
-    const opts = { theme };
+    // Draw nothing until the reader is known, rather than flash the raw placeholders.
+    if (needsVisitor && visitor === undefined) return;
+
+    const opts = { theme, visitor: visitor || undefined };
 
     /* ---------------- container strategy ---------------- */
     if (mode === "container") {
@@ -351,7 +366,7 @@ const Watermark = ({ watermark, mode = "container", targetRef, theme = "light", 
       host.removeEventListener("scroll", onResize, true);
       host.querySelectorAll(".pdfp-wm").forEach((el) => el.remove());
     };
-  }, [enabled, mode, targetRef, theme, pageCount, JSON.stringify(watermark || {})]);
+  }, [enabled, mode, targetRef, theme, pageCount, needsVisitor, visitor, JSON.stringify(watermark || {})]);
 
   return null;
 };

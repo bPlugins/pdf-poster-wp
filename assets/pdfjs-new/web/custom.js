@@ -252,6 +252,35 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!cfg || !cfg.enabled) return;
     if (cfg.apply && cfg.apply.indexOf("screen") === -1) return;
 
+    // {user_name}, {user_email}, {user_ip}: left out of the page HTML (it may be cached),
+    // so ask who is reading -- the same endpoint as src/hooks/utils/visitor.js. Pages are
+    // not marked until the answer arrives, so a reader never sees a raw placeholder; after
+    // 4 s the mark draws anyway with those tokens blank.
+    var visitor = null;
+    var visitorPending = !!cfg.dynamic;
+    if (visitorPending) {
+      var visitorUrl = "";
+      try { visitorUrl = (window.parent && window.parent.pdfp && window.parent.pdfp.visitorUrl) || ""; } catch (e) {}
+      if (!visitorUrl && location.pathname.indexOf("/wp-content/") !== -1) {
+        // Opened on its own (full screen in a new tab): the site root is everything before /wp-content/.
+        visitorUrl = location.pathname.split("/wp-content/")[0] + "/wp-admin/admin-ajax.php?action=pdfp_watermark_visitor";
+      }
+      var settle = function (v) {
+        if (!visitorPending) return;
+        visitor = v || {};
+        visitorPending = false;
+        sweep();
+      };
+      setTimeout(function () { settle({}); }, 4000);
+      if (visitorUrl && typeof fetch === "function") {
+        fetch(visitorUrl, { credentials: "same-origin", cache: "no-store" })
+          .then(function (res) { return res.ok ? res.json() : {}; })
+          .then(settle, function () { settle({}); });
+      } else {
+        settle({});
+      }
+    }
+
     function esc(s) {
       return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
     }
@@ -415,6 +444,13 @@ document.addEventListener("DOMContentLoaded", function () {
       var text = String(cfg.text == null ? "" : cfg.text)
         .split("{page}").join(page)
         .split("{pages}").join(total);
+      if (visitor) {
+        text = text.split("{user_name}").join(visitor.userName || "")
+          .split("{user_email}").join(visitor.userEmail || "")
+          .split("{user_ip}").join(visitor.userIp || "")
+          // A guest leaves gaps where the tokens were: tidy them, as resolveWatermarkText does.
+          .replace(/\s{2,}/g, " ").replace(/^[\s\u00b7|,\-\u2013\u2014]+|[\s\u00b7|,\-\u2013\u2014]+$/g, "");
+      }
 
       var imageUrl = r.markType !== "text" ? inlinedLogo(cfg.image) : null;
       var hasText = r.markType !== "image" && String(text).trim() !== "";
@@ -461,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function mark(pageDiv, page, total) {
-      if (!pageDiv) return;
+      if (!pageDiv || visitorPending) return;
       // Fetch the logo the first time a page needs it, then repaint every page.
       if (cfg.image && (cfg.markType || "text") !== "text" && !inlinedLogo(cfg.image)) {
         ensureLogo(cfg.image, function () { sweep(); });

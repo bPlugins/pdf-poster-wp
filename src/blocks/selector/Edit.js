@@ -7,6 +7,7 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { SelectControl } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
+import apiFetch from "@wordpress/api-fetch";
 
 function Edit(props) {
   const { attributes, setAttributes, clientId, isSelected, docs } = props;
@@ -19,11 +20,13 @@ function Edit(props) {
       return;
     }
     setIsLoading(true);
-    jQuery.get(pdfp?.siteUrl + "/wp-json/pdfposter/v1/single/" + tringle_text, function (res) {
-      setAttributes({ shadowAttributes: res }); 
-      setIsLoading(false);
-    });
-  }, [attributes.data]); 
+    // apiFetch knows the REST root and sends the nonce; the route needs a logged-in user,
+    // and a bare request (no nonce) is treated as a guest and refused.
+    apiFetch({ path: "/pdfposter/v1/single/" + tringle_text })
+      .then((res) => setAttributes({ shadowAttributes: res }))
+      .catch(() => setAttributes({ shadowAttributes: {} }))
+      .finally(() => setIsLoading(false));
+  }, [attributes.data]);
 
   let options;
   if (docs) {
