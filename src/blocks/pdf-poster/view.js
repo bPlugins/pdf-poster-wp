@@ -6,28 +6,6 @@ import Viewer from "./components/Common/Viewer";
 import "./style.scss";
 import "./public.scss";
 
-/*
-  Front-end bootstrapper.
-
-  Two things decide whether a poster ever becomes a viewer: WHICH elements we claim,
-  and WHEN we look for them.
-
-  WHICH -- only our own container. This used to also sweep up every `[data-attributes]`
-  element on the page, which is not a PDF Poster marker at all: sibling bPlugins blocks
-  (Document Embedder, Embed Office Viewer) publish their own attributes under the same
-  name, and we were mounting our viewer over their markup and parsing their attributes
-  as ours. render.php always stamps `wp-block-pdfp-pdf-poster`, so the class is both
-  sufficient and unambiguous.
-
-  WHEN -- whenever one appears, not just at DOMContentLoaded. Page builders render an
-  element through admin-ajax and splice the HTML in long after the document is ready:
-  WPBakery's frontend editor does it on every add and every edit, and Divi, Beaver,
-  Oxygen, AJAX themes and infinite scroll all behave the same way. A one-shot scan at
-  load leaves those blocks sitting on the "Loading Viewer..." placeholder forever.
-  A MutationObserver covers all of them with no per-builder code, which is why the old
-  Elementor-only polling loop is gone.
-*/
-
 const SELECTOR = ".wp-block-pdfp-pdf-poster";
 const MOUNTED = "data-pdfp-initialized";
 
@@ -44,6 +22,10 @@ const mount = (block) => {
   try {
     const attributes = JSON.parse(attributesData);
     createRoot(block).render(<View attributes={attributes} id={block.id} />);
+    // Parsed once and handed to React, so the raw config (file URL included) has no
+    // reason to stay in the DOM. Dropped only once mounting succeeded: a failure keeps
+    // it so the next scan can retry.
+    block.removeAttribute("data-attributes");
   } catch (e) {
     block.removeAttribute(MOUNTED);
     console.error("PDF Poster: could not initialise viewer", e);
@@ -82,8 +64,6 @@ const watch = () => {
   if (!document.body || typeof MutationObserver === "undefined") return;
 
   new MutationObserver((records) => {
-    // Our own render churns the DOM constantly, so pay for a scan only when the added
-    // markup could actually contain a poster.
     for (const record of records) {
       for (const node of record.addedNodes) {
         if (holdsPoster(node)) {
@@ -106,9 +86,6 @@ if (document.readyState === "loading") {
   start();
 }
 
-// Elementor renders widgets into its preview iframe outside the observed document, so
-// it still needs its own hook. Registered opportunistically -- no retry loop, because
-// the event below fires whenever Elementor loads late.
 const runElementor = () => {
   if (!window.elementorFrontend?.hooks) return false;
   elementorFrontend.hooks.addAction("frontend/element_ready/global", ($scope) => scan($scope[0]));

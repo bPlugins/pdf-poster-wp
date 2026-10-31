@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T04:43:50+00:00\n"
+"POT-Creation-Date: 2026-10-31T10:07:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-poster\n"
@@ -1171,12 +1171,12 @@ msgid "Paste the shortcode above into any of these — nothing else to install."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:171
-#: includes/helper/class-pdfp-functions.php:581
+#: includes/helper/class-pdfp-functions.php:607
 msgid "Pro version"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:172
-#: includes/helper/class-pdfp-functions.php:582
+#: includes/helper/class-pdfp-functions.php:608
 msgid "Locked"
 msgstr ""
 
@@ -1187,12 +1187,12 @@ msgid "%d settings the free build keeps shut."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:199
-#: includes/helper/class-pdfp-functions.php:602
+#: includes/helper/class-pdfp-functions.php:628
 msgid "See Pro pricing"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:202
-#: includes/helper/class-pdfp-functions.php:604
+#: includes/helper/class-pdfp-functions.php:630
 msgid "14-day refund policy"
 msgstr ""
 
@@ -1251,13 +1251,13 @@ msgid "ShortCode For Raw PDF View"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:139
-#: includes/helper/class-pdfp-functions.php:1155
+#: includes/helper/class-pdfp-functions.php:1181
 #: build/blocks/pdf-poster/index.js
 msgid "Views today"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:140
-#: includes/helper/class-pdfp-functions.php:1156
+#: includes/helper/class-pdfp-functions.php:1182
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads today"
 msgstr ""
@@ -1267,7 +1267,7 @@ msgid "Date"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:172
-#: includes/helper/class-pdfp-functions.php:1170
+#: includes/helper/class-pdfp-functions.php:1196
 msgid "Counting is switched off"
 msgstr ""
 
@@ -1327,58 +1327,58 @@ msgstr ""
 msgid "ShortCode Global Settings"
 msgstr ""
 
-#: includes/base/class-pdfp-shortcodes.php:133
+#: includes/base/class-pdfp-shortcodes.php:130
 msgid "Download File"
 msgstr ""
 
-#: includes/base/class-pdfp-shortcodes.php:135
+#: includes/base/class-pdfp-shortcodes.php:132
 msgid "View Fullscreen"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:546
+#: includes/helper/class-pdfp-functions.php:572
 msgid "The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:546
+#: includes/helper/class-pdfp-functions.php:572
 msgid "Upgrade to PRO"
 msgstr ""
 
 #. translators: %d: number of settings in this section available only in the Pro version.
-#: includes/helper/class-pdfp-functions.php:588
+#: includes/helper/class-pdfp-functions.php:614
 #, php-format
 msgid "%d setting the free build keeps shut."
 msgid_plural "%d settings the free build keeps shut."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:624
+#: includes/helper/class-pdfp-functions.php:650
 msgid "Copy"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:627
+#: includes/helper/class-pdfp-functions.php:653
 msgid "Copy and paste this shortcode into any page or post. Replace <code>your_file_url</code> with your actual PDF link."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:636
+#: includes/helper/class-pdfp-functions.php:662
 msgid "This feature is coming soon. Stay tuned for updates!"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:838
+#: includes/helper/class-pdfp-functions.php:864
 msgid "Counting is switched off in Settings > Analytics."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:844
+#: includes/helper/class-pdfp-functions.php:870
 msgid "Counting is on. Nothing recorded for this document yet."
 msgstr ""
 
 #. translators: %s: the date counting began, e.g. "12 September 2026"
-#: includes/helper/class-pdfp-functions.php:849
+#: includes/helper/class-pdfp-functions.php:875
 #, php-format
 msgid "Counting since %s. Resets at midnight, site time."
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:940
+#: includes/helper/class-pdfp-functions.php:966
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "%s day recorded"
@@ -1386,18 +1386,18 @@ msgid_plural "%s days recorded"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:943
+#: includes/helper/class-pdfp-functions.php:969
 #: build/blocks/pdf-poster/index.js
 msgid "Recording now"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:944
+#: includes/helper/class-pdfp-functions.php:970
 #: build/blocks/pdf-poster/index.js
 msgid "example"
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:958
+#: includes/helper/class-pdfp-functions.php:984
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "Your last %s day is recorded in your own database. Pro reads it back as totals, a 14-day trend, your best-performing documents and a report you can export."
@@ -1405,125 +1405,125 @@ msgid_plural "Your last %s days are recorded in your own database. Pro reads the
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:966
+#: includes/helper/class-pdfp-functions.php:992
 msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, trends and a report."
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1086
+#: includes/helper/class-pdfp-functions.php:1112
 #, php-format
 msgid "No views in the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1088
+#: includes/helper/class-pdfp-functions.php:1114
 #, php-format
 msgid "View trend over the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1106
+#: includes/helper/class-pdfp-functions.php:1132
 #, php-format
 msgid "Last %d days"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1111
+#: includes/helper/class-pdfp-functions.php:1137
 #: build/blocks/pdf-poster/index.js
 msgid "no views yet"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1113
+#: includes/helper/class-pdfp-functions.php:1139
 #: build/blocks/pdf-poster/index.js
 msgid "no baseline"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1204
+#: includes/helper/class-pdfp-functions.php:1230
 #: build/blocks/pdf-poster/index.js
 msgid "Views"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1209
+#: includes/helper/class-pdfp-functions.php:1235
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1622
-#: includes/helper/class-pdfp-functions.php:1730
+#: includes/helper/class-pdfp-functions.php:1648
+#: includes/helper/class-pdfp-functions.php:1756
 #: build/blocks/pdf-poster/index.js
 msgid "Confidential"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1629
-#: includes/helper/class-pdfp-functions.php:1731
+#: includes/helper/class-pdfp-functions.php:1655
+#: includes/helper/class-pdfp-functions.php:1757
 #: build/blocks/pdf-poster/index.js
 msgid "Draft Stamp"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1637
-#: includes/helper/class-pdfp-functions.php:1732
+#: includes/helper/class-pdfp-functions.php:1663
+#: includes/helper/class-pdfp-functions.php:1758
 #: build/blocks/pdf-poster/index.js
 msgid "Sample Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1644
-#: includes/helper/class-pdfp-functions.php:1733
+#: includes/helper/class-pdfp-functions.php:1670
+#: includes/helper/class-pdfp-functions.php:1759
 #: build/blocks/pdf-poster/index.js
 msgid "Brand Corner"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1651
-#: includes/helper/class-pdfp-functions.php:1734
+#: includes/helper/class-pdfp-functions.php:1677
+#: includes/helper/class-pdfp-functions.php:1760
 #: build/blocks/pdf-poster/index.js
 msgid "Logo Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1658
-#: includes/helper/class-pdfp-functions.php:1735
+#: includes/helper/class-pdfp-functions.php:1684
+#: includes/helper/class-pdfp-functions.php:1761
 #: build/blocks/pdf-poster/index.js
 msgid "Logo + Caption"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1665
+#: includes/helper/class-pdfp-functions.php:1691
 #: build/blocks/pdf-poster/index.js
 msgid "Custom"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1755
+#: includes/helper/class-pdfp-functions.php:1781
 #: build/blocks/pdf-poster/index.js
 msgid "Text, a logo, or both"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1756
+#: includes/helper/class-pdfp-functions.php:1782
 #: build/blocks/pdf-poster/index.js
 msgid "Tiled or one corner mark"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1757
+#: includes/helper/class-pdfp-functions.php:1783
 #: build/blocks/pdf-poster/index.js
 msgid "Pick the pages"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1758
+#: includes/helper/class-pdfp-functions.php:1784
 #: build/blocks/pdf-poster/index.js
 msgid "Pick who sees it"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1768
+#: includes/helper/class-pdfp-functions.php:1794
 #: build/blocks/pdf-poster/index.js
 msgid "Turn on watermarking"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1776
+#: includes/helper/class-pdfp-functions.php:1802
 #: build/blocks/pdf-poster/index.js
 msgid "looks, ready to go"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1777
+#: includes/helper/class-pdfp-functions.php:1803
 #: build/blocks/pdf-poster/index.js
 msgid "Stamp every page — the file is never touched."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1779
+#: includes/helper/class-pdfp-functions.php:1805
 msgid "The mark is drawn over the document as it is displayed, so the PDF on your server stays exactly as you uploaded it. Pick one of these and you are done, or take the Custom theme and set the colour, angle, size and tiling yourself."
 msgstr ""
 

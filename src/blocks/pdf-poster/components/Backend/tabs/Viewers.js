@@ -1,6 +1,6 @@
-import { Button, PanelBody, PanelRow, SelectControl } from "@wordpress/components";
+import { Button, PanelBody, PanelRow, SelectControl, TextControl } from "@wordpress/components";
 import { MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
-import { Notice, InlineMediaUpload } from "../../../../../../../bpl-tools/Components";
+import { Notice, Label } from "../../../../../../../bpl-tools/Components";
 import { __ } from "@wordpress/i18n";
 import { PDFIcon } from "../../../../../icons/PDF";
 import { hasFlipbookEngine } from "../../../utils";
@@ -50,7 +50,25 @@ const Viewers = ({ setAttributes, attributes }) => {
 
             {/* Source fields sit beside the engine picker, mirroring the metabox General
                 section order: Viewer -> PDF Source -> Flipbook Source -> Flipbook Pages. */}
-            <InlineMediaUpload className="mt10" label={__("Upload PDF", "pdf-poster")} types={["application/pdf"]} onChange={(file) => setAttributes({ file })} value={file} placeholder={__("Upload PDF", "pdf-poster")} />
+            {/* Mirrors bpl-tools' InlineMediaUpload, which hands back only the URL. render.php
+                resolves the file from fileId before the URL, so a stale id left behind here
+                keeps serving the previous PDF on the front end. Picking from the library
+                records the new id; a typed URL has no attachment, so the id is cleared. */}
+            <div className="mt10">
+                <Label className="mb5">{__("Upload PDF", "pdf-poster")}</Label>
+                <PanelRow className="bPlInlineMediaUpload">
+                    <TextControl value={file} onChange={(url) => setAttributes({ file: url, fileId: 0 })} placeholder={__("Upload PDF", "pdf-poster")} />
+                    <MediaUpload
+                        allowedTypes={["application/pdf"]}
+                        onSelect={(media) => setAttributes({ file: media.url, fileId: media.id || 0 })}
+                        render={({ open }) => <Button className="button button-primary" onClick={open} label={__("Upload PDF", "pdf-poster")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M7.4,10h1.59v5c0,0.55,0.45,1,1,1h4c0.55,0,1-0.45,1-1v-5h1.59c0.89,0,1.34-1.08,0.71-1.71L12.7,3.7 c-0.39-0.39-1.02-0.39-1.41,0L6.7,8.29C6.07,8.92,6.51,10,7.4,10z M5,19c0,0.55,0.45,1,1,1h12c0.55,0,1-0.45,1-1s-0.45-1-1-1H6 C5.45,18,5,18.45,5,19z" />
+                            </svg>
+                        </Button>}
+                    />
+                </PanelRow>
+            </div>
 
             {isFlipbookEngine && (
                 <>

@@ -88,8 +88,18 @@ const Watermark = ({ watermark, mode = "container", targetRef, theme = "light", 
         // 500 on every spread.
         const lw = Number(v.leftSheetWidth || 0);
         const rw = Number(v.rightSheetWidth || 0);
-        const sheet = lw || rw;
-        const h = Number(v.leftSheetHeight || v.rightSheetHeight || 0);
+        const lh = Number(v.leftSheetHeight || 0);
+        const rh = Number(v.rightSheetHeight || 0);
+
+        // Single-page mode -- what dFlip switches to on a phone-width stage -- shows ONE
+        // sheet, and the other side's numbers are stale: measured on a 352px stage, the
+        // cover sat on the right sheet at 295x418 while the left still read 161x228, so
+        // reading left-first shrank the mark to half the page. dFlip's own isLeftPage()
+        // is what it uses to centre the visible sheet, so ask it which side that is.
+        const single = !!v.isSingle;
+        const onLeft = single && typeof v.isLeftPage === "function" ? !!v.isLeftPage() : false;
+        const sheet = single ? (onLeft ? lw : rw) : (lw || rw);
+        const h = single ? (onLeft ? lh : rh) : (lh || rh);
         if (!(sheet > 8 && h > 8)) return null;
 
         const stage = pick();
@@ -99,22 +109,29 @@ const Watermark = ({ watermark, mode = "container", targetRef, theme = "light", 
         const seam = Number(v.seamPosition);
         // A spread is centred on the stage; a lone sheet is not. They coincide only if
         // the sheet had no width, so this separates them cleanly.
-        const spread = isFinite(seam) && Math.abs(seam - sw / 2) < 1 && lw > 8 && rw > 8;
+        const spread = !single && isFinite(seam) && Math.abs(seam - sw / 2) < 1 && lw > 8 && rw > 8;
         const w = spread ? lw + rw : sheet;
 
         // Bail out if the numbers don't fit the stage -- better a full-viewer mark than
         // a mark parked in the wrong place.
         if (!sw || !sh || w > sw + 2 || h > sh + 2) return null;
 
-        // Vertical placement. `leftSheetTop` is the book's position in dFlip's flat
-        // layout space, which sits 20px above where the 3D camera actually draws it --
-        // verified by pixel-measuring the canvas. What matches the drawn page exactly, at
-        // several container heights and with the toolbar hidden, is the book centred in
-        // the stage minus the control bar:
-        //     top = (stageHeight - controlsHeight - bookHeight) / 2
-        // `leftSheetTop` is kept as the fallback if controlsHeight isn't published.
-        const controls = Number((inst.dimensions && inst.dimensions.controlsHeight) || 0);
-        const centred = (sh - controls - h) / 2;
+        // Vertical placement, measured against the drawn page on desktop, tablet and
+        // phone. The page area starts at dFlip's padding.top (its padding plus the
+        // floating control bar) and the book is centred in stage.innerHeight:
+        //     top = padding.top + (stage.innerHeight - bookHeight) / 2
+        // The older (stageHeight - controlsHeight - bookHeight) / 2 lands one control
+        // bar (42px) too high -- hidden on desktop by the margin around the book, but on
+        // a phone the book fills the stage, so the top row of marks sat over the toolbar
+        // and the bottom of the page went unmarked. It stays as the fallback when dFlip
+        // doesn't publish padding, and `leftSheetTop` after that.
+        const dims = inst.dimensions || {};
+        const padTop = Number(dims.padding && dims.padding.top);
+        const inner = Number(dims.stage && dims.stage.innerHeight);
+        const controls = Number(dims.controlsHeight || 0);
+        const centred = isFinite(padTop) && inner > 0
+          ? padTop + (inner - h) / 2
+          : (sh - controls - h) / 2;
         const top = isFinite(centred) && centred >= 0
           ? centred
           : Number(v.leftSheetTop != null ? v.leftSheetTop : v.rightSheetTop);

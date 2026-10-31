@@ -148,21 +148,23 @@
      // FlipBook and Slider open here instead of in real fullscreen. The overlay needs
      // its own z-index (just under the panel), or a theme's positioned header and footer
      // paint straight over it; and the panel clips and fills its box, or dFlip's slider
-     // runs past its edges onto the page behind.
+     // runs past its edges onto the page behind. Stacking is overlay < panel < close:
+     // a wide panel reaches under the close (x), and on a z-index tie the panel comes
+     // later in the DOM, so it would paint over the (x) and swallow its clicks.
      .pdfp_fullscreen_overlay {
        width: 100%;
        height: 100%;
        position: fixed;
        top: 0;
        left: 0;
-       z-index: 2147483646;
+       z-index: 2147483645;
        background: rgba(17, 17, 24, 0.88);
      }
 
      .iframe_wrapper {
        width: 900px;
        height: 90vh;
-       z-index: 2147483647;
+       z-index: 2147483646;
        display: block;
        top: 50%;
        left: 50%;

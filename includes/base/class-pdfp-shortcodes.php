@@ -33,31 +33,22 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
       return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: Invalid PDF Poster ID.</p>' : '';
     }
 
-    // One call, because the handles have to be asked for the same way everywhere: a
-    // page builder rendering this shortcode over admin-ajax never ran
-    // `wp_enqueue_scripts`, so the helper (re)registers before enqueuing.
+    
+    if ($post->post_status === 'trash') {
+      return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: This PDF Poster is in the trash.</p>' : '';
+    }
+    
     Assets::enqueue_viewer_assets();
 
     return render_block($this->resolve_block($id, $post));
   }
 
-  /**
-   * Resolve the block to render for a saved poster.
-   *
-   * Only the post content proves a pdfp/pdfposter block was ever saved. The
-   * isGutenberg meta is written to every auto-draft and never cleared, so a
-   * metabox-configured poster can carry it with empty content -- branching on
-   * it made the shortcode render nothing at all.
-   */
+  
   private function resolve_block($id, $post) {
     $blocks = parse_blocks($post->post_content ?? '');
 
     foreach ($blocks as $block) {
       if (isset($block['blockName']) && $block['blockName'] === 'pdfp/pdfposter') {
-        // Document Insights needs to know which saved poster this is, and a block stored
-        // in post_content has no idea -- it only knows its file. Stamping the id here is
-        // what lets the counts land on `p:<id>`, which is the key the PDF Posters
-        // columns and the editor's Analytics box both read.
         $block['attrs']['posterId'] = (int) $id;
         return $block;
       }
@@ -82,6 +73,12 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
 
     if ($post_type !== 'pdfposter' || !$post) {
       return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: Invalid PDF Poster ID.</p>' : '';
+    }
+
+    // get_post() still returns a trashed poster, so without this the shortcode kept
+    // rendering a PDF the user had already thrown away.
+    if ($post->post_status === 'trash') {
+      return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: This PDF Poster is in the trash.</p>' : '';
     }
 
     // One call, because the handles have to be asked for the same way everywhere: a

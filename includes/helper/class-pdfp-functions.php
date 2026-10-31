@@ -76,9 +76,14 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                 $resolved = wp_get_attachment_url($attachment_id);
 
                 // Attachment ids are not stable across an import or a clone, so the id is
-                // trusted only while it still names a PDF. Otherwise fall through to the
-                // stored URL.
-                if (is_string($resolved) && '' !== $resolved && self::pdfp_is_pdf_attachment($attachment_id, $resolved)) {
+                // trusted only while it still names a PDF -- and the same file as the
+                // stored URL. The sidebar's Upload PDF field used to change the URL but
+                // leave the previous id behind, so a mismatched filename means the id
+                // is stale and the URL is what the author picked. Otherwise fall through
+                // to the stored URL.
+                if (is_string($resolved) && '' !== $resolved
+                    && self::pdfp_is_pdf_attachment($attachment_id, $resolved)
+                    && self::pdfp_same_file_name($url, $resolved)) {
                     return $resolved;
                 }
             }
@@ -104,6 +109,27 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
             }
 
             return esc_url_raw($url, array('http', 'https'));
+        }
+
+        /**
+         * Do the stored URL and the attachment's URL name the same file? Only the
+         * filename is compared: the host and uploads path legitimately differ after a
+         * domain change or a clone, which is the case the id exists to repair. An empty
+         * stored URL has nothing to contradict the id, so it matches.
+         */
+        private static function pdfp_same_file_name($url, $resolved) {
+            if (!is_string($url) || '' === trim($url)) {
+                return true;
+            }
+
+            $stored = wp_parse_url($url, PHP_URL_PATH);
+            $actual = wp_parse_url($resolved, PHP_URL_PATH);
+
+            if (!is_string($stored) || !is_string($actual)) {
+                return true;
+            }
+
+            return wp_basename(rawurldecode($stored)) === wp_basename(rawurldecode($actual));
         }
 
         /**
