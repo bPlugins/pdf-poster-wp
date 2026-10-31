@@ -149,6 +149,19 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
+            version: '2.6.3 - 1 Nov 2026',
+            type: 'fixed',
+            list: [
+                '<strong>Fix:</strong> Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader\'s details, and stay correct behind page caching.',
+                '<strong>Fix:</strong> The PDF Poster Selector block preview no longer sticks on “Loading…”.',
+                '<strong>Fix:</strong> The PDF Poster element can now be added in WPBakery\'s frontend editor.',
+                '<strong>Fix:</strong> The Download Button switch now appears on PDF Poster documents.',
+                '<strong>Fix:</strong> FlipBook and Slider now use the Tablet and Mobile heights, and their popups have a solid background.',
+                '<strong>Update:</strong> The default mobile height is now 500px, so a full page fits on phones.',
+                '<strong>Fix:</strong> Social share buttons now share the full page address, and each has an accessible name for screen readers.'
+            ]
+        },
+        {
             version: '2.6.2 - 29 Oct 2026',
             type: 'fixed',
             list: [

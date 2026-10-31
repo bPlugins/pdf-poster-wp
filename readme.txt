@@ -331,9 +331,10 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 == Changelog ==
 
-= 2.6.3 - 29 Oct 2026 =
+= 2.6.3 - 1 Nov 2026 =
 * Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details (safe with page caching), the PDF Poster Selector block preview no longer sticks on "Loading…", the PDF Poster element can be added in WPBakery's frontend editor, and the Download Button switch now appears on PDF Poster documents.
 * Fix: FlipBook and Slider now use the Tablet and Mobile heights, their popups have a solid background, and the default mobile height is 500px so a full page fits on phones.
+* Fix: Social share buttons now share the full page address, and each has an accessible name for screen readers.
 
 = 2.6.2 - 29 Oct 2026 =
 * Security: Fixed a stored cross-site scripting (XSS) issue in the PDF Poster block. A user with Contributor access could set the document URL to a javascript: link that ran when the poster was viewed. Document URLs must now be http(s), Google Docs/Drive embeds are matched by exact host, and they load in a sandboxed frame. Thanks to mroccon and Patchstack for the responsible disclosure.
