@@ -179,6 +179,34 @@
      &[data-pdfp-theme="dark"] .iframe_wrapper {
        background: #2a2a2e;
      }
+
+     // The phone rule in public.scss pins the iframe to calc(100vw + 120px) !important,
+     // which leaves most of the panel empty.
+     .iframe_wrapper iframe {
+       height: 100% !important;
+       max-height: none;
+     }
+
+     // Phones (iOS Safari has no Element.requestFullscreen, so they always land here):
+     // fill the screen instead of a floating card, and keep a strip on top for the
+     // close (x) so it doesn't sit on the viewer's own toolbar buttons.
+     @media screen and (max-width: 768px) {
+       .iframe_wrapper {
+         top: calc(56px + env(safe-area-inset-top, 0px));
+         left: 0;
+         transform: none;
+         width: 100%;
+         max-width: 100%;
+         height: calc(100vh - 56px - env(safe-area-inset-top, 0px));
+         height: calc(100dvh - 56px - env(safe-area-inset-top, 0px));
+         border-radius: 0;
+       }
+
+       .pdfp_fullscreen_close {
+         top: calc(12px + env(safe-area-inset-top, 0px));
+         right: 12px;
+       }
+     }
    }
 
    iframe {

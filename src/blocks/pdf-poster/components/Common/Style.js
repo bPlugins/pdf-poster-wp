@@ -11,6 +11,8 @@ export default function Style({ attributes, id = 'pdfp' }) {
 
 
   useEffect(() => {
+    // The .iframe_wrapper size rules skip .pdfp_fullscreen_opened: as ID selectors (and
+    // !important on mobile) they would beat the CSS fullscreen and keep the inline size.
     let CSS = `
     .${id} .cta_wrapper a, 
     .${id} .cta_wrapper button, 
@@ -34,7 +36,7 @@ export default function Style({ attributes, id = 'pdfp' }) {
       width: 100%;
     }
     
-    #${id} .iframe_wrapper {
+    #${id} .pdfp_wrapper:not(.pdfp_fullscreen_opened) .iframe_wrapper {
       height: ${height?.desktop || height};
       width: ${width?.desktop || width};
     }
@@ -59,13 +61,13 @@ export default function Style({ attributes, id = 'pdfp' }) {
 
     if (typeof height === 'object') {
       CSS += ` @media only screen and (max-width: 1024px) {
-        #${id} .iframe_wrapper {
+        #${id} .pdfp_wrapper:not(.pdfp_fullscreen_opened) .iframe_wrapper {
           height: ${height.tablet || height};
           width: ${width.tablet || width};
         }
       }
       @media only screen and (max-width: 640px) {
-        #${id} .iframe_wrapper{
+        #${id} .pdfp_wrapper:not(.pdfp_fullscreen_opened) .iframe_wrapper{
           height: ${height.mobile || height} !important;
           width: ${width.mobile || width} !important;
         }
