@@ -14,6 +14,13 @@
    }
 
    &.pdfp_popup_enabled {
+     // FlipBook/Slider wrap .iframe_wrapper in .dflipWrapper, which keeps an inline
+     // height and takes the dark-theme surface -- hiding only the inner frame left an
+     // empty dark box under the popup button. Hide the whole engine until it opens.
+     &:not(.pdfp_fullscreen_opened) .dflipWrapper {
+       display: none;
+     }
+
      .iframe_wrapper {
        display: none;
 
