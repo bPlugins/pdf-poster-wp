@@ -30,6 +30,7 @@ if (!class_exists('PDFPro\PDFP_Init')) {
                 Admin\PDFP_Chatbot::class,
                 Admin\PDFP_SidebarCards::class,
                 Integrations\PDFP_WPBakery::class,
+                Integrations\PDFP_Elementor::class,
             ];
         }
 

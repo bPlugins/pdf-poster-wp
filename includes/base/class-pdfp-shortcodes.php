@@ -44,7 +44,7 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
   }
 
   
-  private function resolve_block($id, $post) {
+  public function resolve_block($id, $post) {
     $blocks = parse_blocks($post->post_content ?? '');
 
     foreach ($blocks as $block) {

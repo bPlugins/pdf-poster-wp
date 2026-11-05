@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "meta-box/document-embedder",
+  "title": "PDF Poster Selector",
+  "description": "",
+  "category": "design",
+  "icon": "pdf",
+  "keywords": [
+    "PDF poster Selector"
+  ],
+  "editorScript": [
+    "file:./index.js"
+  ],
+  "render": "file:./render.php",
+  "textdomain": "pdf-poster",
+  "attributes": {
+    "data": {
+      "type": "object",
+      "default": {
+        "tringle_text": ""
+      }
+    },
+    "shadowAttributes": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false,
+    "lock": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  }
+}

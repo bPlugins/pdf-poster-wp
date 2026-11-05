@@ -4,7 +4,7 @@ Tags: embed pdf, pdf, pdf embedder, pdf plugin, pdf viewer
 Donate link: https://www.buymeacoffee.com/abuhayat/
 Requires at least: 5.0.3
 Tested up to: 7.1
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,9 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 
 == Changelog ==
+
+= 2.6.4 - 5 Nov 2026 =
+* New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
 
 = 2.6.3 - 1 Nov 2026 =
 * Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details (safe with page caching), the PDF Poster Selector block preview no longer sticks on "Loading…", the PDF Poster element can be added in WPBakery's frontend editor, and the Download Button switch now appears on PDF Poster documents.

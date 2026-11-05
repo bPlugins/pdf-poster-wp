@@ -272,8 +272,21 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                 ];
             }
 
-            $meta = pdfp__get_post_meta($id, '_fpdf', true);
+            return self::pdfp_block_from_meta(pdfp__get_post_meta($id, '_fpdf', true), (int) $id, get_the_title($id));
+        }
 
+        /**
+         * The poster block for a set of `_fpdf` metabox values.
+         *
+         * Split out of generate_pdf_poster_block() so the Elementor widget can lay its own
+         * settings out as metabox fields and go through this same converter -- one
+         * mapping from metabox keys to block attributes, not two to keep in step.
+         *
+         * @param callable $meta  Reader with pdfp__get_post_meta()'s signature: ($key, $default, $is_boolean).
+         * @param int      $id    The saved poster's id, or 0 when there is none.
+         * @param string   $title The poster title.
+         */
+        public static function pdfp_block_from_meta(callable $meta, $id = 0, $title = '') {
             $height = $meta('height', ['height' => 1122, 'unit' => 'px']);
             $width = $meta('width', ['width' => 100, 'unit' => '%']);
             $height_tablet = $meta('height_tablet', ['height' => 700, 'unit' => 'px']);
@@ -300,7 +313,7 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                 // the media modal handed it, which stops being reachable the moment the
                 // site moves. See pdfp_resolve_file_url().
                 'file' => self::pdfp_resolve_file_url($meta('source', ''), (int) $meta('source_id', 0, false)),
-                'title' => get_the_title($id),
+                'title' => $title,
                 'height' => $responsive_height,
                 'width' => $responsive_width,
                 'print' => $meta('print', false, true),
