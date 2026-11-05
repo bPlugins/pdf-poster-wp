@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-05T08:38:00+00:00\n"
+"POT-Creation-Date: 2026-11-05T10:03:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-poster\n"
@@ -41,8 +41,6 @@ msgstr ""
 
 #: includes/admin/class-pdfp-admin.php:25
 #: includes/admin/class-pdfp-settings.php:22
-#: pdf-poster/includes/admin/class-pdfp-admin.php:25
-#: pdf-poster/includes/admin/class-pdfp-settings.php:22
 #: build/blocks/pdf-poster/index.js
 msgid "Settings"
 msgstr ""
@@ -51,49 +49,38 @@ msgstr ""
 #: includes/admin/class-pdfp-admin.php:59
 #: includes/admin/class-pdfp-settings.php:176
 #: includes/base/class-pdfp-pdfposter.php:221
-#: pdf-poster/includes/admin/class-pdfp-admin.php:58
-#: pdf-poster/includes/admin/class-pdfp-admin.php:59
-#: pdf-poster/includes/admin/class-pdfp-settings.php:176
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:221
 #: build/blocks/pdf-poster/index.js
 msgid "Analytics"
 msgstr ""
 
 #: includes/admin/class-pdfp-admin.php:68
 #: includes/admin/class-pdfp-admin.php:69
-#: pdf-poster/includes/admin/class-pdfp-admin.php:68
-#: pdf-poster/includes/admin/class-pdfp-admin.php:69
 msgid "Demo and Help"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:23
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:23
 msgid "Configure Your PDF"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:54
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:883
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:54
 #: build/blocks/pdf-poster/index.js
 msgid "Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:58
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:637
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:58
 msgid "FlipBook"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:59
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:638
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:59
 #: build/blocks/pdf-poster/index.js
 msgid "Slider"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:70
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:214
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:70
 msgid "General"
 msgstr ""
 
@@ -101,31 +88,25 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:519
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:220
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:455
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:75
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:519
 #: build/blocks/pdf-poster/index.js
 msgid "Viewer"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:76
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:76
 #: build/blocks/pdf-poster/index.js
 msgid "Select the PDF viewer engine."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:83
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:83
 msgid "PDF Source"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:84
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:84
 msgid "Select or upload your PDF file."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:89
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:228
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:89
 msgid "Viewer Source"
 msgstr ""
 
@@ -133,145 +114,119 @@ msgstr ""
 #: includes/integrations/class-pdfp-wpbakery.php:120
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:145
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:233
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:93
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:120
 #: build/blocks/pdf-poster/index.js
 msgid "PDF File"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:94
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:234
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:94
 #: build/blocks/pdf-poster/index.js
 msgid "Image Gallery"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:96
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:96
 msgid "Build the flipbook, slider or scroll view from a PDF file or from an ordered set of images."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:101
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:241
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:101
 msgid "Pages (Images)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:103
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:103
 msgid "Select images in the order they should appear as pages."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:112
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:112
 msgid "Preview Device"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:114
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:114
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Desktop"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:115
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:115
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Tablet"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:116
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:116
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Mobile"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:122
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:122
 msgid "Height (Desktop)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:125
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:125
 #: build/blocks/pdf-poster/index.js
 msgid "Set the height of the viewer for desktop."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:134
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:134
 msgid "Height (Tablet)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:137
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:137
 #: build/blocks/pdf-poster/index.js
 msgid "Set the height of the viewer for tablet."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:146
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:146
 msgid "Height (Mobile)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:149
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:149
 #: build/blocks/pdf-poster/index.js
 msgid "Set the height of the viewer for mobile."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:160
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:160
 msgid "Width (Desktop)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:163
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:163
 #: build/blocks/pdf-poster/index.js
 msgid "Set the width of the viewer for desktop."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:172
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:172
 msgid "Width (Tablet)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:175
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:175
 #: build/blocks/pdf-poster/index.js
 msgid "Set the width of the viewer for tablet."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:184
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:184
 msgid "Width (Mobile)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:187
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:187
 #: build/blocks/pdf-poster/index.js
 msgid "Set the width of the viewer for mobile."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:195
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:195
 msgid "Industry-Leading Adobe Viewer"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:196
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:196
 msgid "Continuous Scroll Viewer for Long Reports"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:197
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:197
 msgid "Effortless Cloud Sync (Dropbox & Google Drive)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:206
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:269
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:206
 #: build/blocks/pdf-poster/index.js
 msgid "Controls"
 msgstr ""
@@ -279,9 +234,6 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:210
 #: includes/admin/class-pdfp-settings.php:91
 #: includes/admin/class-pdfp-settings.php:304
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:210
-#: pdf-poster/includes/admin/class-pdfp-settings.php:91
-#: pdf-poster/includes/admin/class-pdfp-settings.php:304
 #: build/blocks/pdf-poster/index.js
 msgid "Display Filename"
 msgstr ""
@@ -289,9 +241,6 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:213
 #: includes/admin/class-pdfp-settings.php:93
 #: includes/admin/class-pdfp-settings.php:307
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:213
-#: pdf-poster/includes/admin/class-pdfp-settings.php:93
-#: pdf-poster/includes/admin/class-pdfp-settings.php:307
 #: build/blocks/pdf-poster/index.js
 msgid "Show the filename at the top of the viewer."
 msgstr ""
@@ -299,88 +248,72 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:217
 #: includes/admin/class-pdfp-settings.php:339
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:274
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:217
-#: pdf-poster/includes/admin/class-pdfp-settings.php:339
 #: build/blocks/pdf-poster/index.js
 msgid "Keyboard Navigation"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:220
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:220
 #: build/blocks/pdf-poster/index.js
 msgid "Let visitors use the Left/Right arrow keys to change pages."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:224
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:277
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:224
 #: build/blocks/pdf-poster/index.js
 msgid "RTL Layout"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:228
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:281
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:228
 #: build/blocks/pdf-poster/index.js
 msgid "Off"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:229
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:282
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:229
 #: build/blocks/pdf-poster/index.js
 msgid "On"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:230
 #: includes/admin/class-pdfp-metabox.php:242
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:230
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:242
 msgid "Auto"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:232
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:232
 msgid "Flip the viewer layout for right-to-left languages (Arabic, Hebrew, etc.). \"Auto\" follows the site language."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:236
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:288
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:236
 #: build/blocks/pdf-poster/index.js
 msgid "Viewer Theme"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:240
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:292
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:240
 #: build/blocks/pdf-poster/index.js
 msgid "Light"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:241
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:293
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:241
 #: build/blocks/pdf-poster/index.js
 msgid "Dark"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:244
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:244
 msgid "Controls the viewer toolbar/background theme. \"Auto\" follows the visitor's system. This never changes the PDF page content itself."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:248
 #: includes/admin/class-pdfp-settings.php:346
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:299
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:248
-#: pdf-poster/includes/admin/class-pdfp-settings.php:346
 #: build/blocks/pdf-poster/index.js
 msgid "Page Flip Sound"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:251
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:251
 #: build/blocks/pdf-poster/index.js
 msgid "Play a page-turn sound effect in Flipbook and Slider modes."
 msgstr ""
@@ -388,89 +321,70 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:256
 #: includes/admin/class-pdfp-settings.php:332
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:301
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:256
-#: pdf-poster/includes/admin/class-pdfp-settings.php:332
 #: build/blocks/pdf-poster/index.js
 msgid "Annotation Mode"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:259
 #: includes/admin/class-pdfp-settings.php:335
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:259
-#: pdf-poster/includes/admin/class-pdfp-settings.php:335
 #: build/blocks/pdf-poster/index.js
 msgid "Show notes, highlights, comments, and clickable links that are saved inside the PDF."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:264
 #: includes/admin/class-pdfp-settings.php:325
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:264
-#: pdf-poster/includes/admin/class-pdfp-settings.php:325
 #: build/blocks/pdf-poster/index.js
 msgid "Open PDF links in new tab"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:267
 #: includes/admin/class-pdfp-settings.php:328
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:267
-#: pdf-poster/includes/admin/class-pdfp-settings.php:328
 #: build/blocks/pdf-poster/index.js
 msgid "Open links clicked inside the PDF in a new browser tab, keeping your current page open."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:274
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:274
 msgid "Distraction-Free 'Reader Mode'"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:275
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:275
 msgid "Toggle Thumbnails Navigation"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:276
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:276
 msgid "Auto-Open Sidebar by Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:277
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:277
 msgid "Horizontal Scrollbar Support"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:278
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:278
 msgid "Custom Initial Page & Zoom Level"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:279
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:279
 msgid "Hide the Right-Side Toolbar"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:280
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:280
 msgid "Adobe Embed Modes & View Modes"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:289
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:310
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:289
 #: build/blocks/pdf-poster/index.js
 msgid "Actions"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:293
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:326
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:293
 #: build/blocks/pdf-poster/index.js
 msgid "Allow Printing"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:296
 #: includes/admin/class-pdfp-settings.php:300
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:296
-#: pdf-poster/includes/admin/class-pdfp-settings.php:300
 #: build/blocks/pdf-poster/index.js
 msgid "Allow visitors to print the PDF document."
 msgstr ""
@@ -479,9 +393,6 @@ msgstr ""
 #: includes/admin/class-pdfp-settings.php:97
 #: includes/admin/class-pdfp-settings.php:311
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:327
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:300
-#: pdf-poster/includes/admin/class-pdfp-settings.php:97
-#: pdf-poster/includes/admin/class-pdfp-settings.php:311
 #: build/blocks/pdf-poster/index.js
 msgid "Download Button"
 msgstr ""
@@ -489,9 +400,6 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:303
 #: includes/admin/class-pdfp-settings.php:99
 #: includes/admin/class-pdfp-settings.php:314
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:303
-#: pdf-poster/includes/admin/class-pdfp-settings.php:99
-#: pdf-poster/includes/admin/class-pdfp-settings.php:314
 #: build/blocks/pdf-poster/index.js
 msgid "Display a download button at the top of the viewer."
 msgstr ""
@@ -500,9 +408,6 @@ msgstr ""
 #: includes/admin/class-pdfp-settings.php:111
 #: includes/admin/class-pdfp-settings.php:318
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:329
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:310
-#: pdf-poster/includes/admin/class-pdfp-settings.php:111
-#: pdf-poster/includes/admin/class-pdfp-settings.php:318
 #: build/blocks/pdf-poster/index.js
 msgid "Fullscreen Button"
 msgstr ""
@@ -510,66 +415,53 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:313
 #: includes/admin/class-pdfp-settings.php:114
 #: includes/admin/class-pdfp-settings.php:321
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:313
-#: pdf-poster/includes/admin/class-pdfp-settings.php:114
-#: pdf-poster/includes/admin/class-pdfp-settings.php:321
 #: build/blocks/pdf-poster/index.js
 msgid "Display a fullscreen toggle button at the top of the viewer."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:317
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:332
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:317
 #: build/blocks/pdf-poster/index.js
 msgid "Fullscreen Label"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:319
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:319
 #: build/blocks/pdf-poster/index.js
 msgid "Customize the text for the fullscreen button."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:324
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:324
 msgid "Customize Download Button Label"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:325
 #: includes/admin/class-pdfp-settings.php:120
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:325
-#: pdf-poster/includes/admin/class-pdfp-settings.php:120
 msgid "Open Fullscreen in New Tab"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:326
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:326
 msgid "Custom Actions Position (Top/Bottom)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:343
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:344
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:343
 #: build/blocks/pdf-poster/index.js
 msgid "Popup"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:347
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:350
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:347
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Popup"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:349
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:349
 #: build/blocks/pdf-poster/index.js
 msgid "Open the PDF document in a modal popup."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:354
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:357
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:354
 #: build/blocks/pdf-poster/index.js
 msgid "Trigger Type"
 msgstr ""
@@ -577,7 +469,6 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:357
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:362
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:850
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:357
 #: build/blocks/pdf-poster/index.js
 msgid "Button"
 msgstr ""
@@ -587,14 +478,11 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:363
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:380
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:874
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:358
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:379
 #: build/blocks/pdf-poster/index.js
 msgid "Image"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:361
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:361
 #: build/blocks/pdf-poster/index.js
 msgid "Select the trigger type for the popup."
 msgstr ""
@@ -603,7 +491,6 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:708
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:786
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:861
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:366
 #: build/blocks/pdf-poster/index.js
 msgid "Alignment"
 msgstr ""
@@ -612,7 +499,6 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:711
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:789
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:864
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:369
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Left"
@@ -622,7 +508,6 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:712
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:790
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:865
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:370
 #: build/blocks/pdf-poster/index.js
 msgid "Center"
 msgstr ""
@@ -631,293 +516,244 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:713
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:791
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:866
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:371
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Right"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:374
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:374
 #: build/blocks/pdf-poster/index.js
 msgid "Select the alignment for the popup trigger."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:382
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:382
 #: build/blocks/pdf-poster/index.js
 msgid "Select an image to use as the popup trigger."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:387
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:387
 #: build/blocks/pdf-poster/index.js
 msgid "Button Text"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:389
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:389
 #: build/blocks/pdf-poster/index.js
 msgid "Customize the text for the popup trigger button."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:395
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:403
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:395
 #: build/blocks/pdf-poster/index.js
 msgid "Image Height"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:398
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:398
 #: build/blocks/pdf-poster/index.js
 msgid "Set the height for the trigger image."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:407
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:394
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:407
 #: build/blocks/pdf-poster/index.js
 msgid "Image Width"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:410
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:410
 #: build/blocks/pdf-poster/index.js
 msgid "Set the width for the trigger image."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:419
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:419
 #: build/blocks/pdf-poster/index.js
 msgid "Enable PDF Icon"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:421
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:421
 #: build/blocks/pdf-poster/index.js
 msgid "Show a PDF icon over the trigger image."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:432
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:584
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:432
 #: build/blocks/pdf-poster/index.js
 msgid "Protect Content"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:435
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:435
 msgid "Disable Right-Click Interactions"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:436
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:436
 msgid "Disable Text Selection"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:437
 #: includes/admin/class-pdfp-settings.php:122
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:437
-#: pdf-poster/includes/admin/class-pdfp-settings.php:122
 msgid "Suppress Blocked Warning Alerts"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:438
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:438
 msgid "Secure Delivery: hide the file URL behind a one-time, encrypted link"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:464
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:464
 #: build/blocks/pdf-poster/index.js
 msgid "Watermark & Branding"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:468
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:429
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:468
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Watermark"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:471
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:429
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:471
 msgid "Stamp a text mark over the document."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:478
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:478
 #: build/blocks/pdf-poster/index.js
 msgid "The mark"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:479
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:479
 #: build/blocks/pdf-poster/index.js
 msgid "Your wording, and the look it is stamped in."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:487
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:432
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:487
 #: build/blocks/pdf-poster/index.js
 msgid "Theme"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:493
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:493
 msgid "Three ready-made looks. Each one sets the angle, repeat, weight and blend for you."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:498
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:441
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:498
 #: build/blocks/pdf-poster/index.js
 msgid "Text"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:501
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:444
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:501
 msgid "Supports placeholders such as {site_name}, {date} and {user_email}."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:505
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:505
 #: build/blocks/pdf-poster/index.js
 msgid "Where it shows"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:506
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:506
 #: build/blocks/pdf-poster/index.js
 msgid "Which outputs, and which pages."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:511
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:449
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:511
 msgid "Apply To"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:520
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:520
 #: build/blocks/pdf-poster/index.js
 msgid "Printing · next release"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:521
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:521
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads · next release"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:524
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:524
 msgid "The viewer is marked today. Writing the mark into printouts and downloaded copies arrives in the next release."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:529
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:464
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:529
 #: build/blocks/pdf-poster/index.js
 msgid "Pages"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:532
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:468
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:532
 #: build/blocks/pdf-poster/index.js
 msgid "All pages"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:533
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:469
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:533
 #: build/blocks/pdf-poster/index.js
 msgid "First page only"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:534
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:470
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:534
 #: build/blocks/pdf-poster/index.js
 msgid "All except the cover"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:537
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:537
 msgid "Brand just the cover, or gate everything after it."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:545
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:545
 msgid "Logo Watermark (Image, or Text + Image)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:546
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:546
 msgid "Three More Themes (Brand Corner, Logo Wash, Logo + Caption)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:547
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:547
 msgid "Custom Theme — Your Own Colour, Coverage, Strength, Size & Angle"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:548
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:548
 msgid "Choose Who Sees It (Everyone / Except Admins / Guests Only)"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:549
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:549
 msgid "Per-Visitor Anti-Leak Stamp"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:550
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:550
 msgid "Restore The Mark If A Visitor Removes It"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:561
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:481
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:561
 #: build/blocks/pdf-poster/index.js
 msgid "Social Share"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:565
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:488
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:565
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Sharing"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:567
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:567
 #: build/blocks/pdf-poster/index.js
 msgid "Enable social sharing buttons for the PDF."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:572
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:491
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:572
 #: build/blocks/pdf-poster/index.js
 msgid "Share Position"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:574
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:574
 #: build/blocks/pdf-poster/index.js
 msgid "Select where the sharing buttons should appear."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:577
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:496
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:577
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Top"
@@ -925,138 +761,115 @@ msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:578
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:497
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:578
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Bottom"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:584
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:584
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Facebook"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:586
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:586
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Facebook."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:592
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:592
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Twitter"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:594
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:594
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Twitter."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:600
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:600
 #: build/blocks/pdf-poster/index.js
 msgid "Enable LinkedIn"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:602
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:602
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on LinkedIn."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:608
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:608
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Pinterest"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:610
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:610
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing on Pinterest."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:616
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:616
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Email"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:618
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:618
 #: build/blocks/pdf-poster/index.js
 msgid "Allow sharing via Email."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:629
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:629
 msgid "Styles"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:633
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:633
 #: build/blocks/pdf-poster/index.js
 msgid "Button Background"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:635
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:635
 #: build/blocks/pdf-poster/index.js
 msgid "Choose a background color for the buttons."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:640
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:640
 #: build/blocks/pdf-poster/index.js
 msgid "Button Color"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:642
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:642
 #: build/blocks/pdf-poster/index.js
 msgid "Choose a text color for the buttons."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:647
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:647
 msgid "Font Size"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:649
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:649
 msgid "Set the font size for the buttons."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:655
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:748
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:1000
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:655
 #: build/blocks/pdf-poster/index.js
 msgid "Padding"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:657
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:657
 #: build/blocks/pdf-poster/index.js
 msgid "Set the internal spacing for the buttons."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:680
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:680
 msgid "Advanced"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:684
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:524
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:684
 msgid "CSS Class"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:686
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:686
 msgid "Extra class name added to this viewer, so you can target it from your theme or from the CSS below."
 msgstr ""
 
@@ -1064,28 +877,21 @@ msgstr ""
 #: includes/admin/class-pdfp-settings.php:232
 #: includes/admin/class-pdfp-settings.php:237
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:530
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:691
-#: pdf-poster/includes/admin/class-pdfp-settings.php:232
-#: pdf-poster/includes/admin/class-pdfp-settings.php:237
 msgid "Custom CSS"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:696
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:696
 msgid "CSS for this poster only. Loaded wherever this poster is embedded, on top of the site-wide Custom CSS in Settings."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:706
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:542
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:706
 #: build/blocks/pdf-poster/index.js
 msgid "Performance & Reliability"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:710
 #: includes/admin/class-pdfp-settings.php:353
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:710
-#: pdf-poster/includes/admin/class-pdfp-settings.php:353
 #: build/blocks/pdf-poster/index.js
 msgid "Fast Loading (Progressive Rendering)"
 msgstr ""
@@ -1093,8 +899,6 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:713
 #: includes/admin/class-pdfp-settings.php:356
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:547
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:713
-#: pdf-poster/includes/admin/class-pdfp-settings.php:356
 #: build/blocks/pdf-poster/index.js
 msgid "Stream large PDFs so the first page appears sooner. Turn off only if your host mishandles range requests."
 msgstr ""
@@ -1102,469 +906,372 @@ msgstr ""
 #: includes/admin/class-pdfp-metabox.php:717
 #: includes/admin/class-pdfp-settings.php:360
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:549
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:717
-#: pdf-poster/includes/admin/class-pdfp-settings.php:360
 #: build/blocks/pdf-poster/index.js
 msgid "Google Doc Viewer"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:720
 #: includes/admin/class-pdfp-settings.php:363
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:720
-#: pdf-poster/includes/admin/class-pdfp-settings.php:363
 #: build/blocks/pdf-poster/index.js
 msgid "Enable Google Doc Viewer as a fallback (Recommended for Edge)."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:723
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:723
 msgid "Load Latest Document Version"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:732
-#: pdf-poster/includes/admin/class-pdfp-metabox.php:732
 #: build/blocks/pdf-poster/index.js
 msgid "Ads"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:21
-#: pdf-poster/includes/admin/class-pdfp-settings.php:21
 msgid "PDF Poster Settings"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:44
-#: pdf-poster/includes/admin/class-pdfp-settings.php:44
 msgid "Quick Embedder"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:54
-#: pdf-poster/includes/admin/class-pdfp-settings.php:54
 msgid "Documentation & Help"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:55
-#: pdf-poster/includes/admin/class-pdfp-settings.php:55
 msgid "Need help configuring the Quick Embedder? Check out our full documentation for expert tips and advanced settings."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:59
-#: pdf-poster/includes/admin/class-pdfp-settings.php:59
 msgid "View Documentation"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:69
 #: includes/admin/class-pdfp-settings.php:275
-#: pdf-poster/includes/admin/class-pdfp-settings.php:69
-#: pdf-poster/includes/admin/class-pdfp-settings.php:275
 msgid "Viewer Height"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:76
-#: pdf-poster/includes/admin/class-pdfp-settings.php:76
 msgid "Set the height of the PDF viewer."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:80
 #: includes/admin/class-pdfp-settings.php:286
-#: pdf-poster/includes/admin/class-pdfp-settings.php:80
-#: pdf-poster/includes/admin/class-pdfp-settings.php:286
 msgid "Viewer Width"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:87
-#: pdf-poster/includes/admin/class-pdfp-settings.php:87
 msgid "Set the width of the PDF viewer."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:103
-#: pdf-poster/includes/admin/class-pdfp-settings.php:103
 msgid "Download Label"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:106
-#: pdf-poster/includes/admin/class-pdfp-settings.php:106
 msgid "Custom text for the download button."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:117
 #: includes/admin/class-pdfp-settings.php:297
-#: pdf-poster/includes/admin/class-pdfp-settings.php:117
-#: pdf-poster/includes/admin/class-pdfp-settings.php:297
 msgid "Enable Printing"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:118
-#: pdf-poster/includes/admin/class-pdfp-settings.php:118
 msgid "Default Browser Viewer Support"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:119
-#: pdf-poster/includes/admin/class-pdfp-settings.php:119
 msgid "Custom Fullscreen Label"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:121
-#: pdf-poster/includes/admin/class-pdfp-settings.php:121
 msgid "Advanced Content Protection (Disable Right-Click)"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:123
-#: pdf-poster/includes/admin/class-pdfp-settings.php:123
 msgid "Enable Thumbnails Navigation"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:131
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:106
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:165
-#: pdf-poster/includes/admin/class-pdfp-settings.php:131
 msgid "Shortcode"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:136
-#: pdf-poster/includes/admin/class-pdfp-settings.php:136
 msgid "Gutenberg Integration"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:137
-#: pdf-poster/includes/admin/class-pdfp-settings.php:137
 msgid "Enable the PDF Poster block and shortcode generator in the Gutenberg editor."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:154
-#: pdf-poster/includes/admin/class-pdfp-settings.php:154
 msgid "Performance"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:159
-#: pdf-poster/includes/admin/class-pdfp-settings.php:159
 msgid "Lazy Loading"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:161
-#: pdf-poster/includes/admin/class-pdfp-settings.php:161
 msgid "Load each viewer only when it is about to scroll into view or its popup is opened. Pages with many PDFs open faster and use less data. When off, viewers on the page load as soon as it opens; popups still load when opened."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:181
-#: pdf-poster/includes/admin/class-pdfp-settings.php:181
 msgid "Count Views & Downloads"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:183
-#: pdf-poster/includes/admin/class-pdfp-settings.php:183
 msgid "Record how often each PDF is opened and downloaded. Counting happens in the visitor's browser, so it keeps working behind a page cache. Today's figures appear on the PDF Posters list and beside each document."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:188
-#: pdf-poster/includes/admin/class-pdfp-settings.php:188
 msgid "Exclude Logged-in Editors"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:190
-#: pdf-poster/includes/admin/class-pdfp-settings.php:190
 msgid "Do not count visits by users who can edit posts, so your own previews stay out of the numbers."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:196
-#: pdf-poster/includes/admin/class-pdfp-settings.php:196
 msgid "Respect \"Do Not Track\""
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:198
-#: pdf-poster/includes/admin/class-pdfp-settings.php:198
 msgid "Skip counting for visitors whose browser sends a Do Not Track header."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:204
-#: pdf-poster/includes/admin/class-pdfp-settings.php:204
 msgid "What counts as a view"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:205
-#: pdf-poster/includes/admin/class-pdfp-settings.php:205
 msgid "A view is recorded once the viewer has actually rendered and been on screen for a second -- not on every page load. Repeat views by the same visitor are counted once per 30 minutes, and no IP address is ever stored."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:214
-#: pdf-poster/includes/admin/class-pdfp-settings.php:214
 msgid "Today, and everything before it"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:215
-#: pdf-poster/includes/admin/class-pdfp-settings.php:215
 msgid "This plugin shows you today's views and downloads. Earlier days are still recorded, in your own database and nowhere else, so upgrading to Pro reads back the history this site has already built -- totals, trends, your best-performing documents and a report you can export. There is nothing to import and no data leaves your server."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:238
-#: pdf-poster/includes/admin/class-pdfp-settings.php:238
 msgid "Add your custom CSS here to override the viewer styles. It is loaded on every page of your site, after the plugin stylesheet."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:267
-#: pdf-poster/includes/admin/class-pdfp-settings.php:267
 #: build/blocks/pdf-poster/index.js
 msgid "Preset"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:270
-#: pdf-poster/includes/admin/class-pdfp-settings.php:270
 msgid "These are the defaults for newly created PDF Posters. Existing posters are not changed."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:278
-#: pdf-poster/includes/admin/class-pdfp-settings.php:278
 msgid "Set the default height for preset viewers."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:289
-#: pdf-poster/includes/admin/class-pdfp-settings.php:289
 msgid "Set the default width for preset viewers."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:342
-#: pdf-poster/includes/admin/class-pdfp-settings.php:342
 msgid "Let visitors page through the document with the arrow keys."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:349
-#: pdf-poster/includes/admin/class-pdfp-settings.php:349
 msgid "Play the page-turn sound in the FlipBook and Slider viewers."
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:369
-#: pdf-poster/includes/admin/class-pdfp-settings.php:369
 msgid "Download Button Label Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:370
-#: pdf-poster/includes/admin/class-pdfp-settings.php:370
 msgid "Fullscreen Button Label Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:371
-#: pdf-poster/includes/admin/class-pdfp-settings.php:371
 msgid "Reader Mode Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:372
-#: pdf-poster/includes/admin/class-pdfp-settings.php:372
 msgid "Thumbnails & Auto-Open Sidebar Defaults"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:373
-#: pdf-poster/includes/admin/class-pdfp-settings.php:373
 msgid "Content Protection Defaults (Right-Click, Warning Alerts)"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:374
-#: pdf-poster/includes/admin/class-pdfp-settings.php:374
 msgid "Horizontal Scrollbar Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:375
-#: pdf-poster/includes/admin/class-pdfp-settings.php:375
 msgid "Open Fullscreen in New Tab Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:376
-#: pdf-poster/includes/admin/class-pdfp-settings.php:376
 msgid "Load Latest Document Version Default"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:384
-#: pdf-poster/includes/admin/class-pdfp-settings.php:384
 msgid "Cloud Integration"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:387
-#: pdf-poster/includes/admin/class-pdfp-settings.php:387
 msgid "Direct Dropbox Connectivity"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:388
-#: pdf-poster/includes/admin/class-pdfp-settings.php:388
 msgid "Google Drive Cloud Picker"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:389
-#: pdf-poster/includes/admin/class-pdfp-settings.php:389
 msgid "Premium Adobe PDF Embed API"
 msgstr ""
 
 #: includes/admin/class-pdfp-settings.php:390
-#: pdf-poster/includes/admin/class-pdfp-settings.php:390
 msgid "Seamless External Hosting"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:45
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:45
 msgid "Page Builder Support"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:56
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:622
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:56
 msgid "PDF Poster Pro"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:104
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:104
 msgid "Gutenberg"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:104
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:104
 msgid "Block editor (Gutenberg)"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:105
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:105
 msgid "Elementor"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:106
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:106
 msgid "Divi"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:106
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:106
 msgid "Divi Builder"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:107
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:107
 msgid "Bricks"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:107
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:107
 msgid "Bricks Builder"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:108
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:108
 msgid "WPBakery"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:108
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:108
 msgid "WPBakery Page Builder"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:109
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:109
 msgid "Beaver"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:109
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:109
 msgid "Beaver Builder"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:110
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:110
 msgid "Oxygen"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:110
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:110
 msgid "Oxygen Builder"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:111
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:111
 msgid "Breakdance"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:128
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:128
 msgid "Analytics history & trends"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:129
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:129
 msgid "Adobe & Scroll viewers"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:130
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:130
 msgid "Logo watermark & Custom theme"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:131
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:131
 msgid "Right-click & copy protection"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:132
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:132
 msgid "Reader mode, thumbnails, zoom"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:133
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:133
 msgid "Button labels & position"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:134
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:134
 msgid "Dropbox & Google Drive import"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:144
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:144
 msgid "Compatibility"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:149
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:149
 msgid "Every builder, one shortcode."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:152
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:152
 msgid "Paste the shortcode above into any of these — nothing else to install."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:171
 #: includes/helper/class-pdfp-functions.php:620
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:171
-#: pdf-poster/includes/helper/class-pdfp-functions.php:607
 msgid "Pro version"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:172
 #: includes/helper/class-pdfp-functions.php:621
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:172
-#: pdf-poster/includes/helper/class-pdfp-functions.php:608
 msgid "Locked"
 msgstr ""
 
 #. translators: %d: number of settings available only in the Pro version.
 #: includes/admin/class-pdfp-sidebarcards.php:180
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:180
 #, php-format
 msgid "%d settings the free build keeps shut."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:199
 #: includes/helper/class-pdfp-functions.php:641
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:199
-#: pdf-poster/includes/helper/class-pdfp-functions.php:628
 msgid "See Pro pricing"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:202
 #: includes/helper/class-pdfp-functions.php:643
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:627
-#: pdf-poster/includes/admin/class-pdfp-sidebarcards.php:202
-#: pdf-poster/includes/helper/class-pdfp-functions.php:630
 msgid "14-day refund policy"
 msgstr ""
 
 #: includes/base/class-pdfp-enqueueassets.php:91
-#: pdf-poster/includes/base/class-pdfp-enqueueassets.php:91
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Loading PDF..."
@@ -1577,101 +1284,78 @@ msgstr ""
 #: includes/integrations/class-pdfp-wpbakery.php:102
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:40
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:112
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:80
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:81
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:94
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:102
 #: build/blocks/selector/index.js
 msgid "PDF Poster"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:82
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:82
 msgid "Add New PDF"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:83
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:134
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:83
 msgid "Add New"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:84
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:84
 msgid "Edit"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:85
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:85
 msgid "New PDF"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:86
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:86
 msgid "View PDF"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:87
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:87
 msgid "Search PDF"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:88
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:88
 msgid "All PDF Posters"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:89
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:89
 msgid "Sorry, we couldn't find the PDF file you are looking for."
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:131
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:131
 msgid "ShortCode"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:132
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:132
 msgid "ShortCode For Raw PDF View"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:139
 #: includes/helper/class-pdfp-functions.php:1194
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:139
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1181
 #: build/blocks/pdf-poster/index.js
 msgid "Views today"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:140
 #: includes/helper/class-pdfp-functions.php:1195
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:140
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1182
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads today"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:141
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:141
 msgid "Date"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:172
 #: includes/helper/class-pdfp-functions.php:1209
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:172
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1196
 msgid "Counting is switched off"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:195
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:195
 msgid "Not counted yet"
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
 #: includes/base/class-pdfp-pdfposter.php:278
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:278
 #, php-format
 msgid "Unlock my %s day"
 msgid_plural "Unlock my %s days"
@@ -1679,83 +1363,68 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/base/class-pdfp-pdfposter.php:281
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:281
 msgid "See the full report with Pro"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:294
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:294
 msgid "Turn it on in Settings"
 msgstr ""
 
 #. translators: %s: link to the plugin settings screen
 #: includes/base/class-pdfp-pdfposter.php:300
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:300
 #, php-format
 msgid "Counting is switched off for this site. %s"
 msgstr ""
 
 #. translators: %s: the shortcode, e.g. [pdf id='12']
 #: includes/base/class-pdfp-pdfposter.php:351
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:351
 #, php-format
 msgid "Copy shortcode %s"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:354
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:354
 msgid "Copy to clipboard"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:370
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:370
 msgid "Player updated "
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:460
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:460
 msgid "New Feature ! Quick Embed"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:480
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:480
 msgid "Copy and paste this shortcode into your posts, pages and widget"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:500
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:500
 msgid "Now you can embed pdf without listing ! just use the Embed shortCode below, and start saving your time."
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:502
-#: pdf-poster/includes/base/class-pdfp-pdfposter.php:502
 msgid "ShortCode Global Settings"
 msgstr ""
 
 #: includes/base/class-pdfp-shortcodes.php:130
-#: pdf-poster/includes/base/class-pdfp-shortcodes.php:130
 msgid "Download File"
 msgstr ""
 
 #: includes/base/class-pdfp-shortcodes.php:132
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:334
-#: pdf-poster/includes/base/class-pdfp-shortcodes.php:132
 msgid "View Fullscreen"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:585
-#: pdf-poster/includes/helper/class-pdfp-functions.php:572
 msgid "The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users."
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:585
-#: pdf-poster/includes/helper/class-pdfp-functions.php:572
 msgid "Upgrade to PRO"
 msgstr ""
 
 #. translators: %d: number of settings in this section available only in the Pro version.
 #: includes/helper/class-pdfp-functions.php:627
-#: pdf-poster/includes/helper/class-pdfp-functions.php:614
 #, php-format
 msgid "%d setting the free build keeps shut."
 msgid_plural "%d settings the free build keeps shut."
@@ -1763,40 +1432,33 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/helper/class-pdfp-functions.php:663
-#: pdf-poster/includes/helper/class-pdfp-functions.php:650
 msgid "Copy"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:666
-#: pdf-poster/includes/helper/class-pdfp-functions.php:653
 msgid "Copy and paste this shortcode into any page or post. Replace <code>your_file_url</code> with your actual PDF link."
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:675
-#: pdf-poster/includes/helper/class-pdfp-functions.php:662
 msgid "This feature is coming soon. Stay tuned for updates!"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:877
-#: pdf-poster/includes/helper/class-pdfp-functions.php:864
 msgid "Counting is switched off in Settings > Analytics."
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:883
-#: pdf-poster/includes/helper/class-pdfp-functions.php:870
 msgid "Counting is on. Nothing recorded for this document yet."
 msgstr ""
 
 #. translators: %s: the date counting began, e.g. "12 September 2026"
 #: includes/helper/class-pdfp-functions.php:888
-#: pdf-poster/includes/helper/class-pdfp-functions.php:875
 #, php-format
 msgid "Counting since %s. Resets at midnight, site time."
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
 #: includes/helper/class-pdfp-functions.php:979
-#: pdf-poster/includes/helper/class-pdfp-functions.php:966
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "%s day recorded"
@@ -1805,20 +1467,17 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/helper/class-pdfp-functions.php:982
-#: pdf-poster/includes/helper/class-pdfp-functions.php:969
 #: build/blocks/pdf-poster/index.js
 msgid "Recording now"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:983
-#: pdf-poster/includes/helper/class-pdfp-functions.php:970
 #: build/blocks/pdf-poster/index.js
 msgid "example"
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
 #: includes/helper/class-pdfp-functions.php:997
-#: pdf-poster/includes/helper/class-pdfp-functions.php:984
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "Your last %s day is recorded in your own database. Pro reads it back as totals, a 14-day trend, your best-performing documents and a report you can export."
@@ -1827,191 +1486,155 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/helper/class-pdfp-functions.php:1005
-#: pdf-poster/includes/helper/class-pdfp-functions.php:992
 msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, trends and a report."
 msgstr ""
 
 #. translators: %d: number of days
 #: includes/helper/class-pdfp-functions.php:1125
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1112
 #, php-format
 msgid "No views in the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
 #: includes/helper/class-pdfp-functions.php:1127
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1114
 #, php-format
 msgid "View trend over the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
 #: includes/helper/class-pdfp-functions.php:1145
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1132
 #, php-format
 msgid "Last %d days"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1150
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1137
 #: build/blocks/pdf-poster/index.js
 msgid "no views yet"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1152
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1139
 #: build/blocks/pdf-poster/index.js
 msgid "no baseline"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1243
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1230
 #: build/blocks/pdf-poster/index.js
 msgid "Views"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1248
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:457
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1235
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1661
 #: includes/helper/class-pdfp-functions.php:1769
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1648
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1756
 #: build/blocks/pdf-poster/index.js
 msgid "Confidential"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1668
 #: includes/helper/class-pdfp-functions.php:1770
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1655
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1757
 #: build/blocks/pdf-poster/index.js
 msgid "Draft Stamp"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1676
 #: includes/helper/class-pdfp-functions.php:1771
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1663
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1758
 #: build/blocks/pdf-poster/index.js
 msgid "Sample Wash"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1683
 #: includes/helper/class-pdfp-functions.php:1772
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1670
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1759
 #: build/blocks/pdf-poster/index.js
 msgid "Brand Corner"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1690
 #: includes/helper/class-pdfp-functions.php:1773
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1677
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1760
 #: build/blocks/pdf-poster/index.js
 msgid "Logo Wash"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1697
 #: includes/helper/class-pdfp-functions.php:1774
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1684
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1761
 #: build/blocks/pdf-poster/index.js
 msgid "Logo + Caption"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1704
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1691
 #: build/blocks/pdf-poster/index.js
 msgid "Custom"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1794
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1781
 #: build/blocks/pdf-poster/index.js
 msgid "Text, a logo, or both"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1795
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1782
 #: build/blocks/pdf-poster/index.js
 msgid "Tiled or one corner mark"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1796
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1783
 #: build/blocks/pdf-poster/index.js
 msgid "Pick the pages"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1797
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1784
 #: build/blocks/pdf-poster/index.js
 msgid "Pick who sees it"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1807
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1794
 #: build/blocks/pdf-poster/index.js
 msgid "Turn on watermarking"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1815
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1802
 #: build/blocks/pdf-poster/index.js
 msgid "looks, ready to go"
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1816
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1803
 #: build/blocks/pdf-poster/index.js
 msgid "Stamp every page — the file is never touched."
 msgstr ""
 
 #: includes/helper/class-pdfp-functions.php:1818
-#: pdf-poster/includes/helper/class-pdfp-functions.php:1805
 msgid "The mark is drawn over the document as it is displayed, so the PDF on your server stays exactly as you uploaded it. Pick one of these and you are done, or take the Custom theme and set the colour, angle, size and tiling yourself."
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:90
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:90
 msgid "Content"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:98
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:98
 msgid "Display a saved PDF Poster."
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:106
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:106
 msgid "Pick one of your saved PDF Posters. Create them under PDF Posters."
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:112
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:112
 msgid "PDF Embed (by URL)"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:116
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:116
 msgid "Display a PDF straight from a file URL."
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:122
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:122
 msgid "Choose a PDF from the media library, or leave empty and paste a URL below."
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:126
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:249
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:777
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:126
 #: build/blocks/pdf-poster/index.js
 #: build/blocks/selector/index.js
 msgid "Title"
@@ -2019,54 +1642,44 @@ msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:132
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:675
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:132
 #: build/blocks/pdf-poster/index.js
 msgid "Width"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:138
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:686
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:138
 #: build/blocks/pdf-poster/index.js
 msgid "Height"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:144
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:144
 #: build/blocks/pdf-poster/index.js
 msgid "Show download button"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:146
 #: includes/integrations/class-pdfp-wpbakery.php:152
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:146
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:152
 #: build/blocks/pdf-poster/index.js
 msgid "Yes"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:150
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:150
 msgid "Allow printing"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:182
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:182
 msgid "— Select a PDF Poster —"
 msgstr ""
 
 #: includes/integrations/class-pdfp-wpbakery.php:197
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:1037
 #: includes/model/class-pdfp-analytics.php:570
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:197
-#: pdf-poster/includes/model/class-pdfp-analytics.php:570
 msgid "(no title)"
 msgstr ""
 
 #. translators: 1: poster title, 2: poster ID
 #: includes/integrations/class-pdfp-wpbakery.php:200
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:1039
-#: pdf-poster/includes/integrations/class-pdfp-wpbakery.php:200
 #, php-format
 msgid "%1$s (#%2$d)"
 msgstr ""
@@ -2397,14 +2010,12 @@ msgstr ""
 
 #. translators: %d: post id of an untitled document
 #: includes/model/class-pdfp-analytics.php:181
-#: pdf-poster/includes/model/class-pdfp-analytics.php:181
 #, php-format
 msgid "(no title) · %d"
 msgstr ""
 
 #. translators: 1: page title, 2: short file identifier
 #: includes/model/class-pdfp-analytics.php:212
-#: pdf-poster/includes/model/class-pdfp-analytics.php:212
 #, php-format
 msgid "%1$s · %2$s"
 msgstr ""
@@ -2414,16 +2025,11 @@ msgstr ""
 #: includes/model/class-pdfp-analytics.php:284
 #: includes/model/class-pdfp-analytics.php:608
 #: includes/model/class-pdfp-analytics.php:670
-#: pdf-poster/includes/model/class-pdfp-analytics.php:218
-#: pdf-poster/includes/model/class-pdfp-analytics.php:284
-#: pdf-poster/includes/model/class-pdfp-analytics.php:608
-#: pdf-poster/includes/model/class-pdfp-analytics.php:670
 #, php-format
 msgid "Embedded file · %s"
 msgstr ""
 
 #: pdf-poster.php:93
-#: pdf-poster/pdf-poster.php:93
 msgid "Add PDF"
 msgstr ""
 
