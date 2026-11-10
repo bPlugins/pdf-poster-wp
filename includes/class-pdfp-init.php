@@ -23,6 +23,7 @@ if (!class_exists('PDFPro\PDFP_Init')) {
                 Base\PDFP_RegisterBlock::class,
                 Admin\PDFP_Settings::class,
                 Admin\PDFP_MetaBox::class,
+                Admin\PDFP_LivePreview::class,
                 Rest\PDFP_AjaxCall::class,
                 Rest\PDFP_GetMeta::class,
                 Rest\PDFP_Track::class,

@@ -588,7 +588,11 @@
   position: absolute;
   pointer-events: none;
   overflow: hidden;
-  z-index: 3;
+  /* No z-index here. One would make the frame its own stacking context, and the mark
+     inside would then blend with the empty frame instead of the book: multiply was
+     silently ignored on the FlipBook alone, so the same design looked different there
+     than in every other viewer. The .pdfp-wm inside keeps z-index 3, which still puts it
+     above dFlip's page canvas. */
 
   > .pdfp-wm {
     position: absolute;

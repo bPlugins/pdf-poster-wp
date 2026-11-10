@@ -149,6 +149,17 @@ export const welcomeInfo = (adminUrl) => ({
     },
     changelogs: [
         {
+            version: '2.6.4 - 15 Nov 2026',
+            type: 'new',
+            list: [
+                '<strong>New:</strong> Live Preview in the classic editor — a <strong>Preview</strong> button beside Save / Update opens your PDF in a pop-up exactly as visitors will see it, using the settings you have not saved yet. Nothing is published or saved until you press Update.',
+                '<strong>New:</strong> Check every screen size before you publish — switch the preview between Desktop, Tablet and Mobile to see your responsive heights and widths at work.',
+                '<strong>New:</strong> Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode, without leaving Elementor.',
+                '<strong>Fix:</strong> Watermarks on FlipBook and Slider now stay the right size and position on phones, instead of shrinking to half the page or sitting over the toolbar.',
+                '<strong>Fix:</strong> Strong and Solid watermarks now stay clearly visible on dark pages and photos.'
+            ]
+        },
+        {
             version: '2.6.3 - 1 Nov 2026',
             type: 'fixed',
             list: [

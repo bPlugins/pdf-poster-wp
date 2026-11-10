@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-05T10:03:10+00:00\n"
+"POT-Creation-Date: 2026-11-10T08:23:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-poster\n"
@@ -56,6 +56,82 @@ msgstr ""
 #: includes/admin/class-pdfp-admin.php:68
 #: includes/admin/class-pdfp-admin.php:69
 msgid "Demo and Help"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:82
+msgid "Updating…"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:83
+msgid "Live"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:84
+msgid "Could not load the preview. Try Refresh."
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:109
+#: includes/admin/class-pdfp-metabox.php:114
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Desktop"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:110
+#: includes/admin/class-pdfp-metabox.php:115
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Tablet"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:111
+#: includes/admin/class-pdfp-metabox.php:116
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Mobile"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:117
+#: build/blocks/pdf-poster/index.js
+msgid "Preview"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:130
+msgid "Live Preview"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:134
+msgid "Preview device"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:149
+#: includes/admin/class-pdfp-livepreview.php:151
+msgid "Refresh preview"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:154
+#: includes/admin/class-pdfp-livepreview.php:156
+msgid "Close preview"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:165
+msgid "PDF Poster live preview"
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:171
+msgid "Showing your unsaved settings as a visitor would see them. Nothing is saved until you press Save or Update."
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:223
+msgid "This preview link has expired. Reload the editor to keep previewing."
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:227
+msgid "You are not allowed to preview this PDF."
+msgstr ""
+
+#: includes/admin/class-pdfp-livepreview.php:313
+msgid "Add a PDF file in the configuration below to see the preview."
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:23
@@ -139,24 +215,6 @@ msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:112
 msgid "Preview Device"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:114
-#: build/blocks/pdf-poster/index.js
-#: build/blocks/selector/index.js
-msgid "Desktop"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:115
-#: build/blocks/pdf-poster/index.js
-#: build/blocks/selector/index.js
-msgid "Tablet"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:116
-#: build/blocks/pdf-poster/index.js
-#: build/blocks/selector/index.js
-msgid "Mobile"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:122
@@ -2360,10 +2418,6 @@ msgstr ""
 
 #: build/blocks/pdf-poster/index.js
 msgid "Solid"
-msgstr ""
-
-#: build/blocks/pdf-poster/index.js
-msgid "Preview"
 msgstr ""
 
 #: build/blocks/pdf-poster/index.js

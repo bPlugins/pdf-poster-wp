@@ -331,8 +331,11 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 == Changelog ==
 
-= 2.6.4 - 5 Nov 2026 =
+= 2.6.4 - 15 Nov 2026 =
+* New: Live Preview in the classic editor — a Preview button beside Save / Update opens your PDF in a pop-up exactly as visitors will see it, using your unsaved settings. Switch between Desktop, Tablet and Mobile before you publish.
 * New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
+* Fix: Watermarks on FlipBook and Slider now stay the right size and position on phones.
+* Fix: Strong and Solid watermarks now stay clearly visible on dark pages and photos.
 
 = 2.6.3 - 1 Nov 2026 =
 * Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details (safe with page caching), the PDF Poster Selector block preview no longer sticks on "Loading…", the PDF Poster element can be added in WPBakery's frontend editor, and the Download Button switch now appears on PDF Poster documents.

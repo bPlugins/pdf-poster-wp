@@ -375,7 +375,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // No dark-mode colour lift here, unlike the wrapper: the theme param only
       // themes the pdf.js chrome, while the mark sits on the PDF's own page --
       // which is usually white even when the toolbar is dark.
-      r.blend = r.imageStyle === "white" ? "normal" : "multiply";
+      // Same rule as watermarkBlend() in components/Common/watermarkSVG.js -- keep
+      // them in step, or one design looks different in PDF.js and in dFlip.
+      r.contrast = !!r.outline || r.opacity > 0.35;
+      r.blend = r.imageStyle === "white" || r.contrast ? "normal" : "multiply";
       return r;
     }
 
@@ -476,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var ty = r.markType === "both" ? th / 2 + (m.markH / 2 - fs * 0.6) : th / 2;
         // Drawn verbatim: the mark is the text the user typed, in the case they typed it.
         var val = String(text);
-        var stroke = r.outline || r.opacity > 0.35
+        var stroke = r.contrast
           ? ' stroke="#ffffff" stroke-width="' + Math.max(1, fs * 0.03).toFixed(2) + '" paint-order="stroke"'
           : "";
         body += '<text x="' + (tw / 2).toFixed(2) + '" y="' + ty.toFixed(2) + '" fill="' + esc(r.color || "#808080") +

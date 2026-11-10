@@ -142,6 +142,27 @@ export const measureMark = (r, text, pageW, pageH) => {
   return { fontSize, markW, markH, boundW: bw, boundH: bh, tileW, tileH, tiled };
 };
 
+/**
+ * A mark strong enough to carry a white contrast outline: a theme that asks for one
+ * (Draft), or Strong / Solid strength.
+ */
+export const watermarkNeedsContrast = (r) => !!r.outline || r.opacity > 0.35;
+
+/**
+ * How the mark meets the page -- one rule for every engine, so a design looks the same
+ * in PDF.js, FlipBook, Slider, Scroll and over Adobe. assets/pdfjs-new/web/custom.js
+ * keeps a copy of this rule; change both together.
+ *
+ *  - Light marks (Faint / Subtle / Medium) multiply into the paper, so they read as
+ *    printed on it rather than floating over it.
+ *  - Strong marks are drawn as designed, white outline included. Under multiply white
+ *    vanishes, so the outline did nothing, and on a dark page or a photo the mark
+ *    disappeared into it -- the opposite of what Strong / Solid asks for.
+ *  - A white logo is always drawn as is: multiply would make it invisible.
+ */
+export const watermarkBlend = (r) =>
+  r.imageStyle === "white" || watermarkNeedsContrast(r) ? "normal" : "multiply";
+
 export const THEMES = {
   confidential: {
     types: ["text"], markType: "text", coverage: "normal", angle: "diagonal",
@@ -365,8 +386,8 @@ export const resolveWatermark = (cfg = {}, opts = {}) => {
 
   if (opts.theme === "dark" && r.color) r.color = lightenForDark(r.color);
 
-  // Multiply would render a white mark as invisible.
-  r.blend = r.imageStyle === "white" ? "normal" : "multiply";
+  r.contrast = watermarkNeedsContrast(r);
+  r.blend = watermarkBlend(r);
 
   return r;
 };
@@ -461,7 +482,7 @@ export const buildWatermarkSVG = (cfg, pageW, pageH, opts = {}) => {
     const value = String(text);
     // A contrast stroke is only worth its cost where the mark is dense enough to need it.
     const stroke =
-      r.outline || r.opacity > 0.35
+      r.contrast
         ? ` stroke="#ffffff" stroke-width="${Math.max(1, fontSize * 0.03).toFixed(2)}" paint-order="stroke"`
         : "";
     body +=
