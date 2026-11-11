@@ -28,6 +28,8 @@ if (!class_exists('PDFPro\PDFP_Init')) {
                 Rest\PDFP_GetMeta::class,
                 Rest\PDFP_Track::class,
                 Rest\PDFP_Visitor::class,
+                Rest\PDFP_Cover::class,
+                Admin\PDFP_AutoThumbnail::class,
                 Admin\PDFP_Chatbot::class,
                 Admin\PDFP_SidebarCards::class,
                 Integrations\PDFP_WPBakery::class,

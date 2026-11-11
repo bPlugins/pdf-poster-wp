@@ -10,6 +10,7 @@ import { ajaxCall, presetDelete, PRICING_URL } from "../../utils";
 import HeightWidth from "./tabs/HeightWidth";
 import Actions from "./tabs/Actions";
 import Viewers from "./tabs/Viewers";
+import Cover from "./tabs/Cover";
 import Controls from "./tabs/Controls";
 import Performance from "./tabs/Performance";
 import Styles from "./tabs/Styles";
@@ -84,6 +85,7 @@ const Settings = (props) => {
 
         <CopyShortcode />
         <Viewers {...panelProps} />
+        <Cover {...panelProps} />
         <HeightWidth {...panelProps} />
         <Actions {...panelProps} />
         <Controls {...panelProps} />

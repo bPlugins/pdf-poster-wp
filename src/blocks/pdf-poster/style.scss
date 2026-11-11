@@ -600,3 +600,212 @@
     pointer-events: none;
   }
 }
+
+/* Auto Thumbnail -- "Cover first". The same box for every viewer. Everything a user can
+   change arrives as custom properties and modifier classes from coverStyle
+   (PDFP_Cover::style_attrs() in PHP, coverBoxProps() in coverStyle.js -- keep in step).
+   Printed by render.php before the viewer script runs, so nothing here may depend on
+   React. Heights follow the embed's desktop / tablet / mobile values at the breakpoints
+   Style.js uses. */
+.pdfp_cover {
+  width: var(--pdfp-cover-w, 100%);
+  max-width: 100%;
+  height: var(--pdfp-cover-h, 600px);
+  display: inline-block;
+  vertical-align: top;
+
+  @media only screen and (max-width: 1024px) {
+    height: var(--pdfp-cover-h-t, var(--pdfp-cover-h, 600px));
+  }
+
+  @media only screen and (max-width: 640px) {
+    height: var(--pdfp-cover-h-m, var(--pdfp-cover-h, 600px));
+  }
+
+  &.pdfp_cover--h-auto {
+    height: auto;
+  }
+
+  .pdfp_cover_open {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--pdfp-cover-bg, #525659);
+    border-radius: var(--pdfp-cover-radius, 4px);
+    overflow: hidden;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 3px solid var(--pdfp-cover-btn-bg, #2271b1);
+      outline-offset: 2px;
+    }
+
+    &:hover .pdfp_cover_btn,
+    &:focus-visible .pdfp_cover_btn {
+      background: var(--pdfp-cover-btn-hover-bg, #135e96);
+      color: var(--pdfp-cover-btn-hover-color, #fff);
+    }
+
+    &:hover .pdfp_cover_img,
+    &:focus-visible .pdfp_cover_img {
+      transform: translateY(-3px);
+    }
+  }
+
+  .pdfp_cover_media {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pdfp_cover_img {
+    display: block;
+    max-width: var(--pdfp-cover-img-w, 100%);
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: #fff;
+    border-radius: calc(var(--pdfp-cover-radius, 4px) / 2);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+  }
+
+  .pdfp_cover_btn {
+    flex: none;
+    background: var(--pdfp-cover-btn-bg, #2271b1);
+    color: var(--pdfp-cover-btn-color, #fff);
+    padding: var(--pdfp-cover-btn-pad, 11px 20px);
+    border-radius: var(--pdfp-cover-btn-radius, 4px);
+    font-size: var(--pdfp-cover-btn-size, 15px);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  /* No background: the cover sits on the page itself, edge to edge. */
+  &.pdfp_cover--nobg .pdfp_cover_open {
+    padding: 0;
+  }
+
+  &.pdfp_cover--flat .pdfp_cover_img {
+    box-shadow: none;
+  }
+
+  &.pdfp_cover--flat .pdfp_cover_open:hover .pdfp_cover_img,
+  &.pdfp_cover--flat .pdfp_cover_open:focus-visible .pdfp_cover_img {
+    transform: none;
+  }
+
+  /* Fit the cover: the box takes the image's own proportions at the chosen width. */
+  &.pdfp_cover--h-auto .pdfp_cover_media {
+    flex: none;
+  }
+
+  &.pdfp_cover--h-auto .pdfp_cover_img {
+    width: var(--pdfp-cover-img-w, 100%);
+    max-width: 100%;
+    max-height: none;
+  }
+
+  /* Fill the box: the image covers the viewer-sized box and is cropped to it. */
+  &.pdfp_cover--fit-cover:not(.pdfp_cover--h-auto) {
+    .pdfp_cover_open {
+      padding: 0;
+    }
+
+    .pdfp_cover_media {
+      align-self: stretch;
+    }
+
+    .pdfp_cover_img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
+      /* A document's title sits at the top of page 1: crop from the bottom. */
+      object-position: center top;
+      border-radius: 0;
+      box-shadow: none;
+      transform: none;
+    }
+
+    &.pdfp_cover--btn-below .pdfp_cover_open {
+      padding-bottom: 16px;
+    }
+  }
+
+  /* Button over the cover. */
+  &.pdfp_cover--btn-bottom .pdfp_cover_btn,
+  &.pdfp_cover--btn-center .pdfp_cover_btn {
+    position: absolute;
+    left: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  &.pdfp_cover--btn-bottom .pdfp_cover_btn {
+    bottom: 22px;
+    transform: translateX(-50%);
+  }
+
+  &.pdfp_cover--btn-center .pdfp_cover_btn {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pdfp_cover_fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #f0f0f1;
+    font-size: 15px;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  &.pdfp_cover--nobg .pdfp_cover_fallback {
+    color: inherit;
+    padding: 24px 0;
+  }
+
+  .pdfp_cover_doc {
+    width: 64px;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #b32d2e;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid #dcdcde;
+    border-radius: 3px;
+  }
+
+  .pdfp_cover_name {
+    overflow-wrap: anywhere;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pdfp_cover_img,
+    .pdfp_cover_btn {
+      transition: none;
+    }
+  }
+}

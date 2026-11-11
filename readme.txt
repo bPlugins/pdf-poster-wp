@@ -18,7 +18,7 @@ Embed PDF files in WordPress with a responsive PDF viewer, flipbook, shortcode a
 
 [**PDF Poster**](https://bplugins.com/products/pdf-poster/) is a flexible plugin that allows you to embed PDF documents directly into WordPress posts, pages, widgets, or templates. Whether you're sharing brochures, eBooks, business files, or portfolios, the plugin provides a responsive and accessible layout that works across all devices.
 
-Embed with the Gutenberg block, the `[pdf_embed]` shortcode, or the classic editor — whichever fits how you already work. The free version ships three PDF viewers (the bundled PDF.js viewer, an interactive FlipBook and a Slider), independent height and width for desktop, tablet and mobile, print, download and full-screen buttons, social sharing, light/dark theming, RTL support, a popup (lightbox) viewer, text watermarking, custom CSS and progressive loading for large files. It also counts how many times each PDF is viewed and downloaded each day, in your own database, with no third-party service and no IP address stored. Analytics history and trends, content protection, logo watermarking, Reader Mode, the Adobe and Continuous Scroll viewers and cloud imports are [Pro](https://bplugins.com/products/pdf-poster/pricing).
+Embed with the Gutenberg block, the `[pdf_embed]` shortcode, or the classic editor — whichever fits how you already work. The free version ships three PDF viewers (the bundled PDF.js viewer, an interactive FlipBook and a Slider), independent height and width for desktop, tablet and mobile, print, download and full-screen buttons, social sharing, light/dark theming, RTL support, a popup (lightbox) viewer, automatic PDF cover thumbnails, text watermarking, custom CSS and progressive loading for large files. It also counts how many times each PDF is viewed and downloaded each day, in your own database, with no third-party service and no IP address stored. Analytics history and trends, content protection, logo watermarking, Reader Mode, the Adobe and Continuous Scroll viewers and cloud imports are [Pro](https://bplugins.com/products/pdf-poster/pricing).
 
 
 ### PDF Poster Free Features — Everything Below Is Included, Free
@@ -72,6 +72,14 @@ No trials, no locked toggles, no watermark on your pages. Everything in this sec
 
 - **Open PDFs in a modal** — Keep the page clean and load the document only when a reader asks for it.
 - **Button or image trigger** — Trigger from a styled button or from any image, with your own alignment, image dimensions and an optional PDF icon overlay.
+
+#### Auto Thumbnail — Beautiful PDF Covers, Made for You (New)
+
+- **Automatic cover images** — Upload a PDF and PDF Poster turns its first page into a cover image. It happens right in your browser, so there is nothing to install on your server.
+- **Cover first, for faster pages** — Show the PDF's cover with an "Open document" button, and load the viewer only when a visitor clicks it. Pages with many PDFs open noticeably faster. Works with every viewer — turn it on for the whole site, or for one document.
+- **Covers for the PDFs you already have** — One click on "Generate missing covers" in Settings, or select posters and use the "Generate covers" bulk action.
+- **Used everywhere it helps** — Covers appear in your Media Library instead of a plain PDF icon, on the PDF Posters list, as each poster's featured image, and as the picture for image popups that don't have one.
+- **Always in your control** — Regenerate a cover, replace it with any image, remove it, or write your own button text.
 
 #### PDF Analytics — See Today's Views and Downloads, Free
 
@@ -137,6 +145,13 @@ Everything above stays exactly as it is. [PDF Poster Pro](https://bplugins.com/p
 - **Anti-leak options** — A per-visitor stamp that identifies whoever opened a leaked screenshot, plus tamper restore that puts the mark back if a visitor deletes it with browser dev tools.
 
 Watermarking is a deterrent, not DRM — an on-screen mark can be removed with browser dev tools, and no browser can prevent a screenshot.
+
+#### Cover Design
+
+- **Design every cover your way** — Background colour or none at all, box height, whole-page or fill-the-box fit, cover width, rounded corners and shadow.
+- **Style the Open button** — Place it below the cover, over it, or hide it, and set its colours, hover colours, font size, radius and padding.
+- **Site-wide or one at a time** — Set one default design for the whole site, then give any block or poster its own look.
+- **More cover options** — Choose which page becomes the cover, the image size, and smaller WebP covers.
 
 #### PDF Content Protection
 
@@ -288,6 +303,10 @@ e.g.
 
 == Frequently Asked Questions ==
 
+= Can PDF Poster show a cover image (thumbnail) of my PDF? =
+
+Yes, for free. PDF Poster makes a cover from the first page of every PDF you upload, and can show it with an "Open document" button so the viewer loads only when someone clicks. Covers for PDFs you uploaded before can be made in one click from Settings > Auto Thumbnail. Designing the cover and its button is part of Pro.
+
 = How many PDF files can I embed using PDF Poster plugin? =
 
 There are no limitations! you can embed an unlimited number of PDF files.
@@ -332,6 +351,11 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 == Changelog ==
 
 = 2.6.4 - 15 Nov 2026 =
+* New: Auto Thumbnail — PDF Poster now makes a cover image from the first page of every PDF you upload, automatically. No server setup needed.
+* New: Cover first — show a PDF's cover with an "Open document" button and load the viewer only when it is clicked. Pages open faster, and it works with every viewer.
+* New: Make covers for all the PDFs you already have in one click (Settings > Auto Thumbnail), or with the "Generate covers" bulk action on the PDF Posters list.
+* New: Covers now show in your Media Library, on the PDF Posters list, as each poster's featured image, and in image popups that have no picture of their own.
+* New: Cover Design (Pro) — style the cover and its Open button (background, size, corners, shadow, button colours and position) for the whole site or for one document.
 * New: Live Preview in the classic editor — a Preview button beside Save / Update opens your PDF in a pop-up exactly as visitors will see it, using your unsaved settings. Switch between Desktop, Tablet and Mobile before you publish.
 * New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
 * Fix: Watermarks on FlipBook and Slider now stay the right size and position on phones.

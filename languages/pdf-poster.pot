@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-10T08:23:27+00:00\n"
+"POT-Creation-Date: 2026-11-11T09:04:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-poster\n"
@@ -56,6 +56,281 @@ msgstr ""
 #: includes/admin/class-pdfp-admin.php:68
 #: includes/admin/class-pdfp-admin.php:69
 msgid "Demo and Help"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:55
+msgid "Auto Thumbnail"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:59
+msgid "Covers made from a PDF's first page, used by every viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:64
+msgid "Auto-generate covers"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:66
+msgid "Make a cover from the PDF whenever one is uploaded in wp-admin. It runs in your browser, so nothing needs to be installed on the server."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:71
+msgid "Use cover as popup image"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:73
+msgid "When a popup with an Image trigger has no image of its own, show the cover."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:78
+msgid "Cover first (site default)"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:80
+msgid "Show the cover with an Open button and load the viewer only when it is clicked."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:96
+msgid "Default Cover Design: background, box height, image fit, width, corners and shadow"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:97
+#: includes/admin/class-pdfp-autothumbnail.php:177
+msgid "Open button design: position, colors, hover colors, font size, radius and padding"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:98
+msgid "Custom cover design per poster and per block"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:99
+msgid "Choose which page becomes the cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:100
+msgid "Generated image width (300–3000 px)"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:101
+msgid "WebP covers (smaller files)"
+msgstr ""
+
+#. translators: %s: number of published PDF Posters
+#: includes/admin/class-pdfp-autothumbnail.php:120
+#, php-format
+msgid "Turning this on changes your existing PDFs too: your %s PDF Poster and every PDF Poster block set to \"Site default\" will show a cover with an Open button instead of the open viewer."
+msgid_plural "Turning this on changes your existing PDFs too: all %s PDF Posters and every PDF Poster block set to \"Site default\" will show a cover with an Open button instead of the open viewer."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:123
+msgid "Turning this on changes your existing PDFs too: every PDF Poster and PDF Poster block set to \"Site default\" will show a cover with an Open button instead of the open viewer."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:125
+msgid "Applies to your whole site."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:126
+msgid "\"Site default\" is the setting every existing PDF has after this update. Popups and PDFs with Protect Content are not affected. To keep one PDF as it is, set its Cover first to Off — in the block's Cover panel, or the poster's Cover tab."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:134
+msgid "Existing PDFs"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:137
+#: includes/admin/class-pdfp-autothumbnail.php:269
+msgid "Generate missing covers"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:141
+msgid "Runs in this browser tab, two PDFs at a time. Closing the tab pauses it safely; the next run continues where it stopped."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:154
+#: includes/admin/class-pdfp-autothumbnail.php:379
+#: includes/admin/class-pdfp-autothumbnail.php:383
+#: includes/admin/class-pdfp-autothumbnail.php:437
+#: includes/integrations/elementor/class-pdfp-elementor-widget.php:884
+#: build/blocks/pdf-poster/index.js
+msgid "Cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:159
+#: build/blocks/pdf-poster/index.js
+msgid "Cover first"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:162
+msgid "Site default"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:163
+#: includes/admin/class-pdfp-metabox.php:229
+#: includes/integrations/elementor/class-pdfp-elementor-widget.php:282
+#: build/blocks/pdf-poster/index.js
+msgid "On"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:164
+#: includes/admin/class-pdfp-metabox.php:228
+#: includes/integrations/elementor/class-pdfp-elementor-widget.php:281
+#: build/blocks/pdf-poster/index.js
+msgid "Off"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:166
+msgid "Show the PDF's cover with an Open button; the viewer and the PDF load only when it is clicked. Works with every viewer. Not used with Popup or Protect Content."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:171
+#: build/blocks/pdf-poster/index.js
+msgid "Button text"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:172
+#: includes/rest/class-pdfp-cover.php:683
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Open document"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:176
+msgid "Custom cover design for this poster: background, size, fit, corners and shadow"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:250
+#: build/blocks/pdf-poster/index.js
+msgid "Checking…"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:251
+#: build/blocks/pdf-poster/index.js
+#: build/blocks/selector/index.js
+msgid "Making cover…"
+msgstr ""
+
+#. translators: %d: page number
+#: includes/admin/class-pdfp-autothumbnail.php:253
+#: build/blocks/pdf-poster/index.js
+#, php-format,js-format
+msgid "Made automatically from page %d"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:254
+#: build/blocks/pdf-poster/index.js
+msgid "Chosen by you"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:255
+#: build/blocks/pdf-poster/index.js
+msgid "Removed. No cover is made for this PDF."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:256
+msgid "Waiting to make a cover…"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:257
+#: build/blocks/pdf-poster/index.js
+msgid "No cover yet."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:258
+#: build/blocks/pdf-poster/index.js
+msgid "This PDF could not be read from the browser."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:259
+#: build/blocks/pdf-poster/index.js
+msgid "This PDF is password protected."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:260
+#: build/blocks/pdf-poster/index.js
+msgid "This file does not look like a valid PDF."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:261
+#: build/blocks/pdf-poster/index.js
+msgid "Reading this PDF took too long."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:262
+#: build/blocks/pdf-poster/index.js
+msgid "The cover could not be made."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:263
+#: build/blocks/pdf-poster/index.js
+msgid "Regenerate"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:264
+#: build/blocks/pdf-poster/index.js
+msgid "Make cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:265
+msgid "Replace…"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:266
+#: build/blocks/pdf-poster/index.js
+msgid "Remove"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:267
+msgid "Choose a cover image"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:268
+msgid "Use as cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:270
+msgid "Pause"
+msgstr ""
+
+#. translators: 1: PDFs with a cover, 2: all PDFs
+#: includes/admin/class-pdfp-autothumbnail.php:272
+#, php-format
+msgid "%1$d of %2$d PDFs have a cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:273
+msgid "Every PDF that can have a cover has one."
+msgstr ""
+
+#. translators: 1: done, 2: total
+#: includes/admin/class-pdfp-autothumbnail.php:275
+#, php-format
+msgid "Making covers: %1$d of %2$d done"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:276
+msgid "Covers are ready."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:349
+msgid "PDF Poster cover"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:395
+msgid "No cover: the PDF is not in the Media Library."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:405
+msgid "Generate covers"
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:444
+msgid "Choose a PDF from your Media Library in \"PDF Source\" and save: its cover appears here. PDFs from other sites show a plain PDF card."
+msgstr ""
+
+#: includes/admin/class-pdfp-autothumbnail.php:448
+msgid "Also used as this poster's featured image, and as the popup image when the popup has none."
 msgstr ""
 
 #: includes/admin/class-pdfp-livepreview.php:82
@@ -319,18 +594,6 @@ msgstr ""
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:277
 #: build/blocks/pdf-poster/index.js
 msgid "RTL Layout"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:228
-#: includes/integrations/elementor/class-pdfp-elementor-widget.php:281
-#: build/blocks/pdf-poster/index.js
-msgid "Off"
-msgstr ""
-
-#: includes/admin/class-pdfp-metabox.php:229
-#: includes/integrations/elementor/class-pdfp-elementor-widget.php:282
-#: build/blocks/pdf-poster/index.js
-msgid "On"
 msgstr ""
 
 #: includes/admin/class-pdfp-metabox.php:230
@@ -1303,12 +1566,12 @@ msgid "Paste the shortcode above into any of these — nothing else to install."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:171
-#: includes/helper/class-pdfp-functions.php:620
+#: includes/helper/class-pdfp-functions.php:627
 msgid "Pro version"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:172
-#: includes/helper/class-pdfp-functions.php:621
+#: includes/helper/class-pdfp-functions.php:628
 msgid "Locked"
 msgstr ""
 
@@ -1319,12 +1582,12 @@ msgid "%d settings the free build keeps shut."
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:199
-#: includes/helper/class-pdfp-functions.php:641
+#: includes/helper/class-pdfp-functions.php:648
 msgid "See Pro pricing"
 msgstr ""
 
 #: includes/admin/class-pdfp-sidebarcards.php:202
-#: includes/helper/class-pdfp-functions.php:643
+#: includes/helper/class-pdfp-functions.php:650
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:627
 msgid "14-day refund policy"
 msgstr ""
@@ -1388,13 +1651,13 @@ msgid "ShortCode For Raw PDF View"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:139
-#: includes/helper/class-pdfp-functions.php:1194
+#: includes/helper/class-pdfp-functions.php:1201
 #: build/blocks/pdf-poster/index.js
 msgid "Views today"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:140
-#: includes/helper/class-pdfp-functions.php:1195
+#: includes/helper/class-pdfp-functions.php:1202
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads today"
 msgstr ""
@@ -1404,7 +1667,7 @@ msgid "Date"
 msgstr ""
 
 #: includes/base/class-pdfp-pdfposter.php:172
-#: includes/helper/class-pdfp-functions.php:1209
+#: includes/helper/class-pdfp-functions.php:1216
 msgid "Counting is switched off"
 msgstr ""
 
@@ -1473,50 +1736,50 @@ msgstr ""
 msgid "View Fullscreen"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:585
+#: includes/helper/class-pdfp-functions.php:592
 msgid "The Ultimate PDF Embedder Plugin for WordPress, Loved by Over 20,000+ Users."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:585
+#: includes/helper/class-pdfp-functions.php:592
 msgid "Upgrade to PRO"
 msgstr ""
 
 #. translators: %d: number of settings in this section available only in the Pro version.
-#: includes/helper/class-pdfp-functions.php:627
+#: includes/helper/class-pdfp-functions.php:634
 #, php-format
 msgid "%d setting the free build keeps shut."
 msgid_plural "%d settings the free build keeps shut."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:663
+#: includes/helper/class-pdfp-functions.php:670
 msgid "Copy"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:666
+#: includes/helper/class-pdfp-functions.php:673
 msgid "Copy and paste this shortcode into any page or post. Replace <code>your_file_url</code> with your actual PDF link."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:675
+#: includes/helper/class-pdfp-functions.php:682
 msgid "This feature is coming soon. Stay tuned for updates!"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:877
+#: includes/helper/class-pdfp-functions.php:884
 msgid "Counting is switched off in Settings > Analytics."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:883
+#: includes/helper/class-pdfp-functions.php:890
 msgid "Counting is on. Nothing recorded for this document yet."
 msgstr ""
 
 #. translators: %s: the date counting began, e.g. "12 September 2026"
-#: includes/helper/class-pdfp-functions.php:888
+#: includes/helper/class-pdfp-functions.php:895
 #, php-format
 msgid "Counting since %s. Resets at midnight, site time."
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:979
+#: includes/helper/class-pdfp-functions.php:986
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "%s day recorded"
@@ -1524,18 +1787,18 @@ msgid_plural "%s days recorded"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:982
+#: includes/helper/class-pdfp-functions.php:989
 #: build/blocks/pdf-poster/index.js
 msgid "Recording now"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:983
+#: includes/helper/class-pdfp-functions.php:990
 #: build/blocks/pdf-poster/index.js
 msgid "example"
 msgstr ""
 
 #. translators: %s: number of days of history already recorded
-#: includes/helper/class-pdfp-functions.php:997
+#: includes/helper/class-pdfp-functions.php:1004
 #: build/blocks/pdf-poster/index.js
 #, php-format,js-format
 msgid "Your last %s day is recorded in your own database. Pro reads it back as totals, a 14-day trend, your best-performing documents and a report you can export."
@@ -1543,126 +1806,126 @@ msgid_plural "Your last %s days are recorded in your own database. Pro reads the
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/helper/class-pdfp-functions.php:1005
+#: includes/helper/class-pdfp-functions.php:1012
 msgid "Yesterday and earlier are being recorded in your own database. Pro reads them back as totals, trends and a report."
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1125
+#: includes/helper/class-pdfp-functions.php:1132
 #, php-format
 msgid "No views in the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1127
+#: includes/helper/class-pdfp-functions.php:1134
 #, php-format
 msgid "View trend over the last %d days"
 msgstr ""
 
 #. translators: %d: number of days
-#: includes/helper/class-pdfp-functions.php:1145
+#: includes/helper/class-pdfp-functions.php:1152
 #, php-format
 msgid "Last %d days"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1150
+#: includes/helper/class-pdfp-functions.php:1157
 #: build/blocks/pdf-poster/index.js
 msgid "no views yet"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1152
+#: includes/helper/class-pdfp-functions.php:1159
 #: build/blocks/pdf-poster/index.js
 msgid "no baseline"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1243
+#: includes/helper/class-pdfp-functions.php:1250
 #: build/blocks/pdf-poster/index.js
 msgid "Views"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1248
+#: includes/helper/class-pdfp-functions.php:1255
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:457
 #: build/blocks/pdf-poster/index.js
 msgid "Downloads"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1661
-#: includes/helper/class-pdfp-functions.php:1769
+#: includes/helper/class-pdfp-functions.php:1668
+#: includes/helper/class-pdfp-functions.php:1776
 #: build/blocks/pdf-poster/index.js
 msgid "Confidential"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1668
-#: includes/helper/class-pdfp-functions.php:1770
+#: includes/helper/class-pdfp-functions.php:1675
+#: includes/helper/class-pdfp-functions.php:1777
 #: build/blocks/pdf-poster/index.js
 msgid "Draft Stamp"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1676
-#: includes/helper/class-pdfp-functions.php:1771
+#: includes/helper/class-pdfp-functions.php:1683
+#: includes/helper/class-pdfp-functions.php:1778
 #: build/blocks/pdf-poster/index.js
 msgid "Sample Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1683
-#: includes/helper/class-pdfp-functions.php:1772
+#: includes/helper/class-pdfp-functions.php:1690
+#: includes/helper/class-pdfp-functions.php:1779
 #: build/blocks/pdf-poster/index.js
 msgid "Brand Corner"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1690
-#: includes/helper/class-pdfp-functions.php:1773
+#: includes/helper/class-pdfp-functions.php:1697
+#: includes/helper/class-pdfp-functions.php:1780
 #: build/blocks/pdf-poster/index.js
 msgid "Logo Wash"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1697
-#: includes/helper/class-pdfp-functions.php:1774
+#: includes/helper/class-pdfp-functions.php:1704
+#: includes/helper/class-pdfp-functions.php:1781
 #: build/blocks/pdf-poster/index.js
 msgid "Logo + Caption"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1704
+#: includes/helper/class-pdfp-functions.php:1711
 #: build/blocks/pdf-poster/index.js
 msgid "Custom"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1794
+#: includes/helper/class-pdfp-functions.php:1801
 #: build/blocks/pdf-poster/index.js
 msgid "Text, a logo, or both"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1795
+#: includes/helper/class-pdfp-functions.php:1802
 #: build/blocks/pdf-poster/index.js
 msgid "Tiled or one corner mark"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1796
+#: includes/helper/class-pdfp-functions.php:1803
 #: build/blocks/pdf-poster/index.js
 msgid "Pick the pages"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1797
+#: includes/helper/class-pdfp-functions.php:1804
 #: build/blocks/pdf-poster/index.js
 msgid "Pick who sees it"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1807
+#: includes/helper/class-pdfp-functions.php:1814
 #: build/blocks/pdf-poster/index.js
 msgid "Turn on watermarking"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1815
+#: includes/helper/class-pdfp-functions.php:1822
 #: build/blocks/pdf-poster/index.js
 msgid "looks, ready to go"
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1816
+#: includes/helper/class-pdfp-functions.php:1823
 #: build/blocks/pdf-poster/index.js
 msgid "Stamp every page — the file is never touched."
 msgstr ""
 
-#: includes/helper/class-pdfp-functions.php:1818
+#: includes/helper/class-pdfp-functions.php:1825
 msgid "The mark is drawn over the document as it is displayed, so the PDF on your server stays exactly as you uploaded it. Pick one of these and you are done, or take the Custom theme and set the colour, angle, size and tiling yourself."
 msgstr ""
 
@@ -2003,10 +2266,6 @@ msgstr ""
 msgid "Object Fit"
 msgstr ""
 
-#: includes/integrations/elementor/class-pdfp-elementor-widget.php:884
-msgid "Cover"
-msgstr ""
-
 #: includes/integrations/elementor/class-pdfp-elementor-widget.php:885
 msgid "Contain"
 msgstr ""
@@ -2085,6 +2344,36 @@ msgstr ""
 #: includes/model/class-pdfp-analytics.php:670
 #, php-format
 msgid "Embedded file · %s"
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:265
+msgid "That is not a PDF in the Media Library."
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:295
+msgid "Choose an image from the Media Library."
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:304
+msgid "No image was received."
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:307
+msgid "The cover image is too large."
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:318
+msgid "The cover must be a JPEG, WebP or PNG image."
+msgstr ""
+
+#: includes/rest/class-pdfp-cover.php:416
+msgid "Could not copy the preview."
+msgstr ""
+
+#. translators: %s: PDF title
+#: includes/rest/class-pdfp-cover.php:423
+#, php-format
+msgid "%s – cover"
 msgstr ""
 
 #: pdf-poster.php:93
@@ -2326,6 +2615,39 @@ msgstr ""
 
 #: build/blocks/pdf-poster/index.js
 msgid "Unlock Reader Mode, thumbnail navigation with an auto-open sidebar, horizontal scrolling, a custom initial page and zoom level, a hidden right-side toolbar, and Adobe embed modes—available exclusively in Premium."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Covers are not shown while Protect Content is on, so page 1 never becomes a public image."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+#, js-format
+msgid "Site default (%s)"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "The popup already shows a trigger instead of the viewer."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Show the PDF's cover with an Open button. The viewer and the PDF load only when it is clicked — in every viewer type."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Covers are made for PDFs from your Media Library. Files from other sites show a plain PDF card instead."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Cover tools are not available on this screen."
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Replace"
+msgstr ""
+
+#: build/blocks/pdf-poster/index.js
+msgid "Unlock cover design: style every cover at once or one block at a time — background, box height, image fit, width, corners and shadow, plus the Open button's position, colors, hover colors, font size, radius and padding. Choose which page becomes the cover, the image size, and WebP covers—available exclusively in Premium."
 msgstr ""
 
 #: build/blocks/pdf-poster/index.js

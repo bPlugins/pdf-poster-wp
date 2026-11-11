@@ -74,6 +74,37 @@ $pdfp_width = $pdfp_attributes['width'] ?? '100%';
 $pdfp_alignment = $pdfp_attributes['alignment'] ?? 'left';
 $pdfp_protect = $pdfp_attributes['protect'] ?? false;
 
+// Auto Thumbnail. Decided here, once per render, so a page view never renders anything:
+// it reads one stored image id. Nothing is looked up unless this embed shows a cover
+// (Cover first) or borrows it for an image popup that has none. Protect Content never
+// gets one -- a public picture of page 1 is exactly what it exists to prevent.
+$pdfp_cover_first = false;
+$pdfp_attributes['cover'] = null;
+$pdfp_popup_needs_image = !empty($pdfp_popup_options['enabled']) && ($pdfp_popup_options['triggerType'] ?? '') === 'image' && empty($pdfp_popup_options['image']);
+if (!$pdfp_protect && class_exists('\PDFPro\Rest\PDFP_Cover')) {
+    $pdfp_cover_settings = \PDFPro\Rest\PDFP_Cover::settings();
+    $pdfp_cover_first = empty($pdfp_popup_options['enabled']) && \PDFPro\Rest\PDFP_Cover::cover_first_on($pdfp_attributes['coverFirst'] ?? 'default');
+    $pdfp_borrow = $pdfp_popup_needs_image && $pdfp_cover_settings['popup'];
+
+    if ($pdfp_cover_first || $pdfp_borrow) {
+        $pdfp_images = ($pdfp_attributes['flipbookSourceType'] ?? '') === 'images' ? array_values(array_filter((array) ($pdfp_attributes['flipbookImages'] ?? array()))) : array();
+        if ($pdfp_images) {
+            // An image-gallery flipbook already has a cover: its first page.
+            $pdfp_first = is_array($pdfp_images[0]) ? ($pdfp_images[0]['url'] ?? '') : $pdfp_images[0];
+            $pdfp_attributes['cover'] = $pdfp_first ? array('src' => esc_url_raw($pdfp_first)) : null;
+        } else {
+            $pdfp_pdf_id = \PDFPro\Rest\PDFP_Cover::pdf_id_for($pdfp_file, array($pdfp_attributes['fileId'] ?? 0, $pdfp_attributes['coverPdfId'] ?? 0));
+            $pdfp_attributes['cover'] = $pdfp_pdf_id ? \PDFPro\Rest\PDFP_Cover::cover_data($pdfp_pdf_id, (string) ($pdfp_attributes['title'] ?? '')) : null;
+        }
+        if ($pdfp_borrow && !empty($pdfp_attributes['cover']['src'])) {
+            $pdfp_attributes['popupOptions']['image'] = $pdfp_attributes['cover']['src'];
+        }
+    }
+}
+$pdfp_attributes['coverFirst'] = $pdfp_cover_first;
+// Every cover uses the standard look in this build (cover design is Pro).
+$pdfp_attributes['coverStyle'] = $pdfp_cover_first ? \PDFPro\Rest\PDFP_Cover::effective_style() : array();
+
 if ($pdfp_is_dropbox) {
     ?>
     <a data-height="<?php echo esc_attr(is_string($pdfp_height) ? $pdfp_height : ($pdfp_height['desktop'] ?? '400px')) ?>" 
@@ -92,7 +123,9 @@ if ($pdfp_is_dropbox) {
         <?php echo $pdfp_track_enabled ? "data-pdfp-doc='" . esc_attr($pdfp_track_doc_key) . "' data-pdfp-track='1'" : ''; ?>
         <?php echo ($pdfp_track_enabled && $pdfp_track_origin) ? "data-pdfp-origin='" . esc_attr($pdfp_track_origin) . "'" : ''; ?>
         style="text-align: <?php echo esc_attr($pdfp_alignment) ?>">
-        <?php if (!$pdfp_protect && !$pdfp_is_popup_enabled) {
+        <?php if ($pdfp_cover_first) {
+            echo \PDFPro\Rest\PDFP_Cover::markup($pdfp_attributes); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
+        } elseif (!$pdfp_protect && !$pdfp_is_popup_enabled) {
             $pdfp_p_height = is_string($pdfp_height) ? $pdfp_height : ($pdfp_height['desktop'] ?? '800px');
             $pdfp_p_width = is_string($pdfp_width) ? $pdfp_width : ($pdfp_width['desktop'] ?? '100%');
             ?>

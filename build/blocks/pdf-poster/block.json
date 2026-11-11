@@ -253,6 +253,25 @@
       "type": "string",
       "default": "Open Document"
     },
+    "coverFirst": {
+      "type": [
+        "string",
+        "boolean"
+      ],
+      "default": "default"
+    },
+    "coverButtonText": {
+      "type": "string",
+      "default": ""
+    },
+    "coverPdfId": {
+      "type": "number",
+      "default": 0
+    },
+    "coverStyle": {
+      "type": "object",
+      "default": {}
+    },
     "CSS": {
       "type": "string",
       "default": ""

@@ -390,6 +390,13 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
                 "btnStyle" => $attrs['btnStyles']
             ];
 
+            // Auto Thumbnail (metabox > Cover). 'default' follows the site setting;
+            // render.php resolves it. coverPdfId is only known when the caller has an id
+            // (the Elementor widget); a poster's PDF is found from its URL, cached.
+            $attrs['coverFirst'] = $meta('cover_first', 'default');
+            $attrs['coverButtonText'] = (string) $meta('cover_btn_text', '');
+            $attrs['coverPdfId'] = (int) $meta('source_id', 0, false);
+
             // Watermark (metabox > Watermark & Branding). Resolved here rather than mapped
             // raw: pdfp_watermark_resolve() applies the audience rule, expands the static
             // placeholders and clamps this build to the text mark and a free theme, so a

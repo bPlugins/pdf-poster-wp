@@ -14,6 +14,7 @@ import Watermark from "./Watermark";
 import { encodeWatermarkParam } from "./watermarkSVG";
 import { isUnsupportedFile, describeUnsupportedFile } from "../../../../hooks/utils/unsupportedFile";
 import safeFileUrl, { isGoogleViewerUrl } from "../../../../hooks/utils/safeFileUrl";
+import CoverPoster from "./CoverPoster";
 // import { isOldiPhoneOrIPad } from "../utils";
 
 const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, isSelected = false, id }) => {
@@ -39,10 +40,26 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   // Set by the popup trigger on hover, focus or tap: starts the PDF.js viewer early.
   const [preload, setPreload] = useState(false);
   const [fileError, setFileError] = useState(null);
+
+  // Auto Thumbnail -- Cover first. One gate for every engine: until the visitor opens it,
+  // no engine mounts and the source effect below does not run, so no PDF byte is
+  // fetched. render.php resolves the setting to a boolean; the editor still holds
+  // "on" / "off" / "default" (site setting).
+  const { coverFirst = "default" } = attributes;
+  const coverOn = !protect && !enabled && (coverFirst === true || coverFirst === "on" ||
+    (isBackend && coverFirst === "default" && !!(typeof window !== "undefined" && window.pdfpCoverConfig?.coverFirstDefault)));
+  const [coverOpened, setCoverOpened] = useState(false);
+  const coverGated = coverOn && !coverOpened;
+  const openCover = () => {
+    setCoverOpened(true);
+    setPreload(true);
+  };
+
   const ref = useRef();
   const canDiagnose = isBackend || (typeof pdfp !== "undefined" && !!pdfp?.canEdit);
 
   useEffect(() => {
+    if (coverGated) return undefined;
     // Order matters: a site URL loses its scheme along with its host, so there is
     // nothing left for matchProtocol to patch; a remote URL stays absolute and still
     // gets the page's scheme.
@@ -67,7 +84,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
     };
 
     verifyProtectedContent();
-  }, [file]);
+  }, [file, coverGated]);
 
   const [previewSrc, setPreviewSrc] = useState(null);
 
@@ -150,7 +167,8 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
   // Image-gallery flipbook can render without a PDF source, so it needs its own "has content" path.
   const fbImages = Array.isArray(attributes.flipbookImages) ? attributes.flipbookImages.filter(Boolean) : [];
   const useImagesFlipbook = ["flipbook", "slider"].includes(currentViewer) && attributes.flipbookSourceType === "images" && fbImages.length > 0;
-  const hasContent = source || useImagesFlipbook;
+  // A cover is not the document: nothing counts as shown (or viewed) until it is opened.
+  const hasContent = !coverGated && (source || useImagesFlipbook);
 
   // Document Insights. Never in the editor: `isBackend` is already the flag that tells
   // the block preview and the metabox preview apart from a real visit, so previews are
@@ -201,7 +219,8 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
       <div className="pdfp_fullscreen_close" onClick={closeFullscreen}>
         &times;
       </div>
-      {!hasContent && fileError && (
+      {coverGated && <CoverPoster attributes={attributes} isBackend={isBackend} onOpen={openCover} __={__} />}
+      {!coverGated && !hasContent && fileError && (
         <div className="pdfp_error_container" style={{ height: typeof attributes.height === "object" ? attributes.height?.desktop : attributes.height }}>
           <div className="pdfp_error_box">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -214,7 +233,7 @@ const Viewer = ({ attributes, RichText, setAttributes, __, isBackend = false, is
           </div>
         </div>
       )}
-      {hasContent && (
+      {!coverGated && hasContent && (
         <>
           <PopupTrigger popupOptions={popupOptions} fullscreenPDF={fullscreenPDF} onPreload={() => setPreload(true)} />
           {socialEnabled && socialPosition === "top" && !enabled && <SocialShare attributes={attributes} />}
