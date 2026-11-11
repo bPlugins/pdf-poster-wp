@@ -152,16 +152,10 @@ export const welcomeInfo = (adminUrl) => ({
             version: '2.6.4 - 15 Nov 2026',
             type: 'new',
             list: [
-                '<strong>New:</strong> Auto Thumbnail — PDF Poster now makes a cover image from the first page of every PDF you upload, automatically. No server setup needed.',
-                '<strong>New:</strong> Cover first — show a PDF\'s cover with an <strong>Open document</strong> button and load the viewer only when it is clicked. Pages open faster, and it works with every viewer.',
-                '<strong>New:</strong> Make covers for all the PDFs you already have in one click (Settings > Auto Thumbnail), or with the <strong>Generate covers</strong> bulk action on the PDF Posters list.',
-                '<strong>New:</strong> Covers now show in your Media Library, on the PDF Posters list, as each poster\'s featured image, and in image popups that have no picture of their own.',
-                '<strong>New:</strong> Cover Design (Pro) — style the cover and its Open button (background, size, corners, shadow, button colours and position) for the whole site or for one document.',
-                '<strong>New:</strong> Live Preview in the classic editor — a <strong>Preview</strong> button beside Save / Update opens your PDF in a pop-up exactly as visitors will see it, using the settings you have not saved yet. Nothing is published or saved until you press Update.',
-                '<strong>New:</strong> Check every screen size before you publish — switch the preview between Desktop, Tablet and Mobile to see your responsive heights and widths at work.',
+                '<strong>New:</strong> Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click.',
                 '<strong>New:</strong> Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode, without leaving Elementor.',
-                '<strong>Fix:</strong> Watermarks on FlipBook and Slider now stay the right size and position on phones, instead of shrinking to half the page or sitting over the toolbar.',
-                '<strong>Fix:</strong> Strong and Solid watermarks now stay clearly visible on dark pages and photos.'
+                '<strong>New:</strong> Cover first — show the PDF\'s cover and load the viewer only on click, for faster pages. Cover design in Pro.',
+                '<strong>New:</strong> Live Preview — see your PDF on Desktop, Tablet and Mobile in the classic editor before you publish.'
             ]
         },
         {

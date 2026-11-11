@@ -351,15 +351,10 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 == Changelog ==
 
 = 2.6.4 - 15 Nov 2026 =
-* New: Auto Thumbnail — PDF Poster now makes a cover image from the first page of every PDF you upload, automatically. No server setup needed.
-* New: Cover first — show a PDF's cover with an "Open document" button and load the viewer only when it is clicked. Pages open faster, and it works with every viewer.
-* New: Make covers for all the PDFs you already have in one click (Settings > Auto Thumbnail), or with the "Generate covers" bulk action on the PDF Posters list.
-* New: Covers now show in your Media Library, on the PDF Posters list, as each poster's featured image, and in image popups that have no picture of their own.
-* New: Cover Design (Pro) — style the cover and its Open button (background, size, corners, shadow, button colours and position) for the whole site or for one document.
-* New: Live Preview in the classic editor — a Preview button beside Save / Update opens your PDF in a pop-up exactly as visitors will see it, using your unsaved settings. Switch between Desktop, Tablet and Mobile before you publish.
+* New: Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click.
 * New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
-* Fix: Watermarks on FlipBook and Slider now stay the right size and position on phones.
-* Fix: Strong and Solid watermarks now stay clearly visible on dark pages and photos.
+* New: Cover first — show the PDF's cover and load the viewer only on click, for faster pages. Cover design in Pro.
+* New: Live Preview — see your PDF on Desktop, Tablet and Mobile in the classic editor before you publish.
 
 = 2.6.3 - 1 Nov 2026 =
 * Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details (safe with page caching), the PDF Poster Selector block preview no longer sticks on "Loading…", the PDF Poster element can be added in WPBakery's frontend editor, and the Download Button switch now appears on PDF Poster documents.
