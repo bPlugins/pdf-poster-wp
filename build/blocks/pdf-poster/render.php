@@ -51,6 +51,27 @@ $pdfp_attributes['file'] = \PDFPro\Helper\PDFP_Functions::pdfp_resolve_file_url(
     $pdfp_attributes['fileId'] ?? 0
 );
 
+// Nothing to show: no file, and not an image-gallery flipbook with pages (the same test
+// Viewer.js uses for useImagesFlipbook/hasContent). Without this the viewer mounted on an
+// empty container and the visitor saw a blank gap. See PDFP_Functions::pdfp_empty_state().
+$pdfp_has_images = in_array(($pdfp_attributes['adobeEmbedder'] ?? ''), array('flipbook', 'slider'), true)
+    && ($pdfp_attributes['flipbookSourceType'] ?? '') === 'images'
+    && count(array_filter((array) ($pdfp_attributes['flipbookImages'] ?? array()))) > 0;
+if ('' === trim((string) $pdfp_attributes['file']) && !$pdfp_has_images) {
+    $pdfp_empty_w = $pdfp_attributes['width'] ?? '100%';
+    echo \PDFPro\Helper\PDFP_Functions::pdfp_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
+        !empty($pdfp_attributes['posterId']) ? 'poster' : 'block',
+        array(
+            'width' => is_array($pdfp_empty_w) ? ($pdfp_empty_w['desktop'] ?? '100%') : (string) $pdfp_empty_w,
+            'theme' => $pdfp_attributes['themeMode'] ?? 'light',
+            'poster_id' => $pdfp_attributes['posterId'] ?? 0,
+            'align' => $pdfp_align !== '' ? $pdfp_align : 'none',
+            'class' => $pdfp_class_name,
+        )
+    );
+    return;
+}
+
 $pdfp_file = $pdfp_attributes['file'];
 $pdfp_is_dropbox = strpos($pdfp_file, 'dropbox.com') !== false;
 

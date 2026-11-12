@@ -551,6 +551,115 @@ if (!class_exists('PDFPro\Helper\PDFP_Functions')) {
         }
 
         /**
+         * What an embed shows when it has no document: a block saved before a file was
+         * picked, a poster with an empty PDF field, `[pdf_embed]` without a url, or an
+         * Elementor widget with nothing chosen. It used to print an empty container.
+         *
+         * Self-contained on purpose (inline <style>, printed once per request): the
+         * `[pdf_embed]` and Elementor paths return before render_block() runs, so the
+         * block stylesheet is not guaranteed to be on the page.
+         *
+         * Visitors get a calm "not available" card. Anyone who can edit posts also gets
+         * a one-line fix for the place they embedded it -- never shown to visitors.
+         *
+         * @param string $context  block | poster | shortcode | elementor | elementor-poster
+         * @param array  $args     width, theme (light|dark|auto), poster_id
+         * @return string HTML
+         */
+        public static function pdfp_empty_state($context = 'block', $args = array())
+        {
+            static $styled = false;
+
+            $width = isset($args['width']) && is_string($args['width']) && $args['width'] !== '' ? $args['width'] : '100%';
+            $theme = isset($args['theme']) && in_array($args['theme'], array('light', 'dark', 'auto'), true) ? $args['theme'] : 'light';
+            $poster_id = isset($args['poster_id']) ? absint($args['poster_id']) : 0;
+            // The block's own align (none|wide|full) and Additional CSS class, so the outer
+            // wrapper is sized by the theme's layout exactly like the real viewer's wrapper.
+            $align = isset($args['align']) && is_string($args['align']) && $args['align'] !== '' ? $args['align'] : 'none';
+            $class = isset($args['class']) && is_string($args['class']) ? trim($args['class']) : '';
+
+            $hint = '';
+            if (is_user_logged_in() && current_user_can('edit_posts')) {
+                switch ($context) {
+                    case 'shortcode':
+                        $hint = esc_html__('Add a PDF link to the shortcode, for example:', 'pdf-poster')
+                            . ' <code>[pdf_embed url="https://example.com/file.pdf"]</code>';
+                        break;
+                    case 'poster':
+                        $hint = esc_html__('This PDF Poster has no PDF file yet. Add one in the poster settings.', 'pdf-poster');
+                        $edit = $poster_id ? get_edit_post_link($poster_id, 'raw') : '';
+                        if ($edit) {
+                            $hint .= ' <a href="' . esc_url($edit) . '">' . esc_html__('Edit poster', 'pdf-poster') . ' &rarr;</a>';
+                        }
+                        break;
+                    case 'elementor':
+                        $hint = esc_html__('Choose a PDF from the media library or paste its URL in the widget settings.', 'pdf-poster');
+                        break;
+                    case 'elementor-poster':
+                        $hint = esc_html__('Select a PDF Poster in the widget settings.', 'pdf-poster');
+                        break;
+                    default:
+                        $hint = esc_html__('Select a PDF file in this block\'s settings to show it here.', 'pdf-poster');
+                }
+            }
+
+            $out = '';
+            if (!$styled) {
+                $styled = true;
+                $out .= '<style id="pdfp-empty-state-css">'
+                    // The outer wrapper gets NO width rules: a block theme's constrained layout
+                    // (content-size max-width + auto margins) applies to it as to any block.
+                    . '.pdfp_empty_wrap{box-sizing:border-box}'
+                    . '.pdfp_empty_state{box-sizing:border-box;max-width:100%;min-width:min(100%,340px);margin:0 auto;min-height:240px;display:flex;align-items:center;justify-content:center;padding:36px 24px;text-align:center;border:1.5px dashed #cbd2dc;border-radius:12px;background:linear-gradient(180deg,#fafbfc 0%,#f2f4f7 100%);color:#475467;font-family:inherit;line-height:1.5}'
+                    . '.pdfp_empty_state *{box-sizing:border-box}'
+                    . '.pdfp_empty_inner{max-width:420px;display:flex;flex-direction:column;align-items:center;gap:10px}'
+                    . '.pdfp_empty_icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.06),0 4px 12px rgba(16,24,40,.08);color:#e5484d;margin-bottom:4px}'
+                    . '.pdfp_empty_icon svg{width:30px;height:30px;display:block}'
+                    . '.pdfp_empty_state .pdfp_empty_title{margin:0;padding:0;font-size:17px;font-weight:600;color:#1d2939;line-height:1.35}'
+                    . '.pdfp_empty_state .pdfp_empty_text{margin:0;padding:0;font-size:14px;color:#667085}'
+                    . '.pdfp_empty_state .pdfp_empty_hint{margin:6px 0 0;padding:8px 12px;font-size:13px;color:#475467;background:#fff;border:1px solid #e4e7ec;border-radius:8px}'
+                    . '.pdfp_empty_hint strong{color:#1d2939}'
+                    . '.pdfp_empty_hint code{font-size:12px;padding:1px 5px;border-radius:4px;background:#f2f4f7;color:#1d2939;word-break:break-all}'
+                    . '.pdfp_empty_hint a{color:#146ef5;text-decoration:none;font-weight:500;white-space:nowrap}'
+                    . '.pdfp_empty_hint a:hover{text-decoration:underline}'
+                    . '.pdfp_empty_state.pdfp_empty_dark{background:linear-gradient(180deg,#24262b 0%,#1c1d21 100%);border-color:#44474f;color:#c4c7cf}'
+                    . '.pdfp_empty_dark .pdfp_empty_icon{background:#2e3036;box-shadow:none}'
+                    . '.pdfp_empty_state.pdfp_empty_dark .pdfp_empty_title{color:#f2f3f5}'
+                    . '.pdfp_empty_state.pdfp_empty_dark .pdfp_empty_text{color:#9a9ea8}'
+                    . '.pdfp_empty_state.pdfp_empty_dark .pdfp_empty_hint{background:#2e3036;border-color:#44474f;color:#c4c7cf}'
+                    . '.pdfp_empty_dark .pdfp_empty_hint strong,.pdfp_empty_dark .pdfp_empty_hint code{color:#f2f3f5}'
+                    . '.pdfp_empty_dark .pdfp_empty_hint code{background:#1c1d21}'
+                    . '@media (prefers-color-scheme:dark){'
+                    . '.pdfp_empty_state.pdfp_empty_auto{background:linear-gradient(180deg,#24262b 0%,#1c1d21 100%);border-color:#44474f;color:#c4c7cf}'
+                    . '.pdfp_empty_auto .pdfp_empty_icon{background:#2e3036;box-shadow:none}'
+                    . '.pdfp_empty_state.pdfp_empty_auto .pdfp_empty_title{color:#f2f3f5}'
+                    . '.pdfp_empty_state.pdfp_empty_auto .pdfp_empty_text{color:#9a9ea8}'
+                    . '.pdfp_empty_state.pdfp_empty_auto .pdfp_empty_hint{background:#2e3036;border-color:#44474f;color:#c4c7cf}}'
+                    . '@media (max-width:480px){.pdfp_empty_state{min-height:200px;padding:28px 16px}}'
+                    . '</style>';
+            }
+
+            $icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+                . '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>'
+                . '<polyline points="14 2 14 8 20 8"/>'
+                . '<line x1="9.5" y1="13.5" x2="14.5" y2="18.5"/><line x1="14.5" y1="13.5" x2="9.5" y2="18.5"/></svg>';
+
+            $out .= '<div class="pdfp_empty_wrap align' . esc_attr($align) . ($class !== '' ? ' ' . esc_attr($class) : '') . '">'
+                . '<div class="pdfp_empty_state pdfp_empty_' . esc_attr($theme) . '" role="status" style="width:' . esc_attr($width) . '">'
+                . '<div class="pdfp_empty_inner">'
+                . '<span class="pdfp_empty_icon">' . $icon . '</span>'
+                . '<p class="pdfp_empty_title">' . esc_html__('No PDF to display', 'pdf-poster') . '</p>'
+                . '<p class="pdfp_empty_text">' . esc_html__('This document isn\'t available right now. Please check back later.', 'pdf-poster') . '</p>'
+                . ($hint !== '' ? '<p class="pdfp_empty_hint"><strong>' . esc_html__('Only you can see this:', 'pdf-poster') . '</strong> ' . $hint . '</p>' : '')
+                . '</div></div></div>';
+
+            /**
+             * Filter the empty-state markup (e.g. to hide it from visitors: return '').
+             */
+            return apply_filters('pdfp_empty_state_html', $out, $context, $args);
+        }
+
+        /**
          * Resolve the viewer engine, enforcing capability server-side.
          *
          * FlipBook and Slider are free, but they render through dFlip, so they are only

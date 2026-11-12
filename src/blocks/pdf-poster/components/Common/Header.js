@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import isiOSDevice from "../../../../hooks/utils/isiOSDevice";
 
 export default function Header({ attributes, source, RichText, setAttributes, __, wrapper, previewSrc, showActions = true, showTitle = true, isImagesFlipbook = false, onTrack }) {
   const { downloadButton, protect, downloadButtonText, fullscreenButton, fullscreenButtonText, showName, titleFontSize, title, adobeEmbedder, newWindow, actionsPosition } = attributes;
@@ -36,12 +35,11 @@ export default function Header({ attributes, source, RichText, setAttributes, __
       Promise.resolve(iframeWrapper.requestFullscreen()).catch(() => {
         wrapper?.classList.add("pdfp_fullscreen_opened");
       });
-    } else if (isiOSDevice() && !isImagesFlipbook && source) {
-      // iOS Safari has no Element.requestFullscreen, so the file itself is the fallback.
-      window.open(source, "_blank", "noreferrer");
     } else {
-      // An image-gallery flipbook has no file to open, so use the CSS fullscreen the
-      // wrapper already styles (overlay + .pdfp_fullscreen_close).
+      // iPhone Safari has no Element.requestFullscreen (only <video> can go fullscreen),
+      // so use the CSS fullscreen the wrapper already styles (overlay + close button,
+      // 100dvh on phones). Never open the raw file instead: iOS would show it in its own
+      // PDF reader, without the viewer, the watermark or the download/print restrictions.
       wrapper?.classList.add("pdfp_fullscreen_opened");
     }
   };

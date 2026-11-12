@@ -1142,7 +1142,7 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
         private function poster_block( array $settings ) {
             $id = absint( isset( $settings['poster_id'] ) ? $settings['poster_id'] : 0 );
             if ( ! $id ) {
-                $this->editor_notice( __( 'Select a PDF Poster in the widget settings.', 'pdf-poster' ) );
+                echo \PDFPro\Helper\PDFP_Functions::pdfp_empty_state( 'elementor-poster' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
                 return null;
             }
 
@@ -1175,7 +1175,7 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
 
             $url = esc_url_raw( $url );
             if ( $url === '' && ! $this->uses_image_pages( $settings ) ) {
-                $this->editor_notice( __( 'Choose a PDF from the media library or paste its URL.', 'pdf-poster' ) );
+                echo \PDFPro\Helper\PDFP_Functions::pdfp_empty_state( 'elementor' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
                 return null;
             }
 

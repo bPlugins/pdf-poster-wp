@@ -95,9 +95,12 @@ if ( ! class_exists( 'PDFPro\Base\PDFP_Shortcodes' ) ) {
   public function pdf_embed($atts) {
     $attrs = shortcode_atts($this->pdf_embed_attrs(), $atts);
 
-    // Without a URL the viewer mounts an empty container, so bail loudly instead.
+    // Without a URL the viewer would mount an empty container. Show the shared
+    // empty-state card instead (editors also get the fix).
     if (empty($attrs['url'])) {
-      return current_user_can('manage_options') ? '<p style="color:red">PDF Poster: Please provide a file URL in the shortcode.</p>' : '';
+      return Utils::pdfp_empty_state('shortcode', array(
+        'width' => is_string($attrs['width'] ?? null) ? $attrs['width'] : '100%',
+      ));
     }
 
     $block = $this->pdf_embed_to_block($attrs);
