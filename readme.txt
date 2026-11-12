@@ -351,7 +351,7 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 == Changelog ==
 
 = 2.6.4 - 15 Nov 2026 =
-* New: Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click.
+* New: Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click. No server setup needed.
 * New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
 * New: Cover first — show the PDF's cover and load the viewer only on click, for faster pages. Cover design in Pro.
 * New: Live Preview — see your PDF on Desktop, Tablet and Mobile in the classic editor before you publish.

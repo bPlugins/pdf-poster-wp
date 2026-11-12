@@ -152,7 +152,7 @@ export const welcomeInfo = (adminUrl) => ({
             version: '2.6.4 - 15 Nov 2026',
             type: 'new',
             list: [
-                '<strong>New:</strong> Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click.',
+                '<strong>New:</strong> Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click. No server setup needed.',
                 '<strong>New:</strong> Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode, without leaving Elementor.',
                 '<strong>New:</strong> Cover first — show the PDF\'s cover and load the viewer only on click, for faster pages. Cover design in Pro.',
                 '<strong>New:</strong> Live Preview — see your PDF on Desktop, Tablet and Mobile in the classic editor before you publish.'

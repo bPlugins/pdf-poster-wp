@@ -105,6 +105,8 @@ if ( ! class_exists( 'PDFPro\Integrations\PDFP_Elementor' ) ) {
         private function pro_css() {
             $blue = '#146ef5';
             return '
+.pdfp-el-new{display:inline-block;margin-inline-start:6px;padding:0 5px;border-radius:3px;background:#08a143;color:#fff;font-size:9px;font-weight:700;line-height:15px;letter-spacing:.05em;vertical-align:middle;text-transform:uppercase}
+.pdfp-el-covernote{font-size:12px;line-height:1.5;color:var(--e-a-color-txt,#515962);border-inline-start:3px solid ' . $blue . ';padding:6px 10px;background:var(--e-a-bg-hover,#f6f7f8);border-radius:3px}
 .pdfp-el-pro{display:inline-block;padding:0 5px;border-radius:3px;background:' . $blue . ';color:#fff;font-size:9px;font-weight:700;line-height:15px;letter-spacing:.05em;vertical-align:middle;text-transform:uppercase}
 .pdfp-el-procard{border:1px solid var(--e-a-border-color,#e6e8ea);border-top:3px solid ' . $blue . ';border-radius:4px;padding:14px;background:var(--e-a-bg-default,#fff);color:var(--e-a-color-txt,#515962)}
 .pdfp-el-procard__head{display:flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--e-a-color-txt-accent,#0c0d0e)}

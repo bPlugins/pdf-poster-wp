@@ -202,6 +202,7 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
             $this->register_general_controls( $file );
             $this->register_behaviour_controls( $file );
             $this->register_action_controls( $file );
+            $this->register_cover_controls( $file );
             $this->register_popup_controls( $file );
             $this->register_watermark_controls( $file );
             $this->register_share_controls( $file );
@@ -339,6 +340,54 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
         }
 
         /** The metabox's "Popup" tab. */
+        /**
+         * The metabox's "Cover" tab (Auto Thumbnail). Cover design is Pro: it is named in
+         * a note here and in the PDF Poster Pro card, never registered as a control.
+         */
+        private function register_cover_controls( array $file ) {
+            $this->start_controls_section( 'section_cover', [
+                'label'     => __( 'Cover', 'pdf-poster' ) . ' <span class="pdfp-el-new">NEW</span>',
+                'tab'       => Controls_Manager::TAB_CONTENT,
+                'condition' => $file,
+            ] );
+
+            $this->add_control( 'cover_first', [
+                'label'       => __( 'Cover First', 'pdf-poster' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'default',
+                'options'     => [
+                    'default' => __( 'Site default', 'pdf-poster' ),
+                    'on'      => __( 'On', 'pdf-poster' ),
+                    'off'     => __( 'Off', 'pdf-poster' ),
+                ],
+                'description' => __( 'Show the PDF\'s cover with an Open button; the viewer and the PDF load only when it is clicked. Works with every viewer. Not used with Popup. Covers are made automatically for PDFs in your Media Library.', 'pdf-poster' ),
+            ] );
+
+            $this->add_control( 'cover_btn_text', [
+                'label'       => __( 'Button Text', 'pdf-poster' ),
+                'type'        => Controls_Manager::TEXT,
+                'placeholder' => __( 'Open document', 'pdf-poster' ),
+                'dynamic'     => [ 'active' => true ],
+                'condition'   => [ 'cover_first!' => 'off' ],
+            ] );
+
+            $this->add_control( 'cover_pro_note', [
+                'type'            => Controls_Manager::RAW_HTML,
+                'raw'             => sprintf(
+                    '<strong>%1$s</strong> %2$s <a href="%3$s" target="_blank" rel="noopener">%4$s</a>',
+                    esc_html__( 'Cover design', 'pdf-poster' ),
+                    esc_html__( '(background, size, corners, shadow, and the Open button\'s position, colours and shape) is available in PDF Poster Pro.', 'pdf-poster' ),
+                    esc_url( Utils::pricing_url() ),
+                    esc_html__( 'See Pro', 'pdf-poster' )
+                ),
+                'content_classes' => 'pdfp-el-covernote',
+                'separator'       => 'before',
+                'condition'       => [ 'cover_first!' => 'off' ],
+            ] );
+
+            $this->end_controls_section();
+        }
+
         private function register_popup_controls( array $file ) {
             $this->start_controls_section( 'section_popup', [
                 'label'     => __( 'Popup', 'pdf-poster' ),
@@ -603,6 +652,10 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
                 [
                     __( 'Your own buttons', 'pdf-poster' ),
                     __( 'Rename the Download button, move the buttons below the viewer, and open fullscreen in a new tab.', 'pdf-poster' ),
+                ],
+                [
+                    __( 'Cover design', 'pdf-poster' ),
+                    __( 'Style every PDF cover and its Open button: background, size, corners, shadow, colours and position, for the whole site or one widget.', 'pdf-poster' ),
                 ],
                 [
                     __( 'Dropbox and Google Drive', 'pdf-poster' ),
@@ -1236,6 +1289,10 @@ if ( ! class_exists( 'PDFPro\Integrations\Elementor\PDFP_Elementor_Widget' ) ) {
                 'progressive_loading' => $flag( 'progressive_loading' ),
                 'default_browser'     => $flag( 'default_browser' ),
             ];
+
+            // Cover (Auto Thumbnail). render.php resolves 'default' against the site setting.
+            $meta['cover_first']    = $pick( 'cover_first', [ 'default', 'on', 'off' ], 'default' );
+            $meta['cover_btn_text'] = $text( 'cover_btn_text' );
 
             // Popup image size: desktop into the block so the markup is right before
             // Elementor's stylesheet applies; tablet/mobile come from the selectors.
