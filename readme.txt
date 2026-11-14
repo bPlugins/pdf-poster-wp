@@ -1,5 +1,5 @@
 === PDF Poster – Let visitors read PDF's without leaving the page ===
-Contributors: bplugins, abuhayat, taninrahman, farazi1, freemius
+Contributors: bplugins, abuhayat, taninrahman, farazi1,  freemius
 Tags: embed pdf, pdf, pdf embedder, pdf plugin, pdf viewer
 Donate link: https://www.buymeacoffee.com/abuhayat/
 Requires at least: 5.0.3
@@ -260,37 +260,17 @@ Open a post or page in the WordPress editor
   * Example: `fullscreen_btn_text="Open Fullscreen"`
 
 
-### User Feedback
+---
 
-#### ⭐⭐⭐⭐⭐ [Weronika Zielinska – Empp](https://wordpress.org/support/topic/weronika-zielinska-empp/)
+### 💙 Love PDF Poster?
 
-❛❛***A great plugin that makes it easy to add the necessary posters and pdfs! It makes it very easy to quickly create a website. I definitely recommend it and we will definitely use it always.***❜❜
+👥 **[Join our Facebook Community](https://www.facebook.com/groups/wordpress.gutenberg.block.community)**
 
-***-[empp](https://wordpress.org/support/users/empp/)***
+🎬 **[Watch Video Tutorials](https://www.youtube.com/playlist?list=PLPcKO-fKtAYY)**
 
+⭐ **[Rate us on WordPress.org](https://wordpress.org/support/plugin/pdf-poster/reviews/#new-post)**
 
-#### ⭐⭐⭐⭐⭐ [good plugin](https://wordpress.org/support/topic/good-plugin-6365/)
-
-❛❛***This pdf poster plugin does really solve my requirement.***❜❜
-
-***-[a2zdoctors](https://wordpress.org/support/users/a2zdoctors/)***
-
-
-#### - Did you like this plugin? Dislike it? Have a feature request? [Please share your feedback with us](mailto:support@bplugins.com 'Send feedback')
-
-
-### Check out our other WordPress Plugins-
-
-[**Html5 Video Player**](https://bplugins.com/products/html5-video-player/) – Display videos as single and playlist in multiple skins.
-
-[**Html5 Audio Player**](https://bplugins.com/products/html5-audio-player/) – Listen audios with awesome visuals.
-
-[**StreamCast**](https://bplugins.com/products/streamcast-radio-player/) – Customizable radio player with different skins.
-
-[**3D Viewer**](https://bplugins.com/products/3d-viewer/) – Embed 3D models and 3D products with interaction.
-
-[**Advanced Post Block**](https://bplugins.com/products/advanced-post-block/) – Show posts and custom posts in different layouts.
-
+---
 
 == Installation ==
 
@@ -302,6 +282,22 @@ e.g.
 4. If you want a news ticker in your theme php, Place `<?php echo do_shortcode('YOUR_SHORTCODE'); ?>` in your templates
 
 == Frequently Asked Questions ==
+
+= Is PDF Poster free? =
+
+Yes. The free version embeds unlimited PDFs with three viewers (PDF.js, FlipBook and Slider), responsive sizing per device, print, download and full-screen buttons, social sharing, light/dark themes, RTL support, a popup (lightbox) viewer, automatic PDF cover thumbnails, text watermarking, custom CSS, and today's view and download counts. PDF Poster Pro adds the Adobe and Continuous Scroll viewers, Reader Mode, logo watermarking, cover design, content protection, your full analytics history with CSV export, and cloud imports.
+
+= Can I track how many people view or download my PDFs? =
+
+Yes, and it is built in — no Google Analytics or third-party service required. The free version shows today's views and downloads for every document, on the PDF Posters list and in both editors. Pro reads back every earlier day: all-time totals, 7, 30 and 90 day charts, your download rate, busiest day, top documents and CSV export. Counting happens in the visitor's browser, so it keeps working behind a page cache, and no IP address is ever stored.
+
+= Can I watermark a PDF for free? =
+
+Yes. A text watermark and three ready-made themes (Confidential, Draft Stamp and Sample Wash) are free, including dynamic placeholders such as `{site_name}` and `{user_email}` and a choice of which pages carry the mark. Logo watermarks, the fully custom theme, audience rules and the anti-leak options are Pro. Note that a watermark is a deterrent rather than DRM: no browser can prevent a screenshot.
+
+= Does PDF Poster work with Elementor, Divi and other page builders? =
+
+Yes. Alongside the two Gutenberg blocks and the classic editor metabox, the shortcode works anywhere a builder accepts one — Elementor, Divi, Bricks, WPBakery, Beaver Builder, Oxygen and Breakdance included. Use `[pdf_embed url="…"]` for a quick embed, or save a PDF Poster document and paste its `[pdf id="123"]` shortcode to carry every setting you configured.
 
 = Can PDF Poster show a cover image (thumbnail) of my PDF? =
 
@@ -337,36 +333,42 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 
 1. Five PDF viewers, one plugin — Default, Adobe, FlipBook, Scroll or Slider, switched from a single control in the settings panel.
 2. Realistic FlipBook reading — turn a PDF, or an ordered image gallery, into a page-flip book, with Slider and continuous Scroll modes alongside it.
-3. Watermark & Branding — stamp text, your logo or both over every page. Six ready-made themes plus Custom set the angle, repeat, weight and blend, and a tiled mark cannot be cropped out of a screenshot.
-4. A native Gutenberg block — insert it, pick a PDF, and every option lives in the block sidebar. No shortcode required.
-5. Pixel-perfect on every screen — desktop, tablet and mobile each get their own height and width from one device switcher.
-6. Protect what you publish — block right-click and text selection, and decide separately whether visitors may print or download at all.
-7. Open PDFs in a lightbox popup — trigger the viewer from a button, a link or a cover image, and the page never reloads.
-8. Download, print, full-screen and share — show only the buttons you want, rename them in any language, and let readers share the document anywhere.
-9. One library, shortcodes everywhere — manage every document from a single list, then copy its shortcode into any page, widget or template file.
-10. Set the defaults once — height, width, buttons, thumbnails and protection, so the Classic Shortcode Generator starts there every time.
-11. Guided dashboard, demos and support — a quick-start screen, live demos and one-click links to the docs and the support team, right inside your admin.
+3. Know which PDFs get read — views, downloads, download rate and a 30-day trend for every document, with your best performers ranked and a CSV export. Counted inside your own site, and a 14-day trend sits beside every document while you edit it.
+4. Watermark & Branding — stamp text, your logo or both over every page. Six ready-made themes plus Custom set the angle, repeat, weight and blend, and a tiled mark cannot be cropped out of a screenshot.
+5. A native Gutenberg block — insert it, pick a PDF, and every option lives in the block sidebar. No shortcode required.
+6. Pixel-perfect on every screen — desktop, tablet and mobile each get their own height and width from one device switcher.
+7. Protect what you publish — block right-click and text selection, and decide separately whether visitors may print or download at all.
+8. Open PDFs in a lightbox popup — trigger the viewer from a button, a link or a cover image, and the page never reloads.
+9. Download, print, full-screen and share — show only the buttons you want, rename them in any language, and let readers share the document anywhere.
+10. One library, shortcodes everywhere — manage every document from a single list, then copy its shortcode into any page, widget or template file.
+11. Set the defaults once — height, width, buttons, thumbnails and protection, so the Classic Shortcode Generator starts there every time.
+12. Guided dashboard, demos and support — a quick-start screen, live demos and one-click links to the docs and the support team, right inside your admin.
 
 
 == Changelog ==
 
 = 2.6.4 - 15 Nov 2026 =
-* New: Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click. No server setup needed.
+* New: Auto Thumbnail — every PDF gets a cover image from its first page, automatically. Existing PDFs too, in one click. No server setup needed. No server setup needed.
 * New: Dedicated Elementor widget — embed a saved PDF Poster document, a PDF file or URL, or a shortcode.
 * New: Cover first — show the PDF's cover and load the viewer only on click, for faster pages. Cover design in Pro.
 * New: Live Preview — see your PDF on Desktop, Tablet and Mobile in the classic editor before you publish.
 
 = 2.6.3 - 1 Nov 2026 =
-* Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details (safe with page caching), the PDF Poster Selector block preview no longer sticks on "Loading…", the PDF Poster element can be added in WPBakery's frontend editor, and the Download Button switch now appears on PDF Poster documents.
-* Fix: FlipBook and Slider now use the Tablet and Mobile heights, their popups have a solid background, and the default mobile height is 500px so a full page fits on phones.
-* Fix: Social share buttons now share the full page address, and each has an accessible name for screen readers.
-
-= 2.6.2 - 29 Oct 2026 =
-* Security: Fixed a stored cross-site scripting (XSS) issue in the PDF Poster block. A user with Contributor access could set the document URL to a javascript: link that ran when the poster was viewed. Document URLs must now be http(s), Google Docs/Drive embeds are matched by exact host, and they load in a sandboxed frame. Thanks to mroccon and Patchstack for the responsible disclosure.
-* Fix: When several posters share a page, a broken file no longer shows its error on the others, and each viewer now loads only when it comes into view or its popup is opened.
-* New: Adding a Word, Excel, PowerPoint or other non-PDF document now shows a clear “PDF Poster supports PDF files only” message instead of a broken viewer.
+* New: Protect Content > Secure Delivery (Pro) — the PDF's address no longer appears in the page. Each visit gets a one-time, encrypted copy that expires within minutes, so protected Media Library PDFs can't be hotlinked, shared or found through search engines.
+* Fix: When several posters share a page, a broken file no longer shows its error on the others, and every viewer — including Flipbook, Slider, Scroll and Adobe — now loads only when it comes into view or its popup is opened.
 * Update: A loading spinner now shows while a document opens — on the page and inside popups — instead of an empty frame or a blank toolbar.
 * New: Settings > Performance > Lazy Loading — on by default; switch it off to load every viewer on the page as soon as it opens.
+* Fix: Watermark placeholders {user_name}, {user_email} and {user_ip} now show each reader's details, and stay correct behind page caching.
+* Fix: The PDF Poster Selector block preview no longer sticks on “Loading…”.
+* Fix: The PDF Poster element can now be added in WPBakery's frontend editor.
+* Fix: FlipBook and Slider now use the Tablet and Mobile heights, and their popups have a solid background.
+* Update: The default mobile height is now 500px, so a full page fits on phones.
+* Fix: Social share buttons now share the full page address, and each has an accessible name for screen readers.
+
+= 2.6.2 - 19 Oct 2026 =
+* New: Viewer Theme in Settings > Quick Embedder — choose Light, Dark or Auto for every `[pdf_embed]`, or set it per embed with `theme="dark"`.
+* Fix: Google Drive files, including those added through Integrate Google Drive and private files from a connected account, now open in the PDF Poster viewer and flipbook, with a clear message when a file can’t be shown.
+* Update: Adding a Word, Excel, PowerPoint or Google Docs, Sheets or Slides file now shows a clear “PDF Poster supports PDF files only” message instead of a broken viewer.
 
 = 2.6.1 - 19 Sep 2026 =
 * Fix: Posters could fail to load after a site was moved, imported or cloned — showing a 404, an image instead of the document, or “Unexpected server response.” — most often when the PDF filename was not written in English; the saved address is now repaired against the media library.
@@ -383,7 +385,6 @@ Please report security bugs found in the source code of the PDF Poster plugin th
 * New: A view is recorded once the viewer has genuinely been on screen — not on every page load — and once per visitor per 30 minutes. Downloads and prints are counted however the reader triggers them.
 * New: Private by default. No IP address is stored, no cookie is set, and this release keeps daily totals only — in your own database, never sent anywhere.
 * New: Nothing to import if you upgrade later — every day is recorded from the start, so Pro reads back the history your site has already built.
-* New: Popup (lightbox) viewer, a text watermark with three ready-made themes, per-block Class and CSS, a site-wide Custom CSS box, the Preset defaults screen and the Fullscreen Button toggle are all free in this release.
 * New: WPBakery Page Builder — *PDF Poster* and *PDF Embed (by URL)* are now native builder elements, and both draw live in the frontend editor instead of sitting on “Loading Viewer…”. Any builder that previews over AJAX now loads the viewer first time, with no refresh.
 * Update: The shortcode columns on the PDF Posters list now show the shortcode itself in a click-to-copy chip, instead of a button whose label hid the value it copied.
 * Update: Links out of a report open in a new tab, so your date range and filters stay where you left them.
